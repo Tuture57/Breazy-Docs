@@ -1,0 +1,84 @@
+site_name: Breezy — Documentation Technique
+site_description: Documentation complète du réseau social Breezy (architecture microservices)
+site_author: Équipe Breezy
+
+theme:
+  name: material
+  language: fr
+  palette:
+    - scheme: default
+      primary: blue
+      accent: light blue
+      toggle:
+        icon: material/brightness-7
+        name: Passer en mode sombre
+    - scheme: slate
+      primary: blue
+      accent: light blue
+      toggle:
+        icon: material/brightness-4
+        name: Passer en mode clair
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+  icon:
+    repo: fontawesome/brands/github
+
+repo_name: El-Pouleto-ultimate
+repo_url: https://github.com/El-Pouleto-ultimate
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.critic
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - tables
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+
+nav:
+  - Accueil: index.md
+  - Architecture:
+    - Vue d'ensemble: architecture/vue-ensemble.md
+    - Communication inter-services: architecture/communication-services.md
+    - Docker & Déploiement: architecture/docker-deploiement.md
+  - Services:
+    - Auth Service: services/auth-service.md
+    - User Service: services/user-service.md
+    - Post Service: services/post-service.md
+    - Profil Service: services/profil-service.md
+    - Frontend (Next.js): services/frontend.md
+  - Données:
+    - Schémas PostgreSQL: donnees/schema-postgresql.md
+    - Schémas MongoDB: donnees/schema-mongodb.md
+  - Sécurité:
+    - Authentification & JWT: securite/authentification.md
+  - Fonctionnalités:
+    - Couverture Fx1-Fx23: fonctionnalites/couverture-fx.md
+  - Soutenance:
+    - Questions générales: soutenance/questions-generales.md
+    - Questions par membre: soutenance/questions-par-membre.md
+    - Limites & Évolutions: soutenance/limites-evolutions.md
