@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../schema-postgresql/">
+        <link rel="prev" href="../communication-services/">
       
       
-        <link rel="next" href="../../securite/authentification/">
+        <link rel="next" href="../docker-deploiement/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Schéma MongoDB - Breezy — Documentation</title>
+        <title>Flux de données - Breezy — Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#schema-mongodb" class="md-skip">
+        <a href="#flux-de-donnees" class="md-skip">
           Aller au contenu
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Schéma MongoDB
+              Flux de données
             
           </span>
         </div>
@@ -230,18 +230,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -262,7 +264,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -280,7 +282,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/vue-ensemble/" class="md-nav__link">
+      <a href="../vue-ensemble/" class="md-nav__link">
         
   
   
@@ -308,7 +310,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/communication-services/" class="md-nav__link">
+      <a href="../communication-services/" class="md-nav__link">
         
   
   
@@ -333,10 +335,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../architecture/flux-donnees/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flux de données
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -352,6 +381,114 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-inscription-complete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Inscription complète
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-connexion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Connexion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-requete-authentifiee-typique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Requête authentifiée typique
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-creation-de-post-avec-mention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Création de post avec mention @
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-like-avec-notification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Like avec notification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-follow-avec-notification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Follow avec notification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-rafraichissement-de-token-refresh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Rafraîchissement de token (refresh)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-refresh-token-cote-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Refresh token côté frontend
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -364,7 +501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/docker-deploiement/" class="md-nav__link">
+      <a href="../docker-deploiement/" class="md-nav__link">
         
   
   
@@ -618,20 +755,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -652,7 +787,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -670,7 +805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../schema-postgresql/" class="md-nav__link">
+      <a href="../../donnees/schema-postgresql/" class="md-nav__link">
         
   
   
@@ -695,37 +830,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Schéma MongoDB
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../donnees/schema-mongodb/" class="md-nav__link">
         
   
   
@@ -741,187 +849,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#vue-densemble" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Vue d'ensemble
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#database-breezy_posts-post-service" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Database : breezy_posts (post-service)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Database : breezy_posts (post-service)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#collection-posts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Collection : posts
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#collection-likes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Collection : likes
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#collection-comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Collection : comments
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#collection-reposts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Collection : reposts
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#database-breezy_profils-profil-service" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Database : breezy_profils (profil-service)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Database : breezy_profils (profil-service)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#collection-profiles" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Collection : profiles
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#collection-notifications" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Collection : notifications
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#notes-transverses" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Notes transverses
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Notes transverses">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#denormalisation-du-username" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Denormalisation du username
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gestion-des-compteurs-avec-inc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Gestion des compteurs avec $inc
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pas-de-contraintes-inter-bases" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pas de contraintes inter-bases
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1372,10 +1299,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#vue-densemble" class="md-nav__link">
+  <a href="#1-inscription-complete" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Vue d'ensemble
+        1. Inscription complète
       
     </span>
   </a>
@@ -1383,152 +1310,79 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#database-breezy_posts-post-service" class="md-nav__link">
+  <a href="#2-connexion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Database : breezy_posts (post-service)
+        2. Connexion
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Database : breezy_posts (post-service)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#collection-posts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Collection : posts
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#collection-likes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Collection : likes
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#collection-comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Collection : comments
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#collection-reposts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Collection : reposts
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#database-breezy_profils-profil-service" class="md-nav__link">
+  <a href="#3-requete-authentifiee-typique" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Database : breezy_profils (profil-service)
+        3. Requête authentifiée typique
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Database : breezy_profils (profil-service)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#collection-profiles" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Collection : profiles
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#collection-notifications" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Collection : notifications
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes-transverses" class="md-nav__link">
+  <a href="#4-creation-de-post-avec-mention" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notes transverses
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Notes transverses">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#denormalisation-du-username" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Denormalisation du username
+        4. Création de post avec mention @
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#gestion-des-compteurs-avec-inc" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#5-like-avec-notification" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Gestion des compteurs avec $inc
+        5. Like avec notification
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#pas-de-contraintes-inter-bases" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#6-follow-avec-notification" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pas de contraintes inter-bases
+        6. Follow avec notification
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#7-rafraichissement-de-token-refresh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Rafraîchissement de token (refresh)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-refresh-token-cote-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Refresh token côté frontend
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1549,179 +1403,327 @@
 
 
 
-<h1 id="schema-mongodb">Schema MongoDB</h1>
-<h2 id="vue-densemble">Vue d'ensemble</h2>
-<p>Deux bases de donnees MongoDB distinctes, chacune dediee a un microservice :</p>
+<h1 id="flux-de-donnees">Flux de données</h1>
+<p>Cette page détaille les principaux flux de données dans Breezy, du navigateur jusqu'aux bases de données.</p>
+<hr />
+<h2 id="1-inscription-complete">1. Inscription complète</h2>
+<pre><code class="language-mermaid">sequenceDiagram
+    participant Client as Navigateur
+    participant Nginx as Nginx (:80)
+    participant Gateway as API Gateway (:3000)
+    participant Auth as Auth Service (:3001)
+    participant UserSvc as User Service (:3002)
+    participant PGauth as PostgreSQL (auth)
+    participant PGuser as PostgreSQL (users)
+
+    Client-&gt;&gt;Nginx: POST /api/auth/register
+    Nginx-&gt;&gt;Gateway: POST /api/auth/register
+
+    Note over Gateway: Rate limiter (20 req/15min)
+
+    Gateway-&gt;&gt;Auth: POST /auth/register {username, email, password}
+
+    Auth-&gt;&gt;Auth: Validation express-validator (username 3-50, email, password 8+ avec maj+chiffre)
+    Auth-&gt;&gt;PGauth: SELECT users WHERE email = ?
+    Auth-&gt;&gt;PGauth: SELECT users WHERE username = ?
+    Auth-&gt;&gt;Auth: bcrypt.hash(password, 12 rounds)
+    Auth-&gt;&gt;PGauth: INSERT users (id, username, email, password_hash, role='user')
+
+    Note over Auth: Génération des tokens
+    Auth-&gt;&gt;Auth: jwt.sign({sub: id, username, role}, JWT_SECRET, {expiresIn: '15m'})
+    Auth-&gt;&gt;Auth: crypto.randomBytes(64).toString('hex') → refreshToken
+    Auth-&gt;&gt;Auth: hashToken(refreshToken) → SHA-256
+    Auth-&gt;&gt;PGauth: INSERT refresh_tokens (token_hash, user_id, expires_at)
+
+    Note over Auth: Sync vers User Service (non bloquant, timeout 3s)
+    Auth-&gt;&gt;UserSvc: POST /users/sync {id, username, role} [x-internal-secret]
+    UserSvc-&gt;&gt;Auth: Vérifie x-internal-secret
+    UserSvc-&gt;&gt;PGuser: UPSERT user_profiles (id, username, role)
+    UserSvc--&gt;&gt;Auth: 201 {ok: true}
+
+    Auth--&gt;&gt;Gateway: 201 {user: {id, username, email, role}, token}
+    Gateway--&gt;&gt;Nginx: Réponse + Set-Cookie: refreshToken (httpOnly)
+    Nginx--&gt;&gt;Client: 201 + JWT + refreshToken cookie
+</code></pre>
+<p><strong>Points clés :</strong>
+- Validation stricte : username 3-50 caractères (lettres, chiffres, underscores), email valide, password 8+ avec majuscule et chiffre
+- UUID v4 généré automatiquement par Sequelize pour l'ID utilisateur
+- Le refresh token est émis en cookie <code>httpOnly</code> (pas accessible en JavaScript)
+- L'appel au User Service est non bloquant : si le service est down, l'inscription réussit quand même</p>
+<hr />
+<h2 id="2-connexion">2. Connexion</h2>
+<pre><code class="language-mermaid">sequenceDiagram
+    participant Client as Navigateur
+    participant Nginx as Nginx (:80)
+    participant Gateway as API Gateway (:3000)
+    participant Auth as Auth Service (:3001)
+    participant PGauth as PostgreSQL (auth)
+
+    Client-&gt;&gt;Nginx: POST /api/auth/login
+    Nginx-&gt;&gt;Gateway: POST /api/auth/login
+    Gateway-&gt;&gt;Auth: POST /auth/login {email, password}
+
+    Auth-&gt;&gt;PGauth: SELECT * FROM users WHERE email = ?
+    Auth-&gt;&gt;Auth: bcrypt.compare(password, user.password_hash)
+
+    alt Identifiants invalides
+        Auth--&gt;&gt;Gateway: 401 {code: 'INVALID_CREDENTIALS'}
+        Gateway--&gt;&gt;Client: 401
+    else Compte banni
+        Auth--&gt;&gt;Gateway: 403 {code: 'ACCOUNT_BANNED'}
+        Gateway--&gt;&gt;Client: 403
+    else Compte inactif
+        Auth--&gt;&gt;Gateway: 403 {code: 'ACCOUNT_INACTIVE'}
+        Gateway--&gt;&gt;Client: 403
+    else Succès
+        Auth-&gt;&gt;Auth: generateAccessToken(user) → JWT 15min
+        Auth-&gt;&gt;Auth: generateRefreshToken() → crypto 64 bytes hex
+        Auth-&gt;&gt;PGauth: INSERT refresh_tokens (token_hash, user_id, expires_at)
+        Auth--&gt;&gt;Gateway: 200 {user, token} + Set-Cookie: refreshToken
+        Gateway--&gt;&gt;Client: 200 + JWT + refreshToken cookie
+    end
+</code></pre>
+<hr />
+<h2 id="3-requete-authentifiee-typique">3. Requête authentifiée typique</h2>
+<pre><code class="language-mermaid">sequenceDiagram
+    participant Client as Navigateur
+    participant Nginx as Nginx (:80)
+    participant Gateway as API Gateway (:3000)
+    participant Svc as Service Backend
+    participant DB as Base de données
+
+    Client-&gt;&gt;Nginx: GET /api/posts/feed
+    Note over Client: Header: Authorization: Bearer &lt;JWT&gt;
+
+    Nginx-&gt;&gt;Gateway: GET /api/posts/feed (avec Bearer token)
+
+    Gateway-&gt;&gt;Gateway: jwt.verify(token, JWT_SECRET)
+    Gateway-&gt;&gt;Gateway: Extrait payload: {sub, username, role}
+
+    alt Token invalide ou expiré
+        Gateway--&gt;&gt;Client: 401 &quot;Invalid or expired token&quot;
+    else Token valide
+        Gateway-&gt;&gt;Gateway: Injecte x-user-id, x-user-role, x-user-username
+        Gateway-&gt;&gt;Svc: Requête proxyfiée avec headers d'identité
+
+        Svc-&gt;&gt;Svc: Lit x-user-id depuis les headers
+        Svc-&gt;&gt;DB: Requête (find, insert, update, delete)
+        DB--&gt;&gt;Svc: Résultat
+        Svc--&gt;&gt;Gateway: Réponse JSON
+        Gateway--&gt;&gt;Client: Réponse JSON
+    end
+</code></pre>
+<p><strong>Détail des headers injectés par route :</strong></p>
 <table>
 <thead>
 <tr>
-<th>Base</th>
-<th>Service</th>
-<th>Conteneur Docker</th>
+<th>Route</th>
+<th>Headers injectés</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>breezy_posts</code></td>
-<td>post-service</td>
-<td><code>breezy-db-mongo-posts</code> (MongoDB 6)</td>
+<td><code>/api/auth/me</code></td>
+<td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
 </tr>
 <tr>
-<td><code>breezy_profils</code></td>
-<td>profil-service</td>
-<td><code>breezy-db-mongo-profils</code> (MongoDB 6)</td>
+<td><code>/api/auth/change-password</code></td>
+<td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
+</tr>
+<tr>
+<td><code>/api/users/*</code></td>
+<td><code>x-user-id</code>, <code>x-user-role</code> (pas de username)</td>
+</tr>
+<tr>
+<td><code>/api/posts/*</code></td>
+<td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
+</tr>
+<tr>
+<td><code>/api/upload</code></td>
+<td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
+</tr>
+<tr>
+<td><code>/api/profils/*</code></td>
+<td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
+</tr>
+<tr>
+<td><code>/api/notifications/*</code></td>
+<td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
 </tr>
 </tbody>
 </table>
-<p>Les schemas sont definis via <strong>Mongoose</strong> et indexes explicitement dans les modeles. Les connexions sont configurees via <code>MONGO_URI</code> dans les variables d'environnement.</p>
 <hr />
-<h2 id="database-breezy_posts-post-service">Database : <code>breezy_posts</code> (post-service)</h2>
-<h3 id="collection-posts">Collection : <code>posts</code></h3>
-<p>Modele : <code>Post</code> (<code>post-service/src/models/post.model.js</code>)</p>
-<pre><code class="language-javascript">{
-  _id: ObjectId,
-  user_id: String,          // UUID de l'utilisateur (source: auth-service)
-  username: String,          // Denormalise pour eviter les JOINs
-  content: String,           // Texte du post, max 280 caracteres
-  tags: [String],            // Tags, chaque tag max 30 caracteres
-  media_urls: [String],      // URLs des medias uploades (images)
-  likes_count: Number,       // Compteur atomique, default 0, min 0
-  comments_count: Number,    // Compteur atomique, default 0, min 0
-  reposts_count: Number,     // Compteur atomique, default 0, min 0
-  is_reported: Boolean,      // Flag de signalement, default false
-  created_at: Date,          // Cree automatiquement par timestamps: true
-  updated_at: Date           // Cree automatiquement par timestamps: true
-}
+<h2 id="4-creation-de-post-avec-mention">4. Création de post avec mention @</h2>
+<pre><code class="language-mermaid">sequenceDiagram
+    participant Client as Navigateur
+    participant Gateway as API Gateway
+    participant Post as Post Service (:3003)
+    participant UserSvc as User Service (:3002)
+    participant Profil as Profil Service (:3004)
+    participant MongoP as MongoDB (posts)
+    participant MongoPr as MongoDB (profils)
+
+    Client-&gt;&gt;Gateway: POST /api/posts {content: &quot;Salut @arthur !&quot;}
+    Note over Client: Authorization: Bearer &lt;JWT&gt;
+
+    Gateway-&gt;&gt;Gateway: Vérifie JWT, injecte headers
+    Gateway-&gt;&gt;Post: POST /api/posts/ [x-user-id, x-user-username]
+
+    Post-&gt;&gt;Post: Validation (content max 280, tags max 5)
+    Post-&gt;&gt;MongoP: INSERT post (user_id, username, content, tags, media_urls)
+    Post-&gt;&gt;Post: Détecte &quot;@arthur&quot; dans le contenu
+
+    Note over Post: Logique mentions (non bloquante)
+    Post-&gt;&gt;UserSvc: GET /users/by-username/arthur [x-user-id]
+    UserSvc-&gt;&gt;Post: 200 {id: &quot;uuid-d-arthur&quot;}
+
+    Post-&gt;&gt;Profil: POST /api/notifications/internal [x-internal-secret]
+    Note over Profil: Vérifie x-internal-secret
+    Profil-&gt;&gt;MongoPr: INSERT notification (type: 'mention', recipient: arthur, from: sender)
+    Profil--&gt;&gt;Post: 201
+
+    Post--&gt;&gt;Gateway: 201 {post object}
+    Gateway--&gt;&gt;Client: 201
 </code></pre>
-<p><strong>Index :</strong>
-- <code>{ user_id: 1, created_at: -1 }</code> -- Optimise les requetes de timeline utilisateur (afficher les posts d'un utilisateur tries par date)
-- <code>{ tags: 1 }</code> -- Optimise la recherche de posts par tag
-- <code>{ created_at: -1 }</code> -- Optimise le tri par date dans le feed global</p>
-<p><strong>Particularites :</strong>
-- <code>username</code> est denormalise dans le document post pour eviter une requete au user-service a chaque affichage.
-- Les compteurs (<code>likes_count</code>, <code>comments_count</code>, <code>reposts_count</code>) sont incrementes/decrementes atomiquement via <code>$inc</code>.
-- <code>is_reported</code> est un flag booleen, pas de systeme de moderation complet.
-- La validation Mongoose impose <code>maxlength: 280</code> sur <code>content</code> et <code>maxlength: 30</code> sur chaque tag.</p>
+<p><strong>Caractéristiques :</strong>
+- La détection des mentions se fait par regex <code>@([a-zA-Z0-9_]+)</code> sur le contenu
+- Chaque mention résout le username via User Service
+- Le timeout de l'appel mention est de 1 seconde
+- Les échecs sont silencieusement ignorés (le post est publié même si les notifications échouent)
+- Les auto-mentions sont ignorées (on ne se notifie pas soi-même)</p>
 <hr />
-<h3 id="collection-likes">Collection : <code>likes</code></h3>
-<p>Modele : <code>Like</code> (<code>post-service/src/models/like.model.js</code>)</p>
-<pre><code class="language-javascript">{
-  _id: ObjectId,
-  post_id: ObjectId,      // Reference au Post (ref: 'Post')
-  user_id: String,         // UUID de l'utilisateur
-  created_at: Date         // Cree automatiquement, pas de updated_at
-}
+<h2 id="5-like-avec-notification">5. Like avec notification</h2>
+<pre><code class="language-mermaid">sequenceDiagram
+    participant Client as Navigateur
+    participant Gateway as API Gateway
+    participant Post as Post Service (:3003)
+    participant Profil as Profil Service (:3004)
+    participant MongoP as MongoDB (posts)
+
+    Client-&gt;&gt;Gateway: POST /api/posts/:id/like
+    Note over Client: Authorization: Bearer &lt;JWT&gt;
+
+    Gateway-&gt;&gt;Gateway: Vérifie JWT, injecte headers
+    Gateway-&gt;&gt;Post: POST /api/posts/:id/like [x-user-id, x-user-username]
+
+    Post-&gt;&gt;MongoP: LIKE.find({post_id, user_id}) → vérification unique
+    Post-&gt;&gt;MongoP: INSERT like (post_id, user_id)
+    Post-&gt;&gt;MongoP: UPDATE posts SET likes_count++ WHERE _id = ?
+
+    Note over Post: Notification (non bloquante, timeout 1s)
+    Post-&gt;&gt;Profil: POST /api/notifications/internal [x-internal-secret]
+    Note over Profil: Vérifie x-internal-secret
+    Profil-&gt;&gt;MongoP: INSERT notification (type: 'like', recipient: post.user_id, from: liker)
+    Profil--&gt;&gt;Post: 201
+
+    Post--&gt;&gt;Gateway: 200 {likes_count: N}
+    Gateway--&gt;&gt;Client: 200
 </code></pre>
-<p><strong>Index :</strong>
-- <code>{ post_id: 1, user_id: 1 }</code> -- <strong>UNIQUE</strong> (contrainte : un like par utilisateur par post)</p>
-<p><strong>Particularites :</strong>
-- Pas de champ <code>updated_at</code> (<code>updatedAt: false</code> dans le schema).
-- L'index unique empeche les doublons. En cas de violation, l'erreur MongoDB 11000 est capturee et transformee en <code>409 ALREADY_LIKED</code>.
-- La suppression d'un post entraine la suppression des likes associes (pas de cascade automatique, faite manuellement dans le controller).</p>
+<p><strong>En cas de doublon :</strong>
+- MongoDB renvoie une erreur <code>11000</code> (index unique <code>{post_id, user_id}</code>)
+- Le service retourne <code>409 ALREADY_LIKED</code></p>
 <hr />
-<h3 id="collection-comments">Collection : <code>comments</code></h3>
-<p>Modele : <code>Comment</code> (<code>post-service/src/models/comment.model.js</code>)</p>
-<pre><code class="language-javascript">{
-  _id: ObjectId,
-  post_id: ObjectId,            // Reference au Post (ref: 'Post')
-  user_id: String,               // UUID de l'utilisateur
-  username: String,              // Denormalise
-  content: String,               // Texte du commentaire, max 280 caracteres
-  parent_comment_id: ObjectId,   // Reference au Comment parent, null pour les commentaires racines
-  created_at: Date,              // Cree automatiquement
-  updated_at: Date               // Cree automatiquement
-}
+<h2 id="6-follow-avec-notification">6. Follow avec notification</h2>
+<pre><code class="language-mermaid">sequenceDiagram
+    participant Client as Navigateur
+    participant Gateway as API Gateway
+    participant UserSvc as User Service (:3002)
+    participant Profil as Profil Service (:3004)
+    participant PGuser as PostgreSQL (users)
+    participant MongoPr as MongoDB (profils)
+
+    Client-&gt;&gt;Gateway: POST /api/users/:id/follow
+    Note over Client: Authorization: Bearer &lt;JWT&gt;
+
+    Gateway-&gt;&gt;Gateway: Vérifie JWT, injecte x-user-id, x-user-role
+    Gateway-&gt;&gt;UserSvc: POST /users/:id/follow [x-user-id]
+
+    UserSvc-&gt;&gt;UserSvc: Vérifie que :id != x-user-id (pas d'auto-follow)
+    UserSvc-&gt;&gt;PGuser: BEGIN TRANSACTION
+    UserSvc-&gt;&gt;PGuser: Follow.findOrCreate({follower_id, followed_id})
+    UserSvc-&gt;&gt;PGuser: UPDATE user_profiles SET following_count++ WHERE id = follower_id
+    UserSvc-&gt;&gt;PGuser: UPDATE user_profiles SET followers_count++ WHERE id = followed_id
+    UserSvc-&gt;&gt;PGuser: COMMIT
+
+    Note over UserSvc: Notification (non bloquante, timeout 1s)
+    UserSvc-&gt;&gt;Profil: POST /api/notifications/internal [x-internal-secret]
+    Note over Profil: Vérifie x-internal-secret
+    Profil-&gt;&gt;MongoPr: INSERT notification (type: 'follow', recipient: followed, from: follower)
+    Profil--&gt;&gt;UserSvc: 201
+
+    UserSvc--&gt;&gt;Gateway: 200 {message: &quot;Vous suivez maintenant @username.&quot;}
+    Gateway--&gt;&gt;Client: 200
 </code></pre>
-<p><strong>Index :</strong>
-- <code>{ post_id: 1, created_at: 1 }</code> -- Optimise le chargement des commentaires d'un post tries par date
-- <code>{ parent_comment_id: 1 }</code> -- Optimise la recherche des reponses a un commentaire</p>
-<p><strong>Regles de profondeur :</strong>
-- <strong>Maximum 1 niveau</strong> : on ne peut pas repondre a une reponse.
-- Si <code>parent_comment_id</code> est non-null (c'est deja une reponse), la tentative de creer une reponse renvoie l'erreur <code>MAX_DEPTH</code>.
-- Les commentaires racines : <code>parent_comment_id: null</code>.
-- Les reponses : <code>parent_comment_id: &lt;ObjectId du commentaire parent&gt;</code>.</p>
-<p><strong>Cascade :</strong>
-- A la suppression d'un commentaire, ses reponses sont egalement supprimees (<code>Comment.deleteMany({ parent_comment_id: commentId })</code>).
-- Le compteur <code>comments_count</code> du post est decremente via <code>$inc</code>.</p>
+<p><strong>Cas particuliers :</strong>
+- Auto-follow : <code>400 CANNOT_SELF_FOLLOW</code>
+- Double follow : <code>409 ALREADY_FOLLOWING</code> (vérifié par la transaction + findOrCreate)
+- Cible inexistante : <code>404 USER_NOT_FOUND</code>
+- Unfollow : <code>DELETE /users/:id/follow</code> → <code>204</code> (succès) ou <code>404 NOT_FOLLOWING</code></p>
 <hr />
-<h3 id="collection-reposts">Collection : <code>reposts</code></h3>
-<p>Modele : <code>Repost</code> (<code>post-service/src/models/repost.model.js</code>)</p>
-<pre><code class="language-javascript">{
-  _id: ObjectId,
-  post_id: ObjectId,      // Reference au Post (ref: 'Post')
-  user_id: String,         // UUID de l'utilisateur
-  created_at: Date         // Cree automatiquement, pas de updated_at
-}
+<h2 id="7-rafraichissement-de-token-refresh">7. Rafraîchissement de token (refresh)</h2>
+<pre><code class="language-mermaid">sequenceDiagram
+    participant Client as Navigateur
+    participant Gateway as API Gateway
+    participant Auth as Auth Service
+    participant PGauth as PostgreSQL (auth)
+
+    Note over Client: L'access token a expiré (401)
+    Client-&gt;&gt;Gateway: POST /api/auth/refresh (Cookie: refreshToken=xxx)
+
+    Gateway-&gt;&gt;Auth: POST /auth/refresh
+
+    Auth-&gt;&gt;Auth: hashToken(refreshToken) → SHA-256
+    Auth-&gt;&gt;PGauth: SELECT * FROM refresh_tokens WHERE token_hash = ?
+
+    alt Token introuvable
+        Auth--&gt;&gt;Client: 401 INVALID_REFRESH_TOKEN + Clear-Cookie
+    else Token déjà révoqué (vol)
+        Auth-&gt;&gt;PGauth: UPDATE refresh_tokens SET is_revoked=true WHERE user_id = ?
+        Auth--&gt;&gt;Client: 401 INVALID_REFRESH_TOKEN + Clear-Cookie
+    else Token expiré
+        Auth-&gt;&gt;PGauth: UPDATE refresh_tokens SET is_revoked=true WHERE id = ?
+        Auth--&gt;&gt;Client: 401 INVALID_REFRESH_TOKEN + Clear-Cookie
+    else Utilisateur banni/inactif
+        Auth-&gt;&gt;PGauth: UPDATE refresh_tokens SET is_revoked=true WHERE id = ?
+        Auth--&gt;&gt;Client: 401 INVALID_REFRESH_TOKEN + Clear-Cookie
+    else Succès
+        Note over Auth: Rotation: ancien token révoqué
+        Auth-&gt;&gt;PGauth: UPDATE refresh_tokens SET is_revoked=true WHERE id = ?
+        Note over Auth: Nouveau refresh token généré
+        Auth-&gt;&gt;Auth: crypto.randomBytes(64).toString('hex')
+        Auth-&gt;&gt;PGauth: INSERT refresh_tokens (token_hash, user_id, expires_at)
+        Note over Auth: Nouvel access token généré
+        Auth-&gt;&gt;Auth: jwt.sign({sub, username, role}, JWT_SECRET, {expiresIn: '15m'})
+        Auth--&gt;&gt;Client: 200 {token: nouveau_JWT} + Set-Cookie: nouveau_refreshToken
+    end
 </code></pre>
-<p><strong>Index :</strong>
-- <code>{ post_id: 1, user_id: 1 }</code> -- <strong>UNIQUE</strong> (contrainte : un repost par utilisateur par post)</p>
-<p><strong>Particularites :</strong>
-- Pas de champ <code>updated_at</code>.
-- Le repost est un <strong>toggle</strong> : une seule action (POST /posts/:id/repost) qui cree ou supprime selon l'etat existant.
-- Utilise <code>$inc</code> pour mettre a jour <code>reposts_count</code> sur le post.
-- Pas de contenu propre : un repost est juste une reference au post original.</p>
 <hr />
-<h2 id="database-breezy_profils-profil-service">Database : <code>breezy_profils</code> (profil-service)</h2>
-<h3 id="collection-profiles">Collection : <code>profiles</code></h3>
-<p>Modele : <code>Profile</code> (<code>profil-service/src/models/profile.model.js</code>)</p>
-<pre><code class="language-javascript">{
-  _id: ObjectId,
-  user_id: String,         // UUID, unique, indexe
-  display_name: String,    // Nom affiche, max 100 caracteres, default ''
-  bio: String,             // Biographie, max 160 caracteres, default ''
-  avatar_url: String,      // URL de l'avatar, default ''
-  banner_url: String,      // URL de la banniere, default ''
-  location: String,        // Localisation, max 100 caracteres, default ''
-  created_at: Date,        // Cree automatiquement
-  updated_at: Date         // Cree automatiquement
-}
+<h2 id="8-refresh-token-cote-frontend">8. Refresh token côté frontend</h2>
+<pre><code class="language-mermaid">sequenceDiagram
+    participant Client as Application React
+    participant API as Axios Instance
+
+    Client-&gt;&gt;API: Requête avec JWT
+    API-&gt;&gt;API: Intercepte 401
+
+    Note over Client,API: Vérifie si la requête était /auth/login ou /auth/refresh
+    alt Login 401
+        API--&gt;&gt;Client: Rejette (le composant gère)
+    else Refresh 401
+        API-&gt;&gt;API: Clear token + redirige /signin
+    else Autre 401
+        Note over API: Marque _retry=true
+        API-&gt;&gt;API: POST /auth/refresh (avec cookie)
+        alt Refresh réussi
+            API-&gt;&gt;API: Stocke nouveau JWT
+            API-&gt;&gt;API: Rejoue la requête originale avec nouveau JWT
+            API--&gt;&gt;Client: Résultat de la requête originale
+        else Refresh échoué
+            API-&gt;&gt;API: Clear token + redirige /signin
+        end
+    end
 </code></pre>
-<p><strong>Index :</strong>
-- <code>{ user_id: 1 }</code> -- <strong>UNIQUE</strong> (un seul profil par utilisateur)</p>
-<p><strong>Particularites :</strong>
-- Le profil est cree automatiquement au premier appel <code>GET /api/profils/:userId</code> via <code>upsert: true</code> et <code>$setOnInsert: { user_id }</code>. Pas besoin de pre-creation via un flux de synchronisation.
-- <code>display_name</code> est distinct de <code>username</code>. Le <code>username</code> vient du user-service, le <code>display_name</code> est propre au profil.
-- La mise a jour est restreinte aux champs autorises : <code>display_name</code>, <code>bio</code>, <code>avatar_url</code>, <code>banner_url</code>, <code>location</code>.
-- Validation : <code>bio</code> max 160 caracteres verifiee a la fois par Mongoose et par le controller.</p>
-<hr />
-<h3 id="collection-notifications">Collection : <code>notifications</code></h3>
-<p>Modele : <code>Notification</code> (<code>profil-service/src/models/notification.model.js</code>)</p>
-<pre><code class="language-javascript">{
-  _id: ObjectId,
-  recipient_user_id: String,  // UUID du destinataire
-  type: String,               // Enum: 'like', 'follow', 'mention', 'comment', 'reply'
-  from_user_id: String,       // UUID de l'emetteur
-  from_username: String,      // Username de l'emetteur (denormalise)
-  post_id: String,            // Optionnel, UUID du post concerne, default null
-  is_read: Boolean,           // Flag de lecture, default false
-  created_at: Date            // Cree automatiquement, pas de updated_at
-}
-</code></pre>
-<p><strong>Index :</strong>
-- <code>{ recipient_user_id: 1, is_read: 1, created_at: -1 }</code> -- Optimise l'affichage des notifications non lues d'un utilisateur, triees par date</p>
-<p><strong>Types de notifications :</strong>
-| Type | Declencheur | post_id |
-|------|------------|---------|
-| <code>like</code> | Un utilisateur like un post | Oui |
-| <code>follow</code> | Un utilisateur suit un autre | Non |
-| <code>mention</code> | Un utilisateur est mentionne dans un post | Oui |
-| <code>comment</code> | Un utilisateur commente un post | Oui |
-| <code>reply</code> | Un utilisateur repond a un commentaire | Oui |</p>
-<p><strong>Particularites :</strong>
-- Pas de champ <code>updated_at</code>.
-- Auto-notification bloquee : si <code>recipient_user_id === from_user_id</code>, la notification est ignoree (status 204).
-- La creation de notification est <strong>non bloquante</strong> : les appels inter-services avec timeout court (1000ms) ne doivent pas ralentir l'operation principale.
-- Le champ <code>post_id</code> est de type <code>String</code> (pas un ObjectId), car il peut contenir soit un ObjectId (pour les posts du post-service) soit etre null.</p>
-<hr />
-<h2 id="notes-transverses">Notes transverses</h2>
-<h3 id="denormalisation-du-username">Denormalisation du username</h3>
-<p>Le <code>username</code> est denormalise dans les collections <code>posts</code> et <code>comments</code>. Cela evite un appel inter-service a chaque affichage, au prix d'une eventual inconsistency si le username change. Actuellement, le username n'est pas modifiable dans l'application.</p>
-<h3 id="gestion-des-compteurs-avec-inc">Gestion des compteurs avec $inc</h3>
-<p>Les compteurs (<code>likes_count</code>, <code>comments_count</code>, <code>reposts_count</code>) sont mis a jour avec <code>$inc</code> plutot que recalcules a chaque requete. Cela offre :
-- Avantage : performances elevees, pas de <code>COUNT()</code> couteux
-- Risque : si un like est supprime deux fois, le compteur peut devenir negatif (protection : <code>Math.max(0, ...)</code>)</p>
-<h3 id="pas-de-contraintes-inter-bases">Pas de contraintes inter-bases</h3>
-<p>Les services ne partagent pas de base de donnees. Les references entre collections (ex: <code>post_id</code> dans <code>likes</code> -&gt; <code>_id</code> dans <code>posts</code>) sont au niveau applicatif uniquement. MongoDB n'impose pas d'integrite referentielle.</p>
+<p>Le mécanisme implémente un <code>failedQueue</code> : si plusieurs requêtes échouent simultanément avec 401, une seule tentative de refresh est effectuée, et les autres requêtes sont mises en attente puis rejouées avec le nouveau token.</p>
 
 
 

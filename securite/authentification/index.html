@@ -6,10 +6,8 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Documentation complète du réseau social Breezy (architecture microservices)">
+        <meta name="description" content="Documentation technique du réseau social Breezy">
       
-      
-        <meta name="author" content="Équipe Breezy">
       
       
       
@@ -27,7 +25,7 @@
     
     
       
-        <title>Authentification & JWT - Breezy — Documentation Technique</title>
+        <title>Authentification - Breezy — Documentation</title>
       
     
     
@@ -64,12 +62,10 @@
   
     
     
-      
     
     
     
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -78,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#authentification-jwt" class="md-skip">
+        <a href="#authentification-et-securite" class="md-skip">
           Aller au contenu
         </a>
       
@@ -94,7 +90,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="En-tête">
-    <a href="../.." title="Breezy — Documentation Technique" class="md-header__button md-logo" aria-label="Breezy — Documentation Technique" data-md-component="logo">
+    <a href="../.." title="Breezy — Documentation" class="md-header__button md-logo" aria-label="Breezy — Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -108,13 +104,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Breezy — Documentation Technique
+            Breezy — Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Authentification & JWT
+              Authentification
             
           </span>
         </div>
@@ -122,33 +118,7 @@
     </div>
     
       
-        <form class="md-header__option" data-md-component="palette">
-  
     
-    
-    
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Passer en mode sombre"  type="radio" name="__palette" id="__palette_0">
-    
-      <label class="md-header__button md-icon" title="Passer en mode sombre" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
-      </label>
-    
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Passer en mode clair"  type="radio" name="__palette" id="__palette_1">
-    
-      <label class="md-header__button md-icon" title="Passer en mode clair" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
-      </label>
-    
-  
-</form>
-      
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -177,8 +147,6 @@
         </button>
       </nav>
       
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
@@ -194,18 +162,6 @@
 </div>
       
     
-    
-      <div class="md-header__source">
-        <a href="https://github.com/El-Pouleto-ultimate" title="Aller au dépôt" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
-  </div>
-  <div class="md-source__repository">
-    El-Pouleto-ultimate
-  </div>
-</a>
-      </div>
     
   </nav>
   
@@ -232,26 +188,14 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Breezy — Documentation Technique" class="md-nav__button md-logo" aria-label="Breezy — Documentation Technique" data-md-component="logo">
+    <a href="../.." title="Breezy — Documentation" class="md-nav__button md-logo" aria-label="Breezy — Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    Breezy — Documentation Technique
+    Breezy — Documentation
   </label>
-  
-    <div class="md-nav__source">
-      <a href="https://github.com/El-Pouleto-ultimate" title="Aller au dépôt" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
-  </div>
-  <div class="md-source__repository">
-    El-Pouleto-ultimate
-  </div>
-</a>
-    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -292,22 +236,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -399,6 +336,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../architecture/flux-donnees/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flux de données
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../architecture/docker-deploiement/" class="md-nav__link">
         
   
@@ -437,22 +402,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -480,6 +438,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -607,7 +593,7 @@
   <span class="md-ellipsis">
     
   
-    Frontend (Next.js)
+    Frontend
   
 
     
@@ -638,22 +624,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
@@ -696,7 +675,7 @@
   <span class="md-ellipsis">
     
   
-    Schémas PostgreSQL
+    Schéma PostgreSQL
   
 
     
@@ -724,7 +703,7 @@
   <span class="md-ellipsis">
     
   
-    Schémas MongoDB
+    Schéma MongoDB
   
 
     
@@ -757,20 +736,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -822,7 +796,7 @@
   <span class="md-ellipsis">
     
   
-    Authentification & JWT
+    Authentification
   
 
     
@@ -840,7 +814,7 @@
   <span class="md-ellipsis">
     
   
-    Authentification & JWT
+    Authentification
   
 
     
@@ -866,10 +840,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#vue-densemble" class="md-nav__link">
+  <a href="#architecture-globale" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Vue d'ensemble
+        Architecture globale
       
     </span>
   </a>
@@ -877,22 +851,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#access-token-jwt" class="md-nav__link">
+  <a href="#jwt-access-token" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Access Token (JWT)
+        JWT (Access Token)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Access Token (JWT)">
+    <nav class="md-nav" aria-label="JWT (Access Token)">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structure-du-payload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structure du payload
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#generation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Génération
+        Generation
       
     </span>
   </a>
@@ -900,10 +885,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#contenu-du-payload" class="md-nav__link">
+  <a href="#verification-gateway" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Contenu du payload
+        Verification (Gateway)
       
     </span>
   </a>
@@ -911,21 +896,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#verification-par-la-gateway" class="md-nav__link">
+  <a href="#injection-des-headers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Vérification par la Gateway
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#stockage-cote-client" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Stockage côté client
+        Injection des headers
       
     </span>
   </a>
@@ -950,10 +924,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#fonctionnement" class="md-nav__link">
+  <a href="#generation_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fonctionnement
+        Generation
       
     </span>
   </a>
@@ -961,10 +935,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#options-du-cookie" class="md-nav__link">
+  <a href="#stockage-en-base" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Options du cookie
+        Stockage en base
       
     </span>
   </a>
@@ -972,10 +946,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#rotation-des-tokens" class="md-nav__link">
+  <a href="#livraison-au-client" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rotation des tokens
+        Livraison au client
       
     </span>
   </a>
@@ -983,10 +957,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#detection-de-vol-de-session" class="md-nav__link">
+  <a href="#rotation-et-detection-de-vol" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Détection de vol de session
+        Rotation et detection de vol
       
     </span>
   </a>
@@ -1007,14 +981,25 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Hachage des mots de passe">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rate-limiting-double-couche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rate Limiting (double couche)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rate Limiting (double couche)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bcrypt" class="md-nav__link">
+  <a href="#couche-1-nginx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        bcrypt
+        Couche 1 : Nginx
       
     </span>
   </a>
@@ -1022,10 +1007,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#protection-contre-lenumeration" class="md-nav__link">
+  <a href="#couche-2-gateway-express-rate-limit" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Protection contre l'énumération
+        Couche 2 : Gateway (express-rate-limit)
       
     </span>
   </a>
@@ -1038,22 +1023,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rate-limiting" class="md-nav__link">
+  <a href="#flux-dauthentification-complet" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rate Limiting
+        Flux d'authentification complet
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Rate Limiting">
+    <nav class="md-nav" aria-label="Flux d&#39;authentification complet">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#niveau-nginx" class="md-nav__link">
+  <a href="#1-connexion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Niveau Nginx
+        1. Connexion
       
     </span>
   </a>
@@ -1061,10 +1046,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#niveau-gateway" class="md-nav__link">
+  <a href="#2-requetes-authentifiees" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Niveau Gateway
+        2. Requetes authentifiees
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-refresh-automatique-interceptor-axios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Refresh automatique (interceptor Axios)
       
     </span>
   </a>
@@ -1077,22 +1073,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#validation-des-entrees" class="md-nav__link">
+  <a href="#flux-de-bannissement" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Validation des entrées
+        Flux de bannissement
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Validation des entrées">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#securite-inter-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Securite inter-services
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Securite inter-services">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cote-backend-express-validator" class="md-nav__link">
+  <a href="#header-x-internal-secret" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Côté backend (express-validator)
+        Header x-internal-secret
       
     </span>
   </a>
@@ -1100,10 +1107,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#cote-frontend" class="md-nav__link">
+  <a href="#headers-injectes-par-la-gateway" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Côté frontend
+        Headers injectes par la gateway
       
     </span>
   </a>
@@ -1116,10 +1123,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#resume-des-mecanismes-de-securite" class="md-nav__link">
+  <a href="#divergences-de-validation-frontend-backend" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Résumé des mécanismes de sécurité
+        Divergences de validation frontend / backend
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Divergences de validation frontend / backend">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validation-du-mot-de-passe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation du mot de passe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation-du-username" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation du username
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#injection-du-header-x-user-username" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Injection du header x-user-username
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protection-contre-les-attaques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protection contre les attaques
       
     </span>
   </a>
@@ -1152,22 +1209,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -1210,7 +1260,7 @@
   <span class="md-ellipsis">
     
   
-    Couverture Fx1-Fx23
+    Couverture
   
 
     
@@ -1241,22 +1291,97 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/routes-completes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Routes complètes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   
@@ -1274,8 +1399,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1355,7 +1480,7 @@
   <span class="md-ellipsis">
     
   
-    Limites & Évolutions
+    Limites et évolutions
   
 
     
@@ -1372,6 +1497,33 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CHANGELOG_DOC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Journal des modifications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1403,10 +1555,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#vue-densemble" class="md-nav__link">
+  <a href="#architecture-globale" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Vue d'ensemble
+        Architecture globale
       
     </span>
   </a>
@@ -1414,22 +1566,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#access-token-jwt" class="md-nav__link">
+  <a href="#jwt-access-token" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Access Token (JWT)
+        JWT (Access Token)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Access Token (JWT)">
+    <nav class="md-nav" aria-label="JWT (Access Token)">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structure-du-payload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structure du payload
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#generation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Génération
+        Generation
       
     </span>
   </a>
@@ -1437,10 +1600,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#contenu-du-payload" class="md-nav__link">
+  <a href="#verification-gateway" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Contenu du payload
+        Verification (Gateway)
       
     </span>
   </a>
@@ -1448,21 +1611,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#verification-par-la-gateway" class="md-nav__link">
+  <a href="#injection-des-headers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Vérification par la Gateway
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#stockage-cote-client" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Stockage côté client
+        Injection des headers
       
     </span>
   </a>
@@ -1487,10 +1639,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#fonctionnement" class="md-nav__link">
+  <a href="#generation_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fonctionnement
+        Generation
       
     </span>
   </a>
@@ -1498,10 +1650,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#options-du-cookie" class="md-nav__link">
+  <a href="#stockage-en-base" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Options du cookie
+        Stockage en base
       
     </span>
   </a>
@@ -1509,10 +1661,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#rotation-des-tokens" class="md-nav__link">
+  <a href="#livraison-au-client" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rotation des tokens
+        Livraison au client
       
     </span>
   </a>
@@ -1520,10 +1672,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#detection-de-vol-de-session" class="md-nav__link">
+  <a href="#rotation-et-detection-de-vol" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Détection de vol de session
+        Rotation et detection de vol
       
     </span>
   </a>
@@ -1544,14 +1696,25 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Hachage des mots de passe">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rate-limiting-double-couche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rate Limiting (double couche)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rate Limiting (double couche)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bcrypt" class="md-nav__link">
+  <a href="#couche-1-nginx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        bcrypt
+        Couche 1 : Nginx
       
     </span>
   </a>
@@ -1559,10 +1722,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#protection-contre-lenumeration" class="md-nav__link">
+  <a href="#couche-2-gateway-express-rate-limit" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Protection contre l'énumération
+        Couche 2 : Gateway (express-rate-limit)
       
     </span>
   </a>
@@ -1575,22 +1738,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rate-limiting" class="md-nav__link">
+  <a href="#flux-dauthentification-complet" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rate Limiting
+        Flux d'authentification complet
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Rate Limiting">
+    <nav class="md-nav" aria-label="Flux d&#39;authentification complet">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#niveau-nginx" class="md-nav__link">
+  <a href="#1-connexion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Niveau Nginx
+        1. Connexion
       
     </span>
   </a>
@@ -1598,10 +1761,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#niveau-gateway" class="md-nav__link">
+  <a href="#2-requetes-authentifiees" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Niveau Gateway
+        2. Requetes authentifiees
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-refresh-automatique-interceptor-axios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Refresh automatique (interceptor Axios)
       
     </span>
   </a>
@@ -1614,22 +1788,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#validation-des-entrees" class="md-nav__link">
+  <a href="#flux-de-bannissement" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Validation des entrées
+        Flux de bannissement
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Validation des entrées">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#securite-inter-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Securite inter-services
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Securite inter-services">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cote-backend-express-validator" class="md-nav__link">
+  <a href="#header-x-internal-secret" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Côté backend (express-validator)
+        Header x-internal-secret
       
     </span>
   </a>
@@ -1637,10 +1822,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#cote-frontend" class="md-nav__link">
+  <a href="#headers-injectes-par-la-gateway" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Côté frontend
+        Headers injectes par la gateway
       
     </span>
   </a>
@@ -1653,10 +1838,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#resume-des-mecanismes-de-securite" class="md-nav__link">
+  <a href="#divergences-de-validation-frontend-backend" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Résumé des mécanismes de sécurité
+        Divergences de validation frontend / backend
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Divergences de validation frontend / backend">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validation-du-mot-de-passe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation du mot de passe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation-du-username" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation du username
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#injection-du-header-x-user-username" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Injection du header x-user-username
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protection-contre-les-attaques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protection contre les attaques
       
     </span>
   </a>
@@ -1679,394 +1914,418 @@
                   
 
 
-  
-  
 
-
-<h1 id="authentification-jwt">Authentification &amp; JWT<a class="headerlink" href="#authentification-jwt" title="Permanent link">&para;</a></h1>
-<h2 id="vue-densemble">Vue d'ensemble<a class="headerlink" href="#vue-densemble" title="Permanent link">&para;</a></h2>
-<p>Breezy utilise un système d'authentification basé sur <strong>JWT (JSON Web Tokens)</strong> avec <strong>rotation de refresh tokens</strong>. Le système est conçu pour être sécurisé contre les attaques courantes (vol de session, énumération de comptes, brute force).</p>
-<pre class="mermaid"><code>sequenceDiagram
-    participant C as Client (Next.js)
-    participant N as Nginx
-    participant GW as Gateway
-    participant AUTH as auth-service
-
-    Note over C: Inscription / Connexion
-    C-&gt;&gt;N: POST /api/auth/register ou /login
-    N-&gt;&gt;GW: Proxy /api/auth/*
-    Note over GW: Pas de vérif JWT&lt;br/&gt;(route publique)
-    GW-&gt;&gt;AUTH: POST /auth/register ou /login
-    AUTH-&gt;&gt;AUTH: Vérifie credentials&lt;br/&gt;Hash bcrypt
-    AUTH-&gt;&gt;C: {user, token} + Set-Cookie: refreshToken
-
-    Note over C: Requêtes authentifiées
-    C-&gt;&gt;N: GET /api/posts/feed&lt;br/&gt;Authorization: Bearer {token}
-    N-&gt;&gt;GW: Proxy /api/posts/*
-    GW-&gt;&gt;GW: Vérifie JWT (jwt.verify)
-    Note over GW: Extrait sub, username, role
-    GW-&gt;&gt;GW: Injecte x-user-id, x-user-role
-    GW-&gt;&gt;AUTH: Forward vers le service cible
-
-    Note over C: Rafraîchissement
-    C-&gt;&gt;AUTH: POST /auth/refresh&lt;br/&gt;Cookie: refreshToken=xxx
-    AUTH-&gt;&gt;AUTH: Vérifie hash SHA-256&lt;br/&gt;Révoque ancien token&lt;br/&gt;Émet nouveau token
-    AUTH-&gt;&gt;C: {token} + Set-Cookie: refreshToken (nouveau)</code></pre>
-<h2 id="access-token-jwt">Access Token (JWT)<a class="headerlink" href="#access-token-jwt" title="Permanent link">&para;</a></h2>
-<h3 id="generation">Génération<a class="headerlink" href="#generation" title="Permanent link">&para;</a></h3>
-<p>(<code>breezy-auth-service/src/utils/jwt.utils.js</code>)</p>
-<div class="language-javascript highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">generateAccessToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">sub</span><span class="o">:</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">username</span><span class="o">:</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">role</span><span class="w"> </span><span class="p">},</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">expiresIn</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_EXPIRES_IN</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;15m&#39;</span><span class="w"> </span><span class="p">}</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="p">);</span>
-</span></code></pre></div>
-<h3 id="contenu-du-payload">Contenu du payload<a class="headerlink" href="#contenu-du-payload" title="Permanent link">&para;</a></h3>
+<h1 id="authentification-et-securite">Authentification et Securite</h1>
+<h2 id="architecture-globale">Architecture globale</h2>
+<p>L'authentification repose sur un <strong>double token system</strong> (JWT + Refresh Token) avec une <strong>gateway centralisee</strong> qui verifie les JWT et injecte les headers d'identite dans les services backend.</p>
+<pre><code>Client  →  NGINX  →  Gateway  →  auth-service (login, register, refresh)
+               ↓
+          (verifie JWT)
+               ↓
+          injecte headers x-user-id, x-user-role, x-user-username
+               ↓
+     ┌──────┬──────┬────────┬──────────┐
+     ↓      ↓      ↓        ↓          ↓
+   auth   user   post   profil   upload
+</code></pre>
+<p>Les services backend <strong>ne verifient jamais le JWT eux-memes</strong> : ils font confiance aux headers injectes par la gateway.</p>
+<hr />
+<h2 id="jwt-access-token">JWT (Access Token)</h2>
+<h3 id="structure-du-payload">Structure du payload</h3>
+<pre><code class="language-json">{
+  &quot;sub&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+  &quot;username&quot;: &quot;johndoe&quot;,
+  &quot;role&quot;: &quot;user&quot;,
+  &quot;iat&quot;: 1718000000,
+  &quot;exp&quot;: 1718000900
+}
+</code></pre>
 <table>
 <thead>
 <tr>
-<th>Claim</th>
+<th>Champ</th>
+<th>Valeur</th>
 <th>Description</th>
-<th>Exemple</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>sub</code></td>
-<td>UUID de l'utilisateur</td>
-<td><code>"a1b2c3d4-..."</code></td>
+<td>UUID</td>
+<td>Identifiant unique de l'utilisateur</td>
 </tr>
 <tr>
 <td><code>username</code></td>
+<td>string</td>
 <td>Nom d'utilisateur</td>
-<td><code>"alice"</code></td>
 </tr>
 <tr>
 <td><code>role</code></td>
-<td>Rôle</td>
-<td><code>"user"</code>, <code>"moderator"</code>, <code>"admin"</code></td>
+<td><code>user</code> / <code>moderator</code> / <code>admin</code></td>
+<td>Role pour les permissions</td>
 </tr>
 <tr>
 <td><code>iat</code></td>
-<td>Date d'émission (auto)</td>
-<td><code>1719835200</code></td>
+<td>timestamp Unix</td>
+<td>Date d'emission</td>
 </tr>
 <tr>
 <td><code>exp</code></td>
-<td>Date d'expiration (auto)</td>
-<td><code>1719836100</code> (15 min plus tard)</td>
+<td>timestamp Unix</td>
+<td>Date d'expiration</td>
 </tr>
 </tbody>
 </table>
-<h3 id="verification-par-la-gateway">Vérification par la Gateway<a class="headerlink" href="#verification-par-la-gateway" title="Permanent link">&para;</a></h3>
-<p>(<code>breezy-infra/gateway/src/middleware/auth.js</code>)</p>
-<div class="language-javascript highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">authenticate</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">authHeader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;authorization&#39;</span><span class="p">];</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">authHeader</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;No token provided&quot;</span><span class="w"> </span><span class="p">});</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">authHeader</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mf">1</span><span class="p">];</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">decoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">verifyToken</span><span class="p">(</span><span class="nx">token</span><span class="p">);</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">decoded</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">403</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Invalid or expired token&quot;</span><span class="w"> </span><span class="p">});</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">decoded</span><span class="p">;</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="nx">next</span><span class="p">();</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="p">}</span>
-</span></code></pre></div>
-<p>La Gateway décode le JWT et injecte les headers vers les services :</p>
-<div class="language-javascript highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nx">proxyReq</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;x-user-id&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span><span class="w">    </span><span class="c1">// → req.user.sub du JWT</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nx">proxyReq</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;x-user-role&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">role</span><span class="p">);</span>
-</span></code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Divergence x-user-id</p>
-<p>La Gateway lit <code>req.user.id</code> mais le claim JWT est <code>sub</code>. Cela fonctionne car <code>jwt.verify</code> retourne un objet où le claim <code>sub</code> est accessible. Cependant, dans le code de la Gateway (<code>gateway/src/index.js</code> ligne 64), c'est <code>req.user.id</code> qui est utilisé — ce qui correspond à ce que <code>jwt.verify</code> retourne après décodage (le claim <code>sub</code> est mappé à <code>id</code> par convention dans certaines versions de jsonwebtoken, mais techniquement c'est <code>req.user.sub</code>).</p>
-</div>
-<h3 id="stockage-cote-client">Stockage côté client<a class="headerlink" href="#stockage-cote-client" title="Permanent link">&para;</a></h3>
-<p>(<code>breezy-frontend/src/services/api.js</code>)</p>
-<p>Le token est stocké dans <strong><code>localStorage</code></strong> sous la clé <code>breezy_token</code> :</p>
-<div class="language-javascript highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Injection automatique dans chaque requête</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nx">api</span><span class="p">.</span><span class="nx">interceptors</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">config</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="nx">TOKEN_KEY</span><span class="p">)</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">token</span><span class="p">)</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">Authorization</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Bearer </span><span class="si">${</span><span class="nx">token</span><span class="si">}</span><span class="sb">`</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">config</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">})</span>
-</span></code></pre></div>
-<p>Sur une réponse <strong>401</strong>, le token est supprimé et l'utilisateur est redirigé vers <code>/signin</code>.</p>
-<hr />
-<h2 id="refresh-token">Refresh Token<a class="headerlink" href="#refresh-token" title="Permanent link">&para;</a></h2>
-<h3 id="fonctionnement">Fonctionnement<a class="headerlink" href="#fonctionnement" title="Permanent link">&para;</a></h3>
-<p>Le refresh token est un token <strong>opaque</strong> (64 bytes aléatoires en hex) stocké :</p>
+<h3 id="generation">Generation</h3>
+<pre><code class="language-javascript">// auth-service/src/utils/jwt.utils.js
+const generateAccessToken = (user) =&gt;
+  jwt.sign(
+    { sub: user.id, username: user.username, role: user.role },
+    process.env.JWT_SECRET,
+    { expiresIn: process.env.JWT_EXPIRES_IN || '15m' }
+  );
+</code></pre>
 <ul>
-<li><strong>Côté client</strong> : dans un cookie <code>httpOnly</code>, <code>secure</code> (en production), <code>sameSite: Strict</code></li>
-<li><strong>Côté serveur</strong> : hashé en <strong>SHA-256</strong> dans la table <code>refresh_tokens</code></li>
+<li><strong>Algorithme</strong> : HS256 (HMAC avec SHA-256)</li>
+<li><strong>Duree de vie</strong> : <code>JWT_EXPIRES_IN</code> (defaut : <code>15m</code> = 15 minutes)</li>
+<li><strong>Secret</strong> : <code>JWT_SECRET</code> (variable d'environnement, verifiee au demarrage)</li>
+<li><strong>Bibliotheque</strong> : <code>jsonwebtoken</code></li>
 </ul>
-<div class="language-javascript highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// Génération</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">generateRefreshToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">crypto</span><span class="p">.</span><span class="nx">randomBytes</span><span class="p">(</span><span class="mf">64</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">);</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1">// Hashage avant stockage</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">hashToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">token</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">crypto</span><span class="p">.</span><span class="nx">createHash</span><span class="p">(</span><span class="s1">&#39;sha256&#39;</span><span class="p">).</span><span class="nx">update</span><span class="p">(</span><span class="nx">token</span><span class="p">).</span><span class="nx">digest</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">);</span>
-</span></code></pre></div>
-<h3 id="options-du-cookie">Options du cookie<a class="headerlink" href="#options-du-cookie" title="Permanent link">&para;</a></h3>
-<p>(<code>breezy-auth-service/src/controllers/auth.controller.js</code> lignes 11-16)</p>
-<div class="language-javascript highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">cookieOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nx">httpOnly</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">                                    </span><span class="c1">// Inaccessible depuis JavaScript</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="nx">secure</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;production&#39;</span><span class="p">,</span><span class="w">     </span><span class="c1">// HTTPS uniquement en prod</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="nx">sameSite</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Strict&#39;</span><span class="p">,</span><span class="w">                                </span><span class="c1">// Protection CSRF</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="nx">maxAge</span><span class="o">:</span><span class="w"> </span><span class="nx">REFRESH_TTL_MS</span><span class="p">,</span><span class="w">                            </span><span class="c1">// 7 jours par défaut</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">};</span>
-</span></code></pre></div>
-<h3 id="rotation-des-tokens">Rotation des tokens<a class="headerlink" href="#rotation-des-tokens" title="Permanent link">&para;</a></h3>
-<p>Chaque appel à <code>POST /auth/refresh</code> :</p>
+<h3 id="verification-gateway">Verification (Gateway)</h3>
+<pre><code class="language-javascript">// gateway/src/middleware/auth.js
+function authenticate(req, res, next) {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader.split(' ')[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded; // { sub, username, role, iat, exp }
+    next();
+}
+</code></pre>
+<h3 id="injection-des-headers">Injection des headers</h3>
+<p>Apres verification du JWT, la gateway injecte les headers suivants dans la requete vers le service backend :</p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Source</th>
+<th>Services qui le recoivent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x-user-id</code></td>
+<td><code>req.user.sub</code></td>
+<td>auth-service, user-service, post-service, profil-service</td>
+</tr>
+<tr>
+<td><code>x-user-role</code></td>
+<td><code>req.user.role</code></td>
+<td>auth-service, user-service, post-service, profil-service</td>
+</tr>
+<tr>
+<td><code>x-user-username</code></td>
+<td><code>req.user.username</code></td>
+<td>auth-service (me, change-password), post-service, profil-service</td>
+</tr>
+</tbody>
+</table>
+<p><strong>IMPORTANT</strong> : Le header <code>x-user-username</code> n'est PAS injecte pour les routes du user-service (<code>/api/users/*</code>). Cela signifie que les controllers du user-service qui lisent <code>req.username</code> (via le middleware identity) recevront <code>undefined</code>. Cela affecte notamment l'envoi de notifications de follow.</p>
+<hr />
+<h2 id="refresh-token">Refresh Token</h2>
+<h3 id="generation_1">Generation</h3>
+<pre><code class="language-javascript">const generateRefreshToken = () =&gt;
+  crypto.randomBytes(64).toString('hex');
+</code></pre>
+<ul>
+<li><strong>Entropie</strong> : 512 bits (64 octets aleatoires)</li>
+<li><strong>Format</strong> : chaine hexadecimale (128 caracteres)</li>
+<li><strong>Stockage</strong> : jamais en clair, hash SHA-256 uniquement</li>
+</ul>
+<h3 id="stockage-en-base">Stockage en base</h3>
+<pre><code class="language-sql">-- Table refresh_tokens
+token_hash VARCHAR(512) NOT NULL UNIQUE  -- SHA-256(token)
+expires_at TIMESTAMP NOT NULL
+is_revoked BOOLEAN DEFAULT false
+</code></pre>
+<h3 id="livraison-au-client">Livraison au client</h3>
+<p>Le refresh token est envoye dans un cookie HTTP-only :</p>
+<pre><code class="language-javascript">const cookieOptions = {
+  httpOnly: true,                           // Inaccessible depuis JavaScript
+  secure: process.env.NODE_ENV === 'production',  // HTTPS seulement en prod
+  sameSite: 'Strict',                       // Protege contre les CSRF
+  maxAge: REFRESH_TOKEN_DAYS * 24 * 60 * 60 * 1000,  // Duree de vie
+};
+res.cookie('refreshToken', refreshToken, cookieOptions);
+</code></pre>
+<p><strong>Duree de vie</strong> : <code>REFRESH_TOKEN_DAYS</code> (defaut 7 jours).</p>
+<h3 id="rotation-et-detection-de-vol">Rotation et detection de vol</h3>
+<p>Le refresh token implemente un mecanisme de <strong>rotation avec detection de rejeu</strong> :</p>
 <ol>
-<li>Vérifie que le token présenté existe et n'est pas révoqué</li>
-<li><strong>Révoque</strong> l'ancien token (<code>is_revoked = true</code>)</li>
-<li>Génère un <strong>nouveau</strong> refresh token</li>
-<li>Stocke le nouveau hash en base</li>
-<li>Envoie le nouveau token dans un cookie</li>
+<li>Le client presente un refresh token valide</li>
+<li>L'ancien token est <strong>reveque</strong> (<code>is_revoked = true</code>)</li>
+<li>Un <strong>nouveau</strong> refresh token est emis</li>
+<li>Token expire ou deja reveque -&gt; <code>401 INVALID_REFRESH_TOKEN</code></li>
 </ol>
-<pre class="mermaid"><code>sequenceDiagram
-    participant C as Client
-    participant AUTH as auth-service
-    participant DB as PostgreSQL
-
-    C-&gt;&gt;AUTH: POST /auth/refresh&lt;br/&gt;Cookie: refreshToken=abc123
-    AUTH-&gt;&gt;AUTH: hash = SHA-256(abc123)
-    AUTH-&gt;&gt;DB: SELECT * FROM refresh_tokens WHERE token_hash = hash
-    DB-&gt;&gt;AUTH: {user_id, is_revoked: false, expires_at}
-
-    alt Token révoqué (vol détecté)
-        AUTH-&gt;&gt;DB: UPDATE refresh_tokens SET is_revoked=true WHERE user_id=X
-        Note over AUTH,DB: TOUS les tokens du compte sont révoqués
-        AUTH-&gt;&gt;C: 401 INVALID_REFRESH_TOKEN
-    else Token valide
-        AUTH-&gt;&gt;DB: UPDATE ... SET is_revoked=true (ancien token)
-        AUTH-&gt;&gt;AUTH: newToken = randomBytes(64)
-        AUTH-&gt;&gt;DB: INSERT refresh_tokens (hash(newToken), user_id, expires_at)
-        AUTH-&gt;&gt;C: {token: newJWT} + Set-Cookie: refreshToken=newToken
-    end</code></pre>
-<h3 id="detection-de-vol-de-session">Détection de vol de session<a class="headerlink" href="#detection-de-vol-de-session" title="Permanent link">&para;</a></h3>
-<p>(<code>auth.controller.js</code> lignes 133-137)</p>
-<p>Si un refresh token <strong>déjà révoqué</strong> est présenté, cela signifie potentiellement qu'un attaquant a intercepté un token et l'a déjà utilisé. Dans ce cas, <strong>tous les refresh tokens du compte</strong> sont révoqués immédiatement :</p>
-<div class="language-javascript highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">stored</span><span class="p">.</span><span class="nx">is_revoked</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">RefreshToken</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">is_revoked</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">user_id</span><span class="o">:</span><span class="w"> </span><span class="nx">stored</span><span class="p">.</span><span class="nx">user_id</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="p">);</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">code</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;INVALID_REFRESH_TOKEN&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="p">}</span>
-</span></code></pre></div>
+<p><strong>Detection de vol</strong> : si un token deja reveque est presente (vol de session), <strong>tous les tokens</strong> de l'utilisateur sont reveques :</p>
+<pre><code class="language-javascript">if (stored.is_revoked) {
+  await RefreshToken.update(
+    { is_revoked: true },
+    { where: { user_id: stored.user_id } }
+  );
+  // L'attaquant ET l'utilisateur legitime sont deconnectes
+}
+</code></pre>
 <hr />
-<h2 id="hachage-des-mots-de-passe">Hachage des mots de passe<a class="headerlink" href="#hachage-des-mots-de-passe" title="Permanent link">&para;</a></h2>
-<h3 id="bcrypt">bcrypt<a class="headerlink" href="#bcrypt" title="Permanent link">&para;</a></h3>
-<p>(<code>breezy-auth-service/src/controllers/auth.controller.js</code>)</p>
+<h2 id="hachage-des-mots-de-passe">Hachage des mots de passe</h2>
+<pre><code class="language-javascript">const bcrypt = require('bcryptjs');
+const password_hash = await bcrypt.hash(password, BCRYPT_ROUNDS);
+</code></pre>
 <ul>
-<li><strong>Algorithme</strong> : bcryptjs</li>
-<li><strong>Rounds</strong> : 12 par défaut (configurable via <code>BCRYPT_ROUNDS</code>)</li>
-<li><strong>Hachage</strong> : <code>bcrypt.hash(password, BCRYPT_ROUNDS)</code></li>
-<li><strong>Vérification</strong> : <code>bcrypt.compare(password, user.password_hash)</code></li>
+<li><strong>Bibliotheque</strong> : <code>bcryptjs</code></li>
+<li><strong>Rounds de salage</strong> : <code>BCRYPT_ROUNDS</code> (defaut : 12)</li>
+<li><strong>Valeur reelle dans <code>.env</code></strong> : 10</li>
+<li><strong>Verification</strong> : <code>bcrypt.compare(password, user.password_hash)</code></li>
 </ul>
-<h3 id="protection-contre-lenumeration">Protection contre l'énumération<a class="headerlink" href="#protection-contre-lenumeration" title="Permanent link">&para;</a></h3>
-<p>Le login retourne le <strong>même message d'erreur</strong> pour un email inexistant et un mauvais mot de passe :</p>
-<div class="language-javascript highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">User</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">email</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">passwordMatches</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">bcrypt</span><span class="p">.</span><span class="nx">compare</span><span class="p">(</span><span class="nx">password</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">password_hash</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">passwordMatches</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">code</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;INVALID_CREDENTIALS&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="p">}</span>
-</span></code></pre></div>
 <hr />
-<h2 id="rate-limiting">Rate Limiting<a class="headerlink" href="#rate-limiting" title="Permanent link">&para;</a></h2>
-<h3 id="niveau-nginx">Niveau Nginx<a class="headerlink" href="#niveau-nginx" title="Permanent link">&para;</a></h3>
-<p>(<code>breezy-infra/nginx/nginx.conf</code>)</p>
+<h2 id="rate-limiting-double-couche">Rate Limiting (double couche)</h2>
+<h3 id="couche-1-nginx">Couche 1 : Nginx</h3>
+<p>Configure dans <code>infra/nginx/nginx.conf</code> :</p>
+<pre><code>limit_req_zone $binary_remote_addr zone=global:10m rate=30r/m;
+limit_req_zone $binary_remote_addr zone=auth:10m rate=5r/m;
+</code></pre>
 <table>
 <thead>
 <tr>
 <th>Zone</th>
-<th>Limite</th>
-<th>Portée</th>
+<th>Taux</th>
+<th>Application</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>global</code></td>
 <td>30 req/min</td>
-<td>Toutes les routes</td>
+<td>Toutes les requetes passant par NGINX</td>
 </tr>
 <tr>
 <td><code>auth</code></td>
 <td>5 req/min</td>
-<td>Routes d'authentification</td>
+<td>Routes /api/auth/*</td>
 </tr>
 </tbody>
 </table>
-<h3 id="niveau-gateway">Niveau Gateway<a class="headerlink" href="#niveau-gateway" title="Permanent link">&para;</a></h3>
-<p>(<code>breezy-infra/gateway/src/index.js</code>)</p>
-<table>
-<thead>
-<tr>
-<th>Limiteur</th>
-<th>Fenêtre</th>
-<th>Max</th>
-<th>Routes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>globalLimiter</code></td>
-<td>15 min</td>
-<td>100 req</td>
-<td>Toutes</td>
-</tr>
-<tr>
-<td><code>authLimiter</code></td>
-<td>15 min</td>
-<td>10 req</td>
-<td><code>/api/auth/*</code></td>
-</tr>
-</tbody>
-</table>
-<div class="admonition info">
-<p class="admonition-title">Double rate limiting</p>
-<p>Le rate limiting est appliqué à <strong>deux niveaux</strong> : Nginx et Gateway. C'est un choix de sécurité en profondeur — même si Nginx est contourné, la Gateway limite aussi les requêtes.</p>
-</div>
+<h3 id="couche-2-gateway-express-rate-limit">Couche 2 : Gateway (express-rate-limit)</h3>
+<p>Configure dans <code>infra/gateway/src/index.js</code> :</p>
+<pre><code class="language-javascript">const globalLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,  // 15 minutes
+    max: 500,                    // 500 requetes
+});
+
+const authLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,  // 15 minutes
+    max: 20,                     // 20 tentatives
+});
+app.use('/api/auth/login', authLimiter);
+app.use('/api/auth/register', authLimiter);
+</code></pre>
+<p><strong>ATTENTION</strong> : Docker Compose definit <code>NODE_ENV=test</code> pour la gateway, ce qui <strong>desactive</strong> le rate limiting (<code>max: 999999</code>). En production, cette valeur doit etre supprimee du docker-compose.yml.</p>
 <hr />
-<h2 id="validation-des-entrees">Validation des entrées<a class="headerlink" href="#validation-des-entrees" title="Permanent link">&para;</a></h2>
-<h3 id="cote-backend-express-validator">Côté backend (express-validator)<a class="headerlink" href="#cote-backend-express-validator" title="Permanent link">&para;</a></h3>
-<p>(<code>breezy-auth-service/src/routes/auth.routes.js</code>)</p>
-<table>
-<thead>
-<tr>
-<th>Champ</th>
-<th>Règles</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>username</code></td>
-<td>3-50 caractères, uniquement <code>[a-zA-Z0-9_]</code></td>
-</tr>
-<tr>
-<td><code>email</code></td>
-<td>Format email valide, normalisé</td>
-</tr>
-<tr>
-<td><code>password</code></td>
-<td>Min 8 caractères, au moins 1 majuscule, au moins 1 chiffre</td>
-</tr>
-</tbody>
-</table>
-<h3 id="cote-frontend">Côté frontend<a class="headerlink" href="#cote-frontend" title="Permanent link">&para;</a></h3>
-<p>(<code>breezy-frontend/src/utils/validators.js</code>)</p>
-<table>
-<thead>
-<tr>
-<th>Champ</th>
-<th>Règles</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>email</code></td>
-<td>Regex basique</td>
-</tr>
-<tr>
-<td><code>password</code></td>
-<td>Min 6 caractères</td>
-</tr>
-<tr>
-<td><code>username</code></td>
-<td>Min 2 caractères</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition warning">
-<p class="admonition-title">Divergence de validation</p>
-<p>Le frontend est <strong>moins strict</strong> que le backend. Un mot de passe de 6 caractères sans majuscule passera la validation client mais sera rejeté par le serveur (qui exige 8 caractères + 1 majuscule + 1 chiffre).</p>
-</div>
+<h2 id="flux-dauthentification-complet">Flux d'authentification complet</h2>
+<h3 id="1-connexion">1. Connexion</h3>
+<pre><code>Client                    Gateway                  auth-service
+  │                         │                         │
+  │── POST /api/auth/login ─┤                         │
+  │    {email, password}     │── POST /auth/login ─────┤
+  │                         │    (sans verif JWT)      │── bcrypt.compare()
+  │                         │                         │── Verif is_banned
+  │                         │                         │── Verif is_active
+  │                         │                         │── Gen JWT + RefreshToken
+  │                         │                         │── Stocke refresh hash
+  │                         │◄── {token, user} ───────┤
+  │                         │    + Set-Cookie: refreshToken
+  │◄── {token, user} ──────┤                         │
+  │    + refreshToken cookie                         │
+</code></pre>
+<h3 id="2-requetes-authentifiees">2. Requetes authentifiees</h3>
+<pre><code>Client                    Gateway                    Service
+  │                         │                         │
+  │── GET /api/posts/feed ──┤                         │
+  │    Authorization:       │── jwt.verify(token) ────│
+  │    Bearer &lt;JWT&gt;         │                         │
+  │                         │── x-user-id: &lt;uuid&gt; ────┤
+  │                         │── x-user-role: user ────┤
+  │                         │── x-user-username: john ┤
+  │                         │                         │
+  │                         │◄── response ────────────┤
+  │◄── response ───────────┤                         │
+</code></pre>
+<h3 id="3-refresh-automatique-interceptor-axios">3. Refresh automatique (interceptor Axios)</h3>
+<pre><code class="language-javascript">// Frontend: api.js interceptor
+api.interceptors.response.use(
+  (res) =&gt; res,
+  async (err) =&gt; {
+    if (err.response?.status === 401 &amp;&amp; !originalRequest._retry) {
+      const { data } = await api.post('/auth/refresh');
+      localStorage.setItem('breezy_token', data.token);
+      originalRequest.headers.Authorization = `Bearer ${data.token}`;
+      return api(originalRequest);
+    }
+    if (err.response?.status === 401 &amp;&amp; is refresing) {
+      // File d'attente : les requetes echouent jusqu'au refresh
+    }
+  }
+);
+</code></pre>
+<p>Si le refresh echoue : le token est supprime du localStorage, l'utilisateur est redirige vers <code>/signin</code>.</p>
 <hr />
-<h2 id="resume-des-mecanismes-de-securite">Résumé des mécanismes de sécurité<a class="headerlink" href="#resume-des-mecanismes-de-securite" title="Permanent link">&para;</a></h2>
+<h2 id="flux-de-bannissement">Flux de bannissement</h2>
+<pre><code>Moderateur                 user-service              auth-service
+  │                         │                         │
+  │── PUT /users/:id/ban ──┤                         │
+  │    (JWT, role=moderator)│── Verif role ───────────│
+  │                         │── Update is_banned=true │
+  │                         │                         │
+  │                         │── POST /auth/internal ──┤
+  │                         │    /ban (x-internal-    │
+  │                         │    secret)              │── Update is_banned=true
+  │                         │                         │
+  │◄── 200 OK ─────────────┤                         │
+</code></pre>
+<p><strong>Comportement apres bannissement :</strong>
+- Nouveaux login : <code>403 ACCOUNT_BANNED</code>
+- Sessions existantes : le JWT reste valide jusqu'a expiration (max 15 min)
+- Tentative de refresh : echoue car l'utilisateur est verifie pendant le refresh
+- Tous les refresh tokens sont reveques (change-password revaque aussi)</p>
+<hr />
+<h2 id="securite-inter-services">Securite inter-services</h2>
+<h3 id="header-x-internal-secret">Header <code>x-internal-secret</code></h3>
+<p>Les communications entre services backend utilisent un secret partage :</p>
+<pre><code class="language-javascript">// Verification cote recepteur
+if (req.headers['x-internal-secret'] !== process.env.INTERNAL_SECRET) {
+  return res.status(401).json({ error: { code: 'UNAUTHORIZED' } });
+}
+</code></pre>
+<p><strong>Routes concernees :</strong>
+- <code>POST /auth/internal/ban</code> (auth-service)
+- <code>POST /users/sync</code> (user-service)
+- <code>POST /api/notifications/internal</code> (profil-service)</p>
+<p><strong>Jamais expose au client</strong> : la gateway ne transmet pas ce header.</p>
+<h3 id="headers-injectes-par-la-gateway">Headers injectes par la gateway</h3>
+<p>Les headers <code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code> sont ajoutes par la gateway APRES verification du JWT. Les services backend leur font aveuglement confiance. Si un attaquant parvenait a contourner la gateway (appel direct a un service), il pourrait usurper n'importe quelle identite en envoyant ces headers.</p>
+<hr />
+<h2 id="divergences-de-validation-frontend-backend">Divergences de validation frontend / backend</h2>
+<h3 id="validation-du-mot-de-passe">Validation du mot de passe</h3>
 <table>
 <thead>
 <tr>
-<th>Mécanisme</th>
-<th style="text-align: center;">Implémenté</th>
-<th>Détail</th>
+<th>Couche</th>
+<th>Validation</th>
+<th>Fichier</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Hachage bcrypt</td>
-<td style="text-align: center;">✅</td>
-<td>12 rounds par défaut</td>
+<td><strong>Frontend generique</strong> (<code>isValidPassword</code>)</td>
+<td>&gt;= 6 caracteres</td>
+<td><code>frontend/src/utils/validators.js</code></td>
 </tr>
 <tr>
-<td>JWT signé (HS256)</td>
-<td style="text-align: center;">✅</td>
-<td>Clé secrète partagée via <code>JWT_SECRET</code></td>
+<td><strong>Frontend formulaire</strong> (<code>validateRegisterForm</code>)</td>
+<td>&gt;= 8 caracteres, &gt;= 1 majuscule, &gt;= 1 chiffre</td>
+<td><code>frontend/src/utils/validators.js</code></td>
 </tr>
 <tr>
-<td>Refresh token en cookie httpOnly</td>
-<td style="text-align: center;">✅</td>
-<td>Inaccessible depuis JavaScript</td>
+<td><strong>Backend</strong> (express-validator)</td>
+<td>&gt;= 8 caracteres, &gt;= 1 majuscule, &gt;= 1 chiffre</td>
+<td><code>auth-service/src/routes/auth.routes.js</code></td>
+</tr>
+</tbody>
+</table>
+<p>Le formulaire d'inscription frontend et le backend sont coherents, mais la fonction utilitaire <code>isValidPassword</code> est plus permissive (&gt;= 6 caracteres sans complexite).</p>
+<h3 id="validation-du-username">Validation du username</h3>
+<table>
+<thead>
+<tr>
+<th>Couche</th>
+<th>Validation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Frontend</strong> (<code>isValidUsername</code>)</td>
+<td>&gt;= 2 caracteres</td>
 </tr>
 <tr>
-<td>Refresh token hashé en base (SHA-256)</td>
-<td style="text-align: center;">✅</td>
-<td>Jamais stocké en clair</td>
+<td><strong>Backend</strong></td>
+<td>3-50 caracteres, alphanumerique + underscores</td>
+</tr>
+</tbody>
+</table>
+<h3 id="injection-du-header-x-user-username">Injection du header x-user-username</h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>x-user-username injecte par la gateway</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>auth-service (me, change-password)</td>
+<td>Oui</td>
 </tr>
 <tr>
-<td>Rotation de refresh token</td>
-<td style="text-align: center;">✅</td>
-<td>Ancien révoqué à chaque refresh</td>
+<td>post-service</td>
+<td>Oui</td>
 </tr>
 <tr>
-<td>Détection de vol de session</td>
-<td style="text-align: center;">✅</td>
-<td>Révocation totale si token réutilisé</td>
+<td>profil-service</td>
+<td>Oui</td>
 </tr>
 <tr>
-<td>Rate limiting (Nginx + Gateway)</td>
-<td style="text-align: center;">✅</td>
-<td>Double couche</td>
+<td>user-service</td>
+<td><strong>NON</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Le user-service ne recoit pas le header <code>x-user-username</code> de la gateway. Les controllers qui utilisent <code>req.username</code> (ex: notification de follow) recevront <code>undefined</code>.</p>
+<hr />
+<h2 id="protection-contre-les-attaques">Protection contre les attaques</h2>
+<table>
+<thead>
+<tr>
+<th>Attaque</th>
+<th>Protection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Force brute</strong></td>
+<td>Double rate limiting (NGINX 5 req/min + Gateway 20 req/15min)</td>
 </tr>
 <tr>
-<td>Protection CSRF (sameSite: Strict)</td>
-<td style="text-align: center;">✅</td>
-<td>Cookie non envoyé en cross-origin</td>
+<td><strong>Enumeration de comptes</strong></td>
+<td>Message identique <code>INVALID_CREDENTIALS</code> que l'email existe ou non</td>
 </tr>
 <tr>
-<td>Protection contre l'énumération</td>
-<td style="text-align: center;">✅</td>
-<td>Message d'erreur identique</td>
+<td><strong>Vol de JWT</strong></td>
+<td>Duree de vie courte (15 min), signature HMAC</td>
 </tr>
 <tr>
-<td>Validation des entrées (backend)</td>
-<td style="text-align: center;">✅</td>
-<td>express-validator</td>
+<td><strong>Vol de refresh token</strong></td>
+<td>Rotation + detection de rejeu -&gt; revocation de tous les tokens</td>
 </tr>
 <tr>
-<td>HTTPS (cookie secure)</td>
-<td style="text-align: center;">⚠️</td>
-<td>Uniquement en <code>NODE_ENV=production</code></td>
+<td><strong>XSS</strong></td>
+<td>Refresh token dans cookie httpOnly (inaccessible depuis JS)</td>
 </tr>
 <tr>
-<td>Confirmation email</td>
-<td style="text-align: center;">❌</td>
-<td>Non implémenté</td>
+<td><strong>CSRF</strong></td>
+<td>Cookie <code>sameSite: Strict</code></td>
 </tr>
 <tr>
-<td>2FA / MFA</td>
-<td style="text-align: center;">❌</td>
-<td>Non implémenté</td>
-</tr>
-<tr>
-<td>Changement de mot de passe</td>
-<td style="text-align: center;">❌</td>
-<td>Route déclarée côté frontend mais absente du backend</td>
-</tr>
-<tr>
-<td>Réinitialisation de mot de passe</td>
-<td style="text-align: center;">❌</td>
-<td>Le bouton "Oublié ?" affiche un message mais n'envoie rien</td>
+<td><strong>Auto-notification</strong></td>
+<td>Ignoree si <code>recipient === sender</code> (profil-service)</td>
 </tr>
 </tbody>
 </table>
@@ -2089,12 +2348,6 @@
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-        
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
-  Retour en haut de la page
-</button>
         
       </main>
       
@@ -2125,7 +2378,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
