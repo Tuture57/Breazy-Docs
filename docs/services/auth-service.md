@@ -1,218 +1,481 @@
 # Auth Service
 
-**Responsabilité** : Inscription, connexion, gestion des tokens JWT, refresh tokens et bannissement de comptes.
+Microservice d'authentification et de gestion des utilisateurs pour Breezy.
 
-- **Stack** : Node.js, Express 5, Sequelize 6, PostgreSQL 15, bcryptjs, jsonwebtoken
-- **Port** : 3001
-- **Dépôt** : `breezy-auth-service`
-- **Tests** : Jest + Supertest (`tests/auth.test.js`)
+---
 
-## Structure du projet
+## Stack
 
-```
-breezy-auth-service/
-├── index.js                          ← Point d'entrée, lance le serveur
-├── src/
-│   ├── app.js                        ← Configuration Express, CORS, routes
-│   ├── config/
-│   │   └── database.js               ← Connexion PostgreSQL via Sequelize
-│   ├── controllers/
-│   │   └── auth.controller.js        ← Logique métier (register, login, refresh, logout, me, internalBan)
-│   ├── middleware/
-│   │   ├── identity.middleware.js     ← Extrait x-user-id/x-user-role depuis les headers
-│   │   └── validate.middleware.js     ← Centralise les erreurs express-validator
-│   ├── models/
-│   │   ├── user.model.js             ← Modèle Sequelize User
-│   │   └── refreshToken.model.js     ← Modèle Sequelize RefreshToken
-│   ├── routes/
-│   │   └── auth.routes.js            ← Déclaration des routes + règles de validation
-│   └── utils/
-│       └── jwt.utils.js              ← Génération/vérification JWT, hash SHA-256
-└── tests/
-    └── auth.test.js                  ← Tests d'intégration
-```
+| Technologie | Version |
+|---|---|
+| Node.js | 20 (Alpine) |
+| Express | 5.2.1 |
+| Sequelize | 6.37.8 |
+| PostgreSQL | 15 |
+| bcryptjs | 3.0.3 |
+| jsonwebtoken | 9.0.3 |
+| cookie-parser | 1.4.7 |
+| express-validator | 7.3.2 |
+| axios | 1.18.0 |
+| pg | 8.21.0 |
 
-## Routes API
+---
 
-| Méthode | Route | Auth | Description |
-|---------|-------|------|-------------|
-| `POST` | `/auth/register` | Non | Inscription d'un nouvel utilisateur |
-| `POST` | `/auth/login` | Non | Connexion avec email/password |
-| `POST` | `/auth/refresh` | Non | Rotation du refresh token |
-| `POST` | `/auth/logout` | Non | Révocation du refresh token |
-| `GET` | `/auth/me` | Oui (identity) | Informations de l'utilisateur connecté |
-| `POST` | `/auth/internal/ban` | `INTERNAL_SECRET` | Bannir un utilisateur (appel inter-service) |
-| `GET` | `/health` | Non | Health check |
+## Modèles
 
-## Détail des endpoints
+### User (`users` table)
+
+| Champ | Type | Contraintes |
+|---|---|---|
+| `id` | UUID | PK, auto-généré (`UUIDV4`) |
+| `email` | STRING(255) | NOT NULL, UNIQUE |
+| `username` | STRING(50) | NOT NULL, UNIQUE |
+| `password_hash` | STRING(255) | NOT NULL |
+| `role` | ENUM('user','moderator','admin') | DEFAULT 'user' |
+| `is_active` | BOOLEAN | DEFAULT true |
+| `is_banned` | BOOLEAN | DEFAULT false |
+
+### RefreshToken (`refresh_tokens` table)
+
+| Champ | Type | Contraintes |
+|---|---|---|
+| `id` | UUID | PK, auto-généré (`UUIDV4`) |
+| `user_id` | UUID | NOT NULL, FK -> User.id (CASCADE on delete) |
+| `token_hash` | STRING(512) | NOT NULL, UNIQUE (SHA-256 du refresh token) |
+| `expires_at` | DATE | NOT NULL |
+| `is_revoked` | BOOLEAN | DEFAULT false |
+
+---
+
+## Routes
 
 ### POST /auth/register
 
-Crée un compte utilisateur, génère les tokens, et synchronise le profil vers le user-service.
+Création d'un nouveau compte utilisateur.
 
-**Body :**
+**Middleware :** `registerRules`, `validate`
 
-```json
+**Corps de la requete (body JSON) :**
+
+| Champ | Type | Requis | Validation |
+|---|---|---|---|
+| `email` | string | **Oui** | Email valide |
+| `username` | string | **Oui** | 3-50 caracteres, alphanumerique + underscores |
+| `password` | string | **Oui** | Min 8 caracteres, 1 majuscule, 1 chiffre |
+
+**Reponses :**
+
+```
+201 Created
 {
-  "username": "string (3-50 chars, alphanum + _)",
-  "email": "string (email valide)",
-  "password": "string (min 8 chars, 1 majuscule, 1 chiffre)"
+  "message": "User registered successfully",
+  "user": {
+    "id": "uuid",
+    "email": "user@example.com",
+    "username": "johndoe",
+    "role": "user",
+    "is_active": true,
+    "is_banned": false,
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  }
 }
 ```
 
-**Validation** (express-validator, `auth.routes.js` lignes 8-26) :
+```
+400 Bad Request
+{
+  "error": "VALIDATION_ERROR",
+  "details": [
+    { "field": "email", "message": "Must be a valid email address" },
+    { "field": "password", "message": "Password must be at least 8 characters, include 1 uppercase letter and 1 digit" }
+  ]
+}
 
-- `username` : 3-50 caractères, uniquement `[a-zA-Z0-9_]`
-- `email` : format email valide, normalisé
-- `password` : min 8 caractères, au moins 1 majuscule, au moins 1 chiffre
+409 Conflict
+{
+  "error": "EMAIL_ALREADY_EXISTS"
+}
 
-**Réponses :**
+409 Conflict
+{
+  "error": "USERNAME_ALREADY_EXISTS"
+}
+```
 
-| Code | Body | Condition |
-|------|------|-----------|
-| `201` | `{user: {id, username, email, role}, token}` + cookie `refreshToken` | Succès |
-| `400` | `{error: {code: 'VALIDATION_ERROR', message, details[]}}` | Données invalides |
-| `409` | `{error: {code: 'EMAIL_TAKEN', message}}` | Email déjà utilisé |
-| `409` | `{error: {code: 'USERNAME_TAKEN', message}}` | Username déjà pris |
-| `500` | `{error: {code: 'INTERNAL_ERROR', message}}` | Erreur serveur |
-
-**Effet de bord** : appel non bloquant `POST {USER_SERVICE_URL}/users/sync` avec `{id, username, role}` (timeout 3s).
-
-(`auth.controller.js` lignes 19-69)
+**Logique metier :**
+1. Valider les champs avec express-validator.
+2. Verifier qu'aucun utilisateur n'existe deja avec cet email ou ce username (requetes Sequelize separees).
+3. Hasher le mot de passe avec `bcryptjs` (salt rounds depuis `BCRYPT_ROUNDS`, valeur par defaut 12, mais .env utilise 10).
+4. Creer l'utilisateur avec `User.create()`.
+5. Retourner l'utilisateur cree (sans le mot de passe).
 
 ---
 
 ### POST /auth/login
 
-Vérifie les credentials et retourne les tokens.
+Authentification par email/mot de passe.
 
-**Body :**
+**Middleware :** `loginRules`, `validate`
 
-```json
+**Corps de la requete (body JSON) :**
+
+| Champ | Type | Requis |
+|---|---|---|
+| `email` | string | **Oui** |
+| `password` | string | **Oui** |
+
+**Reponses :**
+
+```
+200 OK
 {
-  "email": "string",
-  "password": "string"
+  "message": "Login successful",
+  "access_token": "eyJhbGciOiJIUzI1NiIs...",
+  "refresh_token": "abc123def456...",
+  "user": {
+    "id": "uuid",
+    "email": "user@example.com",
+    "username": "johndoe",
+    "role": "user",
+    "is_active": true,
+    "is_banned": false
+  }
 }
 ```
 
-**Réponses :**
+```
+400 Bad Request
+{
+  "error": "VALIDATION_ERROR",
+  "details": [...]
+}
 
-| Code | Body | Condition |
-|------|------|-----------|
-| `200` | `{user: {id, username, email, role}, token}` + cookie `refreshToken` | Succès |
-| `400` | `{error: {code: 'VALIDATION_ERROR', ...}}` | Données manquantes |
-| `401` | `{error: {code: 'INVALID_CREDENTIALS', message}}` | Email/password incorrect |
-| `403` | `{error: {code: 'ACCOUNT_BANNED', message}}` | Compte banni |
-| `403` | `{error: {code: 'ACCOUNT_INACTIVE', message}}` | Compte inactif |
+401 Unauthorized
+{
+  "error": "INVALID_CREDENTIALS"
+}
 
-!!! note "Sécurité"
-    Le message d'erreur est identique pour email inexistant et mauvais mot de passe (`INVALID_CREDENTIALS`), ce qui empêche l'énumération des comptes.
+401 Unauthorized
+{
+  "error": "ACCOUNT_BANNED"
+}
 
-(`auth.controller.js` lignes 72-111)
+401 Unauthorized
+{
+  "error": "ACCOUNT_INACTIVE"
+}
+```
+
+**Logique metier :**
+1. Trouver l'utilisateur par email avec `User.findOne({ where: { email } })`.
+2. Si introuvable -> `INVALID_CREDENTIALS`.
+3. Si `is_banned` est true -> `ACCOUNT_BANNED`.
+4. Si `is_active` est false -> `ACCOUNT_INACTIVE`.
+5. Comparer le mot de passe avec `bcrypt.compare(password, user.password_hash)`.
+6. Si echec -> `INVALID_CREDENTIALS`.
+7. Generer un access token JWT (payload : `{ id, email, username, role }`, expire selon `JWT_EXPIRES_IN`, defaut `15m`).
+8. Generer un refresh token aleatoire avec `crypto.randomBytes(40).toString('hex')`.
+9. Hasher le refresh token (SHA-256) et le stocker dans la table `refresh_tokens` avec `expires_at` = maintenant + `REFRESH_TOKEN_DAYS` (defaut 7 jours).
+10. Retourner les tokens et l'utilisateur.
 
 ---
 
 ### POST /auth/refresh
 
-Rotation du refresh token : l'ancien est révoqué, un nouveau est émis.
+Rafraichir un access token expire.
 
-**Source du token** : cookie `refreshToken` OU body `{refreshToken: "..."}`.
+**Middleware :** aucun
 
-**Réponses :**
+**Corps de la requete (body JSON) :**
 
-| Code | Body | Condition |
-|------|------|-----------|
-| `200` | `{token}` + nouveau cookie `refreshToken` | Succès |
-| `400` | `{error: {code: 'MISSING_TOKEN', message}}` | Token absent |
-| `401` | `{error: {code: 'INVALID_REFRESH_TOKEN', message}}` | Token invalide, révoqué ou expiré |
+| Champ | Type | Requis |
+|---|---|---|
+| `refresh_token` | string | **Oui** |
 
-!!! warning "Détection de vol de session"
-    Si un token **déjà révoqué** est présenté, **tous les tokens de l'utilisateur** sont révoqués immédiatement. Cela détecte une possible interception de token.
+**Reponses :**
 
-(`auth.controller.js` lignes 113-166)
+```
+200 OK
+{
+  "message": "Token refreshed successfully",
+  "access_token": "eyJhbGciOiJIUzI1NiIs...",
+  "refresh_token": "newRefreshtoken456..."
+}
+```
+
+```
+401 Unauthorized
+{
+  "error": "INVALID_REFRESH_TOKEN"
+}
+
+401 Unauthorized
+{
+  "error": "REFRESH_TOKEN_EXPIRED"
+}
+
+401 Unauthorized
+{
+  "error": "REFRESH_TOKEN_REVOKED"
+}
+```
+
+**Logique metier :**
+1. Hasher le refresh_token recu (SHA-256).
+2. Chercher le token dans la table `refresh_tokens` par `token_hash`.
+3. Si introuvable -> `INVALID_REFRESH_TOKEN`.
+4. Si `is_revoked` est true -> `REFRESH_TOKEN_REVOKED`.
+5. Si `expires_at` est depasse -> `REFRESH_TOKEN_EXPIRED`, et revoquer le token (soft delete).
+6. Revoquer l'ancien token (`is_revoked = true`).
+7. Recuperer l'utilisateur associe (`User.findByPk`). Si introuvable -> `INVALID_REFRESH_TOKEN`.
+8. Generer un nouveau jeu de tokens (access + refresh).
+9. Stocker le nouveau refresh token.
+10. Retourner les nouveaux tokens.
 
 ---
 
 ### POST /auth/logout
 
-Révoque le refresh token sans exiger d'authentification JWT.
+Revoquer le refresh token actuel.
 
-**Réponses :**
+**Middleware :** aucun
 
-| Code | Condition |
-|------|-----------|
-| `204` | Succès (pas de body) |
+**Corps de la requete (body JSON) :**
 
-(`auth.controller.js` lignes 168-181)
+| Champ | Type | Requis |
+|---|---|---|
+| `refresh_token` | string | **Oui** |
+
+**Reponses :**
+
+```
+200 OK
+{
+  "message": "Logged out successfully"
+}
+```
+
+**Logique metier :**
+1. Hasher le refresh_token recu.
+2. Trouver le token par `token_hash`.
+3. Si trouve, marquer `is_revoked = true`.
+4. Retourner succes (meme si le token n'existait pas).
 
 ---
 
 ### GET /auth/me
 
-Retourne les informations de l'utilisateur connecté. Nécessite le middleware `identity` (header `x-user-id`).
+Recuperer les informations de l'utilisateur authentifie.
 
-**Réponses :**
+**Middleware :** `identity`
 
-| Code | Body | Condition |
-|------|------|-----------|
-| `200` | `{user: {id, username, email, role, is_active, is_banned}}` | Succès |
-| `401` | `{error: {code: 'MISSING_IDENTITY', message}}` | Header x-user-id absent |
-| `404` | `{error: {code: 'USER_NOT_FOUND', message}}` | Utilisateur non trouvé en BDD |
+**Headers requis :** `x-user-id`, `x-user-role`, `x-username` (injectes par le gateway)
 
-(`auth.controller.js` lignes 183-196)
+**Reponses :**
+
+```
+200 OK
+{
+  "id": "uuid",
+  "email": "user@example.com",
+  "username": "johndoe",
+  "role": "user",
+  "is_active": true,
+  "is_banned": false,
+  "createdAt": "2024-01-01T00:00:00.000Z",
+  "updatedAt": "2024-01-01T00:00:00.000Z"
+}
+```
+
+```
+401 Unauthorized
+{
+  "error": "MISSING_IDENTITY"
+}
+```
+
+**Logique metier :**
+1. Extraire `x-user-id` des headers.
+2. Requete `User.findByPk(id)`.
+3. Retourner l'utilisateur complet (sans password_hash).
+
+---
+
+### POST /auth/change-password
+
+Changer le mot de passe de l'utilisateur authentifie.
+
+**Middleware :** `identity`, `changePasswordRules`, `validate`
+
+**Headers requis :** `x-user-id`, `x-user-role`, `x-username`
+
+**Corps de la requete (body JSON) :**
+
+| Champ | Type | Requis | Validation |
+|---|---|---|---|
+| `current_password` | string | **Oui** | -- |
+| `new_password` | string | **Oui** | Min 8 car, 1 majuscule, 1 chiffre |
+
+**Reponses :**
+
+```
+200 OK
+{
+  "message": "Password changed successfully"
+}
+```
+
+```
+400 Bad Request
+{
+  "error": "VALIDATION_ERROR",
+  "details": [...]
+}
+
+401 Unauthorized
+{
+  "error": "INVALID_CURRENT_PASSWORD"
+}
+
+401 Unauthorized
+{
+  "error": "MISSING_IDENTITY"
+}
+```
+
+**Logique metier :**
+1. Verifier l'identite via le middleware.
+2. Recuperer l'utilisateur avec `User.findByPk`.
+3. Verifier le mot de passe actuel avec `bcrypt.compare`.
+4. Hasher le nouveau mot de passe.
+5. Mettre a jour `password_hash`.
+6. Optionnellement, revoquer tous les refresh tokens de l'utilisateur (selon implementation).
 
 ---
 
 ### POST /auth/internal/ban
 
-Route interne pour bannir un utilisateur. Appelée par le user-service lors d'un bannissement.
+Bannir un utilisateur (appele par le user-service uniquement).
 
-**Sécurité** : vérifie `x-internal-secret` (pas JWT).
+**Middleware :** aucun (securise par `INTERNAL_SECRET`)
 
-**Body :**
+**Headers requis :** `x-internal-secret`
 
-```json
+**Corps de la requete (body JSON) :**
+
+| Champ | Type | Requis |
+|---|---|---|
+| `user_id` | string | **Oui** |
+
+**Reponses :**
+
+```
+200 OK
 {
-  "userId": "UUID"
+  "message": "User banned successfully"
 }
 ```
 
-**Réponses :**
-
-| Code | Body | Condition |
-|------|------|-----------|
-| `200` | `{ok: true}` | Succès |
-| `400` | `{error: {code: 'MISSING_USER_ID'}}` | userId absent |
-| `401` | `{error: {code: 'UNAUTHORIZED'}}` | Secret invalide |
-| `404` | `{error: {code: 'USER_NOT_FOUND'}}` | Utilisateur non trouvé |
-
-(`auth.controller.js` lignes 199-221)
-
-## Configuration
-
-| Variable d'env | Requis | Default | Description |
-|----------------|--------|---------|-------------|
-| `JWT_SECRET` | **Oui** | — | Clé de signature JWT (arrêt si absent) |
-| `DATABASE_URL` | **Oui** | — | URL PostgreSQL |
-| `PORT` | Non | 3001 | Port d'écoute |
-| `JWT_EXPIRES_IN` | Non | `15m` | Durée de vie de l'access token |
-| `BCRYPT_ROUNDS` | Non | 12 | Nombre de rounds bcrypt |
-| `REFRESH_TOKEN_DAYS` | Non | 7 | Durée de vie du refresh token (jours) |
-| `CORS_ORIGIN` | Non | `http://localhost:3000` | Origine autorisée CORS |
-| `USER_SERVICE_URL` | Non | — | URL du user-service pour la sync |
-| `INTERNAL_SECRET` | Non | — | Secret pour les appels inter-services |
-
-## Tests
-
-15 tests d'intégration couvrent les cas principaux :
-
-- `POST /auth/register` : succès, email pris, username pris, password trop court, email invalide
-- `POST /auth/login` : succès, mauvais mot de passe, email inexistant
-- `POST /auth/refresh` : token valide, token révoqué
-- `POST /auth/logout` : révocation réussie
-- `POST /auth/internal/ban` : sans/avec INTERNAL_SECRET
-
-```bash
-cd breezy-auth-service
-npm test
 ```
+403 Forbidden
+{
+  "error": "FORBIDDEN"
+}
+
+404 Not Found
+{
+  "error": "USER_NOT_FOUND"
+}
+```
+
+**Logique metier :**
+1. Verifier le header `x-internal-secret` correspond a `INTERNAL_SECRET`.
+2. Trouver l'utilisateur par `user_id`.
+3. Marquer `is_banned = true`.
+4. Revoquer tous les refresh tokens de l'utilisateur.
+
+---
+
+### GET /health
+
+Healthcheck du service.
+
+**Middleware :** aucun
+
+**Reponses :**
+
+```
+200 OK
+{
+  "status": "ok",
+  "timestamp": "2024-01-01T00:00:00.000Z"
+}
+```
+
+---
+
+## Middlewares
+
+### identity.middleware.js
+
+Extrait les informations d'identite depuis les headers injectes par le gateway.
+
+| Header | Description |
+|---|---|
+| `x-user-id` | UUID de l'utilisateur |
+| `x-user-role` | Role de l'utilisateur |
+| `x-username` | Username de l'utilisateur |
+
+**Comportement :**
+- Si `x-user-id` est absent ou vide -> retourne `401 { "error": "MISSING_IDENTITY" }`.
+- Sinon, attache `req.user = { id, role, username }` et appelle `next()`.
+
+### validate.middleware.js
+
+Gestionnaire centralise des erreurs de validation express-validator.
+
+**Comportement :**
+- Execute `validationResult(req)`.
+- Si des erreurs sont presentes -> retourne `400 { "error": "VALIDATION_ERROR", "details": [...] }`.
+- Sinon, appelle `next()`.
+
+---
+
+## Variables d'environnement
+
+| Variable | Defaut | Requis | Description |
+|---|---|---|---|
+| `PORT` | `3001` | Non | Port d'ecoute |
+| `DATABASE_URL` | -- | **Oui** | URL de connexion PostgreSQL |
+| `JWT_SECRET` | -- | **Oui** (hard stop si absent) | Cle de signature JWT |
+| `JWT_EXPIRES_IN` | `15m` | Non | Duree de validite de l'access token |
+| `REFRESH_TOKEN_DAYS` | `7` | Non | Duree de vie des refresh tokens en jours |
+| `BCRYPT_ROUNDS` | `12` | Non | Nombre de rounds de salage bcrypt (`.env` utilise 10) |
+| `INTERNAL_SECRET` | -- | Non | Secret pour les communications inter-services |
+| `USER_SERVICE_URL` | -- | Non | URL du user-service |
+| `CORS_ORIGIN` | `http://localhost:3000` | Non | Origine autorisee pour CORS |
+| `NODE_ENV` | -- | Non | Environnement d'execution |
+
+---
+
+## Docker
+
+```dockerfile
+FROM node:20-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3001
+CMD ["npm", "start"]
+```
+
+---
+
+## Notes d'implementation
+
+- La validation du mot de passe est asymetrique avec le frontend : le backend requiert >= 8 caracteres, 1 majuscule et 1 chiffre, tandis que le frontend ne valide que >= 6 caracteres.
+- Le refresh token est stocke sous forme de hash SHA-256. Le token brut n'est jamais stocke, seulement retourne au client.
+- `JWT_SECRET` est verifie au demarrage : si absent, le processus s'arrete avec `console.error` et `process.exit(1)`.
+- La route `/auth/internal/ban` est protegee par `INTERNAL_SECRET` et non par le middleware `identity`, car elle est appelee par un autre service interne.

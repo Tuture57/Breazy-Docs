@@ -1,137 +1,247 @@
-# Docker & Déploiement
+# Docker et déploiement
 
-## Architecture Docker
+## Architecture des conteneurs
 
-L'infrastructure est définie dans `breezy-infra/docker-compose.yml`. Tous les conteneurs sont connectés via un réseau bridge `breezy-network`.
+L'infrastructure Breezy est orchestrée via **docker-compose** avec **12 services** interconnectés sur un réseau bridge `breezy-network`.
 
-## Services Docker
+### Fichier de composition
 
-```mermaid
-graph LR
-    subgraph Réseau breezy-network
-        NGINX["nginx<br/>:80 → public"]
-        FE["frontend<br/>:FRONTEND_PORT"]
-        GW["gateway<br/>:GATEWAY_PORT"]
-        AUTH["auth-service<br/>:AUTH_PORT"]
-        USER["user-service<br/>:USER_PORT"]
-        POST["post-service<br/>:POST_PORT"]
-        PROFIL["profil-service<br/>:PROFIL_PORT"]
-        PGA[("pg-auth<br/>PostgreSQL 15")]
-        PGU[("pg-users<br/>PostgreSQL 15")]
-        MPO[("mongo-posts<br/>MongoDB 6")]
-        MPR[("mongo-profils<br/>MongoDB 6")]
-    end
+Le fichier principal se trouve à la racine du dépôt `breezy-infra` :
 
-    NGINX --> FE
-    NGINX --> GW
-    GW --> AUTH
-    GW --> USER
-    GW --> POST
-    GW --> PROFIL
-    AUTH --> PGA
-    USER --> PGU
-    POST --> MPO
-    PROFIL --> MPR
+```
+breezy-infra/
+├── docker-compose.yml
+├── .env
+├── .env.example
+├── nginx/
+│   ├── Dockerfile
+│   └── nginx.conf
+├── gateway/
+│   ├── Dockerfile
+│   ├── package.json
+│   └── src/
+│       ├── index.js
+│       └── middleware/
+└── seed/
+    ├── Dockerfile
+    ├── package.json
+    └── seed.js
 ```
 
-## Conteneurs
+### Les 12 services
 
-| Conteneur | Image / Build context | Port exposé | Dépendances |
-|-----------|----------------------|-------------|-------------|
-| `breezy-nginx` | `./nginx/Dockerfile` | **80:80** (seul port public) | frontend, gateway |
-| `breezy-frontend` | `../breezy-frontend/Dockerfile` | `FRONTEND_PORT` (interne) | — |
-| `breezy-gateway` | `./gateway/Dockerfile` | `GATEWAY_PORT` (interne) | auth, user, post, profil |
-| `breezy-auth` | `../breezy-auth-service/Dockerfile` | `AUTH_PORT` (interne) | pg-auth |
-| `breezy-user` | `../breezy-user-service/Dockerfile` | `USER_PORT` (interne) | pg-users |
-| `breezy-post` | `../breezy-post-service/Dockerfile` | `POST_PORT` (interne) | mongo-posts |
-| `breezy-profil` | `../breezy-profil-service/Dockerfile` | `PROFIL_PORT` (interne) | mongo-profils |
-| `breezy-db-pg-auth` | `postgres:15-alpine` | Interne uniquement | — |
-| `breezy-db-pg-users` | `postgres:15-alpine` | Interne uniquement | — |
-| `breezy-db-mongo-posts` | `mongo:6` | Interne uniquement | — |
-| `breezy-db-mongo-profils` | `mongo:6` | Interne uniquement | — |
+```yaml
+services:
+  nginx:          # Reverse proxy → port 80
+  frontend:       # Next.js → port 3000
+  gateway:        # API Gateway → port 3000 (interne)
+  auth-service:   # Auth Service → port 3001
+  user-service:   # User Service → port 3002
+  post-service:   # Post Service → port 3003
+  profil-service: # Profil Service → port 3004
+  seed:           # Script de seeding (one-shot)
+  pg-auth:        # PostgreSQL Auth → port 5432
+  pg-users:       # PostgreSQL Users → port 5432
+  mongo-posts:    # MongoDB Posts → port 27017
+  mongo-profils:  # MongoDB Profils → port 27017
+```
+
+---
 
 ## Volumes persistants
 
-| Volume | Conteneur | Point de montage |
-|--------|-----------|-----------------|
-| `pg_auth_data` | pg-auth | `/var/lib/postgresql/data` |
-| `pg_users_data` | pg-users | `/var/lib/postgresql/data` |
-| `mongo_posts_data` | mongo-posts | `/data/db` |
-| `mongo_profils_data` | mongo-profils | `/data/db` |
+5 volumes Docker sont définis pour la persistance des données :
 
-Les volumes des services applicatifs montent le code source en développement :
+| Volume | Monté sur | Stocke |
+|---|---|---|
+| `pg_auth_data` | `pg-auth:/var/lib/postgresql/data` | Données utilisateur (auth) |
+| `pg_users_data` | `pg-users:/var/lib/postgresql/data` | Profils et relations |
+| `mongo_posts_data` | `mongo-posts:/data/db` | Posts, likes, commentaires |
+| `mongo_profils_data` | `mongo-profils:/data/db` | Profils détaillés, notifications |
+| `uploads_data` | `post-service:/app/uploads` | Images uploadées |
+
+Les volumes sont déclarés en bas du fichier docker-compose :
 
 ```yaml
 volumes:
-  - ../breezy-auth-service:/app
-  - /app/node_modules    # Évite d'écraser les node_modules du conteneur
+  pg_auth_data:
+  pg_users_data:
+  mongo_posts_data:
+  mongo_profils_data:
+  uploads_data:
 ```
+
+---
 
 ## Variables d'environnement
 
-Les variables sont définies dans un fichier `.env` à la racine de `breezy-infra/` (non versionné).
+### Fichier `.env` principal (breezy-infra/.env)
 
-### Variables requises
+```
+# Sécurité Globale
+JWT_SECRET=CACACACACACACACA
+INTERNAL_SECRET=PIPIPIIPIPI
 
-| Variable | Service(s) | Description |
-|----------|-----------|-------------|
-| `JWT_SECRET` | gateway, auth-service | Clé secrète pour signer les JWT |
-| `INTERNAL_SECRET` | auth, user, post, profil | Secret partagé pour les appels inter-services |
-| `AUTH_DB_URL` | auth-service | URL PostgreSQL (ex: `postgresql://user:pass@pg-auth:5432/breezy_auth`) |
-| `USER_DB_URL` | user-service | URL PostgreSQL |
-| `POST_DB_URL` | post-service | URL MongoDB (ex: `mongodb://mongo-posts:27017/breezy_posts`) |
-| `PROFIL_DB_URL` | profil-service | URL MongoDB |
-| `AUTH_DB_USER` / `AUTH_DB_PASSWORD` / `AUTH_DB_NAME` | pg-auth | Credentials PostgreSQL |
-| `USER_DB_USER` / `USER_DB_PASSWORD` / `USER_DB_NAME` | pg-users | Credentials PostgreSQL |
+# Configuration Gateway & Front
+GATEWAY_PORT=3000
+FRONTEND_PORT=3000
 
-### Variables de ports
+# URLs d'aiguillage pour la Gateway
+AUTH_SERVICE_URL=http://auth-service:3001
+USER_SERVICE_URL=http://user-service:3002
+POST_SERVICE_URL=http://post-service:3003
+PROFIL_SERVICE_URL=http://profil-service:3004
 
-| Variable | Valeur par défaut | Description |
-|----------|------------------|-------------|
-| `FRONTEND_PORT` | 3000 | Port du frontend Next.js |
-| `GATEWAY_PORT` | 3000 | Port de la gateway |
-| `AUTH_PORT` | 3001 | Port du auth-service |
-| `USER_PORT` | 3002 | Port du user-service |
-| `POST_PORT` | 3003 | Port du post-service |
-| `PROFIL_PORT` | 3004 | Port du profil-service |
+# Configuration Auth Service & sa DB
+AUTH_PORT=3001
+AUTH_DB_USER=user
+AUTH_DB_PASSWORD=auth-password
+AUTH_DB_NAME=auth_db
+AUTH_DB_URL=postgres://user:auth-password@pg-auth:5432/auth_db
 
-### Variables d'URL inter-services
+# Configuration User Service & sa DB
+USER_PORT=3002
+USER_DB_USER=user
+USER_DB_PASSWORD=user-password
+USER_DB_NAME=users_db
+USER_DB_URL=postgres://user:user-password@pg-users:5432/users_db
 
-| Variable | Service consommateur | Valeur type |
-|----------|---------------------|-------------|
-| `AUTH_SERVICE_URL` | gateway, user-service | `http://auth-service:3001` |
-| `USER_SERVICE_URL` | gateway, auth-service, post-service | `http://user-service:3002` |
-| `POST_SERVICE_URL` | gateway | `http://post-service:3003` |
-| `PROFIL_SERVICE_URL` | gateway, post-service | `http://profil-service:3004` |
+# MongoDB (commun aux deux)
+MONGO_USER=admin
+MONGO_PASSWORD=breezy-mongo-2024
 
-## Configuration Nginx
+# Configuration Post Service & sa DB
+POST_PORT=3003
+POST_DB_URL=mongodb://admin:breezy-mongo-2024@mongo-posts:27017/posts_db?authSource=admin
 
-(`breezy-infra/nginx/nginx.conf`)
-
-```nginx
-# Rate limiting
-limit_req_zone $binary_remote_addr zone=global:10m rate=30r/m;
-limit_req_zone $binary_remote_addr zone=auth:10m   rate=5r/m;
-
-server {
-    listen 80;
-
-    # API → Gateway
-    location /api/ {
-        proxy_pass http://gateway:3000;
-        proxy_connect_timeout 30s;
-        proxy_read_timeout    30s;
-    }
-
-    # Frontend → Next.js
-    location / {
-        proxy_pass http://frontend:3000;
-        error_page 404 = /index.html;
-    }
-}
+# Configuration Profil Service & sa DB
+PROFIL_PORT=3004
+PROFIL_DB_URL=mongodb://admin:breezy-mongo-2024@mongo-profils:27017/profils_db?authSource=admin
 ```
 
-## Commandes de déploiement
+> **Note importante** : Le fichier `.env.example` ne contient pas les credentials MongoDB (`MONGO_USER` et `MONGO_PASSWORD`). Ces variables sont présentes uniquement dans le `.env` réel. En production, il faut les ajouter manuellement au fichier `.env`.
+
+### Gateway en mode test
+
+La Gateway est configurée avec `NODE_ENV=test` dans docker-compose :
+
+```yaml
+gateway:
+  environment:
+    - NODE_ENV=test
+```
+
+Ceci désactive le rate limiting (global 500 req/15min et auth 20 req/15min) pour que les tests et le seed puissent fonctionner sans restriction.
+
+---
+
+## Healthchecks
+
+Chaque base de données dispose d'un healthcheck pour garantir que les services backend ne démarrent qu'après que la base soit prête.
+
+### PostgreSQL
+
+```yaml
+healthcheck:
+  test: ["CMD-SHELL", "pg_isready -U ${AUTH_DB_USER} -d ${AUTH_DB_NAME}"]
+  interval: 5s
+  timeout: 5s
+  retries: 10
+```
+
+### MongoDB
+
+```yaml
+healthcheck:
+  test: ["CMD", "mongosh", "-u", "${MONGO_USER}", "-p", "${MONGO_PASSWORD}", 
+         "--authenticationDatabase", "admin", "--eval", "db.adminCommand('ping')"]
+  interval: 5s
+  timeout: 5s
+  retries: 10
+```
+
+Les services backend utilisent `condition: service_healthy` pour leurs dépendances :
+
+```yaml
+auth-service:
+  depends_on:
+    pg-auth:
+      condition: service_healthy
+```
+
+---
+
+## Dockerfiles
+
+### Services backend (auth, user, post, profil)
+
+Les 4 services backend utilisent le même Dockerfile standard :
+
+```dockerfile
+FROM node:20-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+CMD ["npm", "start"]
+```
+
+### Gateway
+
+```dockerfile
+FROM node:20-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+ENV PORT=3000
+EXPOSE 3000
+CMD ["npm", "start"]
+```
+
+### Frontend
+
+Le frontend Next.js inclut une étape de build :
+
+```dockerfile
+FROM node:20-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build          # Étape supplémentaire
+ENV HOSTNAME="0.0.0.0"
+ENV PORT=3000
+EXPOSE 3000
+CMD ["npm", "start"]
+```
+
+### Nginx
+
+```dockerfile
+FROM nginx:alpine
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/nginx.conf
+EXPOSE 80
+```
+
+### Seed
+
+```dockerfile
+FROM node:20-alpine
+WORKDIR /app
+RUN apk add --no-cache postgresql-client  # Pour promotion des rôles
+COPY package.json .
+RUN npm install
+COPY seed.js .
+CMD node seed.js
+```
+
+---
+
+## Commandes utiles
+
+### Démarrage
 
 ```bash
 # Lancer tous les services
@@ -141,49 +251,140 @@ docker-compose up --build
 # Lancer en arrière-plan
 docker-compose up --build -d
 
-# Voir les logs d'un service
-docker-compose logs -f auth-service
+# Lancer avec un fichier .env alternatif
+docker-compose --env-file .env.prod up --build -d
+```
 
-# Reconstruire un seul service
-docker-compose up --build auth-service
+### Arrêt
 
-# Arrêter tout
+```bash
+# Arrêter les conteneurs
 docker-compose down
 
-# Arrêter et supprimer les volumes (reset BDD)
+# Arrêter et supprimer les volumes (remet les BDD à zéro)
 docker-compose down -v
 ```
 
-## Développement local (sans Docker)
-
-Chaque service peut être lancé individuellement :
+### Logs
 
 ```bash
-# Terminal 1 — auth-service
-cd breezy-auth-service
-npm install
-npm run dev    # nodemon, port 3001
+# Logs de tous les services
+docker-compose logs -f
 
-# Terminal 2 — user-service
-cd breezy-user-service
-npm install
-npm run dev    # nodemon, port 3002
-
-# Terminal 3 — post-service
-cd breezy-post-service
-npm install
-npm run dev    # nodemon, port 3003
-
-# Terminal 4 — profil-service
-cd breezy-profil-service
-npm install
-npm run dev    # nodemon, port 3004
-
-# Terminal 5 — frontend
-cd breezy-frontend
-npm install
-npm run dev    # next dev, port 3000
+# Logs d'un service spécifique
+docker-compose logs -f auth-service
+docker-compose logs -f gateway
+docker-compose logs -f nginx
 ```
 
-!!! tip "Mode mock"
-    Le frontend peut fonctionner **sans aucun backend** grâce au système de mocks. Il suffit de définir `NEXT_PUBLIC_USE_MOCKS=true` dans `.env.local` du frontend.
+### Exécution de commandes
+
+```bash
+# Accéder à un conteneur en cours d'exécution
+docker exec -it breezy-auth sh
+
+# Se connecter à PostgreSQL
+docker exec -it breezy-db-pg-auth psql -U user -d auth_db
+
+# Se connecter à MongoDB
+docker exec -it breezy-db-mongo-posts mongosh -u admin -p breezy-mongo-2024
+```
+
+### Seed
+
+Le conteneur `breezy-seed` s'exécute automatiquement une fois après le démarrage de la stack. Pour le relancer manuellement :
+
+```bash
+docker-compose run --rm seed
+```
+
+---
+
+## Configuration Nginx
+
+Le reverse proxy Nginx est défini dans `breezy-infra/nginx/nginx.conf` :
+
+```nginx
+worker_processes auto;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    # Rate limiting
+    limit_req_zone $binary_remote_addr zone=global:10m rate=30r/m;
+    limit_req_zone $binary_remote_addr zone=auth:10m rate=5r/m;
+
+    client_max_body_size 5m;
+
+    server {
+        listen 80;
+
+        location /api/ {
+            proxy_pass http://gateway:3000;
+            proxy_connect_timeout 30s;
+            proxy_read_timeout 30s;
+        }
+
+        location / {
+            proxy_pass http://frontend:3000;
+            proxy_intercept_errors on;
+            error_page 404 = /index.html;  # SPA fallback
+        }
+    }
+}
+```
+
+Caractéristiques :
+- **Rate limiting** : 30 req/min global, 5 req/min sur l'auth (protège contre le brute force)
+- **Taille max des requêtes** : 5 Mo
+- **SPA fallback** : les routes 404 du frontend renvoient `index.html` (nécessaire pour Next.js en SPA)
+- **Timeouts** : 30 secondes pour la connexion et la lecture
+
+---
+
+## CI/CD
+
+Chaque service dispose d'un pipeline CI sur GitHub Actions qui :
+
+1. Clone le dépôt
+2. Démarre une base de données de test (PostgreSQL pour auth/user, ou utilise le service CI)
+3. Installe les dépendances
+4. Exécute les tests Jest
+
+Exemple pour auth-service (`.github/workflows/ci.yml`) :
+
+```yaml
+name: CI -- Tests breezy-auth-service
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_USER: auth_user
+          POSTGRES_PASSWORD: devpassword
+          POSTGRES_DB: breezy_auth_test
+        ports:
+          - 5432:5432
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm ci
+      - run: npm test
+        env:
+          DATABASE_URL_TEST: postgresql://auth_user:devpassword@localhost:5432/breezy_auth_test
+```
+
+Le dépôt `breezy-infra` inclut également un workflow CI qui teste la stack complète : clone tous les dépôts frères, lance `docker compose up --build -d`, attend 30s, puis vérifie que tous les conteneurs sont en état `running`.

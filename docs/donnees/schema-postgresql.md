@@ -1,174 +1,167 @@
-# Schémas PostgreSQL
+# Schema PostgreSQL
 
-Les services **auth-service** et **user-service** utilisent chacun leur propre instance PostgreSQL 15 via Sequelize 6 (ORM). Les tables sont synchronisées automatiquement au démarrage avec `sequelize.sync({ alter: true })`.
+## Vue d'ensemble
 
-## auth-service — Base `breezy_auth`
+Deux bases de donnees PostgreSQL distinctes, chacune dediee a un microservice :
 
-### Table `users`
+| Base | Service | Conteneur Docker |
+|------|---------|-----------------|
+| `breezy_auth` | auth-service | `breezy-db-pg-auth` (PostgreSQL 15 Alpine) |
+| `breezy_users` | user-service | `breezy-db-pg-users` (PostgreSQL 15 Alpine) |
 
-Représente un compte utilisateur avec ses credentials et son statut.
+Les deux bases sont synchronisees via `sequelize.sync({ alter: true })` au demarrage de chaque service. Ce mode auto-cree et auto-modifie les tables en fonction des modeles Sequelize. Il est **destructeur en production** (peut supprimer des colonnes).
 
-(`breezy-auth-service/src/models/user.model.js`)
+---
 
-| Colonne | Type | Contraintes | Description |
-|---------|------|-------------|-------------|
-| `id` | `UUID` | PK, default `UUIDV4` | Identifiant unique |
-| `email` | `VARCHAR(255)` | UNIQUE, NOT NULL | Adresse email |
-| `username` | `VARCHAR(50)` | UNIQUE, NOT NULL | Nom d'utilisateur |
-| `password_hash` | `VARCHAR(255)` | NOT NULL | Hash bcrypt du mot de passe |
-| `role` | `ENUM('user', 'moderator', 'admin')` | default `'user'` | Rôle de l'utilisateur |
-| `is_active` | `BOOLEAN` | default `true` | Compte actif |
-| `is_banned` | `BOOLEAN` | default `false` | Compte banni |
-| `created_at` | `TIMESTAMP` | auto (Sequelize) | Date de création |
-| `updated_at` | `TIMESTAMP` | auto (Sequelize) | Date de modification |
+## Database : `breezy_auth`
+
+### Table : `users`
+
+Creee par le modele `User` (`auth-service/src/models/user.model.js`).
 
 ```sql
--- Représentation SQL équivalente
 CREATE TABLE users (
-    id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    email       VARCHAR(255) UNIQUE NOT NULL,
-    username    VARCHAR(50)  UNIQUE NOT NULL,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    email VARCHAR(255) NOT NULL UNIQUE,
+    username VARCHAR(50) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
-    role        VARCHAR(10)  DEFAULT 'user'
-                CHECK (role IN ('user', 'moderator', 'admin')),
-    is_active   BOOLEAN DEFAULT true,
-    is_banned   BOOLEAN DEFAULT false,
-    created_at  TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    updated_at  TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+    role VARCHAR(20) DEFAULT 'user' CHECK (role IN ('user', 'moderator', 'admin')),
+    is_active BOOLEAN DEFAULT true,
+    is_banned BOOLEAN DEFAULT false,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 ```
 
-### Table `refresh_tokens`
+**Index :**
+- `users_pkey` PRIMARY KEY (id)
+- `users_email_key` UNIQUE (email) -- cree par `unique: true` dans le modele
+- `users_username_key` UNIQUE (username) -- cree par `unique: true` dans le modele
 
-Stocke les refresh tokens sous forme de hash SHA-256 (jamais en clair). Un utilisateur peut avoir plusieurs tokens actifs (multi-appareils).
-
-(`breezy-auth-service/src/models/refreshToken.model.js`)
-
-| Colonne | Type | Contraintes | Description |
-|---------|------|-------------|-------------|
-| `id` | `UUID` | PK, default `UUIDV4` | Identifiant unique |
-| `user_id` | `UUID` | NOT NULL, FK → `users.id` | Utilisateur propriétaire |
-| `token_hash` | `VARCHAR(512)` | UNIQUE, NOT NULL | Hash SHA-256 du token |
-| `expires_at` | `TIMESTAMP` | NOT NULL | Date d'expiration |
-| `is_revoked` | `BOOLEAN` | default `false` | Token révoqué |
-| `created_at` | `TIMESTAMP` | auto | Date de création |
-| `updated_at` | `TIMESTAMP` | auto | Date de modification |
-
-**Relations :**
-
-```mermaid
-erDiagram
-    users ||--o{ refresh_tokens : "hasMany"
-    users {
-        UUID id PK
-        VARCHAR email UK
-        VARCHAR username UK
-        VARCHAR password_hash
-        ENUM role
-        BOOLEAN is_active
-        BOOLEAN is_banned
-    }
-    refresh_tokens {
-        UUID id PK
-        UUID user_id FK
-        VARCHAR token_hash UK
-        TIMESTAMP expires_at
-        BOOLEAN is_revoked
-    }
-```
-
-- `User.hasMany(RefreshToken)` avec `onDelete: 'CASCADE'`
-- `RefreshToken.belongsTo(User)`
+**Particularites :**
+- Le role est un ENUM cree par Sequelize (`ENUM('user', 'moderator', 'admin')`). En SQL, cela se traduit par un CHECK.
+- `password_hash` stocke le hash bcrypt (jamais le mot de passe en clair).
+- Les timestamps sont geres automatiquement par Sequelize (`underscored: true` -> `created_at`, `updated_at`).
 
 ---
 
-## user-service — Base `breezy_users`
+### Table : `refresh_tokens`
 
-### Table `user_profiles`
+Creee par le modele `RefreshToken` (`auth-service/src/models/refreshToken.model.js`).
 
-Profil public d'un utilisateur, créé par synchronisation depuis l'auth-service. L'ID est identique à celui du modèle `User` dans l'auth-service.
-
-(`breezy-user-service/src/models/userProfile.model.js`)
-
-| Colonne | Type | Contraintes | Description |
-|---------|------|-------------|-------------|
-| `id` | `UUID` | PK (pas d'auto-génération) | Même UUID que dans auth-service |
-| `username` | `VARCHAR(50)` | NOT NULL | Nom d'utilisateur |
-| `role` | `ENUM('user', 'moderator', 'admin')` | default `'user'` | Rôle répliqué depuis auth-service |
-| `is_active` | `BOOLEAN` | default `true` | Compte actif |
-| `is_banned` | `BOOLEAN` | default `false` | Compte banni |
-| `followers_count` | `INTEGER` | default `0` | Nombre de followers |
-| `following_count` | `INTEGER` | default `0` | Nombre d'abonnements |
-| `created_at` | `TIMESTAMP` | auto | Date de création |
-| `updated_at` | `TIMESTAMP` | auto | Date de modification |
-
-!!! info "ID imposé"
-    Contrairement à la table `users` de l'auth-service, l'ID n'est **pas généré automatiquement**. Il est imposé par l'auth-service lors de la synchronisation (`POST /users/sync`).
-
-### Table `follows`
-
-Relation de suivi entre deux utilisateurs.
-
-(`breezy-user-service/src/models/follow.model.js`)
-
-| Colonne | Type | Contraintes | Description |
-|---------|------|-------------|-------------|
-| `id` | `INTEGER` | PK, auto-increment | Identifiant (Sequelize par défaut) |
-| `follower_id` | `UUID` | NOT NULL | Celui qui suit |
-| `followed_id` | `UUID` | NOT NULL | Celui qui est suivi |
-| `created_at` | `TIMESTAMP` | auto | Date du follow |
-
-**Index :** `UNIQUE(follower_id, followed_id)` — empêche de suivre deux fois la même personne.
-
-**Particularité** : `updatedAt: false` — pas de colonne `updated_at` sur cette table.
-
-**Relations :**
-
-```mermaid
-erDiagram
-    user_profiles ||--o{ follows : "follower"
-    user_profiles ||--o{ follows : "followed"
-    user_profiles {
-        UUID id PK
-        VARCHAR username
-        ENUM role
-        BOOLEAN is_active
-        BOOLEAN is_banned
-        INTEGER followers_count
-        INTEGER following_count
-    }
-    follows {
-        INTEGER id PK
-        UUID follower_id
-        UUID followed_id
-    }
+```sql
+CREATE TABLE refresh_tokens (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    token_hash VARCHAR(512) NOT NULL UNIQUE,
+    expires_at TIMESTAMP WITH TIME ZONE NOT NULL,
+    is_revoked BOOLEAN DEFAULT false,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
 ```
 
-!!! note "Pas de foreign key Sequelize"
-    Le modèle `Follow` n'a **pas** de relation Sequelize définie (`belongsTo`, `hasMany`). La cohérence est assurée au niveau applicatif dans le controller, pas par des contraintes de base de données.
+**Index :**
+- `refresh_tokens_pkey` PRIMARY KEY (id)
+- `refresh_tokens_token_hash_key` UNIQUE (token_hash)
+- Index sur `user_id` (cree par la FK `REFERENCES users(id)`)
+
+**Particularites :**
+- `token_hash` stocke le hash SHA-256 du token brut (jamais le token en clair).
+- `user_id` est lie a `users.id` avec `ON DELETE CASCADE` : si un utilisateur est supprime, tous ses refresh tokens le sont aussi.
+- Plusieurs refresh tokens peuvent exister pour un meme utilisateur (support multi-appareils).
+- Un token expire ou revoque peut etre conserve en base avec les flags correspondants.
 
 ---
 
-## Synchronisation des données entre services
+## Database : `breezy_users`
 
-```mermaid
-sequenceDiagram
-    participant AUTH as auth-service (PostgreSQL)
-    participant USER as user-service (PostgreSQL)
+### Table : `user_profiles`
 
-    AUTH->>AUTH: INSERT INTO users (id, email, username, password_hash, role)
-    AUTH->>USER: POST /users/sync {id, username, role}
-    USER->>USER: UPSERT INTO user_profiles (id, username, role)
+Creee par le modele `UserProfile` (`user-service/src/models/userProfile.model.js`).
+
+```sql
+CREATE TABLE user_profiles (
+    id UUID PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    role VARCHAR(20) DEFAULT 'user' CHECK (role IN ('user', 'moderator', 'admin')),
+    is_active BOOLEAN DEFAULT true,
+    is_banned BOOLEAN DEFAULT false,
+    followers_count INTEGER DEFAULT 0,
+    following_count INTEGER DEFAULT 0,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
 ```
 
-Les données répliquées entre les deux bases sont :
+**Index :**
+- `user_profiles_pkey` PRIMARY KEY (id)
 
-| Champ | Source (auth) | Réplique (user) |
-|-------|--------------|-----------------|
-| `id` | Généré (UUIDV4) | Copié tel quel |
-| `username` | Défini à l'inscription | Copié |
-| `role` | Défini à l'inscription | Copié |
-| `is_banned` | Mis à jour via `/auth/internal/ban` | Mis à jour via `/users/:id/ban` |
+**Particularites :**
+- `id` est un UUID **impose** par l'auth-service (pas de `DEFAULT gen_random_uuid()`). Le user-service recoit l'ID depuis l'auth-service via la route interne `POST /users/sync`.
+- `followers_count` et `following_count` sont mis a jour atomiquement via `UserProfile.increment()` / `UserProfile.decrement()` a l'interieur de **transactions Sequelize**.
+- Pas de contrainte UNIQUE sur `username` ici (la source de verite est l'auth-service).
 
-!!! warning "Risque de désynchronisation"
-    Les champs `is_active` et `is_banned` existent dans les deux bases mais ne sont synchronisés que pour le bannissement (et dans un seul sens à la fois). Si un admin modifie directement `is_active` dans une base, l'autre ne sera pas mise à jour.
+---
+
+### Table : `follows`
+
+Creee par le modele `Follow` (`user-service/src/models/follow.model.js`).
+
+```sql
+CREATE TABLE follows (
+    id SERIAL PRIMARY KEY,
+    follower_id UUID NOT NULL,
+    followed_id UUID NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    UNIQUE(follower_id, followed_id)
+);
+```
+
+**Index :**
+- `follows_pkey` PRIMARY KEY (id)
+- `follows_follower_id_followed_id_key` UNIQUE (follower_id, followed_id)
+
+**Particularites :**
+- **Pas de colonne `updated_at`** : le modele definit `updatedAt: false`.
+- **Pas de contrainte FK** : les relations sont gerees au niveau applicatif, pas en base. Cela evite les problemes de synchronisation entre les deux bases de donnees.
+- `follower_id` et `followed_id` ref`erencent des UUIDs de la table `users` (auth-service), mais sans contrainte formelle.
+- L'index unique empeche un utilisateur de suivre deux fois la meme personne (verification cote application + base).
+
+---
+
+## Synchronisation des donnees
+
+### Flux de creation de compte
+
+```
+1. auth-service : POST /auth/register
+   → Cree un enregistrement dans users (breezy_auth)
+   → POST /users/sync → user-service
+
+2. user-service : POST /users/sync (interne, x-internal-secret)
+   → UserProfile.upsert({ id, username, role })
+   → Cree/met a jour l'enregistrement dans user_profiles (breezy_users)
+```
+
+Le meme ID UUID est utilise dans les deux bases. La synchronisation est **non bloquante** : si le user-service est indisponible, l'inscription reste valide.
+
+### Gestion des compteurs de follow
+
+Les compteurs `followers_count` et `following_count` ne sont pas calcules a la volee mais stockes et mis a jour atomiquement :
+
+```javascript
+// Dans une transaction Sequelize
+await UserProfile.increment('following_count', { where: { id: followerId } });
+await UserProfile.increment('followers_count', { where: { id: followedId } });
+```
+
+Cette approche evite les `COUNT(*)` a chaque requete, au prix d'une synchronisation a maintenir.
+
+---
+
+## Notes techniques
+
+- **`sequelize.sync({ alter: true })** : utilise en developpement dans les deux services. `alter: true` modifie les tables existantes pour correspondre aux modeles. Peut etre destructeur (suppression de colonnes) si un modele est modifie. Deconseille en production.
+- **Driver PostgreSQL** : `pg` v8.21.0, avec `Sequelize` v6.37.8.
+- **Connexion** : les deux services lisent `DATABASE_URL` depuis les variables d'environnement.
+- **Reseau Docker** : les bases sont sur un reseau interne `breezy-network`, exposees uniquement aux services backend, pas a l'exterieur.

@@ -1,89 +1,266 @@
-# Limites & Évolutions
-
-## Limites identifiées
-
-### Fonctionnalités manquantes
-
-| Fonctionnalité | Impact | Difficulté estimée |
-|----------------|--------|-------------------|
-| **Messagerie privée** | Le frontend a les pages mais aucun backend. Fonctionne uniquement en mode mock. | Élevée (nouveau service, WebSocket pour le temps réel) |
-| **Changement de mot de passe** | Le frontend appelle `POST /auth/change-password` qui n'existe pas. | Faible (1 route à ajouter dans l'auth-service) |
-| **Réinitialisation de mot de passe** | Le bouton "Oublié ?" affiche un faux message sans rien envoyer. | Moyenne (nécessite un service email) |
-| **Repost / Partage** | Le frontend a `toggleRepost()` mais aucune route backend. | Moyenne |
-| **Modification de post** | Le frontend a `updatePost()` mais aucune route `PUT /posts/:id`. | Faible |
-| **Confirmation email** | Aucune vérification que l'email est valide. | Moyenne (service email) |
-
-### Divergences frontend/backend
-
-| Problème | Détail |
-|----------|--------|
-| **Validation du mot de passe** | Frontend : min 6 chars. Backend : min 8 chars + 1 majuscule + 1 chiffre. Un formulaire peut passer côté client mais être rejeté par le serveur. |
-| **Route de mise à jour du profil** | Le frontend appelle `PUT /users/:id` (user-service) mais la route réelle est `PUT /profiles/:userId` (profil-service). |
-| **Recherche de posts** | Le frontend utilise le paramètre `q` mais le backend attend `tag`. |
-| **Routes de profil avancées** | `getUserReplies`, `getUserMedia`, `getUserLikes`, `getUserReposts` appellent des routes qui n'existent pas dans le backend. |
-| **Header `x-user-username`** | Le post-service et profil-service lisent `x-user-username` depuis les headers, mais la Gateway ne propage pas ce header. |
-
-### Limitations techniques
-
-| Limitation | Détail |
-|-----------|--------|
-| **Communication synchrone uniquement** | Pas de message broker. Si un service est lent, ça ralentit toute la chaîne. Les appels non bloquants atténuent le problème mais ne le résolvent pas. |
-| **Pas de cache** | Aucun Redis. Chaque requête de feed fait un appel au user-service + une requête MongoDB. |
-| **Pas de pagination du feed par cursor** | Pagination par `skip/limit` : plus on avance dans les pages, plus c'est lent (MongoDB doit scanner les documents précédents). |
-| **Pas de WebSocket** | Les notifications et messages ne sont pas temps réel. Il faut rafraîchir la page pour les voir. |
-| **Pas de upload de fichiers** | Les `media_urls` et `avatar_url` sont des URLs brutes. Pas de service d'upload. |
-| **`localStorage` pour le JWT** | Vulnérable aux attaques XSS (un script malveillant peut lire le token). |
-| **Pas de migration de BDD** | `sequelize.sync({ alter: true })` modifie le schéma au démarrage. En production, il faudrait des migrations versionnées. |
-| **INTERNAL_SECRET unique** | Le même secret est partagé entre tous les services. Si compromis, tous les appels internes sont exposés. |
-
-### Bugs connus
-
-| Bug | Détail |
-|-----|--------|
-| **Feed vide si user-service down** | Comportement voulu mais l'utilisateur ne sait pas pourquoi son feed est vide. Pas de message d'erreur. |
-| **Compteur likes_count peut être négatif** | Le code fait `Math.max(0, updated.likes_count)` côté réponse mais ne corrige pas la valeur en base. |
-| **`x-user-id` vs `sub` dans le JWT** | La Gateway lit `req.user.id` mais le claim JWT est `sub`. Fonctionne car jsonwebtoken expose les claims directement, mais le code pourrait être plus explicite. |
+# Limites actuelles et evolutions
 
 ---
 
-## Évolutions possibles
+## Limitations actuelles
 
-### Court terme (améliorations rapides)
+### 1. Gateway = single point of failure
 
-1. **Ajouter les routes manquantes** : `PUT /posts/:id` (modification), `POST /auth/change-password` (changement de mot de passe)
-2. **Corriger les divergences frontend/backend** : aligner les paramètres de recherche, les routes de profil, la validation du mot de passe
-3. **Ajouter les tests pour post-service et profil-service** : actuellement 0 test sur ces deux services
-4. **Propager `x-user-username` depuis la Gateway** : ajouter le header dans les appels proxy pour que les services backend puissent l'utiliser
+La Gateway est le seul point d'entree de toutes les requetes API. Si elle est indisponible, l'ensemble de l'application est inaccessible.
 
-### Moyen terme (architecture)
+- **Impact** : aucune requete API ne peut aboutir
+- **Code** : `C:\Users\barto\Desktop\breezy projet\breezy-infra\gateway\src\index.js` -- une seule instance Express (ligne 225)
+- **Solution** : load balancing avec plusieurs instances de Gateway derriere Nginx
 
-1. **Message broker (RabbitMQ/Redis Streams)** : remplacer les appels HTTP inter-services par des événements asynchrones pour une meilleure résilience
-2. **Cache Redis** : mettre en cache les résultats du feed, les profils fréquemment consultés, les compteurs
-3. **WebSocket (Socket.io)** : notifications et messages en temps réel sans polling
-4. **Service d'upload** : intégrer un service de stockage (S3, Cloudinary) pour les avatars et médias
-5. **Pagination par cursor** : remplacer `skip/limit` par un cursor basé sur `_id` ou `created_at` pour de meilleures performances
+### 2. Pas de CI/CD automatise
 
-### Long terme (production)
+Les workflows GitHub Actions existent mais ne sont pas completement operationalises.
 
-1. **CI/CD** : pipeline GitLab/GitHub Actions avec tests, lint, build Docker, déploiement automatique
-2. **Monitoring** : Prometheus + Grafana pour les métriques, ELK pour les logs centralisés
-3. **HTTPS** : certificat SSL/TLS avec Let's Encrypt
-4. **2FA/MFA** : authentification à deux facteurs (TOTP)
-5. **Migrations de BDD** : remplacer `sequelize.sync({ alter: true })` par des migrations Sequelize versionnées
-6. **API versioning** : préfixer les routes avec `/v1/` pour gérer les évolutions sans casser les clients
-7. **Kubernetes** : orchestration avancée pour le déploiement en production
+- **Auth-service** : `.github/workflows/ci.yml` (tests Jest avec PostgreSQL)
+- **User-service** : `.github/workflows/ci.yml` (tests Jest avec PostgreSQL)
+- **Infra** : `.github/workflows/ci.yml` (docker compose up, verifie que les conteneurs demarrent)
+- **Manquant** : pas de deploiement automatique, pas de staging/production, pas de publication d'images Docker
+
+### 3. Pas de HTTPS en production
+
+Nginx ecoute en HTTP sur le port 80, sans certificat SSL/TLS.
+
+- **Code** : `C:\Users\barto\Desktop\breezy projet\breezy-infra\nginx\nginx.conf`, ligne 26 (`listen 80;`)
+- **Risque** : les mots de passe et JWT transitent en clair
+- **Solution** : Let's Encrypt avec Certbot ou un reverse proxy comme Caddy
+
+### 4. Pas de monitoring / logging centralise
+
+Tous les logs sont en console (`console.log`, `console.warn`, `console.error`). Pas de stockage persistant, pas d'alerting.
+
+- **Auth** : `C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\controllers\auth.controller.js`, ligne 67 (`console.error`)
+- **Post** : `C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\post.controller.js`, ligne 70 (`console.error`)
+- **Solution** : ELK Stack (Elasticsearch, Logstash, Kibana) ou Loki + Grafana
+
+### 5. NODE_ENV=test dans Docker desactive le rate limiting
+
+Le docker-compose definit `NODE_ENV=test` pour la Gateway, ce qui desactive tous les limiteurs de taux.
+
+```javascript
+const isTest = process.env.NODE_ENV === 'test';
+const globalLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: isTest ? 999999 : 500,  // 999999 en test
+});
+```
+
+- **Code** : `C:\Users\barto\Desktop\breezy projet\breezy-infra\gateway\src\index.js`, lignes 16-43
+- **docker-compose.yml** : `C:\Users\barto\Desktop\breezy projet\breezy-infra\docker-compose.yml`, ligne 37 (`NODE_ENV=test`)
+- **Risque** : pas de protection contre le brute-force en environnement Docker
+- **Correction** : remplacer par `NODE_ENV=development`
+
+### 6. sequelize.sync({ alter: true }) est dangereux en production
+
+Les services auth et user utilisent `sequelize.sync({ alter: true })` au demarrage, ce qui modifie automatiquement le schema de la base pour correspondre aux modeles.
+
+```javascript
+const connectDB = async () => {
+    await sequelize.authenticate();
+    console.log('[Auth DB] Connexion PostgreSQL OK');
+    await sequelize.sync({ alter: true });  // DANGEREUX en production
+};
+```
+
+- **Auth** : `C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\config\database.js`, ligne 12
+- **User** : `C:\Users\barto\Desktop\breezy projet\breezy-user-service\src\config\database.js`, ligne 12
+- **Risque** : peut supprimer des colonnes, modifier des types, ou echouer sur des tables volumineuses
+- **Correction** : utiliser des migrations Sequelize explicites
+
+### 7. Pas de tests pour post-service et profil-service
+
+Seuls auth-service et user-service ont des tests Jest.
+
+- **Tests existants** : `C:\Users\barto\Desktop\breezy projet\breezy-auth-service\tests\auth.test.js` (integration)
+- **Tests existants** : `C:\Users\barto\Desktop\breezy projet\breezy-user-service\tests\user.test.js` (integration)
+- **Post** : pas de dossier `tests/`, pas de tests
+- **Profil** : pas de dossier `tests/`, pas de tests (package.json a `test: jest` mais aucun test ecrit)
+
+### 8. Feed vide si user-service est down
+
+Si le user-service est indisponible lors du chargement du feed, la liste des abonnements est vide et le feed affiche uniquement les posts de l'utilisateur courant. Aucun message n'alerte l'utilisateur de cette degradation.
+
+- **Code** : `C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\post.controller.js`, lignes 117-129
+- **Fallback** : ligne 128 (`console.warn` suivi de `followingIds = []`)
+- **Amelioration** : ajouter un etat "Abonnements temporairement indisponibles" dans l'UI
+
+### 9. Pas de pagination par curseur (offset-based uniquement)
+
+Toute la pagination est offset-based (`skip/limit`), ce qui devient inefficace sur de grands volumes :
+- Les posts sautes sont toujours lus par MongoDB
+- L'ajout de nouveaux posts en tete de liste peut causer des doublons
+- Pas stable pour un feed en temps reel
+
+- **Code** : `C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\post.controller.js`, lignes 114-115 (`skip = (page - 1) * limit`)
+
+### 10. Pas de mot de passe oublie
+
+Il n'existe pas de flux de reinitialisation de mot de passe.
+
+- **Routes existantes** : `C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\routes\auth.routes.js` -- pas de route `/forgot-password` ou `/reset-password`
+- **Frontend** : pas de page dediee
 
 ---
 
-## Ce qui a bien été fait
+## Bugs connus (du code)
 
-| Point fort | Détail |
-|-----------|--------|
-| **Sécurité JWT** | Rotation des refresh tokens, détection de vol, cookie httpOnly, hash SHA-256 |
-| **Transactions atomiques** | Follow/unfollow avec compteurs cohérents via transactions Sequelize |
-| **Rate limiting double couche** | Nginx + Gateway, avec limites spécifiques pour l'authentification |
-| **Résilience des appels inter-services** | Try/catch avec timeouts, l'opération principale n'échoue jamais à cause d'un service tiers |
-| **Mode mock frontend** | Développement frontend complètement indépendant du backend |
-| **Tests d'intégration** | Couverture solide de l'auth-service et du user-service avec des cas edge (ban, vol de token, self-follow) |
-| **Séparation des bases** | Chaque service a sa propre BDD, jamais d'accès direct à la BDD d'un autre |
-| **Docker Compose complet** | Infrastructure reproductible avec un seul `docker-compose up` |
+### 1. likes_count peut theoriquement devenir negatif
+
+Si deux requetes `unlike` sont envoyees simultanement pour le meme post par le meme utilisateur, la deuxieme pourrait faire passer `likes_count` en dessous de zero. Le `Math.max(0, ...)` corrige en lecture mais pas en ecriture.
+
+```javascript
+const updated = await Post.findByIdAndUpdate(postId, { $inc: { likes_count: -1 } }, { new: true });
+return res.json({ likes_count: Math.max(0, updated.likes_count) });
+```
+
+- **Code** : `C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\like.controller.js`, lignes 55-60
+- **Risque** : le compteur en base peut devenir negatif, seul l'affichage est corrige
+
+### 2. Pas de verification que x-user-id provient bien de la Gateway
+
+Chaque service backend lit les headers `x-user-*` sans verifier qu'ils proviennent de la Gateway. Un service intermediaire compromis pourrait injecter des headers frauduleux.
+
+- **Code typical** : `C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\post.controller.js`, lignes 10-11
+- **Risque** : si un service est compromis, il peut usurper n'importe quel utilisateur
+- **Solution possible** : signer les headers avec une cle partagee entre Gateway et services
+
+### 3. Les headers x-user-* ne sont pas signes
+
+Contrairement a un JWT, les headers HTTP injectes par la Gateway ne contiennent pas de signature. Un service backend qui appelle un autre service backend pourrait mentir sur son identite.
+
+- **Code** : `C:\Users\barto\Desktop\breezy projet\breezy-infra\gateway\src\index.js`, lignes 111-113 (headers en clair)
+- **Solution** : utiliser un token JWT interne pour les communications inter-services, ou signer les headers avec HMAC
+
+---
+
+## Fonctionnalites manquantes
+
+### Messagerie directe (Fx22)
+- Routes definies dans le frontend (`/messages`, `/messages/[convId]`)
+- Composants UI existants (`ConversationList`, `MessageThread`, `MessageInput`)
+- Pas de backend implemente pour la messagerie
+
+### Mot de passe oublie (Fx23)
+- Pas de route `/forgot-password`
+- Pas de route `/reset-password`
+- Pas d'envoi d'email
+
+### UI de moderation
+- Le flag `is_reported` existe sur les posts (`C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\models\post.model.js`, ligne 12)
+- La route `POST /posts/:id/report` existe (`C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\post.controller.js`, lignes 217-225)
+- Mais il n'y a pas de dashboard moderateur ni de page de signalements
+
+### Upload avatar/banniere
+- L'UI du profil a un emplacement pour l'avatar et la banniere
+- Les champs `avatar_url` et `banner_url` existent dans le profil model
+- Mais l'upload d'image de profil n'est pas connecte au post-service
+
+### Notifications de comment/reply
+- Les types `'comment'` et `'reply'` sont definis dans le schema de notification (`C:\Users\barto\Desktop\breezy projet\breezy-profil-service\src\models\notification.model.js`, ligne 4)
+- Mais ils ne sont pas generes par les controleurs de commentaires
+
+---
+
+## Evolutions court terme
+
+### 1. Ajouter HTTPS avec Let's Encrypt
+- Configurer Nginx avec Certbot pour obtenir des certificats SSL automatiques
+- Rediriger HTTP vers HTTPS
+
+### 2. Mettre en place CI/CD GitHub Actions
+- Builder et pusher les images Docker vers un registry (DockerHub, GitHub Container Registry)
+- Deploiement automatique sur un serveur de staging
+- Tests automatiques avant merge sur `main`
+
+### 3. Ajouter des healthchecks Docker sur les services applicatifs
+- Chaque service a deja un endpoint `/health` (ex: `C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\app.js`, ligne 22)
+- Mais ils ne sont pas configures dans `docker-compose.yml` avec `healthcheck`
+- Actuellement, seules les bases de donnees ont des healthchecks
+
+### 4. Corriger le NODE_ENV=test
+- Remplacer `NODE_ENV=test` par `NODE_ENV=development` dans `docker-compose.yml` (ligne 37)
+- Cela activera le rate limiting en environnement Docker
+
+### 5. Ajouter des tests pour post-service et profil-service
+- Tests Jest pour les controleurs post, like, comment
+- Tests Jest pour les controleurs profil et notification
+- Utiliser `mongodb-memory-server` pour les tests sans MongoDB externe
+
+---
+
+## Evolutions moyen terme
+
+### 1. Message broker (RabbitMQ) pour les evenements inter-services
+Remplacer les appels HTTP fire-and-forget par un bus d'evenements :
+- `user.created` > creation du profil
+- `post.liked` > notification
+- `user.banned` > propagation du ban
+- Decouplage total des services
+- File d'attente garantissant la livraison
+
+### 2. Pagination par curseur pour le feed
+Remplacer `skip/limit` par `_id > cursor` ou `created_at < cursor` :
+- Performances constantes quelque soit le nombre de pages
+- Pas de doublons en cas d'ajout de nouveaux posts
+- Ideal pour un feed en temps reel
+
+### 3. Cache Redis pour le feed et les profils
+Mettre en cache :
+- Les feeds des utilisateurs (invalidation a la creation d'un post par un follow)
+- Les profils utilisateur (TTR courte)
+- Les listes de following (invalidees au follow/unfollow)
+
+### 4. Monitoring avec Prometheus/Grafana
+- Exposer des metriques Prometheus depuis chaque service
+- Dashboard Grafana pour visualiser :
+  - Taux de requetes par service
+  - Temps de reponse (p50, p95, p99)
+  - Taux d'erreur
+  - Utilisation CPU/Memoire
+
+### 5. Elasticsearch pour la recherche full-text
+Remplacer la recherche regex MongoDB par Elasticsearch :
+- Recherche full-text avec scoring
+- Auto-completion
+- Filtres avances (par date, type, etc.)
+
+---
+
+## Evolutions long terme
+
+### 1. Passage a Kubernetes pour l'orchestration
+- Deploiement avec auto-scaling horizontal
+- Rolling updates sans interruption de service
+- Gestion des secrets via Vault
+- Service mesh (Istio) pour la securite inter-services
+
+### 2. Service worker pour le support offline
+- Mise en cache des ressources statiques
+- File d'attente des actions hors-ligne (likes, posts)
+- Synchronisation lors de la reconnexion
+
+### 3. CDN pour les medias (S3/CloudFront)
+- Upload direct depuis le client vers S3 (presigned URLs)
+- Distribution via CDN pour les images
+- Suppression du stockage disque local
+- Redimensionnement automatique des images (thumbnails)
+
+### 4. Migration TypeScript progressive
+- Typage fort des interfaces (DTOs, reponses API)
+- Detection des erreurs a la compilation
+- Documentation vivante via les types
+- Migration service par service, en commencant par la Gateway
+
+### 5. Authentification 2FA
+- TOTP (Time-based One-Time Password) via bibliotheque standard
+- Backup codes pour la recuperation
+- Option a activer dans les parametres du compte
+
+### 6. Federation ActivityPub (interoperabilite avec Mastodon)
+- Implementation du protocole ActivityPub
+- Permettre aux utilisateurs Breezy de suivre des comptes Mastodon et vice-versa
+- Federation du contenu
