@@ -6,14 +6,12 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Documentation complète du réseau social Breezy (architecture microservices)">
-      
-      
-        <meta name="author" content="Équipe Breezy">
+        <meta name="description" content="Documentation technique du réseau social Breezy">
       
       
       
-        <link rel="prev" href="../../fonctionnalites/couverture-fx/">
+      
+        <link rel="prev" href="../../api/routes-completes/">
       
       
         <link rel="next" href="../questions-par-membre/">
@@ -27,7 +25,7 @@
     
     
       
-        <title>Questions générales - Breezy — Documentation Technique</title>
+        <title>Questions générales - Breezy — Documentation</title>
       
     
     
@@ -64,12 +62,10 @@
   
     
     
-      
     
     
     
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -78,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#questions-generales-preparation-soutenance" class="md-skip">
+        <a href="#questions-generales-de-soutenance" class="md-skip">
           Aller au contenu
         </a>
       
@@ -94,7 +90,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="En-tête">
-    <a href="../.." title="Breezy — Documentation Technique" class="md-header__button md-logo" aria-label="Breezy — Documentation Technique" data-md-component="logo">
+    <a href="../.." title="Breezy — Documentation" class="md-header__button md-logo" aria-label="Breezy — Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -108,7 +104,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Breezy — Documentation Technique
+            Breezy — Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -122,33 +118,7 @@
     </div>
     
       
-        <form class="md-header__option" data-md-component="palette">
-  
     
-    
-    
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Passer en mode sombre"  type="radio" name="__palette" id="__palette_0">
-    
-      <label class="md-header__button md-icon" title="Passer en mode sombre" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
-      </label>
-    
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Passer en mode clair"  type="radio" name="__palette" id="__palette_1">
-    
-      <label class="md-header__button md-icon" title="Passer en mode clair" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
-      </label>
-    
-  
-</form>
-      
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -177,8 +147,6 @@
         </button>
       </nav>
       
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
@@ -194,18 +162,6 @@
 </div>
       
     
-    
-      <div class="md-header__source">
-        <a href="https://github.com/El-Pouleto-ultimate" title="Aller au dépôt" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
-  </div>
-  <div class="md-source__repository">
-    El-Pouleto-ultimate
-  </div>
-</a>
-      </div>
     
   </nav>
   
@@ -232,26 +188,14 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Breezy — Documentation Technique" class="md-nav__button md-logo" aria-label="Breezy — Documentation Technique" data-md-component="logo">
+    <a href="../.." title="Breezy — Documentation" class="md-nav__button md-logo" aria-label="Breezy — Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    Breezy — Documentation Technique
+    Breezy — Documentation
   </label>
-  
-    <div class="md-nav__source">
-      <a href="https://github.com/El-Pouleto-ultimate" title="Aller au dépôt" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
-  </div>
-  <div class="md-source__repository">
-    El-Pouleto-ultimate
-  </div>
-</a>
-    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -292,22 +236,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -399,6 +336,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../architecture/flux-donnees/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flux de données
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/diagramme-composants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagramme de composants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../architecture/docker-deploiement/" class="md-nav__link">
         
   
@@ -437,22 +430,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -480,6 +466,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -607,7 +621,7 @@
   <span class="md-ellipsis">
     
   
-    Frontend (Next.js)
+    Frontend
   
 
     
@@ -638,22 +652,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
@@ -696,7 +703,7 @@
   <span class="md-ellipsis">
     
   
-    Schémas PostgreSQL
+    Schéma PostgreSQL
   
 
     
@@ -724,7 +731,7 @@
   <span class="md-ellipsis">
     
   
-    Schémas MongoDB
+    Schéma MongoDB
   
 
     
@@ -755,22 +762,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -813,7 +813,7 @@
   <span class="md-ellipsis">
     
   
-    Authentification & JWT
+    Authentification
   
 
     
@@ -844,22 +844,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -902,7 +895,89 @@
   <span class="md-ellipsis">
     
   
-    Couverture Fx1-Fx23
+    Couverture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/routes-completes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Routes complètes
   
 
     
@@ -935,20 +1010,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   
@@ -966,8 +1036,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1044,185 +1114,178 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#architecture-design" class="md-nav__link">
+  <a href="#1-pourquoi-une-architecture-microservices" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Architecture &amp; Design
+        1. Pourquoi une architecture microservices ?
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Architecture &amp; Design">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#q1-pourquoi-avoir-choisi-une-architecture-microservices-plutot-quun-monolithe" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q1 : Pourquoi avoir choisi une architecture microservices plutôt qu'un monolithe ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#q2-pourquoi-deux-types-de-bases-de-donnees-postgresql-mongodb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q2 : Pourquoi deux types de bases de données (PostgreSQL + MongoDB) ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#q3-comment-les-services-communiquent-ils-entre-eux" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q3 : Comment les services communiquent-ils entre eux ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#q4-quel-est-le-role-de-lapi-gateway" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q4 : Quel est le rôle de l'API Gateway ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#q5-comment-docker-compose-orchestre-t-il-linfrastructure" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q5 : Comment Docker Compose orchestre-t-il l'infrastructure ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#securite" class="md-nav__link">
+  <a href="#2-pourquoi-postgresql-pour-authuser-et-mongodb-pour-postsprofils" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sécurité
+        2. Pourquoi PostgreSQL pour auth/user et MongoDB pour posts/profils ?
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Sécurité">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#q6-decrivez-le-flow-dauthentification-jwt-complet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q6 : Décrivez le flow d'authentification JWT complet
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#q7-pourquoi-les-refresh-tokens-sont-hashes-en-sha-256" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q7 : Pourquoi les refresh tokens sont hashés en SHA-256 ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#q8-quelles-protections-contre-les-attaques-courantes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q8 : Quelles protections contre les attaques courantes ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#q9-quelles-faiblesses-de-securite-avez-vous-identifiees" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q9 : Quelles faiblesses de sécurité avez-vous identifiées ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#choix-techniques" class="md-nav__link">
+  <a href="#3-jwt-refresh-token-expliquez-le-flux-complet-avec-detection-de-vol" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Choix techniques
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Choix techniques">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#q10-pourquoi-express-5-pour-les-services-et-express-4-pour-la-gateway" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q10 : Pourquoi Express 5 pour les services et Express 4 pour la Gateway ?
+        3. JWT + Refresh Token : expliquez le flux complet avec detection de vol
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#q11-pourquoi-sequelize-pour-postgresql-et-mongoose-pour-mongodb" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#4-gateway-pattern-pourquoi-une-verification-jwt-centralisee-et-injection-de-headers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q11 : Pourquoi Sequelize pour PostgreSQL et Mongoose pour MongoDB ?
+        4. Gateway pattern : pourquoi une verification JWT centralisee et injection de headers ?
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#q12-comment-gerez-vous-la-synchronisation-des-donnees-entre-services" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#5-communication-inter-services-pourquoi-http-rest-et-pas-un-message-broker" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q12 : Comment gérez-vous la synchronisation des données entre services ?
+        5. Communication inter-services : pourquoi HTTP REST et pas un message broker ?
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#6-non-blocking-pattern-pourquoi-les-appels-inter-services-sont-fire-and-forget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Non-blocking pattern : pourquoi les appels inter-services sont fire-and-forget ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-pourquoi-sequelize-pour-postgresql-et-mongoose-pour-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Pourquoi Sequelize pour PostgreSQL et Mongoose pour MongoDB ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-comment-fonctionne-lalgorithme-du-feed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Comment fonctionne l'algorithme du feed ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-comment-les-compteurs-sont-ils-maintenus-coherents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Comment les compteurs sont-ils maintenus coherents ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-limitation-de-profondeur-des-commentaires-pourquoi-seulement-1-niveau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Limitation de profondeur des commentaires : pourquoi seulement 1 niveau ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-strategie-de-rate-limiting-double-couche-nginx-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Strategie de rate limiting : double couche (Nginx + Gateway)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-comment-gere-t-on-un-service-indisponible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Comment gere-t-on un service indisponible ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-pourquoi-nextjs-app-router-plutot-que-pages-router" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Pourquoi Next.js App Router plutot que Pages Router ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-comment-fonctionne-le-systeme-de-mocks-dans-le-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Comment fonctionne le systeme de mocks dans le frontend ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-quest-ce-qui-manque-pour-la-production" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Qu'est-ce qui manque pour la production ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-expliquez-la-propagation-du-ban-user-service-vers-auth-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Expliquez la propagation du ban : user-service vers auth-service
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1277,7 +1340,7 @@
   <span class="md-ellipsis">
     
   
-    Limites & Évolutions
+    Limites et évolutions
   
 
     
@@ -1294,6 +1357,33 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CHANGELOG_DOC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Journal des modifications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1325,185 +1415,178 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#architecture-design" class="md-nav__link">
+  <a href="#1-pourquoi-une-architecture-microservices" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Architecture &amp; Design
+        1. Pourquoi une architecture microservices ?
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Architecture &amp; Design">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#q1-pourquoi-avoir-choisi-une-architecture-microservices-plutot-quun-monolithe" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q1 : Pourquoi avoir choisi une architecture microservices plutôt qu'un monolithe ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#q2-pourquoi-deux-types-de-bases-de-donnees-postgresql-mongodb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q2 : Pourquoi deux types de bases de données (PostgreSQL + MongoDB) ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#q3-comment-les-services-communiquent-ils-entre-eux" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q3 : Comment les services communiquent-ils entre eux ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#q4-quel-est-le-role-de-lapi-gateway" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q4 : Quel est le rôle de l'API Gateway ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#q5-comment-docker-compose-orchestre-t-il-linfrastructure" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q5 : Comment Docker Compose orchestre-t-il l'infrastructure ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#securite" class="md-nav__link">
+  <a href="#2-pourquoi-postgresql-pour-authuser-et-mongodb-pour-postsprofils" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sécurité
+        2. Pourquoi PostgreSQL pour auth/user et MongoDB pour posts/profils ?
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Sécurité">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#q6-decrivez-le-flow-dauthentification-jwt-complet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q6 : Décrivez le flow d'authentification JWT complet
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#q7-pourquoi-les-refresh-tokens-sont-hashes-en-sha-256" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q7 : Pourquoi les refresh tokens sont hashés en SHA-256 ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#q8-quelles-protections-contre-les-attaques-courantes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q8 : Quelles protections contre les attaques courantes ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#q9-quelles-faiblesses-de-securite-avez-vous-identifiees" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q9 : Quelles faiblesses de sécurité avez-vous identifiées ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#choix-techniques" class="md-nav__link">
+  <a href="#3-jwt-refresh-token-expliquez-le-flux-complet-avec-detection-de-vol" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Choix techniques
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Choix techniques">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#q10-pourquoi-express-5-pour-les-services-et-express-4-pour-la-gateway" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q10 : Pourquoi Express 5 pour les services et Express 4 pour la Gateway ?
+        3. JWT + Refresh Token : expliquez le flux complet avec detection de vol
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#q11-pourquoi-sequelize-pour-postgresql-et-mongoose-pour-mongodb" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#4-gateway-pattern-pourquoi-une-verification-jwt-centralisee-et-injection-de-headers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q11 : Pourquoi Sequelize pour PostgreSQL et Mongoose pour MongoDB ?
+        4. Gateway pattern : pourquoi une verification JWT centralisee et injection de headers ?
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#q12-comment-gerez-vous-la-synchronisation-des-donnees-entre-services" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#5-communication-inter-services-pourquoi-http-rest-et-pas-un-message-broker" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q12 : Comment gérez-vous la synchronisation des données entre services ?
+        5. Communication inter-services : pourquoi HTTP REST et pas un message broker ?
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#6-non-blocking-pattern-pourquoi-les-appels-inter-services-sont-fire-and-forget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Non-blocking pattern : pourquoi les appels inter-services sont fire-and-forget ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-pourquoi-sequelize-pour-postgresql-et-mongoose-pour-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Pourquoi Sequelize pour PostgreSQL et Mongoose pour MongoDB ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-comment-fonctionne-lalgorithme-du-feed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Comment fonctionne l'algorithme du feed ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-comment-les-compteurs-sont-ils-maintenus-coherents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Comment les compteurs sont-ils maintenus coherents ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-limitation-de-profondeur-des-commentaires-pourquoi-seulement-1-niveau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Limitation de profondeur des commentaires : pourquoi seulement 1 niveau ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-strategie-de-rate-limiting-double-couche-nginx-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Strategie de rate limiting : double couche (Nginx + Gateway)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-comment-gere-t-on-un-service-indisponible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Comment gere-t-on un service indisponible ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-pourquoi-nextjs-app-router-plutot-que-pages-router" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Pourquoi Next.js App Router plutot que Pages Router ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-comment-fonctionne-le-systeme-de-mocks-dans-le-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Comment fonctionne le systeme de mocks dans le frontend ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-quest-ce-qui-manque-pour-la-production" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Qu'est-ce qui manque pour la production ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-expliquez-la-propagation-du-ban-user-service-vers-auth-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Expliquez la propagation du ban : user-service vers auth-service
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1523,143 +1606,273 @@
                   
 
 
-  
-  
 
-
-<h1 id="questions-generales-preparation-soutenance">Questions générales — Préparation soutenance<a class="headerlink" href="#questions-generales-preparation-soutenance" title="Permanent link">&para;</a></h1>
-<h2 id="architecture-design">Architecture &amp; Design<a class="headerlink" href="#architecture-design" title="Permanent link">&para;</a></h2>
-<h3 id="q1-pourquoi-avoir-choisi-une-architecture-microservices-plutot-quun-monolithe">Q1 : Pourquoi avoir choisi une architecture microservices plutôt qu'un monolithe ?<a class="headerlink" href="#q1-pourquoi-avoir-choisi-une-architecture-microservices-plutot-quun-monolithe" title="Permanent link">&para;</a></h3>
-<p><strong>Réponse attendue :</strong></p>
-<ul>
-<li><strong>Séparation des responsabilités</strong> : chaque service gère un domaine métier précis (authentification, profils, posts, notifications)</li>
-<li><strong>Scalabilité indépendante</strong> : on peut scaler le post-service sans toucher à l'auth-service</li>
-<li><strong>Technologie adaptée</strong> : PostgreSQL pour les données relationnelles (users, follows) et MongoDB pour les données documents (posts, notifications)</li>
-<li><strong>Développement en parallèle</strong> : chaque membre peut travailler sur son service sans conflits</li>
-<li><strong>Résilience</strong> : si le profil-service tombe, le reste de l'application continue de fonctionner</li>
-</ul>
-<h3 id="q2-pourquoi-deux-types-de-bases-de-donnees-postgresql-mongodb">Q2 : Pourquoi deux types de bases de données (PostgreSQL + MongoDB) ?<a class="headerlink" href="#q2-pourquoi-deux-types-de-bases-de-donnees-postgresql-mongodb" title="Permanent link">&para;</a></h3>
-<p><strong>Réponse attendue :</strong></p>
-<ul>
-<li><strong>PostgreSQL</strong> pour les données qui nécessitent des relations et des transactions (users ↔ refresh_tokens, follows avec compteurs atomiques)</li>
-<li><strong>MongoDB</strong> pour les données type document qui évoluent (posts avec tags/media variables, notifications avec types différents)</li>
-<li>C'est une approche <strong>polyglot persistence</strong> : chaque service choisit le moteur le plus adapté à ses besoins</li>
-</ul>
-<h3 id="q3-comment-les-services-communiquent-ils-entre-eux">Q3 : Comment les services communiquent-ils entre eux ?<a class="headerlink" href="#q3-comment-les-services-communiquent-ils-entre-eux" title="Permanent link">&para;</a></h3>
-<p><strong>Réponse attendue :</strong></p>
-<ul>
-<li>Communication <strong>HTTP REST synchrone</strong> (pas de message broker)</li>
-<li>Les appels inter-services sont protégés par un <strong><code>INTERNAL_SECRET</code></strong> (header <code>x-internal-secret</code>)</li>
-<li>Les appels sont <strong>non bloquants</strong> : si le service cible est indisponible, l'opération principale réussit quand même</li>
-<li>Exemples : sync user à l'inscription, propagation du ban, récupération des following pour le feed, envoi de notification au like</li>
-</ul>
-<h3 id="q4-quel-est-le-role-de-lapi-gateway">Q4 : Quel est le rôle de l'API Gateway ?<a class="headerlink" href="#q4-quel-est-le-role-de-lapi-gateway" title="Permanent link">&para;</a></h3>
-<p><strong>Réponse attendue :</strong></p>
-<ul>
-<li><strong>Vérification JWT</strong> : les services ne vérifient jamais le token eux-mêmes</li>
-<li><strong>Injection de l'identité</strong> : ajoute les headers <code>x-user-id</code> et <code>x-user-role</code> après vérification</li>
-<li><strong>Routage</strong> : dirige <code>/api/auth/*</code>, <code>/api/users/*</code>, <code>/api/posts/*</code>, <code>/api/profils/*</code> vers les bons services</li>
-<li><strong>Rate limiting</strong> : 100 req/15min global, 10 req/15min sur <code>/api/auth</code></li>
-<li><strong>Point d'entrée unique</strong> pour le frontend</li>
-</ul>
-<h3 id="q5-comment-docker-compose-orchestre-t-il-linfrastructure">Q5 : Comment Docker Compose orchestre-t-il l'infrastructure ?<a class="headerlink" href="#q5-comment-docker-compose-orchestre-t-il-linfrastructure" title="Permanent link">&para;</a></h3>
-<p><strong>Réponse attendue :</strong></p>
-<ul>
-<li><strong>11 conteneurs</strong> sur un réseau bridge <code>breezy-network</code></li>
-<li>Seul Nginx expose le port <strong>80</strong> vers l'extérieur</li>
-<li>Les services communiquent entre eux via leurs noms de conteneur (DNS Docker interne)</li>
-<li>Les bases de données ont des <strong>volumes persistants</strong> pour ne pas perdre les données au restart</li>
-<li>Le code source est monté en volume pour le hot-reload en développement</li>
-</ul>
+<h1 id="questions-generales-de-soutenance">Questions generales de soutenance</h1>
+<blockquote>
+<p>Chaque reponse cite des fichiers et lignes precis du code source reel du projet Breezy.</p>
+</blockquote>
 <hr />
-<h2 id="securite">Sécurité<a class="headerlink" href="#securite" title="Permanent link">&para;</a></h2>
-<h3 id="q6-decrivez-le-flow-dauthentification-jwt-complet">Q6 : Décrivez le flow d'authentification JWT complet<a class="headerlink" href="#q6-decrivez-le-flow-dauthentification-jwt-complet" title="Permanent link">&para;</a></h3>
-<p><strong>Réponse attendue :</strong></p>
+<h2 id="1-pourquoi-une-architecture-microservices">1. Pourquoi une architecture microservices ?</h2>
+<p><strong>Reponse :</strong> Nous avons choisi 4 services independants (<code>breezy-auth-service</code>, <code>breezy-user-service</code>, <code>breezy-post-service</code>, <code>breezy-profil-service</code>) car chaque service gere un domaine metier distinct avec ses propres besoins de persistence et peut etre developpe, teste et deploye independamment.</p>
+<ul>
+<li><strong>Auth</strong> : PostgreSQL (donnees relationnelles, credentials, tokens)</li>
+<li><strong>User</strong> : PostgreSQL (profils publics, relations de follow, compteurs)</li>
+<li><strong>Post</strong> : MongoDB (contenu flexible, tags, media)</li>
+<li><strong>Profil</strong> : MongoDB (notifications, profils)</li>
+</ul>
+<p>Chaque service a sa propre base de donnees, son propre cycle de vie et peut etre mis a l'echelle horizontalement sans impacter les autres.</p>
+<p><strong>Sources :</strong>
+- docker-compose.yml : 12 conteneurs dont 4 services applicatifs, chacun avec sa propre DB (<code>C:\Users\barto\Desktop\breezy projet\breezy-infra\docker-compose.yml</code>, lignes 53-167)
+- auth-service package.json : port 3001 (<code>C:\Users\barto\Desktop\breezy projet\breezy-auth-service\package.json</code>)
+- user-service package.json : port 3002 (<code>C:\Users\barto\Desktop\breezy projet\breezy-user-service\package.json</code>)
+- post-service package.json : port 3003 (<code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\package.json</code>)
+- profil-service package.json : port 3004 (<code>C:\Users\barto\Desktop\breezy projet\breezy-profil-service\package.json</code>)</p>
+<hr />
+<h2 id="2-pourquoi-postgresql-pour-authuser-et-mongodb-pour-postsprofils">2. Pourquoi PostgreSQL pour auth/user et MongoDB pour posts/profils ?</h2>
+<p><strong>Reponse :</strong> Le choix du type de base de donnees est dicte par la nature des donnees.</p>
+<p><strong>PostgreSQL (Auth + User)</strong> :
+- Auth : relations strictes entre users, refresh_tokens (clefs etrangeres, contraintes d'integrite)
+- User : relations de follow avec contraintes (pas de doublon, compteurs atomiques en transaction)
+- Les schemas sont stables et previsibles</p>
+<p><strong>MongoDB (Post + Profil)</strong> :
+- Post : schema flexible (tags en array, media_urls optionnels, champs qui peuvent evoluer)
+- Les compteurs (likes_count, comments_count) beneficient de <code>$inc</code> atomique sans transaction
+- Horizontal scaling nativement plus simple pour un volume de posts important
+- Profil : upsert automatique a la lecture, structure simple (pas de jointures)
+- Notifications : documents avec types variables (like, follow, mention, comment, reply)</p>
+<p><strong>Sources :</strong>
+- Post model MongoDB : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\models\post.model.js</code> -- schema flexible avec tags en array (ligne 7) et tableaux de media_urls (ligne 8)
+- User model PostgreSQL : <code>C:\Users\barto\Desktop\breezy projet\breezy-user-service\src\models\userProfile.model.js</code> -- colonnes strictement definies (lignes 6-28)
+- Auth model PostgreSQL : <code>C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\models\user.model.js</code> -- schema relationnel avec enum role (ligne 27)</p>
+<hr />
+<h2 id="3-jwt-refresh-token-expliquez-le-flux-complet-avec-detection-de-vol">3. JWT + Refresh Token : expliquez le flux complet avec detection de vol</h2>
+<p><strong>Reponse :</strong> Le flux d'authentification repose sur un JWT court (15 minutes) et un refresh token long (7 jours) stocke en base sous forme de hash SHA-256.</p>
+<p><strong>Flux normal :</strong>
+1. Connexion (<code>POST /auth/login</code>) : verification des credentials, generation JWT + refresh token. Le refresh token est stocke en base (hash SHA-256) et envoye en cookie httpOnly.
+2. Appels API : le JWT est envoye dans le header <code>Authorization: Bearer &lt;token&gt;</code>. La Gateway le verifie a chaque requete.
+3. Expiration JWT : le frontend recoit un 401, l'intercepteur Axios appelle <code>POST /auth/refresh</code> automatiquement.
+4. Refresh : l'ancien refresh token est revoque (rotation), un nouveau est emis.</p>
+<p><strong>Detection de vol :</strong>
+Si un refresh token deja revoque est presente (<code>stored.is_revoked === true</code>), le systeme reactive TOUS les refresh tokens de l'utilisateur :
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">RefreshToken</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span><span class="w"> </span><span class="nx">is_revoked</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">user_id</span><span class="o">:</span><span class="w"> </span><span class="nx">stored</span><span class="p">.</span><span class="nx">user_id</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+Ceci est une mesure de securite : si un attaquant a vole un token et l'a utilise en premier, le refresh legitime de la victime declenchera cette detection. Les deux sessions sont alors invalidees et l'utilisateur doit se reconnecter.</p>
+<p><strong>Sources :</strong>
+- Auth controller refresh function : <code>C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\controllers\auth.controller.js</code>, lignes 115-166
+- Detection de vol : ligne 133-138 (reutilisation d'un token deja revoque =&gt; revocation massive)
+- Hash SHA-256 : <code>C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\utils\jwt.utils.js</code>, ligne 12 (<code>crypto.createHash('sha256').update(token).digest('hex')</code>)
+- RefreshToken model : <code>C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\models\refreshToken.model.js</code>, ligne 18 (token_hash unique), ligne 27 (is_revoked)
+- Frontend interceptor : <code>C:\Users\barto\Desktop\breezy projet\breezy-frontend\src\services\api.js</code>, lignes 30-79 (file d'attente des requetes pendant le refresh)</p>
+<hr />
+<h2 id="4-gateway-pattern-pourquoi-une-verification-jwt-centralisee-et-injection-de-headers">4. Gateway pattern : pourquoi une verification JWT centralisee et injection de headers ?</h2>
+<p><strong>Reponse :</strong> La Gateway est le seul point d'entree des requetes externes. Elle verifie le JWT une seule fois et injecte les headers <code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code> dans les requetes proxyfiees vers les services internes. Ceci offre plusieurs avantages :</p>
 <ol>
-<li>L'utilisateur s'inscrit/se connecte → l'auth-service génère un <strong>access token JWT</strong> (15 min) et un <strong>refresh token</strong> (7 jours)</li>
-<li>L'access token est retourné dans le body JSON, le refresh token dans un <strong>cookie httpOnly</strong></li>
-<li>Le frontend stocke l'access token dans <strong>localStorage</strong> et l'injecte via un intercepteur Axios</li>
-<li>Pour chaque requête protégée, la <strong>Gateway</strong> vérifie le JWT et injecte les headers d'identité</li>
-<li>Quand l'access token expire, le client appelle <code>POST /auth/refresh</code> avec le cookie</li>
-<li>L'auth-service <strong>révoque</strong> l'ancien refresh token et en émet un nouveau (<strong>rotation</strong>)</li>
-<li>Si un token déjà révoqué est présenté, <strong>tous les tokens du compte</strong> sont révoqués (détection de vol)</li>
+<li><strong>Securite centralisee</strong> : un seul point de verification JWT, pas de duplication de la logique dans chaque service</li>
+<li><strong>Changement de cle</strong> : si la cle JWT change, seule la Gateway est impactee</li>
+<li><strong>Headers inter-servic</strong>es : les services backend n'ont pas besoin de decoder le JWT, ils lisent simplement les headers</li>
+<li><strong>Reseau interne</strong> : les services communiquent entre eux via le reseau interne Docker, les headers ne sont pas accessibles depuis l'exterieur</li>
 </ol>
-<h3 id="q7-pourquoi-les-refresh-tokens-sont-hashes-en-sha-256">Q7 : Pourquoi les refresh tokens sont hashés en SHA-256 ?<a class="headerlink" href="#q7-pourquoi-les-refresh-tokens-sont-hashes-en-sha-256" title="Permanent link">&para;</a></h3>
-<p><strong>Réponse attendue :</strong></p>
-<ul>
-<li>Si un attaquant accède à la base de données, il ne peut pas récupérer les tokens en clair</li>
-<li>Le hash est à sens unique : on peut vérifier si un token correspond mais pas retrouver le token</li>
-<li>C'est le même principe que pour les mots de passe (sauf qu'ici SHA-256 suffit car les tokens sont déjà aléatoires et longs)</li>
-</ul>
-<h3 id="q8-quelles-protections-contre-les-attaques-courantes">Q8 : Quelles protections contre les attaques courantes ?<a class="headerlink" href="#q8-quelles-protections-contre-les-attaques-courantes" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Attaque</th>
-<th>Protection</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Brute force</td>
-<td>Rate limiting double couche (Nginx + Gateway)</td>
-</tr>
-<tr>
-<td>Vol de session</td>
-<td>Rotation des refresh tokens + détection de réutilisation</td>
-</tr>
-<tr>
-<td>XSS</td>
-<td>Cookie httpOnly (le JS ne peut pas lire le refresh token)</td>
-</tr>
-<tr>
-<td>CSRF</td>
-<td>Cookie <code>sameSite: Strict</code></td>
-</tr>
-<tr>
-<td>Énumération de comptes</td>
-<td>Message d'erreur identique pour email inexistant et mauvais mot de passe</td>
-</tr>
-<tr>
-<td>Injection SQL</td>
-<td>ORM Sequelize/Mongoose (requêtes paramétrées)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="q9-quelles-faiblesses-de-securite-avez-vous-identifiees">Q9 : Quelles faiblesses de sécurité avez-vous identifiées ?<a class="headerlink" href="#q9-quelles-faiblesses-de-securite-avez-vous-identifiees" title="Permanent link">&para;</a></h3>
-<p><strong>Réponse honnête (montre de la maturité) :</strong></p>
-<ul>
-<li>L'access token est dans <code>localStorage</code> → vulnérable au XSS (pas au CSRF, mais au XSS oui)</li>
-<li>Pas de confirmation email à l'inscription</li>
-<li>Pas de 2FA/MFA</li>
-<li>Le <code>INTERNAL_SECRET</code> est partagé entre tous les services → si compromis, tous les appels internes sont exposés</li>
-<li>Le changement et la réinitialisation de mot de passe ne sont pas implémentés</li>
-<li>Les headers <code>x-user-*</code> injectés par la Gateway ne sont pas signés → un service malveillant pourrait les forger</li>
-</ul>
+<p><strong>Sources :</strong>
+- Gateway auth middleware : <code>C:\Users\barto\Desktop\breezy projet\breezy-infra\gateway\src\middleware\auth.js</code>, lignes 1-21
+- Injection headers proxy : <code>C:\Users\barto\Desktop\breezy projet\breezy-infra\gateway\src\index.js</code>, lignes 111-113 (user-service) et 163-165 (post-service)
+- JWT utils gateway : <code>C:\Users\barto\Desktop\breezy projet\breezy-infra\gateway\src\utils\jwt.utils.js</code>, lignes 1-13</p>
 <hr />
-<h2 id="choix-techniques">Choix techniques<a class="headerlink" href="#choix-techniques" title="Permanent link">&para;</a></h2>
-<h3 id="q10-pourquoi-express-5-pour-les-services-et-express-4-pour-la-gateway">Q10 : Pourquoi Express 5 pour les services et Express 4 pour la Gateway ?<a class="headerlink" href="#q10-pourquoi-express-5-pour-les-services-et-express-4-pour-la-gateway" title="Permanent link">&para;</a></h3>
-<p><strong>Réponse attendue :</strong></p>
+<h2 id="5-communication-inter-services-pourquoi-http-rest-et-pas-un-message-broker">5. Communication inter-services : pourquoi HTTP REST et pas un message broker ?</h2>
+<p><strong>Reponse :</strong> Nous avons utilise des appels HTTP REST synchrones avec timeout court pour la communication inter-services pour plusieurs raisons :</p>
+<ol>
+<li><strong>Simplicite</strong> : pas d'infrastructure supplementaire (RabbitMQ, Kafka)</li>
+<li><strong>Appels critiques uniquement</strong> : les communications sont limitees a quelques cas (sync user, notifications, ban propagation)</li>
+<li><strong>Fail-safe pattern</strong> : tous les appels inter-services sont non-bloquants avec catch silencieux. Si le service distant est down, l'operation principale continue</li>
+<li><strong>Timeouts courts</strong> : 1 seconde pour les notifications, 3 secondes pour les appels critiques. Si le timeout expire, l'erreur est loggee et ignoree</li>
+<li><strong>Vision future</strong> : un message broker est prevu en evolution moyen terme pour les evenements comme les notifications et la propagation de bans, ce qui decouplera les services</li>
+</ol>
+<p><strong>Sources :</strong>
+- Sync user non-bloquant : <code>C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\controllers\auth.controller.js</code>, lignes 37-48 (timeout 3s, catch silencieux)
+- Notification like non-bloquante : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\like.controller.js</code>, lignes 22-33 (timeout 1s)
+- Notification mention : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\post.controller.js</code>, lignes 44-64 (timeout 1s)
+- Ban propagation non-bloquante : <code>C:\Users\barto\Desktop\breezy projet\breezy-user-service\src\controllers\user.controller.js</code>, lignes 227-236 (timeout 3s)
+- Follow notification non-bloquante : <code>C:\Users\barto\Desktop\breezy projet\breezy-user-service\src\controllers\user.controller.js</code>, lignes 105-118 (timeout 1s)</p>
+<hr />
+<h2 id="6-non-blocking-pattern-pourquoi-les-appels-inter-services-sont-fire-and-forget">6. Non-blocking pattern : pourquoi les appels inter-services sont fire-and-forget ?</h2>
+<p><strong>Reponse :</strong> Tous les appels inter-services sont concus comme "fire-and-forget" (non-bloquants) pour garantir la resilience du systeme :</p>
 <ul>
-<li>Les services backend utilisent Express <strong>5.2</strong> (dernière version) pour bénéficier du support natif des async errors</li>
-<li>La Gateway utilise Express <strong>4.19</strong> pour la compatibilité avec <code>http-proxy-middleware</code> (version 3)</li>
-<li>C'est un choix pragmatique : la Gateway a été développée séparément avec ses propres dépendances</li>
+<li>Si le user-service est down lors de l'inscription, le compte est cree et le sync sera reessaye plus tard (ou fait manuellement)</li>
+<li>Si le profil-service est down lors d'un like, le like est enregistre, la notification est perdue</li>
+<li>Si l'auth-service est down lors d'un ban, le ban local est applique, la propagation se fera plus tard</li>
 </ul>
-<h3 id="q11-pourquoi-sequelize-pour-postgresql-et-mongoose-pour-mongodb">Q11 : Pourquoi Sequelize pour PostgreSQL et Mongoose pour MongoDB ?<a class="headerlink" href="#q11-pourquoi-sequelize-pour-postgresql-et-mongoose-pour-mongodb" title="Permanent link">&para;</a></h3>
-<p><strong>Réponse attendue :</strong></p>
-<ul>
-<li><strong>Sequelize</strong> : ORM mature pour les BDD relationnelles, gère les migrations, les transactions, et les associations</li>
-<li><strong>Mongoose</strong> : ODM standard pour MongoDB, gère les schémas, la validation et les index</li>
-<li>Les deux sont les choix les plus populaires et documentés dans l'écosystème Node.js</li>
-</ul>
-<h3 id="q12-comment-gerez-vous-la-synchronisation-des-donnees-entre-services">Q12 : Comment gérez-vous la synchronisation des données entre services ?<a class="headerlink" href="#q12-comment-gerez-vous-la-synchronisation-des-donnees-entre-services" title="Permanent link">&para;</a></h3>
-<p><strong>Réponse attendue :</strong></p>
-<ul>
-<li><strong>Event-driven synchrone</strong> : à l'inscription, l'auth-service appelle le user-service pour synchroniser le profil</li>
-<li><strong>Cohérence éventuelle</strong> : si le user-service est indisponible, le compte est quand même créé dans l'auth-service</li>
-<li><strong>Risque assumé</strong> : les données peuvent être temporairement désynchronisées (ex: <code>is_banned</code> dans les deux bases)</li>
-<li><strong>Amélioration possible</strong> : utiliser un message broker (RabbitMQ, Kafka) pour garantir la livraison</li>
-</ul>
+<p>Ce pattern evite les pannes en cascade : un service qui tombe ne bloque pas les autres services.</p>
+<p><strong>Sources :</strong>
+- Sync registration : <code>C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\controllers\auth.controller.js</code>, lignes 37-48
+- Follow notification : <code>C:\Users\barto\Desktop\breezy projet\breezy-user-service\src\controllers\user.controller.js</code>, lignes 105-118
+- Ban propagation : <code>C:\Users\barto\Desktop\breezy projet\breezy-user-service\src\controllers\user.controller.js</code>, lignes 227-236
+- Like notification : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\like.controller.js</code>, lignes 22-33</p>
+<hr />
+<h2 id="7-pourquoi-sequelize-pour-postgresql-et-mongoose-pour-mongodb">7. Pourquoi Sequelize pour PostgreSQL et Mongoose pour MongoDB ?</h2>
+<p><strong>Reponse :</strong> Chaque ORM/ODM est choisi pour ses forces naturelles avec sa base de donnees :</p>
+<p><strong>Sequelize (PostgreSQL)</strong> :
+- Mapping objet-relationnel puissant pour les schemas strictes
+- Support natif des transactions (<code>sequelize.transaction</code>) pour les operations atomiques (follow/unfollow avec compteurs)
+- Migration automatique avec <code>{ alter: true }</code>
+- Gere les relations (User.hasMany, RefreshToken.belongsTo)</p>
+<p><strong>Mongoose (MongoDB)</strong> :
+- Schema flexible avec validation integree
+- <code>$inc</code> atomique pour les compteurs sans transaction
+- <code>findOneAndUpdate</code> avec <code>upsert</code> pour la creation automatique de profil
+- Indexes composees uniques simples a declarer
+- Population de references (ObjectId)</p>
+<p><strong>Sources :</strong>
+- Sequelize transaction follow : <code>C:\Users\barto\Desktop\breezy projet\breezy-user-service\src\controllers\user.controller.js</code>, lignes 89-102
+- Mongoose $inc likes : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\like.controller.js</code>, lignes 15-20
+- Sequelize relation RefreshToken : <code>C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\models\refreshToken.model.js</code>, lignes 36-37
+- Mongoose upsert profil : <code>C:\Users\barto\Desktop\breezy projet\breezy-profil-service\src\controllers\profile.controller.js</code>, lignes 6-10</p>
+<hr />
+<h2 id="8-comment-fonctionne-lalgorithme-du-feed">8. Comment fonctionne l'algorithme du feed ?</h2>
+<p><strong>Reponse :</strong> L'algorithme du feed suit 4 etapes :</p>
+<ol>
+<li><strong>Recuperation des abonnements</strong> : le post-service appelle <code>GET /users/:userId/following</code> sur le user-service pour obtenir la liste des utilisateurs suivis (timeout 3s, fallback liste vide si erreur)</li>
+<li><strong>Fusion des IDs</strong> : l'utilisateur courant + ses abonnements sont combines dans un Set</li>
+<li><strong>Requete MongoDB</strong> : <code>Post.find({ user_id: { $in: feedUserIds } })</code> trie par <code>created_at: -1</code> avec pagination offset-based</li>
+<li><strong>Enrichissement</strong> : pour chaque post, on verifie si l'utilisateur courant l'a like (<code>likedByMe</code>) et reposte (<code>repostedByMe</code>) via deux requetes paralleles <code>Promise.all</code></li>
+</ol>
+<p>Si le user-service est indisponible, le feed affiche uniquement les posts de l'utilisateur courant (fallback silencieux).</p>
+<p><strong>Sources :</strong>
+- getFeed controller : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\post.controller.js</code>, lignes 111-161
+- Fallback liste vide : ligne 128 (catch silencieux)
+- Enrichissement likedByMe/repostedByMe : lignes 140-151</p>
+<hr />
+<h2 id="9-comment-les-compteurs-sont-ils-maintenus-coherents">9. Comment les compteurs sont-ils maintenus coherents ?</h2>
+<p><strong>Reponse :</strong> Deux strategies differentes selon la base de donnees :</p>
+<p><strong>MongoDB (posts)</strong> : utilisation de <code>$inc</code> atomique pour les likes, commentaires et reposts. L'unicite est garantie par des indexes composees uniques (<code>{ post_id, user_id }</code>) sur les collections Like et Repost. Les duplicatas sont interceptes par le code erreur 11000.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// like controller</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">Post</span><span class="p">.</span><span class="nx">findByIdAndUpdate</span><span class="p">(</span><span class="nx">postId</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">$inc</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">likes_count</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="ow">new</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+<p><strong>PostgreSQL (user)</strong> : utilisation de <code>sequelize.transaction()</code> pour les operations de follow/unfollow. La creation/suppression du lien de follow ET l'incrementation/decrementation des compteurs sont dans la meme transaction.</p>
+<p><strong>Sources :</strong>
+- $inc likes : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\like.controller.js</code>, lignes 15-20
+- Index unique Like : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\models\like.model.js</code>, ligne 11
+- Index unique Repost : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\models\repost.model.js</code>, ligne 11
+- Transaction Sequelize follow : <code>C:\Users\barto\Desktop\breezy projet\breezy-user-service\src\controllers\user.controller.js</code>, lignes 89-102
+- Math.max(0) securite un-like : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\like.controller.js</code>, ligne 60</p>
+<hr />
+<h2 id="10-limitation-de-profondeur-des-commentaires-pourquoi-seulement-1-niveau">10. Limitation de profondeur des commentaires : pourquoi seulement 1 niveau ?</h2>
+<p><strong>Reponse :</strong> Les commentaires sont limites a 1 niveau de profondeur (commentaire principal + reponses, pas de reponse-a-reponse) pour plusieurs raisons :</p>
+<ol>
+<li><strong>UX simplifiee</strong> : un fil de commentaires plat avec reponses est plus facile a lire qu'un arbre complexe</li>
+<li><strong>Performance</strong> : evite les requetes recursives ou les aggregations complexes</li>
+<li><strong>Implementation</strong> : la logique de rendu est simple (une boucle sur les commentaires, chaque commentaire a un tableau <code>replies</code>)</li>
+<li><strong>Cas d'usage</strong> : pour un reseau social comme Breezy, 1 niveau est suffisant pour les conversations</li>
+</ol>
+<p>La limite est enforcee dans <code>createReply</code> :
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">parentComment</span><span class="p">.</span><span class="nx">parent_comment_id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">code</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;MAX_DEPTH&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Reponse a une reponse non autorisee.&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Sources :</strong>
+- Controller createReply : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\comment.controller.js</code>, lignes 107-139
+- Verification MAX_DEPTH : lignes 120-122
+- getComments avec replies : lignes 10-21</p>
+<hr />
+<h2 id="11-strategie-de-rate-limiting-double-couche-nginx-gateway">11. Strategie de rate limiting : double couche (Nginx + Gateway)</h2>
+<p><strong>Reponse :</strong> Nous avons implemente deux couches de rate limiting :</p>
+<p><strong>Nginx (infrastructure)</strong> :
+- Zone <code>global:10m</code> definie a <code>30 req/min</code>
+- Zone <code>auth:10m</code> definie a <code>5 req/min</code></p>
+<p><strong>Gateway (application)</strong> :
+- Limiteur global <code>express-rate-limit</code> : 500 requetes / 15 minutes par IP
+- Limiteur strict auth : 20 tentatives de connexion / 15 minutes par IP</p>
+<p>La double couche permet une defense en profondeur : Nginx bloque au niveau reseau avant meme que la requete n'atteigne la Gateway. Cependant, en environnement Docker, les directives <code>limit_req</code> ne sont pas activees dans les <code>location</code> blocks -- seul le rate limiting Express est effectif.</p>
+<p><strong>Note</strong> : <code>NODE_ENV=test</code> dans le docker-compose desactive le rate limiting de la Gateway (999999 requetes).</p>
+<p><strong>Sources :</strong>
+- Nginx config : <code>C:\Users\barto\Desktop\breezy projet\breezy-infra\nginx\nginx.conf</code>, lignes 16-17
+- Gateway rate limiting : <code>C:\Users\barto\Desktop\breezy projet\breezy-infra\gateway\src\index.js</code>, lignes 16-43
+- NODE_ENV=test : <code>C:\Users\barto\Desktop\breezy projet\breezy-infra\docker-compose.yml</code>, ligne 37</p>
+<hr />
+<h2 id="12-comment-gere-t-on-un-service-indisponible">12. Comment gere-t-on un service indisponible ?</h2>
+<p><strong>Reponse :</strong> Chaque service a un mecanisme de fallback specifique :</p>
+<ol>
+<li><strong>User-service down pendant le feed</strong> : le post-service recupere une liste vide d'abonnements, le feed affiche uniquement les posts de l'utilisateur courant</li>
+<li><strong>User-service down pendant l'inscription</strong> : le compte est cree, un warning est logge, le sync se fera plus tard</li>
+<li><strong>Profil-service down pendant un like</strong> : le like est enregistre, la notification est silencieusement ignoree</li>
+<li><strong>Auth-service down pendant un ban</strong> : le ban local est applique dans user-service, la propagation est differee</li>
+</ol>
+<p>De plus, chaque proxy de la Gateway a un handler <code>error</code> qui retourne un 502 avec le message "Service indisponible".</p>
+<p><strong>Sources :</strong>
+- Feed fallback : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\post.controller.js</code>, ligne 128 (<code>console.warn</code>)
+- Registration fallback : <code>C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\controllers\auth.controller.js</code>, lignes 46-48
+- Ban fallback : <code>C:\Users\barto\Desktop\breezy projet\breezy-user-service\src\controllers\user.controller.js</code>, lignes 235-236
+- Gateway 502 error handler : <code>C:\Users\barto\Desktop\breezy projet\breezy-infra\gateway\src\index.js</code>, lignes 59-61, 77-79, etc.</p>
+<hr />
+<h2 id="13-pourquoi-nextjs-app-router-plutot-que-pages-router">13. Pourquoi Next.js App Router plutot que Pages Router ?</h2>
+<p><strong>Reponse :</strong> Nous avons choisi Next.js 14 avec App Router pour plusieurs raisons :</p>
+<ol>
+<li><strong>Server Components</strong> : rendu cote serveur par defaut pour les pages, ce qui ameliore le SEO et les performances de chargement initial</li>
+<li><strong>Route Groups</strong> : organisation claire des routes (<code>(app)/</code> pour les pages authentifiees, <code>(auth)/</code> pour les pages non authentifiees, <code>legal/</code> pour les pages juridiques)</li>
+<li><strong>Layouts imbriques</strong> : <code>layout.js</code> racine avec AuthProvider, <code>(app)/layout.js</code> pour la garde d'authentification</li>
+<li><strong>Client/Server separation</strong> : le prefixe <code>'use client'</code> est explicite pour les composants interactifs</li>
+<li><strong>Routing automatique</strong> : la structure des dossiers definit les URLs sans configuration manuelle</li>
+</ol>
+<p><strong>Sources :</strong>
+- <code>package.json</code> : <code>"next": "14.2.0"</code> (<code>C:\Users\barto\Desktop\breezy projet\breezy-frontend\package.json</code>)
+- Route groups (auth) vs (app) : <code>C:\Users\barto\Desktop\breezy projet\breezy-frontend\src\app\(auth)\layout.js</code> et <code>C:\Users\barto\Desktop\breezy projet\breezy-frontend\src\app\(app)\layout.js</code>
+- Root layout avec AuthProvider : <code>C:\Users\barto\Desktop\breezy projet\breezy-frontend\src\app\layout.js</code></p>
+<hr />
+<h2 id="14-comment-fonctionne-le-systeme-de-mocks-dans-le-frontend">14. Comment fonctionne le systeme de mocks dans le frontend ?</h2>
+<p><strong>Reponse :</strong> Le systeme de mocks permet de developper le frontend sans backend. Il fonctionne ainsi :</p>
+<ol>
+<li><strong>Activation</strong> : variable d'environnement <code>NEXT_PUBLIC_USE_MOCKS=true</code> dans <code>.env.local</code></li>
+<li><strong>Detection</strong> : <code>isMockEnabled()</code> verifie la variable cote client (<code>sessionStorage</code> n'est pas accessible en SSR)</li>
+<li><strong>Aiguillage</strong> : chaque service exporte les deux implementations (reelle et mock) et choisit au moment de l'appel</li>
+<li><strong>Donnees</strong> : 5 utilisateurs fictifs, 8 posts, 3 jeux de commentaires, 6 notifications, 5 conversations</li>
+<li><strong>Persistence</strong> : les posts et commentaires crees en mode mock sont stockes dans <code>sessionStorage</code> (survivent au re-render mais pas au rechargement)</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1">// Pattern d&#39;aiguillage</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(...</span><span class="nx">a</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">isMockEnabled</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">mock</span><span class="p">.</span><span class="nx">login</span><span class="p">(...</span><span class="nx">a</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">real</span><span class="p">.</span><span class="nx">login</span><span class="p">(...</span><span class="nx">a</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Sources :</strong>
+- Utils mock : <code>C:\Users\barto\Desktop\breezy projet\breezy-frontend\src\mocks\utils.js</code>, lignes 1-8
+- Donnees mock : <code>C:\Users\barto\Desktop\breezy projet\breezy-frontend\src\mocks\data.js</code>, lignes 1-260
+- Mock auth service : <code>C:\Users\barto\Desktop\breezy projet\breezy-frontend\src\mocks\authService.mock.js</code>
+- Mock post service : <code>C:\Users\barto\Desktop\breezy projet\breezy-frontend\src\mocks\postService.mock.js</code>
+- Persistence sessionStorage : postService.mock.js (stocke sous <code>breezy_mock_posts</code>)</p>
+<hr />
+<h2 id="15-quest-ce-qui-manque-pour-la-production">15. Qu'est-ce qui manque pour la production ?</h2>
+<p><strong>Reponse :</strong> Plusieurs elements sont necessaires pour une mise en production :</p>
+<ol>
+<li><strong>HTTPS</strong> : pas de certificat SSL/TLS configure (le nginx ecoute en HTTP sur le port 80)</li>
+<li><strong>CI/CD</strong> : les workflows GitHub Actions existent mais ne sont pas completement operationalises</li>
+<li><strong>Monitoring</strong> : pas de Prometheus/Grafana, pas d'alerting, pas de logging centralise (uniquement <code>console.log</code>)</li>
+<li><strong>Logging</strong> : les logs sont en console uniquement, pas de stockage persistant (ELK, Loki)</li>
+<li><strong>Mot de passe oublie</strong> : pas de flux de reinitialisation de mot de passe (Fx23 non implementee)</li>
+<li><strong>2FA</strong> : pas d'authentification a deux facteurs</li>
+<li><strong><code>sequelize.sync({ alter: true })</code></strong> : dangereux en production car peut modifier le schema sans supervision</li>
+<li><strong><code>NODE_ENV=test</code></strong> : desactive le rate limiting dans Docker (risque de brute-force)</li>
+<li><strong>Headers non signes</strong> : les headers <code>x-user-*</code> ne sont pas signes -- un service compromis pourrait usurper l'identite</li>
+<li><strong>Single point of failure</strong> : la Gateway n'est pas load-balancee</li>
+</ol>
+<p><strong>Sources :</strong>
+- sequelize.sync({ alter: true }) : <code>C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\config\database.js</code>, ligne 12
+- NODE_ENV=test : <code>C:\Users\barto\Desktop\breezy projet\breezy-infra\docker-compose.yml</code>, ligne 37
+- HTTP only (no HTTPS) : <code>C:\Users\barto\Desktop\breezy projet\breezy-infra\nginx\nginx.conf</code>, ligne 26</p>
+<hr />
+<h2 id="16-expliquez-la-propagation-du-ban-user-service-vers-auth-service">16. Expliquez la propagation du ban : user-service vers auth-service</h2>
+<p><strong>Reponse :</strong> Le ban d'un utilisateur est initie depuis le user-service (route <code>PUT /users/:id/ban</code>). Le flux est le suivant :</p>
+<ol>
+<li><strong>Verification du role</strong> : seul un moderateur ou un admin peut bannir (403 sinon)</li>
+<li><strong>Ban local</strong> : <code>user.update({ is_banned: true })</code> dans la table <code>user_profiles</code></li>
+<li><strong>Propagation non-bloquante</strong> : appel <code>POST /auth/internal/ban</code> avec <code>{ userId }</code> et le header <code>x-internal-secret</code></li>
+<li><strong>Auth-service</strong> : verifie le secret interne, met a jour <code>is_banned: true</code> dans sa table <code>users</code></li>
+</ol>
+<p>Le ban doit etre propage aux deux services car :
+- <strong>Auth-service</strong> : verifie <code>is_banned</code> au login (refuse la connexion) et au refresh
+- <strong>User-service</strong> : verifie <code>is_banned</code> a la recherche, pour empecher les follow, etc.</p>
+<p>Si l'auth-service est indisponible, le ban local est tout de meme applique immediatement.</p>
+<p><strong>Sources :</strong>
+- banUser controller : <code>C:\Users\barto\Desktop\breezy projet\breezy-user-service\src\controllers\user.controller.js</code>, lignes 213-243
+- Role check moderateur/admin : ligne 215
+- Propagation auth-service : lignes 227-236
+- internalBan auth-service : <code>C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\controllers\auth.controller.js</code>, lignes 225-247
+- Verification ban au login : <code>C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\controllers\auth.controller.js</code>, lignes 83-85
+- Verification ban au refresh : lignes 146-151</p>
 
 
 
@@ -1679,12 +1892,6 @@
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-        
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
-  Retour en haut de la page
-</button>
         
       </main>
       
@@ -1715,7 +1922,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>

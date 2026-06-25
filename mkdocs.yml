@@ -11,6 +11,7 @@ nav:
     - Vue d'ensemble: architecture/vue-ensemble.md
     - Communication inter-services: architecture/communication-services.md
     - Flux de données: architecture/flux-donnees.md
+    - Diagramme de composants: architecture/diagramme-composants.md
     - Docker & Déploiement: architecture/docker-deploiement.md
   - Services:
     - API Gateway: services/gateway.md
@@ -33,3 +34,11 @@ nav:
     - Questions par membre: soutenance/questions-par-membre.md
     - Limites et évolutions: soutenance/limites-evolutions.md
   - Journal des modifications: CHANGELOG_DOC.md
+markdown_extensions:
+  - admonition
+  - tables
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format

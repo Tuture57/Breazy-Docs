@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../..">
+        <link rel="prev" href="../communication-services/">
       
       
-        <link rel="next" href="../communication-services/">
+        <link rel="next" href="../diagramme-composants/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Vue d'ensemble - Breezy — Documentation</title>
+        <title>Flux de données - Breezy — Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vue-densemble-de-larchitecture" class="md-skip">
+        <a href="#flux-de-donnees" class="md-skip">
           Aller au contenu
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Vue d'ensemble
+              Flux de données
             
           </span>
         </div>
@@ -279,37 +279,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Vue d'ensemble
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../vue-ensemble/" class="md-nav__link">
         
   
   
@@ -325,192 +298,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#conteneurs-docker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conteneurs Docker
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Conteneurs Docker">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#services-applicatifs-7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Services applicatifs (7)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bases-de-donnees-4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bases de données (4)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#volumes-persistants" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Volumes persistants
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#flux-reseau" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Flux réseau
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#repartition-des-responsabilites" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Répartition des responsabilités
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Répartition des responsabilités">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nginx-proxy-layer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Nginx (Proxy Layer)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#api-gateway-express-4192" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        API Gateway (Express 4.19.2)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#auth-service-express-521-postgresql" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Auth Service (Express 5.2.1 → PostgreSQL)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#user-service-express-521-postgresql" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        User Service (Express 5.2.1 → PostgreSQL)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post-service-express-521-mongodb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Post Service (Express 5.2.1 → MongoDB)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#profil-service-express-521-mongodb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Profil Service (Express 5.2.1 → MongoDB)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#flux-dappels-inter-services" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Flux d'appels inter-services
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#healthchecks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Healthchecks
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -548,10 +335,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../flux-donnees/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flux de données
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -567,6 +381,114 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-inscription-complete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Inscription complète
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-connexion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Connexion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-requete-authentifiee-typique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Requête authentifiée typique
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-creation-de-post-avec-mention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Création de post avec mention @
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-like-avec-notification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Like avec notification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-follow-avec-notification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Follow avec notification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-rafraichissement-de-token-refresh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Rafraîchissement de token (refresh)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-refresh-token-cote-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Refresh token côté frontend
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1405,60 +1327,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#conteneurs-docker" class="md-nav__link">
+  <a href="#1-inscription-complete" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conteneurs Docker
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Conteneurs Docker">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#services-applicatifs-7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Services applicatifs (7)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bases-de-donnees-4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bases de données (4)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#volumes-persistants" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Volumes persistants
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#flux-reseau" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Flux réseau
+        1. Inscription complète
       
     </span>
   </a>
@@ -1466,93 +1338,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#repartition-des-responsabilites" class="md-nav__link">
+  <a href="#2-connexion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Répartition des responsabilités
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Répartition des responsabilités">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nginx-proxy-layer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Nginx (Proxy Layer)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#api-gateway-express-4192" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        API Gateway (Express 4.19.2)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#auth-service-express-521-postgresql" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Auth Service (Express 5.2.1 → PostgreSQL)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#user-service-express-521-postgresql" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        User Service (Express 5.2.1 → PostgreSQL)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post-service-express-521-mongodb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Post Service (Express 5.2.1 → MongoDB)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#profil-service-express-521-mongodb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Profil Service (Express 5.2.1 → MongoDB)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#flux-dappels-inter-services" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Flux d'appels inter-services
+        2. Connexion
       
     </span>
   </a>
@@ -1560,10 +1349,65 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#healthchecks" class="md-nav__link">
+  <a href="#3-requete-authentifiee-typique" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Healthchecks
+        3. Requête authentifiée typique
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-creation-de-post-avec-mention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Création de post avec mention @
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-like-avec-notification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Like avec notification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-follow-avec-notification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Follow avec notification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-rafraichissement-de-token-refresh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Rafraîchissement de token (refresh)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-refresh-token-cote-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Refresh token côté frontend
       
     </span>
   </a>
@@ -1587,287 +1431,319 @@
 
 
 
-<h1 id="vue-densemble-de-larchitecture">Vue d'ensemble de l'architecture</h1>
-<h2 id="conteneurs-docker">Conteneurs Docker</h2>
-<p>L'application Breezy est composée de <strong>12 conteneurs Docker</strong> interconnectés sur un réseau bridge dédié <code>breezy-network</code>.</p>
-<h3 id="services-applicatifs-7">Services applicatifs (7)</h3>
+<h1 id="flux-de-donnees">Flux de données</h1>
+<p>Cette page détaille les principaux flux de données dans Breezy, du navigateur jusqu'aux bases de données.</p>
+<hr />
+<h2 id="1-inscription-complete">1. Inscription complète</h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Client as Navigateur
+    participant Nginx as Nginx (:80)
+    participant Gateway as API Gateway (:3000)
+    participant Auth as Auth Service (:3001)
+    participant UserSvc as User Service (:3002)
+    participant PGauth as PostgreSQL (auth)
+    participant PGuser as PostgreSQL (users)
+
+    Client-&gt;&gt;Nginx: POST /api/auth/register
+    Nginx-&gt;&gt;Gateway: POST /api/auth/register
+
+    Note over Gateway: Rate limiter (20 req/15min)
+
+    Gateway-&gt;&gt;Auth: POST /auth/register {username, email, password}
+
+    Auth-&gt;&gt;Auth: Validation express-validator (username 3-50, email, password 8+ avec maj+chiffre)
+    Auth-&gt;&gt;PGauth: SELECT users WHERE email = ?
+    Auth-&gt;&gt;PGauth: SELECT users WHERE username = ?
+    Auth-&gt;&gt;Auth: bcrypt.hash(password, 12 rounds)
+    Auth-&gt;&gt;PGauth: INSERT users (id, username, email, password_hash, role='user')
+
+    Note over Auth: Génération des tokens
+    Auth-&gt;&gt;Auth: jwt.sign({sub: id, username, role}, JWT_SECRET, {expiresIn: '15m'})
+    Auth-&gt;&gt;Auth: crypto.randomBytes(64).toString('hex') → refreshToken
+    Auth-&gt;&gt;Auth: hashToken(refreshToken) → SHA-256
+    Auth-&gt;&gt;PGauth: INSERT refresh_tokens (token_hash, user_id, expires_at)
+
+    Note over Auth: Sync vers User Service (non bloquant, timeout 3s)
+    Auth-&gt;&gt;UserSvc: POST /users/sync {id, username, role} [x-internal-secret]
+    UserSvc-&gt;&gt;Auth: Vérifie x-internal-secret
+    UserSvc-&gt;&gt;PGuser: UPSERT user_profiles (id, username, role)
+    UserSvc--&gt;&gt;Auth: 201 {ok: true}
+
+    Auth--&gt;&gt;Gateway: 201 {user: {id, username, email, role}, token}
+    Gateway--&gt;&gt;Nginx: Réponse + Set-Cookie: refreshToken (httpOnly)
+    Nginx--&gt;&gt;Client: 201 + JWT + refreshToken cookie</code></pre>
+<p><strong>Points clés :</strong>
+- Validation stricte : username 3-50 caractères (lettres, chiffres, underscores), email valide, password 8+ avec majuscule et chiffre
+- UUID v4 généré automatiquement par Sequelize pour l'ID utilisateur
+- Le refresh token est émis en cookie <code>httpOnly</code> (pas accessible en JavaScript)
+- L'appel au User Service est non bloquant : si le service est down, l'inscription réussit quand même</p>
+<hr />
+<h2 id="2-connexion">2. Connexion</h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Client as Navigateur
+    participant Nginx as Nginx (:80)
+    participant Gateway as API Gateway (:3000)
+    participant Auth as Auth Service (:3001)
+    participant PGauth as PostgreSQL (auth)
+
+    Client-&gt;&gt;Nginx: POST /api/auth/login
+    Nginx-&gt;&gt;Gateway: POST /api/auth/login
+    Gateway-&gt;&gt;Auth: POST /auth/login {email, password}
+
+    Auth-&gt;&gt;PGauth: SELECT * FROM users WHERE email = ?
+    Auth-&gt;&gt;Auth: bcrypt.compare(password, user.password_hash)
+
+    alt Identifiants invalides
+        Auth--&gt;&gt;Gateway: 401 {code: 'INVALID_CREDENTIALS'}
+        Gateway--&gt;&gt;Client: 401
+    else Compte banni
+        Auth--&gt;&gt;Gateway: 403 {code: 'ACCOUNT_BANNED'}
+        Gateway--&gt;&gt;Client: 403
+    else Compte inactif
+        Auth--&gt;&gt;Gateway: 403 {code: 'ACCOUNT_INACTIVE'}
+        Gateway--&gt;&gt;Client: 403
+    else Succès
+        Auth-&gt;&gt;Auth: generateAccessToken(user) → JWT 15min
+        Auth-&gt;&gt;Auth: generateRefreshToken() → crypto 64 bytes hex
+        Auth-&gt;&gt;PGauth: INSERT refresh_tokens (token_hash, user_id, expires_at)
+        Auth--&gt;&gt;Gateway: 200 {user, token} + Set-Cookie: refreshToken
+        Gateway--&gt;&gt;Client: 200 + JWT + refreshToken cookie
+    end</code></pre>
+<hr />
+<h2 id="3-requete-authentifiee-typique">3. Requête authentifiée typique</h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Client as Navigateur
+    participant Nginx as Nginx (:80)
+    participant Gateway as API Gateway (:3000)
+    participant Svc as Service Backend
+    participant DB as Base de données
+
+    Client-&gt;&gt;Nginx: GET /api/posts/feed
+    Note over Client: Header: Authorization: Bearer &lt;JWT&gt;
+
+    Nginx-&gt;&gt;Gateway: GET /api/posts/feed (avec Bearer token)
+
+    Gateway-&gt;&gt;Gateway: jwt.verify(token, JWT_SECRET)
+    Gateway-&gt;&gt;Gateway: Extrait payload: {sub, username, role}
+
+    alt Token invalide ou expiré
+        Gateway--&gt;&gt;Client: 401 "Invalid or expired token"
+    else Token valide
+        Gateway-&gt;&gt;Gateway: Injecte x-user-id, x-user-role, x-user-username
+        Gateway-&gt;&gt;Svc: Requête proxyfiée avec headers d'identité
+
+        Svc-&gt;&gt;Svc: Lit x-user-id depuis les headers
+        Svc-&gt;&gt;DB: Requête (find, insert, update, delete)
+        DB--&gt;&gt;Svc: Résultat
+        Svc--&gt;&gt;Gateway: Réponse JSON
+        Gateway--&gt;&gt;Client: Réponse JSON
+    end</code></pre>
+<p><strong>Détail des headers injectés par route :</strong></p>
 <table>
 <thead>
 <tr>
-<th>Conteneur</th>
-<th>Rôle</th>
-<th>Port exposé</th>
-<th>Image / Build</th>
+<th>Route</th>
+<th>Headers injectés</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>breezy-nginx</code></td>
-<td>Reverse proxy (Nginx)</td>
-<td><code>80:80</code></td>
-<td><code>nginx:alpine</code></td>
+<td><code>/api/auth/me</code></td>
+<td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
 </tr>
 <tr>
-<td><code>breezy-frontend</code></td>
-<td>Application Next.js</td>
-<td><code>FRONTEND_PORT</code> (3000)</td>
-<td><code>../breezy-frontend/Dockerfile</code></td>
+<td><code>/api/auth/change-password</code></td>
+<td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
 </tr>
 <tr>
-<td><code>breezy-gateway</code></td>
-<td>API Gateway Express</td>
-<td><code>GATEWAY_PORT</code> (3000)</td>
-<td><code>./gateway/Dockerfile</code></td>
+<td><code>/api/users/*</code></td>
+<td><code>x-user-id</code>, <code>x-user-role</code> (pas de username)</td>
 </tr>
 <tr>
-<td><code>breezy-auth</code></td>
-<td>Auth Service Express</td>
-<td><code>AUTH_PORT</code> (3001)</td>
-<td><code>../breezy-auth-service/Dockerfile</code></td>
+<td><code>/api/posts/*</code></td>
+<td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
 </tr>
 <tr>
-<td><code>breezy-user</code></td>
-<td>User Service Express</td>
-<td><code>USER_PORT</code> (3002)</td>
-<td><code>../breezy-user-service/Dockerfile</code></td>
+<td><code>/api/upload</code></td>
+<td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
 </tr>
 <tr>
-<td><code>breezy-post</code></td>
-<td>Post Service Express</td>
-<td><code>POST_PORT</code> (3003)</td>
-<td><code>../breezy-post-service/Dockerfile</code></td>
+<td><code>/api/profils/*</code></td>
+<td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
 </tr>
 <tr>
-<td><code>breezy-profil</code></td>
-<td>Profil Service Express</td>
-<td><code>PROFIL_PORT</code> (3004)</td>
-<td><code>../breezy-profil-service/Dockerfile</code></td>
-</tr>
-<tr>
-<td><code>breezy-seed</code></td>
-<td>Script de seeding (usage unique)</td>
-<td>Aucun</td>
-<td><code>./seed/Dockerfile</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="bases-de-donnees-4">Bases de données (4)</h3>
-<table>
-<thead>
-<tr>
-<th>Conteneur</th>
-<th>Technologie</th>
-<th>Volume</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>breezy-db-pg-auth</code></td>
-<td>PostgreSQL 15 Alpine</td>
-<td><code>pg_auth_data</code></td>
-</tr>
-<tr>
-<td><code>breezy-db-pg-users</code></td>
-<td>PostgreSQL 15 Alpine</td>
-<td><code>pg_users_data</code></td>
-</tr>
-<tr>
-<td><code>breezy-db-mongo-posts</code></td>
-<td>MongoDB 6</td>
-<td><code>mongo_posts_data</code></td>
-</tr>
-<tr>
-<td><code>breezy-db-mongo-profils</code></td>
-<td>MongoDB 6</td>
-<td><code>mongo_profils_data</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="volumes-persistants">Volumes persistants</h3>
-<table>
-<thead>
-<tr>
-<th>Volume</th>
-<th>Montage</th>
-<th>Service</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>pg_auth_data</code></td>
-<td><code>/var/lib/postgresql/data</code></td>
-<td>Auth DB</td>
-</tr>
-<tr>
-<td><code>pg_users_data</code></td>
-<td><code>/var/lib/postgresql/data</code></td>
-<td>User DB</td>
-</tr>
-<tr>
-<td><code>mongo_posts_data</code></td>
-<td><code>/data/db</code></td>
-<td>Post DB</td>
-</tr>
-<tr>
-<td><code>mongo_profils_data</code></td>
-<td><code>/data/db</code></td>
-<td>Profil DB</td>
-</tr>
-<tr>
-<td><code>uploads_data</code></td>
-<td><code>/app/uploads</code></td>
-<td>Post Service</td>
+<td><code>/api/notifications/*</code></td>
+<td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="flux-reseau">Flux réseau</h2>
-<pre class="mermaid"><code>graph TB
-    subgraph "🌐 Externe"
-        USER["Utilisateur (Navigateur)"]
-    end
+<h2 id="4-creation-de-post-avec-mention">4. Création de post avec mention @</h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Client as Navigateur
+    participant Gateway as API Gateway
+    participant Post as Post Service (:3003)
+    participant UserSvc as User Service (:3002)
+    participant Profil as Profil Service (:3004)
+    participant MongoP as MongoDB (posts)
+    participant MongoPr as MongoDB (profils)
 
-    subgraph "Docker Bridge Network (breezy-network)"
-        subgraph "Proxy Layer"
-            NGINX["breezy-nginx&lt;br/&gt;nginx:alpine&lt;br/&gt;:80"]
-        end
+    Client-&gt;&gt;Gateway: POST /api/posts {content: "Salut @arthur !"}
+    Note over Client: Authorization: Bearer &lt;JWT&gt;
 
-        subgraph "UI Layer"
-            FRONTEND["breezy-frontend&lt;br/&gt;Next.js 14.2.0&lt;br/&gt;:3000"]
-        end
+    Gateway-&gt;&gt;Gateway: Vérifie JWT, injecte headers
+    Gateway-&gt;&gt;Post: POST /api/posts/ [x-user-id, x-user-username]
 
-        subgraph "Gateway Layer"
-            GATEWAY["breezy-gateway&lt;br/&gt;Express 4.19.2&lt;br/&gt;:3000"]
-        end
+    Post-&gt;&gt;Post: Validation (content max 280, tags max 5)
+    Post-&gt;&gt;MongoP: INSERT post (user_id, username, content, tags, media_urls)
+    Post-&gt;&gt;Post: Détecte "@arthur" dans le contenu
 
-        subgraph "Backend Services"
-            AUTH["breezy-auth&lt;br/&gt;Express 5.2.1&lt;br/&gt;:3001"]
-            USER_SVC["breezy-user&lt;br/&gt;Express 5.2.1&lt;br/&gt;:3002"]
-            POST["breezy-post&lt;br/&gt;Express 5.2.1&lt;br/&gt;:3003"]
-            PROFIL["breezy-profil&lt;br/&gt;Express 5.2.1&lt;br/&gt;:3004"]
-        end
+    Note over Post: Logique mentions (non bloquante)
+    Post-&gt;&gt;UserSvc: GET /users/by-username/arthur [x-user-id]
+    UserSvc-&gt;&gt;Post: 200 {id: "uuid-d-arthur"}
 
-        subgraph "Databases"
-            PG_AUTH[("breezy-db-pg-auth&lt;br/&gt;PostgreSQL 15")]
-            PG_USERS[("breezy-db-pg-users&lt;br/&gt;PostgreSQL 15")]
-            MONGO_POSTS[("breezy-db-mongo-posts&lt;br/&gt;MongoDB 6")]
-            MONGO_PROFILS[("breezy-db-mongo-profils&lt;br/&gt;MongoDB 6")]
-        end
+    Post-&gt;&gt;Profil: POST /api/notifications/internal [x-internal-secret]
+    Note over Profil: Vérifie x-internal-secret
+    Profil-&gt;&gt;MongoPr: INSERT notification (type: 'mention', recipient: arthur, from: sender)
+    Profil--&gt;&gt;Post: 201
 
-        subgraph "Seed"
-            SEED["breezy-seed&lt;br/&gt;(usage unique)"]
-        end
-    end
-
-    subgraph "Volumes persistants"
-        V_PG_AUTH[("pg_auth_data")]
-        V_PG_USERS[("pg_users_data")]
-        V_MONGO_POSTS[("mongo_posts_data")]
-        V_MONGO_PROFILS[("mongo_profils_data")]
-        V_UPLOADS[("uploads_data&lt;br/&gt;→ /app/uploads")]
-    end
-
-    USER --&gt;|"HTTP :80"| NGINX
-    NGINX --&gt;|"/ → :3000"| FRONTEND
-    NGINX --&gt;|"/api/* → :3000"| GATEWAY
-
-    GATEWAY --&gt;|"/api/auth/*"| AUTH
-    GATEWAY --&gt;|"/api/users/*"| USER_SVC
-    GATEWAY --&gt;|"/api/posts/*"| POST
-    GATEWAY --&gt;|"/api/profils/*"| PROFIL
-    GATEWAY --&gt;|"/api/upload*"| POST
-    GATEWAY --&gt;|"/api/notifications/*"| PROFIL
-
-    AUTH --&gt; PG_AUTH
-    USER_SVC --&gt; PG_USERS
-    POST --&gt; MONGO_POSTS
-    PROFIL --&gt; MONGO_PROFILS
-
-    V_PG_AUTH --&gt; PG_AUTH
-    V_PG_USERS --&gt; PG_USERS
-    V_MONGO_POSTS --&gt; MONGO_POSTS
-    V_MONGO_PROFILS --&gt; MONGO_PROFILS
-    V_UPLOADS --&gt; POST
-
-    AUTH -.-&gt;|"POST /users/sync&lt;br/&gt;(inscription)"| USER_SVC
-    USER_SVC -.-&gt;|"POST /auth/internal/ban&lt;br/&gt;(bannissement)"| AUTH
-    POST -.-&gt;|"GET /users/:id/following&lt;br/&gt;(feed)"| USER_SVC
-    POST -.-&gt;|"GET /users/by-username/:username&lt;br/&gt;(mentions)"| USER_SVC
-    POST -.-&gt;|"POST /notifications/internal&lt;br/&gt;(like, mention)"| PROFIL
-    USER_SVC -.-&gt;|"POST /notifications/internal&lt;br/&gt;(follow)"| PROFIL
-
-    SEED --&gt;|"POST /auth/register + /api/posts + /api/users/…"| GATEWAY
-    SEED --&gt; PG_AUTH</code></pre>
+    Post--&gt;&gt;Gateway: 201 {post object}
+    Gateway--&gt;&gt;Client: 201</code></pre>
+<p><strong>Caractéristiques :</strong>
+- La détection des mentions se fait par regex <code>@([a-zA-Z0-9_]+)</code> sur le contenu
+- Chaque mention résout le username via User Service
+- Le timeout de l'appel mention est de 1 seconde
+- Les échecs sont silencieusement ignorés (le post est publié même si les notifications échouent)
+- Les auto-mentions sont ignorées (on ne se notifie pas soi-même)</p>
 <hr />
-<h2 id="repartition-des-responsabilites">Répartition des responsabilités</h2>
-<h3 id="nginx-proxy-layer">Nginx (Proxy Layer)</h3>
-<ul>
-<li>Reverse proxy exposant le port <code>80</code></li>
-<li>Routage : <code>/api/*</code> vers la Gateway (<code>:3000</code>), <code>/*</code> vers le Frontend (<code>:3000</code>)</li>
-<li>Rate limiting : 30 req/min global, 5 req/min sur <code>/api/auth/</code></li>
-<li>Taille max des requêtes : 5 Mo</li>
-</ul>
-<h3 id="api-gateway-express-4192">API Gateway (Express 4.19.2)</h3>
-<ul>
-<li>Point d'entrée unique pour toutes les requêtes API</li>
-<li>Vérification des tokens JWT (Authorization Bearer)</li>
-<li>Injection des headers d'identité (<code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code>)</li>
-<li>Rate limiting : 500 req/15min global, 20 req/15min sur login/register</li>
-<li>Proxy vers les services backend</li>
-</ul>
-<h3 id="auth-service-express-521-postgresql">Auth Service (Express 5.2.1 → PostgreSQL)</h3>
-<ul>
-<li>Inscription et connexion des utilisateurs</li>
-<li>Génération et vérification des tokens JWT</li>
-<li>Gestion des refresh tokens (rotation, détection de vol)</li>
-<li>Changement de mot de passe</li>
-<li>Endpoint interne de bannissement</li>
-<li>Synchronisation des comptes vers le User Service</li>
-</ul>
-<h3 id="user-service-express-521-postgresql">User Service (Express 5.2.1 → PostgreSQL)</h3>
-<ul>
-<li>CRUD des profils utilisateur (modèle <code>UserProfile</code>)</li>
-<li>Gestion des abonnements (follow / unfollow)</li>
-<li>Recherche d'utilisateurs</li>
-<li>Bannissement (propagation vers Auth Service)</li>
-<li>Service de résolution username → ID (pour les mentions @)</li>
-</ul>
-<h3 id="post-service-express-521-mongodb">Post Service (Express 5.2.1 → MongoDB)</h3>
-<ul>
-<li>CRUD des posts (280 caractères max, tags, media)</li>
-<li>Gestion des likes (contrainte unique)</li>
-<li>Gestion des commentaires et réponses (1 niveau de profondeur max)</li>
-<li>Upload d'images (multer, 5 Mo max, format image uniquement)</li>
-<li>Gestion des reposts (toggle)</li>
-<li>Recherche par tags et contenu</li>
-<li>Signalement de posts</li>
-<li>Détection et notification des mentions @</li>
-</ul>
-<h3 id="profil-service-express-521-mongodb">Profil Service (Express 5.2.1 → MongoDB)</h3>
-<ul>
-<li>Gestion des profils utilisateur (display_name, bio, avatar, bannière, localisation)</li>
-<li>Gestion des notifications (like, follow, mention, comment, reply)</li>
-<li>Endpoint interne de création de notifications</li>
-</ul>
+<h2 id="5-like-avec-notification">5. Like avec notification</h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Client as Navigateur
+    participant Gateway as API Gateway
+    participant Post as Post Service (:3003)
+    participant Profil as Profil Service (:3004)
+    participant MongoP as MongoDB (posts)
+
+    Client-&gt;&gt;Gateway: POST /api/posts/:id/like
+    Note over Client: Authorization: Bearer &lt;JWT&gt;
+
+    Gateway-&gt;&gt;Gateway: Vérifie JWT, injecte headers
+    Gateway-&gt;&gt;Post: POST /api/posts/:id/like [x-user-id, x-user-username]
+
+    Post-&gt;&gt;MongoP: LIKE.find({post_id, user_id}) → vérification unique
+    Post-&gt;&gt;MongoP: INSERT like (post_id, user_id)
+    Post-&gt;&gt;MongoP: UPDATE posts SET likes_count++ WHERE _id = ?
+
+    Note over Post: Notification (non bloquante, timeout 1s)
+    Post-&gt;&gt;Profil: POST /api/notifications/internal [x-internal-secret]
+    Note over Profil: Vérifie x-internal-secret
+    Profil-&gt;&gt;MongoP: INSERT notification (type: 'like', recipient: post.user_id, from: liker)
+    Profil--&gt;&gt;Post: 201
+
+    Post--&gt;&gt;Gateway: 200 {likes_count: N}
+    Gateway--&gt;&gt;Client: 200</code></pre>
+<p><strong>En cas de doublon :</strong>
+- MongoDB renvoie une erreur <code>11000</code> (index unique <code>{post_id, user_id}</code>)
+- Le service retourne <code>409 ALREADY_LIKED</code></p>
 <hr />
-<h2 id="flux-dappels-inter-services">Flux d'appels inter-services</h2>
-<p>Tous les appels inter-services sont <strong>non bloquants</strong> (timeout court, échec ignoré) et protégés par le header <code>x-internal-secret</code> :</p>
-<ol>
-<li><strong>Inscription</strong> : Auth Service envoie <code>POST /users/sync</code> au User Service (création du profil)</li>
-<li><strong>Bannissement</strong> : User Service envoie <code>POST /auth/internal/ban</code> à Auth Service</li>
-<li><strong>Feed</strong> : Post Service appelle <code>GET /users/:id/following</code> sur User Service</li>
-<li><strong>Mentions</strong> : Post Service appelle <code>GET /users/by-username/:username</code> sur User Service</li>
-<li><strong>Notifications like</strong> : Post Service envoie <code>POST /notifications/internal</code> au Profil Service</li>
-<li><strong>Notifications follow</strong> : User Service envoie <code>POST /notifications/internal</code> au Profil Service</li>
-</ol>
+<h2 id="6-follow-avec-notification">6. Follow avec notification</h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Client as Navigateur
+    participant Gateway as API Gateway
+    participant UserSvc as User Service (:3002)
+    participant Profil as Profil Service (:3004)
+    participant PGuser as PostgreSQL (users)
+    participant MongoPr as MongoDB (profils)
+
+    Client-&gt;&gt;Gateway: POST /api/users/:id/follow
+    Note over Client: Authorization: Bearer &lt;JWT&gt;
+
+    Gateway-&gt;&gt;Gateway: Vérifie JWT, injecte x-user-id, x-user-role
+    Gateway-&gt;&gt;UserSvc: POST /users/:id/follow [x-user-id]
+
+    UserSvc-&gt;&gt;UserSvc: Vérifie que :id != x-user-id (pas d'auto-follow)
+    UserSvc-&gt;&gt;PGuser: BEGIN TRANSACTION
+    UserSvc-&gt;&gt;PGuser: Follow.findOrCreate({follower_id, followed_id})
+    UserSvc-&gt;&gt;PGuser: UPDATE user_profiles SET following_count++ WHERE id = follower_id
+    UserSvc-&gt;&gt;PGuser: UPDATE user_profiles SET followers_count++ WHERE id = followed_id
+    UserSvc-&gt;&gt;PGuser: COMMIT
+
+    Note over UserSvc: Notification (non bloquante, timeout 1s)
+    UserSvc-&gt;&gt;Profil: POST /api/notifications/internal [x-internal-secret]
+    Note over Profil: Vérifie x-internal-secret
+    Profil-&gt;&gt;MongoPr: INSERT notification (type: 'follow', recipient: followed, from: follower)
+    Profil--&gt;&gt;UserSvc: 201
+
+    UserSvc--&gt;&gt;Gateway: 200 {message: "Vous suivez maintenant @username."}
+    Gateway--&gt;&gt;Client: 200</code></pre>
+<p><strong>Cas particuliers :</strong>
+- Auto-follow : <code>400 CANNOT_SELF_FOLLOW</code>
+- Double follow : <code>409 ALREADY_FOLLOWING</code> (vérifié par la transaction + findOrCreate)
+- Cible inexistante : <code>404 USER_NOT_FOUND</code>
+- Unfollow : <code>DELETE /users/:id/follow</code> → <code>204</code> (succès) ou <code>404 NOT_FOLLOWING</code></p>
 <hr />
-<h2 id="healthchecks">Healthchecks</h2>
-<p>Chaque base de données dispose d'un healthcheck configuré dans docker-compose :</p>
-<ul>
-<li><strong>PostgreSQL</strong> : <code>pg_isready -U &lt;user&gt; -d &lt;db&gt;</code> (interval 5s, timeout 5s, retries 10)</li>
-<li><strong>MongoDB</strong> : <code>mongosh -u &lt;user&gt; -p &lt;password&gt; --authenticationDatabase admin --eval "db.adminCommand('ping')"</code> (interval 5s, timeout 5s, retries 10)</li>
-</ul>
-<p>Les services backend attendent que leur base de données soit healthy avant de démarrer (<code>condition: service_healthy</code>).</p>
+<h2 id="7-rafraichissement-de-token-refresh">7. Rafraîchissement de token (refresh)</h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Client as Navigateur
+    participant Gateway as API Gateway
+    participant Auth as Auth Service
+    participant PGauth as PostgreSQL (auth)
+
+    Note over Client: L'access token a expiré (401)
+    Client-&gt;&gt;Gateway: POST /api/auth/refresh (Cookie: refreshToken=xxx)
+
+    Gateway-&gt;&gt;Auth: POST /auth/refresh
+
+    Auth-&gt;&gt;Auth: hashToken(refreshToken) → SHA-256
+    Auth-&gt;&gt;PGauth: SELECT * FROM refresh_tokens WHERE token_hash = ?
+
+    alt Token introuvable
+        Auth--&gt;&gt;Client: 401 INVALID_REFRESH_TOKEN + Clear-Cookie
+    else Token déjà révoqué (vol)
+        Auth-&gt;&gt;PGauth: UPDATE refresh_tokens SET is_revoked=true WHERE user_id = ?
+        Auth--&gt;&gt;Client: 401 INVALID_REFRESH_TOKEN + Clear-Cookie
+    else Token expiré
+        Auth-&gt;&gt;PGauth: UPDATE refresh_tokens SET is_revoked=true WHERE id = ?
+        Auth--&gt;&gt;Client: 401 INVALID_REFRESH_TOKEN + Clear-Cookie
+    else Utilisateur banni/inactif
+        Auth-&gt;&gt;PGauth: UPDATE refresh_tokens SET is_revoked=true WHERE id = ?
+        Auth--&gt;&gt;Client: 401 INVALID_REFRESH_TOKEN + Clear-Cookie
+    else Succès
+        Note over Auth: Rotation: ancien token révoqué
+        Auth-&gt;&gt;PGauth: UPDATE refresh_tokens SET is_revoked=true WHERE id = ?
+        Note over Auth: Nouveau refresh token généré
+        Auth-&gt;&gt;Auth: crypto.randomBytes(64).toString('hex')
+        Auth-&gt;&gt;PGauth: INSERT refresh_tokens (token_hash, user_id, expires_at)
+        Note over Auth: Nouvel access token généré
+        Auth-&gt;&gt;Auth: jwt.sign({sub, username, role}, JWT_SECRET, {expiresIn: '15m'})
+        Auth--&gt;&gt;Client: 200 {token: nouveau_JWT} + Set-Cookie: nouveau_refreshToken
+    end</code></pre>
+<hr />
+<h2 id="8-refresh-token-cote-frontend">8. Refresh token côté frontend</h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Client as Application React
+    participant API as Axios Instance
+
+    Client-&gt;&gt;API: Requête avec JWT
+    API-&gt;&gt;API: Intercepte 401
+
+    Note over Client,API: Vérifie si la requête était /auth/login ou /auth/refresh
+    alt Login 401
+        API--&gt;&gt;Client: Rejette (le composant gère)
+    else Refresh 401
+        API-&gt;&gt;API: Clear token + redirige /signin
+    else Autre 401
+        Note over API: Marque _retry=true
+        API-&gt;&gt;API: POST /auth/refresh (avec cookie)
+        alt Refresh réussi
+            API-&gt;&gt;API: Stocke nouveau JWT
+            API-&gt;&gt;API: Rejoue la requête originale avec nouveau JWT
+            API--&gt;&gt;Client: Résultat de la requête originale
+        else Refresh échoué
+            API-&gt;&gt;API: Clear token + redirige /signin
+        end
+    end</code></pre>
+<p>Le mécanisme implémente un <code>failedQueue</code> : si plusieurs requêtes échouent simultanément avec 401, une seule tentative de refresh est effectuée, et les autres requêtes sont mises en attente puis rejouées avec le nouveau token.</p>
 
 
 

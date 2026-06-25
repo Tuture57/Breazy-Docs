@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../auth-service/">
+        <link rel="prev" href="../../architecture/docker-deploiement/">
       
       
-        <link rel="next" href="../post-service/">
+        <link rel="next" href="../auth-service/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>User Service - Breezy — Documentation</title>
+        <title>API Gateway - Breezy — Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#user-service" class="md-skip">
+        <a href="#api-gateway" class="md-skip">
           Aller au contenu
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              User Service
+              API Gateway
             
           </span>
         </div>
@@ -473,10 +473,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../gateway/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Gateway
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -492,6 +519,142 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#stack-technique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stack technique
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#role" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rôle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#routes-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Routes proxy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Routes proxy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#detail-des-headers-injectes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Détail des headers injectés
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#middleware-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Middleware JWT
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rate-limiting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rate Limiting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#health-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Health Check
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gestion-des-erreurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestion des erreurs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rewriting-de-chemins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rewriting de chemins
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -529,37 +692,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    User Service
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../user-service/" class="md-nav__link">
         
   
   
@@ -575,253 +711,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#stack" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Stack
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#modeles" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Modeles
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Modeles">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#userprofile-user_profiles-table" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        UserProfile (user_profiles table)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#follow-follows-table" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Follow (follows table)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#routes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Routes
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Routes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#post-userssync" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        POST /users/sync
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-userssearch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /users/search
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-usersby-usernameusername" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /users/by-username/:username
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-usersid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /users/:id
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-usersidfollowers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /users/:id/followers
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-usersidfollowing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /users/:id/following
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post-usersidfollow" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        POST /users/:id/follow
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#delete-usersidfollow" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DELETE /users/:id/follow
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#put-usersidban" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PUT /users/:id/ban
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-health" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /health
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#middlewares" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Middlewares
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Middlewares">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#identitymiddlewarejs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        identity.middleware.js
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#variables-denvironnement" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Variables d'environnement
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#notes-dimplementation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Notes d'implementation
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1466,10 +1355,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#stack" class="md-nav__link">
+  <a href="#stack-technique" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stack
+        Stack technique
       
     </span>
   </a>
@@ -1477,33 +1366,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#modeles" class="md-nav__link">
+  <a href="#role" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Modeles
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Modeles">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#userprofile-user_profiles-table" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        UserProfile (user_profiles table)
+        Rôle
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#follow-follows-table" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#routes-proxy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Follow (follows table)
+        Routes proxy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Routes proxy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#detail-des-headers-injectes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Détail des headers injectés
       
     </span>
   </a>
@@ -1516,165 +1405,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#routes" class="md-nav__link">
+  <a href="#middleware-jwt" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Routes
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Routes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#post-userssync" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        POST /users/sync
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-userssearch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /users/search
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-usersby-usernameusername" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /users/by-username/:username
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-usersid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /users/:id
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-usersidfollowers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /users/:id/followers
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-usersidfollowing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /users/:id/following
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post-usersidfollow" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        POST /users/:id/follow
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#delete-usersidfollow" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DELETE /users/:id/follow
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#put-usersidban" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PUT /users/:id/ban
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-health" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /health
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#middlewares" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Middlewares
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Middlewares">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#identitymiddlewarejs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        identity.middleware.js
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#variables-denvironnement" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Variables d'environnement
+        Middleware JWT
       
     </span>
   </a>
@@ -1682,10 +1416,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes-dimplementation" class="md-nav__link">
+  <a href="#rate-limiting" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notes d'implementation
+        Rate Limiting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#health-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Health Check
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gestion-des-erreurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestion des erreurs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rewriting-de-chemins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rewriting de chemins
       
     </span>
   </a>
@@ -1709,10 +1487,8 @@
 
 
 
-<h1 id="user-service">User Service</h1>
-<p>Microservice de gestion des profils utilisateur et des relations (follow) pour Breezy.</p>
-<hr />
-<h2 id="stack">Stack</h2>
+<h1 id="api-gateway">API Gateway</h1>
+<h2 id="stack-technique">Stack technique</h2>
 <table>
 <thead>
 <tr>
@@ -1727,594 +1503,340 @@
 </tr>
 <tr>
 <td>Express</td>
-<td>5.2.1</td>
+<td>4.19.2</td>
 </tr>
 <tr>
-<td>Sequelize</td>
-<td>6.37.8</td>
+<td>http-proxy-middleware</td>
+<td>3.x</td>
 </tr>
 <tr>
-<td>PostgreSQL</td>
-<td>15</td>
+<td>jsonwebtoken</td>
+<td>9.x</td>
 </tr>
 <tr>
-<td>axios</td>
-<td>1.18.0</td>
+<td>express-rate-limit</td>
+<td>7.2.0</td>
 </tr>
 <tr>
-<td>pg</td>
-<td>8.21.0</td>
+<td>dotenv</td>
+<td>16.4.5</td>
+</tr>
+<tr>
+<td>cors</td>
+<td>2.8.5</td>
+</tr>
+<tr>
+<td>nodemon (dev)</td>
+<td>3.1.0</td>
 </tr>
 </tbody>
 </table>
+<ul>
+<li><strong>Port interne</strong> : 3000</li>
+<li><strong>Dossier</strong> : <code>breezy-infra/gateway/</code></li>
+</ul>
 <hr />
-<h2 id="modeles">Modeles</h2>
-<h3 id="userprofile-user_profiles-table">UserProfile (<code>user_profiles</code> table)</h3>
+<h2 id="role">Rôle</h2>
+<p>L'API Gateway est le point d'entrée unique pour toutes les requêtes API. Elle assure :</p>
+<ol>
+<li><strong>Vérification des tokens JWT</strong> (middleware <code>auth.js</code>)</li>
+<li><strong>Injection des headers d'identité</strong> dans les requêtes proxyfiées</li>
+<li><strong>Rate limiting</strong> global et spécifique à l'auth</li>
+<li><strong>Proxy</strong> vers les 4 services backend</li>
+<li><strong>Health check</strong> pour la supervision</li>
+</ol>
+<hr />
+<h2 id="routes-proxy">Routes proxy</h2>
 <table>
 <thead>
 <tr>
-<th>Champ</th>
-<th>Type</th>
-<th>Contraintes</th>
+<th>Chemin client</th>
+<th>JWT requis</th>
+<th>Cible</th>
+<th>Headers injectés</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>id</code></td>
-<td>UUID</td>
-<td>PK (impose par auth-service, PAS auto-genere)</td>
+<td><code>/api/auth/me</code></td>
+<td>Oui</td>
+<td><code>AUTH_SERVICE_URL</code></td>
+<td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
 </tr>
 <tr>
-<td><code>username</code></td>
-<td>STRING(50)</td>
-<td>NOT NULL</td>
+<td><code>/api/auth/change-password</code></td>
+<td>Oui</td>
+<td><code>AUTH_SERVICE_URL</code></td>
+<td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
 </tr>
 <tr>
-<td><code>role</code></td>
-<td>ENUM('user','moderator','admin')</td>
-<td>DEFAULT 'user'</td>
+<td><code>/api/auth/*</code> (login, register, refresh, logout)</td>
+<td>Non</td>
+<td><code>AUTH_SERVICE_URL</code></td>
+<td>Aucun</td>
 </tr>
 <tr>
-<td><code>is_active</code></td>
-<td>BOOLEAN</td>
-<td>DEFAULT true</td>
+<td><code>/api/users/*</code></td>
+<td>Oui</td>
+<td><code>USER_SERVICE_URL</code></td>
+<td><code>x-user-id</code>, <code>x-user-role</code></td>
 </tr>
 <tr>
-<td><code>is_banned</code></td>
-<td>BOOLEAN</td>
-<td>DEFAULT false</td>
+<td><code>/api/posts/*</code></td>
+<td>Oui</td>
+<td><code>POST_SERVICE_URL</code></td>
+<td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
 </tr>
 <tr>
-<td><code>followers_count</code></td>
-<td>INTEGER</td>
-<td>DEFAULT 0 (mises a jour atomiques via transactions)</td>
+<td><code>/api/upload</code></td>
+<td>Oui</td>
+<td><code>POST_SERVICE_URL</code></td>
+<td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
 </tr>
 <tr>
-<td><code>following_count</code></td>
-<td>INTEGER</td>
-<td>DEFAULT 0 (mises a jour atomiques via transactions)</td>
+<td><code>/api/uploads/*</code> (fichiers statiques)</td>
+<td>Non</td>
+<td><code>POST_SERVICE_URL</code></td>
+<td>Aucun</td>
+</tr>
+<tr>
+<td><code>/api/profils/*</code></td>
+<td>Oui</td>
+<td><code>PROFIL_SERVICE_URL</code></td>
+<td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
+</tr>
+<tr>
+<td><code>/api/notifications/*</code></td>
+<td>Oui</td>
+<td><code>PROFIL_SERVICE_URL</code></td>
+<td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
+</tr>
+<tr>
+<td><code>/api/health</code></td>
+<td>Non</td>
+<td>Local (Gateway)</td>
+<td>Aucun</td>
 </tr>
 </tbody>
 </table>
-<h3 id="follow-follows-table">Follow (<code>follows</code> table)</h3>
+<h3 id="detail-des-headers-injectes">Détail des headers injectés</h3>
+<p>La Gateway injecte les headers suivants après vérification du JWT :</p>
+<div class="highlight"><pre><span></span><code><span class="nx">proxyReq</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;x-user-id&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">sub</span><span class="p">);</span>
+<span class="nx">proxyReq</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;x-user-role&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">role</span><span class="p">);</span>
+<span class="nx">proxyReq</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;x-user-username&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">username</span><span class="p">);</span><span class="w">  </span><span class="c1">// Sauf pour /api/users</span>
+</code></pre></div>
+<p><strong>IMPORTANT</strong> : Les routes <code>/api/users/*</code> ne reçoivent <strong>pas</strong> le header <code>x-user-username</code>. Elles reçoivent uniquement <code>x-user-id</code> et <code>x-user-role</code>.</p>
+<p>Les routes auth publiques (login, register, refresh, logout) ne reçoivent <strong>aucun</strong> header d'identité.</p>
+<hr />
+<h2 id="middleware-jwt">Middleware JWT</h2>
+<p>Fichier : <code>gateway/src/middleware/auth.js</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">verifyToken</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;../utils/jwt.utils.js&quot;</span><span class="p">);</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">authenticate</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">authHeader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;authorization&#39;</span><span class="p">];</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">authHeader</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;No token provided&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">authHeader</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mf">1</span><span class="p">];</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">decoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">verifyToken</span><span class="p">(</span><span class="nx">token</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">decoded</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Invalid or expired token&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">decoded</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">next</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Extrait le token du header <code>Authorization: Bearer &lt;token&gt;</code></li>
+<li>Appelle <code>jwt.verify(token, JWT_SECRET)</code> </li>
+<li>Retourne <code>401</code> si le token est manquant ou invalide</li>
+<li>Stocke le payload décodé dans <code>req.user</code> (contient <code>sub</code>, <code>username</code>, <code>role</code>)</li>
+</ul>
+<hr />
+<h2 id="rate-limiting">Rate Limiting</h2>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">isTest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;test&#39;</span><span class="p">;</span>
+
+<span class="c1">// Global : 500 requêtes / 15 minutes par IP</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">globalLimiter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rateLimit</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">windowMs</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="nx">isTest</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">999999</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">500</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Trop de requêtes, réessaie dans 15 minutes&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="p">});</span>
+
+<span class="c1">// Auth : 20 tentatives / 15 minutes sur login et register</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">authLimiter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rateLimit</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">windowMs</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="nx">isTest</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">999999</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Trop de tentatives de connexion, réessaie dans 15 minutes&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="p">});</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">isTest</span><span class="p">)</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">globalLimiter</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">isTest</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/api/auth/login&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">authLimiter</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/api/auth/register&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">authLimiter</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
-<th>Champ</th>
-<th>Type</th>
-<th>Contraintes</th>
+<th>Limiteur</th>
+<th>Fenêtre</th>
+<th>Maximum</th>
+<th>Route</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>follower_id</code></td>
-<td>UUID</td>
-<td>NOT NULL</td>
+<td>Global</td>
+<td>15 min</td>
+<td>500 req</td>
+<td>Toutes les routes</td>
 </tr>
 <tr>
-<td><code>followed_id</code></td>
-<td>UUID</td>
-<td>NOT NULL</td>
+<td>Auth</td>
+<td>15 min</td>
+<td>20 req</td>
+<td><code>/api/auth/login</code>, <code>/api/auth/register</code></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Index :</strong> Index unique sur <code>(follower_id, followed_id)</code>.</p>
-<p><strong>Particularite :</strong> Pas de colonne <code>updatedAt</code>. La table est creee avec <code>timestamps: { updatedAt: false }</code> dans la definition Sequelize.</p>
+<p>Les deux limiteurs sont <strong>désactivés</strong> lorsque <code>NODE_ENV=test</code> (valeur par défaut dans docker-compose).</p>
 <hr />
-<h2 id="routes">Routes</h2>
-<h3 id="post-userssync">POST /users/sync</h3>
-<p>Cree ou met a jour un profil utilisateur (appele par auth-service apres inscription).</p>
-<p><strong>Middleware :</strong> aucun (securise par <code>INTERNAL_SECRET</code>)</p>
-<p><strong>Headers requis :</strong> <code>x-internal-secret</code></p>
-<p><strong>Corps de la requete (body JSON) :</strong></p>
-<table>
-<thead>
-<tr>
-<th>Champ</th>
-<th>Type</th>
-<th>Requis</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>id</code></td>
-<td>string (UUID)</td>
-<td><strong>Oui</strong></td>
-</tr>
-<tr>
-<td><code>username</code></td>
-<td>string</td>
-<td><strong>Oui</strong></td>
-</tr>
-<tr>
-<td><code>email</code></td>
-<td>string</td>
-<td>Non (utilise pour creation uniquement)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>201 Created
-{
-  &quot;message&quot;: &quot;User profile created&quot;,
-  &quot;profile&quot;: {
-    &quot;id&quot;: &quot;uuid&quot;,
-    &quot;username&quot;: &quot;johndoe&quot;,
-    &quot;role&quot;: &quot;user&quot;,
-    &quot;is_active&quot;: true,
-    &quot;is_banned&quot;: false,
-    &quot;followers_count&quot;: 0,
-    &quot;following_count&quot;: 0
-  }
-}
-
-200 OK
-{
-  &quot;message&quot;: &quot;User profile synced&quot;,
-  &quot;profile&quot;: { ... }
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>403 Forbidden
-{
-  &quot;error&quot;: &quot;FORBIDDEN&quot;
-}
-
-500 Internal Server Error (si email est absent a la creation)
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Verifier le header <code>x-internal-secret</code>.
-2. Avec <code>findOrCreate</code> sur <code>UserProfile</code>, cle <code>id</code> : si trouve -&gt; mettre a jour <code>username</code> ; si cree -&gt; utiliser le flag <code>email</code> (present uniquement a la creation).
-3. Retourner le profil.</p>
-<hr />
-<h3 id="get-userssearch">GET /users/search</h3>
-<p>Recherche d'utilisateurs par username.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Parametres de requete (query string) :</strong></p>
-<table>
-<thead>
-<tr>
-<th>Champ</th>
-<th>Type</th>
-<th>Requis</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>q</code></td>
-<td>string</td>
-<td><strong>Oui</strong> (terme de recherche)</td>
-</tr>
-<tr>
-<td><code>page</code></td>
-<td>integer</td>
-<td>Non (defaut 1)</td>
-</tr>
-<tr>
-<td><code>limit</code></td>
-<td>integer</td>
-<td>Non (defaut 20)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;users&quot;: [
-    {
-      &quot;id&quot;: &quot;uuid&quot;,
-      &quot;username&quot;: &quot;johndoe&quot;,
-      &quot;display_name&quot;: &quot;John Doe&quot;,
-      &quot;avatar_url&quot;: &quot;https://...&quot;,
-      &quot;bio&quot;: &quot;Bio text...&quot;,
-      &quot;followers_count&quot;: 42
-    }
-  ],
-  &quot;total&quot;: 5,
-  &quot;page&quot;: 1,
-  &quot;limit&quot;: 20
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>401 Unauthorized
-{
-  &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Utiliser <code>Op.iLike</code> sur <code>username</code> pour une recherche partielle et insensible a la casse.
-2. Exclure les utilisateurs <code>is_banned = true</code> ou <code>is_active = false</code>.
-3. Trier par <code>followers_count DESC</code>.
-4. Paginer avec <code>offset</code> et <code>limit</code>.</p>
-<hr />
-<h3 id="get-usersby-usernameusername">GET /users/by-username/:username</h3>
-<p>Recuperer un profil public par son username.</p>
-<p><strong>Middleware :</strong> aucun (ROUTE PUBLIQUE)</p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;id&quot;: &quot;uuid&quot;,
-  &quot;username&quot;: &quot;johndoe&quot;,
-  &quot;display_name&quot;: &quot;John Doe&quot;,
-  &quot;avatar_url&quot;: &quot;https://...&quot;,
-  &quot;bio&quot;: &quot;...&quot;,
-  &quot;followers_count&quot;: 42,
-  &quot;following_count&quot;: 10
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>404 Not Found
-{
-  &quot;error&quot;: &quot;USER_NOT_FOUND&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Chercher par <code>username</code> avec <code>UserProfile.findOne</code>.
-2. Utilisee par le post-service pour la resolution des @mentions (ex: <code>@johndoe</code> -&gt; resoudre l'UUID).
-3. Aucune authentification requise.</p>
-<hr />
-<h3 id="get-usersid">GET /users/:id</h3>
-<p>Recuperer le profil complet d'un utilisateur.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;id&quot;: &quot;uuid&quot;,
-  &quot;username&quot;: &quot;johndoe&quot;,
-  &quot;display_name&quot;: &quot;John Doe&quot;,
-  &quot;avatar_url&quot;: &quot;https://...&quot;,
-  &quot;banner_url&quot;: &quot;https://...&quot;,
-  &quot;bio&quot;: &quot;...&quot;,
-  &quot;location&quot;: &quot;Paris&quot;,
-  &quot;followers_count&quot;: 42,
-  &quot;following_count&quot;: 10,
-  &quot;role&quot;: &quot;user&quot;,
-  &quot;is_active&quot;: true,
-  &quot;is_banned&quot;: false,
-  &quot;is_following&quot;: true
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>401 Unauthorized
-{
-  &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
-}
-
-404 Not Found
-{
-  &quot;error&quot;: &quot;USER_NOT_FOUND&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Recuperer l'utilisateur par son <code>id</code>.
-2. Verifier si l'utilisateur authentifie (<code>x-user-id</code>) suit cet utilisateur : requete sur la table <code>Follows</code>.
-3. Ajouter le champ <code>is_following</code> (boolean).</p>
-<hr />
-<h3 id="get-usersidfollowers">GET /users/:id/followers</h3>
-<p>Liste des abonnes (followers) d'un utilisateur.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Parametres de requete (query string) :</strong></p>
-<table>
-<thead>
-<tr>
-<th>Champ</th>
-<th>Type</th>
-<th>Requis</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>page</code></td>
-<td>integer</td>
-<td>Non (defaut 1)</td>
-</tr>
-<tr>
-<td><code>limit</code></td>
-<td>integer</td>
-<td>Non (defaut 20)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;followers&quot;: [...],
-  &quot;total&quot;: 42,
-  &quot;page&quot;: 1,
-  &quot;limit&quot;: 20
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>401 Unauthorized
-{
-  &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Requete <code>Follow.findAll({ where: { followed_id: id } })</code> avec <code>include: UserProfile</code> (alias follower).
-2. Pagination.</p>
-<hr />
-<h3 id="get-usersidfollowing">GET /users/:id/following</h3>
-<p>Liste des abonnements (following) d'un utilisateur.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Parametres de requete (query string) :</strong></p>
-<table>
-<thead>
-<tr>
-<th>Champ</th>
-<th>Type</th>
-<th>Requis</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>page</code></td>
-<td>integer</td>
-<td>Non (defaut 1)</td>
-</tr>
-<tr>
-<td><code>limit</code></td>
-<td>integer</td>
-<td>Non (defaut 20)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;data&quot;: [
-    {
-      &quot;id&quot;: &quot;uuid&quot;,
-      &quot;username&quot;: &quot;janedoe&quot;,
-      &quot;display_name&quot;: &quot;Jane Doe&quot;,
-      &quot;avatar_url&quot;: &quot;...&quot;,
-      &quot;bio&quot;: &quot;...&quot;
-    }
-  ],
-  &quot;ids&quot;: [&quot;uuid1&quot;, &quot;uuid2&quot;, &quot;uuid3&quot;],
-  &quot;total&quot;: 10,
-  &quot;page&quot;: 1,
-  &quot;limit&quot;: 20
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>401 Unauthorized
-{
-  &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Requete <code>Follow.findAll({ where: { follower_id: id } })</code> avec <code>include: UserProfile</code> (alias followed).
-2. Retourne DEUX formats dans la meme reponse :
-   - <code>data</code> : tableau des profils complets.
-   - <code>ids</code> : tableau plat des UUIDs uniquement.
-3. Le format <code>ids</code> est utilise par le post-service pour construire le feed.</p>
-<hr />
-<h3 id="post-usersidfollow">POST /users/:id/follow</h3>
-<p>Suivre un utilisateur.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;message&quot;: &quot;Followed successfully&quot;,
-  &quot;followers_count&quot;: 43
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>400 Bad Request
-{
-  &quot;error&quot;: &quot;CANNOT_FOLLOW_SELF&quot;
-}
-
-409 Conflict
-{
-  &quot;error&quot;: &quot;ALREADY_FOLLOWING&quot;
-}
-
-404 Not Found
-{
-  &quot;error&quot;: &quot;USER_NOT_FOUND&quot;
-}
-
-401 Unauthorized
-{
-  &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Verifier que <code>x-user-id</code> != <code>id</code> (ne pas se follow soi-meme).
-2. Verifier que la cible existe.
-3. Utiliser une <strong>transaction Sequelize</strong> :
-   - Creer l'entree dans <code>Follows</code>.
-   - Incrementer <code>followers_count</code> de la cible (<code>UserProfile.increment</code>).
-   - Incrementer <code>following_count</code> de l'utilisateur courant.
-4. Envoyer une notification au profil-service.</p>
-<hr />
-<h3 id="delete-usersidfollow">DELETE /users/:id/follow</h3>
-<p>Ne plus suivre un utilisateur.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;message&quot;: &quot;Unfollowed successfully&quot;,
-  &quot;followers_count&quot;: 42
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>400 Bad Request
-{
-  &quot;error&quot;: &quot;CANNOT_UNFOLLOW_SELF&quot;
-}
-
-400 Bad Request
-{
-  &quot;error&quot;: &quot;NOT_FOLLOWING&quot;
-}
-
-401 Unauthorized
-{
-  &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
-}
-
-404 Not Found
-{
-  &quot;error&quot;: &quot;USER_NOT_FOUND&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Verifier que <code>x-user-id</code> != <code>id</code>.
-2. Verifier que la cible existe.
-3. Verifier que la relation de follow existe.
-4. Utiliser une <strong>transaction Sequelize</strong> :
-   - Supprimer l'entree de <code>Follows</code>.
-   - Decrementer <code>followers_count</code> de la cible.
-   - Decrementer <code>following_count</code> de l'utilisateur courant.</p>
-<hr />
-<h3 id="put-usersidban">PUT /users/:id/ban</h3>
-<p>Bannir un utilisateur.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Corps de la requete (body JSON) :</strong></p>
-<table>
-<thead>
-<tr>
-<th>Champ</th>
-<th>Type</th>
-<th>Requis</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>ban</code></td>
-<td>boolean</td>
-<td><strong>Oui</strong></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;message&quot;: &quot;User banned successfully&quot;,
-  &quot;is_banned&quot;: true
-}
-
-200 OK
-{
-  &quot;message&quot;: &quot;User unbanned successfully&quot;,
-  &quot;is_banned&quot;: false
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>401 Unauthorized
-{
-  &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
-}
-
-403 Forbidden
-{
-  &quot;error&quot;: &quot;INSUFFICIENT_PERMISSIONS&quot;
-}
-
-404 Not Found
-{
-  &quot;error&quot;: &quot;USER_NOT_FOUND&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Verifier que l'utilisateur authentifie a le role <code>moderator</code> ou <code>admin</code>.
-2. Si le role est insuffisant -&gt; <code>INSUFFICIENT_PERMISSIONS</code>.
-3. Mettre a jour <code>is_banned</code> sur le profil local.
-4. Propager le ban au auth-service via <code>POST /auth/internal/ban</code> avec le header <code>x-internal-secret</code>.</p>
-<hr />
-<h3 id="get-health">GET /health</h3>
-<p>Healthcheck du service.</p>
-<p><strong>Middleware :</strong> aucun</p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;status&quot;: &quot;ok&quot;,
-  &quot;timestamp&quot;: &quot;2024-01-01T00:00:00.000Z&quot;
-}
-</code></pre></div>
-<hr />
-<h2 id="middlewares">Middlewares</h2>
-<h3 id="identitymiddlewarejs">identity.middleware.js</h3>
-<p>Identique a celui de auth-service : extrait <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code> des headers injectes par le gateway.</p>
-<hr />
-<h2 id="variables-denvironnement">Variables d'environnement</h2>
+<h2 id="configuration">Configuration</h2>
+<p>Variables d'environnement utilisées par la Gateway :</p>
 <table>
 <thead>
 <tr>
 <th>Variable</th>
-<th>Defaut</th>
-<th>Requis</th>
+<th>Défaut</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>PORT</code></td>
-<td><code>3002</code></td>
-<td>Non</td>
-<td>Port d'ecoute</td>
+<td>3000</td>
+<td>Port d'écoute</td>
 </tr>
 <tr>
-<td><code>DATABASE_URL</code></td>
-<td>--</td>
-<td><strong>Oui</strong></td>
-<td>URL de connexion PostgreSQL</td>
-</tr>
-<tr>
-<td><code>INTERNAL_SECRET</code></td>
-<td>--</td>
-<td>Non</td>
-<td>Secret pour les communications inter-services</td>
+<td><code>JWT_SECRET</code></td>
+<td><code>defaultSecret</code></td>
+<td>Clé de signature JWT</td>
 </tr>
 <tr>
 <td><code>AUTH_SERVICE_URL</code></td>
-<td>--</td>
-<td>Non</td>
-<td>URL du auth-service (pour propagation ban)</td>
+<td>-</td>
+<td>URL du Auth Service</td>
+</tr>
+<tr>
+<td><code>USER_SERVICE_URL</code></td>
+<td>-</td>
+<td>URL du User Service</td>
+</tr>
+<tr>
+<td><code>POST_SERVICE_URL</code></td>
+<td>-</td>
+<td>URL du Post Service</td>
 </tr>
 <tr>
 <td><code>PROFIL_SERVICE_URL</code></td>
-<td>--</td>
-<td>Non</td>
-<td>URL du profil-service (pour notifications follow)</td>
+<td>-</td>
+<td>URL du Profil Service</td>
 </tr>
 <tr>
-<td><code>CORS_ORIGIN</code></td>
-<td>--</td>
-<td>Non</td>
-<td>Origine autorisee pour CORS</td>
+<td><code>NODE_ENV</code></td>
+<td>-</td>
+<td><code>test</code> désactive le rate limiting</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="notes-dimplementation">Notes d'implementation</h2>
+<h2 id="health-check">Health Check</h2>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/api/health&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;UP&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;api-gateway&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<h2 id="gestion-des-erreurs">Gestion des erreurs</h2>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">errorHandler</span><span class="p">);</span>
+
+<span class="c1">// errorHandler.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`[Gateway Error] </span><span class="si">${</span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">500</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;Erreur interne du serveur&#39;</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Chaque proxy route gère également les erreurs de connexion au service cible :</p>
+<div class="highlight"><pre><span></span><code><span class="nx">on</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">502</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Auth service indisponible&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <ul>
-<li>Les routes <code>/users/:id/followers</code> et <code>/users/:id/following</code> exposent les donnees sans verifier le statut de la cible (publique).</li>
-<li>La route <code>/users/by-username/:username</code> est la seule route publique (sans middleware <code>identity</code>). Elle est utilisee par le post-service pour resoudre les @mentions.</li>
-<li>Les compteurs <code>followers_count</code> et <code>following_count</code> sont mis a jour atomiquement via <code>UserProfile.increment()</code> a l'interieur de transactions Sequelize, garantissant la coherence meme en cas de requetes concurrentes.</li>
-<li>Le ban est propage au auth-service via HTTP ; si le auth-service est inaccessible, le user-service ne peut pas completer l'operation de ban.</li>
+<li><strong>502 Bad Gateway</strong> : retourné si le service backend est inaccessible</li>
+<li><strong>500</strong> : erreur interne non gérée</li>
+<li>Codes d'erreur des services backend : proxyfiés tels quels</li>
 </ul>
+<hr />
+<h2 id="rewriting-de-chemins">Rewriting de chemins</h2>
+<p>Les chemins d'URL sont réécrits avant d'être envoyés aux services backend :</p>
+<table>
+<thead>
+<tr>
+<th>Chemin entrant</th>
+<th>Chemin sortant</th>
+<th>Cible</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/api/auth/me</code></td>
+<td><code>/auth/me</code></td>
+<td>Auth Service</td>
+</tr>
+<tr>
+<td><code>/api/auth/*</code></td>
+<td><code>/auth/*</code></td>
+<td>Auth Service</td>
+</tr>
+<tr>
+<td><code>/api/users/*</code></td>
+<td><code>/users/*</code></td>
+<td>User Service</td>
+</tr>
+<tr>
+<td><code>/api/posts/*</code></td>
+<td><code>/api/posts/*</code></td>
+<td>Post Service</td>
+</tr>
+<tr>
+<td><code>/api/upload</code></td>
+<td><code>/api/upload</code></td>
+<td>Post Service</td>
+</tr>
+<tr>
+<td><code>/api/uploads/*</code></td>
+<td><code>/api/uploads/*</code></td>
+<td>Post Service</td>
+</tr>
+<tr>
+<td><code>/api/profils/*</code></td>
+<td><code>/api/profils/*</code></td>
+<td>Profil Service</td>
+</tr>
+<tr>
+<td><code>/api/notifications/*</code></td>
+<td><code>/api/notifications/*</code></td>
+<td>Profil Service</td>
+</tr>
+</tbody>
+</table>
 
 
 

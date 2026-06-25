@@ -6,10 +6,8 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Documentation complète du réseau social Breezy (architecture microservices)">
+        <meta name="description" content="Documentation technique du réseau social Breezy">
       
-      
-        <meta name="author" content="Équipe Breezy">
       
       
       
@@ -27,7 +25,7 @@
     
     
       
-        <title>Frontend (Next.js) - Breezy — Documentation Technique</title>
+        <title>Frontend - Breezy — Documentation</title>
       
     
     
@@ -64,12 +62,10 @@
   
     
     
-      
     
     
     
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -78,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#frontend-nextjs" class="md-skip">
+        <a href="#frontend" class="md-skip">
           Aller au contenu
         </a>
       
@@ -94,7 +90,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="En-tête">
-    <a href="../.." title="Breezy — Documentation Technique" class="md-header__button md-logo" aria-label="Breezy — Documentation Technique" data-md-component="logo">
+    <a href="../.." title="Breezy — Documentation" class="md-header__button md-logo" aria-label="Breezy — Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -108,13 +104,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Breezy — Documentation Technique
+            Breezy — Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Frontend (Next.js)
+              Frontend
             
           </span>
         </div>
@@ -122,33 +118,7 @@
     </div>
     
       
-        <form class="md-header__option" data-md-component="palette">
-  
     
-    
-    
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Passer en mode sombre"  type="radio" name="__palette" id="__palette_0">
-    
-      <label class="md-header__button md-icon" title="Passer en mode sombre" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
-      </label>
-    
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Passer en mode clair"  type="radio" name="__palette" id="__palette_1">
-    
-      <label class="md-header__button md-icon" title="Passer en mode clair" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
-      </label>
-    
-  
-</form>
-      
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -177,8 +147,6 @@
         </button>
       </nav>
       
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
@@ -194,18 +162,6 @@
 </div>
       
     
-    
-      <div class="md-header__source">
-        <a href="https://github.com/El-Pouleto-ultimate" title="Aller au dépôt" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
-  </div>
-  <div class="md-source__repository">
-    El-Pouleto-ultimate
-  </div>
-</a>
-      </div>
     
   </nav>
   
@@ -232,26 +188,14 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Breezy — Documentation Technique" class="md-nav__button md-logo" aria-label="Breezy — Documentation Technique" data-md-component="logo">
+    <a href="../.." title="Breezy — Documentation" class="md-nav__button md-logo" aria-label="Breezy — Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    Breezy — Documentation Technique
+    Breezy — Documentation
   </label>
-  
-    <div class="md-nav__source">
-      <a href="https://github.com/El-Pouleto-ultimate" title="Aller au dépôt" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
-  </div>
-  <div class="md-source__repository">
-    El-Pouleto-ultimate
-  </div>
-</a>
-    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -292,22 +236,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -399,6 +336,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../architecture/flux-donnees/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flux de données
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/diagramme-composants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagramme de composants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../architecture/docker-deploiement/" class="md-nav__link">
         
   
@@ -439,20 +432,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -480,6 +468,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -616,7 +632,7 @@
   <span class="md-ellipsis">
     
   
-    Frontend (Next.js)
+    Frontend
   
 
     
@@ -634,7 +650,7 @@
   <span class="md-ellipsis">
     
   
-    Frontend (Next.js)
+    Frontend
   
 
     
@@ -660,10 +676,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#structure-du-projet" class="md-nav__link">
+  <a href="#stack" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Structure du projet
+        Stack
       
     </span>
   </a>
@@ -671,22 +687,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#gestion-de-lauthentification" class="md-nav__link">
+  <a href="#pages" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Gestion de l'authentification
+        Pages
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Gestion de l&#39;authentification">
+    <nav class="md-nav" aria-label="Pages">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#authcontext-srccontextauthcontextjs" class="md-nav__link">
+  <a href="#pages-publiques" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AuthContext (src/context/AuthContext.js)
+        Pages publiques
       
     </span>
   </a>
@@ -694,21 +710,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#protection-des-routes" class="md-nav__link">
+  <a href="#pages-protegees-groupe-app" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Protection des routes
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#instance-axios-srcservicesapijs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Instance Axios (src/services/api.js)
+        Pages protegees (groupe app)
       
     </span>
   </a>
@@ -717,6 +722,277 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gestion-des-tokens-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestion des tokens JWT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gestion des tokens JWT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stockage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stockage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#injection-automatique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Injection automatique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rafraichissement-automatique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rafraichissement automatique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contexte-dauthentification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contexte d'authentification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-endpoints-appeles-par-le-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Endpoints appeles par le frontend
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Endpoints appeles par le frontend">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#posts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Posts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#users" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Users
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Profiles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notifications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upload
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#composants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Composants
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Composants">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comments_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Profile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notifications_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notifications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Messages
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hooks
+      
+    </span>
+  </a>
   
 </li>
       
@@ -732,22 +1008,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#appels-api-cote-frontend" class="md-nav__link">
+  <a href="#problemes-connus" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Appels API côté frontend
+        Problèmes connus
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Appels API côté frontend">
+    <nav class="md-nav" aria-label="Problèmes connus">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#auth-service" class="md-nav__link">
+  <a href="#validation-de-mot-de-passe-asymetrique" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Auth Service
+        Validation de mot de passe asymetrique
       
     </span>
   </a>
@@ -755,10 +1031,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#post-service" class="md-nav__link">
+  <a href="#changement-de-mot-de-passe" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Post Service
+        Changement de mot de passe
       
     </span>
   </a>
@@ -766,10 +1042,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#user-service" class="md-nav__link">
+  <a href="#endpoint-de-mise-a-jour-de-profil" class="md-nav__link">
     <span class="md-ellipsis">
       
-        User Service
+        Endpoint de mise a jour de profil
       
     </span>
   </a>
@@ -777,21 +1053,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#notification-service" class="md-nav__link">
+  <a href="#page-messages" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notification Service
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#message-service" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Message Service
+        Page Messages
       
     </span>
   </a>
@@ -800,28 +1065,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#validation-des-formulaires" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Validation des formulaires
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pages-du-frontend" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pages du frontend
-      
-    </span>
-  </a>
   
 </li>
       
@@ -851,22 +1094,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
@@ -909,7 +1145,7 @@
   <span class="md-ellipsis">
     
   
-    Schémas PostgreSQL
+    Schéma PostgreSQL
   
 
     
@@ -937,7 +1173,7 @@
   <span class="md-ellipsis">
     
   
-    Schémas MongoDB
+    Schéma MongoDB
   
 
     
@@ -968,22 +1204,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -1026,7 +1255,7 @@
   <span class="md-ellipsis">
     
   
-    Authentification & JWT
+    Authentification
   
 
     
@@ -1057,22 +1286,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -1115,7 +1337,7 @@
   <span class="md-ellipsis">
     
   
-    Couverture Fx1-Fx23
+    Couverture
   
 
     
@@ -1146,22 +1368,97 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/routes-completes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Routes complètes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   
@@ -1179,8 +1476,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1260,7 +1557,7 @@
   <span class="md-ellipsis">
     
   
-    Limites & Évolutions
+    Limites et évolutions
   
 
     
@@ -1277,6 +1574,33 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CHANGELOG_DOC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Journal des modifications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1308,10 +1632,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#structure-du-projet" class="md-nav__link">
+  <a href="#stack" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Structure du projet
+        Stack
       
     </span>
   </a>
@@ -1319,22 +1643,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#gestion-de-lauthentification" class="md-nav__link">
+  <a href="#pages" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Gestion de l'authentification
+        Pages
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Gestion de l&#39;authentification">
+    <nav class="md-nav" aria-label="Pages">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#authcontext-srccontextauthcontextjs" class="md-nav__link">
+  <a href="#pages-publiques" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AuthContext (src/context/AuthContext.js)
+        Pages publiques
       
     </span>
   </a>
@@ -1342,21 +1666,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#protection-des-routes" class="md-nav__link">
+  <a href="#pages-protegees-groupe-app" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Protection des routes
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#instance-axios-srcservicesapijs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Instance Axios (src/services/api.js)
+        Pages protegees (groupe app)
       
     </span>
   </a>
@@ -1365,6 +1678,277 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gestion-des-tokens-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestion des tokens JWT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gestion des tokens JWT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stockage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stockage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#injection-automatique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Injection automatique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rafraichissement-automatique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rafraichissement automatique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contexte-dauthentification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contexte d'authentification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-endpoints-appeles-par-le-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Endpoints appeles par le frontend
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Endpoints appeles par le frontend">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#posts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Posts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#users" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Users
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Profiles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notifications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upload
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#composants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Composants
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Composants">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comments_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Profile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notifications_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notifications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Messages
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hooks
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1380,22 +1964,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#appels-api-cote-frontend" class="md-nav__link">
+  <a href="#problemes-connus" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Appels API côté frontend
+        Problèmes connus
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Appels API côté frontend">
+    <nav class="md-nav" aria-label="Problèmes connus">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#auth-service" class="md-nav__link">
+  <a href="#validation-de-mot-de-passe-asymetrique" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Auth Service
+        Validation de mot de passe asymetrique
       
     </span>
   </a>
@@ -1403,10 +1987,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#post-service" class="md-nav__link">
+  <a href="#changement-de-mot-de-passe" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Post Service
+        Changement de mot de passe
       
     </span>
   </a>
@@ -1414,10 +1998,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#user-service" class="md-nav__link">
+  <a href="#endpoint-de-mise-a-jour-de-profil" class="md-nav__link">
     <span class="md-ellipsis">
       
-        User Service
+        Endpoint de mise a jour de profil
       
     </span>
   </a>
@@ -1425,21 +2009,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#notification-service" class="md-nav__link">
+  <a href="#page-messages" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notification Service
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#message-service" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Message Service
+        Page Messages
       
     </span>
   </a>
@@ -1448,28 +2021,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#validation-des-formulaires" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Validation des formulaires
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pages-du-frontend" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pages du frontend
-      
-    </span>
-  </a>
   
 </li>
       
@@ -1489,352 +2040,53 @@
                   
 
 
-  
-  
 
-
-<h1 id="frontend-nextjs">Frontend (Next.js)<a class="headerlink" href="#frontend-nextjs" title="Permanent link">&para;</a></h1>
-<p><strong>Responsabilité</strong> : Interface utilisateur du réseau social Breezy.</p>
-<ul>
-<li><strong>Stack</strong> : Next.js 14 (App Router), React 18, Tailwind CSS 3, Axios, date-fns</li>
-<li><strong>Port</strong> : 3000</li>
-<li><strong>Dépôt</strong> : <code>breezy-frontend</code></li>
-</ul>
-<h2 id="structure-du-projet">Structure du projet<a class="headerlink" href="#structure-du-projet" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>breezy-frontend/
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── src/
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│   ├── app/
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│   │   ├── layout.js                 ← Layout racine (AuthProvider, Google Fonts Inter)
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│   │   ├── page.js                   ← Page d&#39;accueil publique
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│   │   ├── (auth)/                   ← Route group — pages d&#39;authentification
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│   │   │   ├── layout.js
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│   │   │   ├── connect/page.js       ← Landing page (choix inscription/connexion)
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│   │   │   ├── signin/page.js        ← Formulaire de connexion
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│   │   │   └── register/page.js      ← Formulaire d&#39;inscription
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│   │   ├── (app)/                    ← Route group — pages protégées
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│   │   │   ├── layout.js             ← Garde d&#39;authentification (redirect /connect si pas de token)
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│   │   │   ├── home/page.js          ← Feed principal
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│   │   │   ├── compose/page.js       ← Création de post (page dédiée)
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│   │   │   ├── reply/page.js         ← Répondre à un post
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│   │   │   ├── profile/
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│   │   │   │   ├── page.js           ← Mon profil
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│   │   │   │   ├── [userId]/page.js  ← Profil d&#39;un autre utilisateur
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>│   │   │   │   └── edit/page.js      ← Édition du profil
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>│   │   │   ├── search/page.js        ← Recherche utilisateurs/posts
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>│   │   │   ├── notifications/page.js ← Liste des notifications
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>│   │   │   ├── messages/
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>│   │   │   │   ├── page.js           ← Liste des conversations
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>│   │   │   │   └── [convId]/page.js  ← Conversation spécifique
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>│   │   │   └── settings/page.js      ← Paramètres
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>│   │   └── legal/                    ← Pages légales (terms, privacy, cookies, accessibility, ads)
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>│   ├── components/
-</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>│   │   ├── layout/                   ← AppShell, TopBar, BottomNav, DesktopSidebar, RightSidebar
-</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>│   │   ├── feed/                     ← PostCard, PostList, PostForm, PostActions, ComposeFab
-</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>│   │   ├── comment/                  ← CommentThread
-</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>│   │   ├── profile/                  ← ProfileHeader, FollowersModal
-</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>│   │   ├── notifications/            ← NotificationItem, NotificationList
-</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>│   │   ├── messages/                 ← ConversationList, MessageThread, MessageInput
-</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>│   │   ├── search/                   ← SearchBar
-</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>│   │   └── ui/                       ← Avatar, Button, Input, Spinner
-</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>│   ├── context/
-</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>│   │   └── AuthContext.js            ← Provider React pour l&#39;authentification
-</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>│   ├── hooks/
-</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>│   │   ├── useAuth.js                ← Ré-export de useAuth depuis AuthContext
-</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>│   │   ├── useComments.js
-</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>│   │   ├── useFollow.js
-</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>│   │   ├── useLike.js
-</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>│   │   └── usePosts.js
-</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>│   ├── services/
-</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>│   │   ├── api.js                    ← Instance Axios configurée
-</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>│   │   ├── authService.js            ← API auth (login, register, logout, getMe)
-</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>│   │   ├── postService.js            ← API posts (feed, create, like, search)
-</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>│   │   ├── userService.js            ← API users (profil, follow, search)
-</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>│   │   ├── commentService.js         ← API commentaires
-</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>│   │   ├── notificationService.js    ← API notifications
-</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>│   │   └── messageService.js         ← API messages
-</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>│   ├── mocks/                        ← Données et services mock pour le développement
-</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>│   │   ├── utils.js                  ← isMockEnabled(), delay()
-</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>│   │   ├── data.js                   ← Données mockées
-</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>│   │   ├── authService.mock.js
-</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>│   │   ├── postService.mock.js
-</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>│   │   ├── userService.mock.js
-</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>│   │   ├── commentService.mock.js
-</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>│   │   └── notificationService.mock.js
-</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>│   └── utils/
-</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>│       ├── formatDate.js             ← Formatage des dates
-</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>│       └── validators.js             ← Validation des formulaires
-</span></code></pre></div>
-<h2 id="gestion-de-lauthentification">Gestion de l'authentification<a class="headerlink" href="#gestion-de-lauthentification" title="Permanent link">&para;</a></h2>
-<h3 id="authcontext-srccontextauthcontextjs">AuthContext (<code>src/context/AuthContext.js</code>)<a class="headerlink" href="#authcontext-srccontextauthcontextjs" title="Permanent link">&para;</a></h3>
-<p>Le <code>AuthProvider</code> est le composant racine qui gère l'état d'authentification :</p>
-<ul>
-<li><strong>Token</strong> : stocké dans <code>localStorage</code> sous la clé <code>breezy_token</code> (configurable via <code>NEXT_PUBLIC_TOKEN_KEY</code>)</li>
-<li><strong>Utilisateur</strong> : chargé au montage via <code>getMe()</code> si un token existe</li>
-<li><strong>Notifications</strong> : compteur de notifications non lues rafraîchi quand l'utilisateur change</li>
-<li><strong>Messages</strong> : compteur de messages non lus (via <code>getUnreadMessagesCount()</code>)</li>
-</ul>
-<p><strong>Valeurs exposées :</strong></p>
-<div class="language-javascript highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span><span class="w"> </span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="nx">setUser</span><span class="p">,</span><span class="w"> </span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">saveToken</span><span class="p">,</span><span class="w"> </span><span class="nx">logout</span><span class="p">,</span><span class="w"> </span><span class="nx">loading</span><span class="p">,</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nx">unreadCount</span><span class="p">,</span><span class="w"> </span><span class="nx">setUnreadCount</span><span class="p">,</span><span class="w"> </span><span class="nx">unreadMsgCount</span><span class="p">,</span><span class="w"> </span><span class="nx">setUnreadMsgCount</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nx">refreshUnreadCount</span><span class="w"> </span><span class="p">}</span>
-</span></code></pre></div>
-<h3 id="protection-des-routes">Protection des routes<a class="headerlink" href="#protection-des-routes" title="Permanent link">&para;</a></h3>
-<p>Le layout <code>(app)/layout.js</code> vérifie la présence d'un token au chargement :</p>
-<ul>
-<li>Si pas de token → redirection vers <code>/connect</code></li>
-<li>Pendant le chargement → affichage d'un <code>Spinner</code></li>
-</ul>
-<h3 id="instance-axios-srcservicesapijs">Instance Axios (<code>src/services/api.js</code>)<a class="headerlink" href="#instance-axios-srcservicesapijs" title="Permanent link">&para;</a></h3>
-<div class="language-javascript highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nx">baseURL</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NEXT_PUBLIC_API_URL</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;http://localhost:4000/api&#39;</span><span class="p">,</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nx">timeout</span><span class="o">:</span><span class="w"> </span><span class="mf">10000</span><span class="p">,</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">})</span>
-</span></code></pre></div>
-<p><strong>Intercepteur request</strong> : injecte <code>Authorization: Bearer {token}</code> depuis <code>localStorage</code>.</p>
-<p><strong>Intercepteur response</strong> : sur une erreur 401, supprime le token et redirige vers <code>/signin</code>.</p>
-<div class="admonition warning">
-<p class="admonition-title">URL de base</p>
-<p>L'URL par défaut est <code>http://localhost:4000/api</code>, mais en production via Docker, l'API est accessible via Nginx sur le port 80 (<code>http://localhost/api</code>). La variable <code>NEXT_PUBLIC_API_URL</code> doit être configurée selon l'environnement.</p>
-</div>
-<h2 id="systeme-de-mocks">Système de mocks<a class="headerlink" href="#systeme-de-mocks" title="Permanent link">&para;</a></h2>
-<p>Chaque service possède une version mock activable via <code>NEXT_PUBLIC_USE_MOCKS=true</code>. Ce mécanisme permet de développer le frontend sans aucun backend.</p>
-<p><strong>Fonctionnement</strong> (<code>src/mocks/utils.js</code>) :</p>
-<div class="language-javascript highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">isMockEnabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="ow">typeof</span><span class="w"> </span><span class="nb">window</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">&#39;undefined&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NEXT_PUBLIC_USE_MOCKS</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;true&#39;</span>
-</span></code></pre></div>
-<p>Chaque export de service vérifie <code>isMockEnabled()</code> et route vers le mock ou le vrai service :</p>
-<div class="language-javascript highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(...</span><span class="nx">a</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">isMockEnabled</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">mock</span><span class="p">.</span><span class="nx">login</span><span class="p">(...</span><span class="nx">a</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">real</span><span class="p">.</span><span class="nx">login</span><span class="p">(...</span><span class="nx">a</span><span class="p">)</span>
-</span></code></pre></div>
-<h2 id="appels-api-cote-frontend">Appels API côté frontend<a class="headerlink" href="#appels-api-cote-frontend" title="Permanent link">&para;</a></h2>
-<h3 id="auth-service">Auth Service<a class="headerlink" href="#auth-service" title="Permanent link">&para;</a></h3>
+<h1 id="frontend">Frontend</h1>
+<p>Application web Next.js pour Breezy.</p>
+<hr />
+<h2 id="stack">Stack</h2>
 <table>
 <thead>
 <tr>
-<th>Fonction</th>
-<th>Appel API</th>
-<th>Description</th>
+<th>Technologie</th>
+<th>Version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>login(data)</code></td>
-<td><code>POST /auth/login</code></td>
-<td>Connexion</td>
+<td>Next.js</td>
+<td>14.2.0</td>
 </tr>
 <tr>
-<td><code>register(data)</code></td>
-<td><code>POST /auth/register</code></td>
-<td>Inscription</td>
+<td>React</td>
+<td>18.2.0</td>
 </tr>
 <tr>
-<td><code>logout()</code></td>
-<td><code>POST /auth/logout</code></td>
-<td>Déconnexion</td>
+<td>Tailwind CSS</td>
+<td>3.4.1</td>
 </tr>
 <tr>
-<td><code>getMe()</code></td>
-<td><code>GET /auth/me</code></td>
-<td>Infos utilisateur</td>
+<td>Axios</td>
+<td>1.6.0</td>
 </tr>
 <tr>
-<td><code>changePassword(data)</code></td>
-<td><code>POST /auth/change-password</code></td>
-<td>Changement de mot de passe</td>
+<td>date-fns</td>
+<td>3.3.1</td>
+</tr>
+<tr>
+<td>lucide-react</td>
+<td>1.21.0</td>
 </tr>
 </tbody>
 </table>
-<div class="admonition warning">
-<p class="admonition-title">Route non implémentée</p>
-<p><code>changePassword</code> appelle <code>POST /auth/change-password</code> mais cette route <strong>n'existe pas</strong> dans l'auth-service backend. L'appel échouera en 404.</p>
-</div>
-<h3 id="post-service">Post Service<a class="headerlink" href="#post-service" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Fonction</th>
-<th>Appel API</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>getFeed(page)</code></td>
-<td><code>GET /posts/feed?page=&amp;limit=10</code></td>
-</tr>
-<tr>
-<td><code>getUserPosts(uid, page)</code></td>
-<td><code>GET /posts/user/:uid?page=&amp;limit=10</code></td>
-</tr>
-<tr>
-<td><code>getUserReplies(uid, page)</code></td>
-<td><code>GET /posts/user/:uid/replies?page=&amp;limit=10</code></td>
-</tr>
-<tr>
-<td><code>getUserMedia(uid, page)</code></td>
-<td><code>GET /posts/user/:uid/media?page=&amp;limit=10</code></td>
-</tr>
-<tr>
-<td><code>getUserLikes(uid, page)</code></td>
-<td><code>GET /posts/user/:uid/likes?page=&amp;limit=10</code></td>
-</tr>
-<tr>
-<td><code>getUserReposts(uid, page)</code></td>
-<td><code>GET /posts/user/:uid/reposts?page=&amp;limit=10</code></td>
-</tr>
-<tr>
-<td><code>createPost(data)</code></td>
-<td><code>POST /posts</code></td>
-</tr>
-<tr>
-<td><code>updatePost(id, data)</code></td>
-<td><code>PUT /posts/:id</code></td>
-</tr>
-<tr>
-<td><code>deletePost(id)</code></td>
-<td><code>DELETE /posts/:id</code></td>
-</tr>
-<tr>
-<td><code>toggleLike(id)</code></td>
-<td><code>POST /posts/:id/like</code></td>
-</tr>
-<tr>
-<td><code>toggleRepost(id)</code></td>
-<td><code>POST /posts/:id/repost</code></td>
-</tr>
-<tr>
-<td><code>searchPosts(q, page)</code></td>
-<td><code>GET /posts/search?q=</code></td>
-</tr>
-</tbody>
-</table>
-<div class="admonition warning">
-<p class="admonition-title">Routes non implémentées</p>
-<p>Les fonctions suivantes appellent des routes qui <strong>n'existent pas</strong> dans le post-service :</p>
-<ul>
-<li><code>getUserReplies</code> → <code>GET /posts/user/:uid/replies</code></li>
-<li><code>getUserMedia</code> → <code>GET /posts/user/:uid/media</code></li>
-<li><code>getUserLikes</code> → <code>GET /posts/user/:uid/likes</code></li>
-<li><code>getUserReposts</code> → <code>GET /posts/user/:uid/reposts</code></li>
-<li><code>updatePost</code> → <code>PUT /posts/:id</code></li>
-<li><code>toggleRepost</code> → <code>POST /posts/:id/repost</code></li>
-<li><code>searchPosts</code> → recherche par <code>q</code> au lieu de <code>tag</code></li>
-</ul>
-</div>
-<h3 id="user-service">User Service<a class="headerlink" href="#user-service" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Fonction</th>
-<th>Appel API</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>getUserById(id)</code></td>
-<td><code>GET /users/:id</code></td>
-</tr>
-<tr>
-<td><code>updateProfile(id, data)</code></td>
-<td><code>PUT /users/:id</code></td>
-</tr>
-<tr>
-<td><code>followUser(id)</code></td>
-<td><code>POST /users/:id/follow</code></td>
-</tr>
-<tr>
-<td><code>unfollowUser(id)</code></td>
-<td><code>DELETE /users/:id/follow</code></td>
-</tr>
-<tr>
-<td><code>getFollowing(id)</code></td>
-<td><code>GET /users/:id/following</code></td>
-</tr>
-<tr>
-<td><code>getFollowers(id)</code></td>
-<td><code>GET /users/:id/followers</code></td>
-</tr>
-<tr>
-<td><code>searchUsers(q)</code></td>
-<td><code>GET /users/search?q=</code></td>
-</tr>
-</tbody>
-</table>
-<div class="admonition warning">
-<p class="admonition-title">Route divergente</p>
-<p><code>updateProfile</code> appelle <code>PUT /users/:id</code> mais le user-service n'a pas cette route. La modification du profil (bio, avatar, etc.) se fait via le profil-service (<code>PUT /profiles/:userId</code>).</p>
-</div>
-<h3 id="notification-service">Notification Service<a class="headerlink" href="#notification-service" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Fonction</th>
-<th>Appel API</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>getNotifications()</code></td>
-<td><code>GET /notifications</code></td>
-</tr>
-<tr>
-<td><code>markAllAsRead()</code></td>
-<td><code>PUT /notifications/read-all</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="message-service">Message Service<a class="headerlink" href="#message-service" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Fonction</th>
-<th>Appel API</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>getUnreadMessagesCount()</code></td>
-<td><code>GET /messages/unread-count</code></td>
-</tr>
-</tbody>
-</table>
-<div class="admonition warning">
-<p class="admonition-title">Service non implémenté</p>
-<p>Le endpoint <code>GET /messages/unread-count</code> n'existe dans <strong>aucun</strong> service backend. La messagerie est prévue dans l'interface mais non implémentée côté backend.</p>
-</div>
-<h2 id="validation-des-formulaires">Validation des formulaires<a class="headerlink" href="#validation-des-formulaires" title="Permanent link">&para;</a></h2>
-<p>(<code>src/utils/validators.js</code>)</p>
-<table>
-<thead>
-<tr>
-<th>Fonction</th>
-<th>Règle</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>isValidEmail(e)</code></td>
-<td>Regex basique <code>^[^\s@]+@[^\s@]+\.[^\s@]+$</code></td>
-</tr>
-<tr>
-<td><code>isValidPassword(p)</code></td>
-<td>Longueur &gt;= 6 caractères</td>
-</tr>
-<tr>
-<td><code>isValidUsername(u)</code></td>
-<td>Longueur &gt;= 2 caractères (après trim)</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition note">
-<p class="admonition-title">Divergence frontend/backend</p>
-<p>Le frontend valide le mot de passe à <strong>6 caractères minimum</strong>, alors que le backend exige <strong>8 caractères + 1 majuscule + 1 chiffre</strong>. Un formulaire peut passer la validation côté client mais être rejeté par le serveur.</p>
-</div>
-<h2 id="pages-du-frontend">Pages du frontend<a class="headerlink" href="#pages-du-frontend" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="pages">Pages</h2>
+<h3 id="pages-publiques">Pages publiques</h3>
 <table>
 <thead>
 <tr>
 <th>Route</th>
-<th>Page</th>
+<th>Composant</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -1847,80 +2099,687 @@
 <tr>
 <td><code>/connect</code></td>
 <td>Connect</td>
-<td>Choix inscription/connexion</td>
+<td>Page de connexion</td>
 </tr>
 <tr>
 <td><code>/signin</code></td>
-<td>Sign In</td>
-<td>Connexion (email + password)</td>
+<td>SignIn</td>
+<td>Page de connexion (alias)</td>
 </tr>
 <tr>
 <td><code>/register</code></td>
 <td>Register</td>
-<td>Inscription (username + email + password + confirmation)</td>
+<td>Page d'inscription</td>
 </tr>
 <tr>
+<td><code>/legal/terms</code></td>
+<td>Terms</td>
+<td>Conditions d'utilisation</td>
+</tr>
+<tr>
+<td><code>/legal/privacy</code></td>
+<td>Privacy</td>
+<td>Politique de confidentialite</td>
+</tr>
+<tr>
+<td><code>/legal/cookies</code></td>
+<td>Cookies</td>
+<td>Politique des cookies</td>
+</tr>
+<tr>
+<td><code>/legal/accessibility</code></td>
+<td>Accessibility</td>
+<td>Declaration d'accessibilite</td>
+</tr>
+<tr>
+<td><code>/legal/ads</code></td>
+<td>Ads</td>
+<td>Politique publicitaire</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pages-protegees-groupe-app">Pages protegees (groupe <code>app</code>)</h3>
+<table>
+<thead>
+<tr>
+<th>Route</th>
+<th>Composant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
 <td><code>/home</code></td>
-<td>Feed</td>
-<td>Feed des abonnements</td>
+<td>HomePage</td>
+<td>Fil d'actualite principal</td>
 </tr>
 <tr>
 <td><code>/compose</code></td>
-<td>Compose</td>
-<td>Création de post</td>
+<td>ComposePage</td>
+<td>Creation d'un nouveau post</td>
 </tr>
 <tr>
 <td><code>/reply</code></td>
-<td>Reply</td>
-<td>Réponse à un post</td>
+<td>ReplyPage</td>
+<td>Reponse a un post (<code>?postId=</code> en query)</td>
+</tr>
+<tr>
+<td><code>/search</code></td>
+<td>SearchPage</td>
+<td>Recherche de posts et d'utilisateurs</td>
+</tr>
+<tr>
+<td><code>/notifications</code></td>
+<td>NotificationsPage</td>
+<td>Liste des notifications</td>
 </tr>
 <tr>
 <td><code>/profile</code></td>
-<td>Mon profil</td>
-<td>Profil de l'utilisateur connecté</td>
+<td>MyProfilePage</td>
+<td>Profil de l'utilisateur connecte</td>
 </tr>
 <tr>
-<td><code>/profile/:userId</code></td>
-<td>Profil</td>
+<td><code>/profile/[userId]</code></td>
+<td>UserProfilePage</td>
 <td>Profil d'un autre utilisateur</td>
 </tr>
 <tr>
 <td><code>/profile/edit</code></td>
-<td>Édition</td>
-<td>Édition du profil</td>
-</tr>
-<tr>
-<td><code>/search</code></td>
-<td>Recherche</td>
-<td>Recherche utilisateurs/posts</td>
-</tr>
-<tr>
-<td><code>/notifications</code></td>
-<td>Notifications</td>
-<td>Liste des notifications</td>
+<td>EditProfilePage</td>
+<td>Edition du profil</td>
 </tr>
 <tr>
 <td><code>/messages</code></td>
-<td>Messages</td>
-<td>Liste des conversations</td>
+<td>MessagesPage</td>
+<td>Messagerie (placeholder)</td>
 </tr>
 <tr>
-<td><code>/messages/:convId</code></td>
-<td>Conversation</td>
-<td>Conversation spécifique</td>
+<td><code>/messages/[convId]</code></td>
+<td>ConversationPage</td>
+<td>Conversation (placeholder)</td>
 </tr>
 <tr>
 <td><code>/settings</code></td>
-<td>Paramètres</td>
-<td>Paramètres du compte</td>
-</tr>
-<tr>
-<td><code>/legal/*</code></td>
-<td>Légal</td>
-<td>CGU, confidentialité, cookies, accessibilité, publicité</td>
+<td>SettingsPage</td>
+<td>Parametres du compte</td>
 </tr>
 </tbody>
 </table>
+<hr />
+<h2 id="gestion-des-tokens-jwt">Gestion des tokens JWT</h2>
+<h3 id="stockage">Stockage</h3>
+<ul>
+<li>Le token JWT est stocke dans <code>localStorage</code> sous la cle <code>breezy_token</code>.</li>
+<li>La cle est configurable via la variable d'environnement <code>NEXT_PUBLIC_TOKEN_KEY</code>.</li>
+</ul>
+<h3 id="injection-automatique">Injection automatique</h3>
+<ul>
+<li>Un intercepteur Axios (<code>request</code>) ajoute le header <code>Authorization: Bearer &lt;token&gt;</code> sur chaque requete sortante lorsque le token est present dans localStorage.</li>
+</ul>
+<h3 id="rafraichissement-automatique">Rafraichissement automatique</h3>
+<ul>
+<li>Un intercepteur Axios (<code>response</code>) intercepte les erreurs <code>401</code>.</li>
+<li>Sur un <code>401</code>, le frontend tente un rafraichissement en appelant <code>POST /auth/refresh</code> avec le <code>refresh_token</code> stocke.</li>
+<li>Pendant le rafraichissement, les requetes suivantes sont mises en file d'attente (queue).</li>
+<li>Une fois le rafraichissement reussi :</li>
+<li>Le nouveau token est stocke.</li>
+<li>Les requetes mises en file sont rejouees.</li>
+<li>Si le rafraichissement echoue (refresh token expire ou invalide) :</li>
+<li>Les tokens sont effaces du localStorage.</li>
+<li>L'utilisateur est redirige vers <code>/signin</code>.</li>
+</ul>
+<h3 id="contexte-dauthentification">Contexte d'authentification</h3>
+<ul>
+<li><code>AuthProvider</code> (React Context) enveloppe toute l'application.</li>
+<li>Au montage, le provider lit le token depuis localStorage et appelle <code>GET /auth/me</code> pour charger l'utilisateur.</li>
+<li>Expose via le hook <code>useAuth()</code> : <code>{ user, loading, login, register, logout, updateUser, changePassword }</code>.</li>
+</ul>
+<hr />
+<h2 id="api-endpoints-appeles-par-le-frontend">API Endpoints appeles par le frontend</h2>
+<h3 id="auth">Auth</h3>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Methode</th>
+<th>Route backend</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>login</code></td>
+<td>POST</td>
+<td><code>/auth/login</code></td>
+</tr>
+<tr>
+<td><code>register</code></td>
+<td>POST</td>
+<td><code>/auth/register</code></td>
+</tr>
+<tr>
+<td><code>logout</code></td>
+<td>POST</td>
+<td><code>/auth/logout</code></td>
+</tr>
+<tr>
+<td><code>getMe</code></td>
+<td>GET</td>
+<td><code>/auth/me</code></td>
+</tr>
+<tr>
+<td><code>changePassword</code></td>
+<td>POST</td>
+<td><code>/auth/change-password</code></td>
+</tr>
+<tr>
+<td><code>refresh</code></td>
+<td>POST</td>
+<td><code>/auth/refresh</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="posts">Posts</h3>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Methode</th>
+<th>Route backend</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getFeed</code></td>
+<td>GET</td>
+<td><code>/api/posts/feed</code></td>
+</tr>
+<tr>
+<td><code>getUserPosts</code></td>
+<td>GET</td>
+<td><code>/api/posts/user/:userId</code></td>
+</tr>
+<tr>
+<td><code>getUserReplies</code></td>
+<td>GET</td>
+<td><code>/api/posts/user/:userId/replies</code></td>
+</tr>
+<tr>
+<td><code>getUserMedia</code></td>
+<td>GET</td>
+<td><code>/api/posts/user/:userId/media</code></td>
+</tr>
+<tr>
+<td><code>getUserLikes</code></td>
+<td>GET</td>
+<td><code>/api/posts/user/:userId/likes</code></td>
+</tr>
+<tr>
+<td><code>getUserReposts</code></td>
+<td>GET</td>
+<td><code>/api/posts/user/:userId/reposts</code></td>
+</tr>
+<tr>
+<td><code>createPost</code></td>
+<td>POST</td>
+<td><code>/api/posts</code></td>
+</tr>
+<tr>
+<td><code>updatePost</code></td>
+<td>PUT</td>
+<td><code>/api/posts/:id</code></td>
+</tr>
+<tr>
+<td><code>deletePost</code></td>
+<td>DELETE</td>
+<td><code>/api/posts/:id</code></td>
+</tr>
+<tr>
+<td><code>likePost</code></td>
+<td>POST</td>
+<td><code>/api/posts/:id/like</code></td>
+</tr>
+<tr>
+<td><code>unlikePost</code></td>
+<td>DELETE</td>
+<td><code>/api/posts/:id/like</code></td>
+</tr>
+<tr>
+<td><code>toggleRepost</code></td>
+<td>POST</td>
+<td><code>/api/posts/:id/repost</code></td>
+</tr>
+<tr>
+<td><code>searchPosts</code></td>
+<td>GET</td>
+<td><code>/api/posts/search</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="comments">Comments</h3>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Methode</th>
+<th>Route backend</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getComments</code></td>
+<td>GET</td>
+<td><code>/api/posts/:id/comments</code></td>
+</tr>
+<tr>
+<td><code>createComment</code></td>
+<td>POST</td>
+<td><code>/api/posts/:id/comments</code></td>
+</tr>
+<tr>
+<td><code>updateComment</code></td>
+<td>PUT</td>
+<td><code>/api/posts/:id/comments/:commentId</code></td>
+</tr>
+<tr>
+<td><code>deleteComment</code></td>
+<td>DELETE</td>
+<td><code>/api/posts/:id/comments/:commentId</code></td>
+</tr>
+<tr>
+<td><code>replyToComment</code></td>
+<td>POST</td>
+<td><code>/api/posts/:id/comments/:commentId/replies</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="users">Users</h3>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Methode</th>
+<th>Route backend</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getUserById</code></td>
+<td>GET</td>
+<td><code>/users/:id</code></td>
+</tr>
+<tr>
+<td><code>searchUsers</code></td>
+<td>GET</td>
+<td><code>/users/search</code></td>
+</tr>
+<tr>
+<td><code>followUser</code></td>
+<td>POST</td>
+<td><code>/users/:id/follow</code></td>
+</tr>
+<tr>
+<td><code>unfollowUser</code></td>
+<td>DELETE</td>
+<td><code>/users/:id/follow</code></td>
+</tr>
+<tr>
+<td><code>getFollowing</code></td>
+<td>GET</td>
+<td><code>/users/:id/following</code></td>
+</tr>
+<tr>
+<td><code>getFollowers</code></td>
+<td>GET</td>
+<td><code>/users/:id/followers</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="profiles">Profiles</h3>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Methode</th>
+<th>Route backend</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getProfile</code></td>
+<td>GET</td>
+<td><code>/profils/:userId</code></td>
+</tr>
+<tr>
+<td><code>updateProfile</code></td>
+<td>PUT</td>
+<td><code>/profils/:userId</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="notifications">Notifications</h3>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Methode</th>
+<th>Route backend</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getNotifications</code></td>
+<td>GET</td>
+<td><code>/notifications</code></td>
+</tr>
+<tr>
+<td><code>markAllAsRead</code></td>
+<td>PUT</td>
+<td><code>/notifications/read-all</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="upload">Upload</h3>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Methode</th>
+<th>Route backend</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uploadMedia</code></td>
+<td>POST</td>
+<td><code>/api/upload</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="composants">Composants</h2>
+<h3 id="layout">Layout</h3>
+<table>
+<thead>
+<tr>
+<th>Composant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AppShell</code></td>
+<td>Structure principale de l'application (sidebar + topbar + contenu)</td>
+</tr>
+<tr>
+<td><code>TopBar</code></td>
+<td>Barre de navigation superieure (titre de page, bouton retour)</td>
+</tr>
+<tr>
+<td><code>BottomNav</code></td>
+<td>Navigation inferieure mobile (accueil, recherche, notifications, messages, profil)</td>
+</tr>
+<tr>
+<td><code>DesktopSidebar</code></td>
+<td>Barre laterale desktop (logo, navigation, bouton poster)</td>
+</tr>
+<tr>
+<td><code>RightSidebar</code></td>
+<td>Barre laterale droite (commente / desactivee)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="feed">Feed</h3>
+<table>
+<thead>
+<tr>
+<th>Composant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PostList</code></td>
+<td>Liste paginee de posts (infinite scroll)</td>
+</tr>
+<tr>
+<td><code>PostCard</code></td>
+<td>Carte individuelle d'un post (avatar, nom, contenu, actions)</td>
+</tr>
+<tr>
+<td><code>PostActions</code></td>
+<td>Barre d'actions sur un post (like, comment, repost, share)</td>
+</tr>
+<tr>
+<td><code>PostForm</code></td>
+<td>Formulaire de creation de post (textarea, bouton poster)</td>
+</tr>
+<tr>
+<td><code>ComposeFab</code></td>
+<td>Bouton flottant "composer" (FAB) pour mobile</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ui">UI</h3>
+<table>
+<thead>
+<tr>
+<th>Composant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Button</code></td>
+<td>Bouton avec 7 variantes : <code>primary</code>, <code>secondary</code>, <code>danger</code>, <code>ghost</code>, <code>outline</code>, <code>link</code>, <code>icon</code></td>
+</tr>
+<tr>
+<td><code>Input</code></td>
+<td>Champ de texte stylise</td>
+</tr>
+<tr>
+<td><code>Avatar</code></td>
+<td>Avatar utilisateur avec 5 tailles : <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code></td>
+</tr>
+<tr>
+<td><code>Spinner</code></td>
+<td>Indicateur de chargement</td>
+</tr>
+</tbody>
+</table>
+<h3 id="comments_1">Comments</h3>
+<table>
+<thead>
+<tr>
+<th>Composant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CommentThread</code></td>
+<td>Fil de commentaires (affiche les commentaires et les reponses imbriquees sur 1 niveau)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="profile">Profile</h3>
+<table>
+<thead>
+<tr>
+<th>Composant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ProfileHeader</code></td>
+<td>En-tete de profil (banniere, avatar, display name, bio, compteurs)</td>
+</tr>
+<tr>
+<td><code>FollowersModal</code></td>
+<td>Modale listant les abonnes/abonnements</td>
+</tr>
+</tbody>
+</table>
+<h3 id="notifications_1">Notifications</h3>
+<table>
+<thead>
+<tr>
+<th>Composant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NotificationList</code></td>
+<td>Liste paginee des notifications</td>
+</tr>
+<tr>
+<td><code>NotificationItem</code></td>
+<td>Element individuel de notification (icone selon le type, message)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="search">Search</h3>
+<table>
+<thead>
+<tr>
+<th>Composant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SearchBar</code></td>
+<td>Barre de recherche avec debounce (recherche posts + utilisateurs)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="messages">Messages</h3>
+<table>
+<thead>
+<tr>
+<th>Composant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ConversationList</code></td>
+<td>Liste des conversations (placeholder)</td>
+</tr>
+<tr>
+<td><code>MessageThread</code></td>
+<td>Fil de messages d'une conversation (placeholder)</td>
+</tr>
+<tr>
+<td><code>MessageInput</code></td>
+<td>Champ de saisie de message (placeholder)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="hooks">Hooks</h2>
+<table>
+<thead>
+<tr>
+<th>Hook</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>useAuth</code></td>
+<td>Authentification (connexion, deconnexion, utilisateur courant, changement de mot de passe)</td>
+</tr>
+<tr>
+<td><code>usePosts</code></td>
+<td>Gestion des posts (CRUD, feed, pagination)</td>
+</tr>
+<tr>
+<td><code>useLike</code></td>
+<td>Like/unlike d'un post (avec etat local optimiste)</td>
+</tr>
+<tr>
+<td><code>useFollow</code></td>
+<td>Follow/unfollow d'un utilisateur (avec mise a jour du compteur local)</td>
+</tr>
+<tr>
+<td><code>useComments</code></td>
+<td>Gestion des commentaires (CRUD, pagination, replies)</td>
+</tr>
+<tr>
+<td><code>useMentions</code></td>
+<td>Detection et resolution des @mentions dans le texte</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="systeme-de-mocks">Système de mocks</h2>
+<p>Le frontend integre un systeme de mocks active via la variable d'environnement :</p>
+<div class="highlight"><pre><span></span><code>NEXT_PUBLIC_USE_MOCKS=true
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Service mock</th>
+<th>Stockage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>auth mock</td>
+<td>sessionStorage</td>
+</tr>
+<tr>
+<td>posts mock</td>
+<td>sessionStorage</td>
+</tr>
+<tr>
+<td>users mock</td>
+<td>sessionStorage</td>
+</tr>
+<tr>
+<td>profiles mock</td>
+<td>sessionStorage</td>
+</tr>
+<tr>
+<td>notifications mock</td>
+<td>sessionStorage</td>
+</tr>
+</tbody>
+</table>
+<p>En mode mock, toutes les donnees sont stockees en local dans <code>sessionStorage</code> et aucune requete reelle n'est envoyee aux services backend.</p>
+<hr />
+<h2 id="problemes-connus">Problèmes connus</h2>
+<h3 id="validation-de-mot-de-passe-asymetrique">Validation de mot de passe asymetrique</h3>
+<table>
+<thead>
+<tr>
+<th>Cote</th>
+<th>Regle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frontend</td>
+<td>Minimum 6 caracteres</td>
+</tr>
+<tr>
+<td>Backend (auth-service)</td>
+<td>Minimum 8 caracteres, 1 majuscule, 1 chiffre</td>
+</tr>
+</tbody>
+</table>
+<p>Un mot de passe valide selon le frontend (6-7 caracteres, sans majuscule/chiffre) sera rejete par le backend avec une erreur <code>VALIDATION_ERROR</code>.</p>
+<h3 id="changement-de-mot-de-passe">Changement de mot de passe</h3>
+<p>La fonctionnalite <code>POST /auth/change-password</code> est implementee <strong>cote frontend ET cote backend</strong> (contrairement a une version anterieure de la documentation qui indiquait le contraire). L'appel API est correct et les deux cotes fonctionnent.</p>
+<h3 id="endpoint-de-mise-a-jour-de-profil">Endpoint de mise a jour de profil</h3>
+<p>Le frontend appelle correctement <code>PUT /profils/:userId</code> (profil-service) pour la mise a jour du profil, et non <code>PUT /users/:id</code> (user-service). Ce comportement est correct.</p>
+<h3 id="page-messages">Page Messages</h3>
+<p>La page <code>/messages</code> et <code>/messages/[convId]</code> sont des placeholders. Le message suivant est affiché :</p>
+<blockquote>
+<p>"La messagerie sera disponible dans une prochaine version"</p>
+</blockquote>
 
 
 
@@ -1940,12 +2799,6 @@
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-        
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
-  Retour en haut de la page
-</button>
         
       </main>
       
@@ -1976,7 +2829,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>

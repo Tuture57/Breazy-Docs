@@ -6,10 +6,8 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Documentation complète du réseau social Breezy (architecture microservices)">
+        <meta name="description" content="Documentation technique du réseau social Breezy">
       
-      
-        <meta name="author" content="Équipe Breezy">
       
       
       
@@ -25,7 +23,7 @@
     
     
       
-        <title>Breezy — Documentation Technique</title>
+        <title>Breezy — Documentation</title>
       
     
     
@@ -62,12 +60,10 @@
   
     
     
-      
     
     
     
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -76,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#breezy-reseau-social" class="md-skip">
+        <a href="#breezy-documentation-technique" class="md-skip">
           Aller au contenu
         </a>
       
@@ -92,7 +88,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="En-tête">
-    <a href="." title="Breezy — Documentation Technique" class="md-header__button md-logo" aria-label="Breezy — Documentation Technique" data-md-component="logo">
+    <a href="." title="Breezy — Documentation" class="md-header__button md-logo" aria-label="Breezy — Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -106,7 +102,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Breezy — Documentation Technique
+            Breezy — Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -120,33 +116,7 @@
     </div>
     
       
-        <form class="md-header__option" data-md-component="palette">
-  
     
-    
-    
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Passer en mode sombre"  type="radio" name="__palette" id="__palette_0">
-    
-      <label class="md-header__button md-icon" title="Passer en mode sombre" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
-      </label>
-    
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Passer en mode clair"  type="radio" name="__palette" id="__palette_1">
-    
-      <label class="md-header__button md-icon" title="Passer en mode clair" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
-      </label>
-    
-  
-</form>
-      
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -175,8 +145,6 @@
         </button>
       </nav>
       
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
@@ -192,18 +160,6 @@
 </div>
       
     
-    
-      <div class="md-header__source">
-        <a href="https://github.com/El-Pouleto-ultimate" title="Aller au dépôt" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
-  </div>
-  <div class="md-source__repository">
-    El-Pouleto-ultimate
-  </div>
-</a>
-      </div>
     
   </nav>
   
@@ -230,26 +186,14 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Breezy — Documentation Technique" class="md-nav__button md-logo" aria-label="Breezy — Documentation Technique" data-md-component="logo">
+    <a href="." title="Breezy — Documentation" class="md-nav__button md-logo" aria-label="Breezy — Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    Breezy — Documentation Technique
+    Breezy — Documentation
   </label>
-  
-    <div class="md-nav__source">
-      <a href="https://github.com/El-Pouleto-ultimate" title="Aller au dépôt" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
-  </div>
-  <div class="md-source__repository">
-    El-Pouleto-ultimate
-  </div>
-</a>
-    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -320,6 +264,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#vue-densemble" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vue d'ensemble
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vue d&#39;ensemble">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#stack-technique" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -329,26 +285,42 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#les-6-depots" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#depots-github" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Les 6 dépôts
+        Dépôts GitHub
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#organisation-github" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#equipe" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Organisation GitHub
+        Équipe
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statut-du-projet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Statut du projet
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -357,6 +329,100 @@
     <span class="md-ellipsis">
       
         Démarrage rapide
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structure-de-la-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structure de la documentation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Structure de la documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Services
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#donnees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Données
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#securite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sécurité
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fonctionnalites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fonctionnalités
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#liens-utiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liens utiles
       
     </span>
   </a>
@@ -381,22 +447,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -488,6 +547,62 @@
   
   
     <li class="md-nav__item">
+      <a href="architecture/flux-donnees/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flux de données
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="architecture/diagramme-composants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagramme de composants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="architecture/docker-deploiement/" class="md-nav__link">
         
   
@@ -526,22 +641,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -569,6 +677,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="services/gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -696,7 +832,7 @@
   <span class="md-ellipsis">
     
   
-    Frontend (Next.js)
+    Frontend
   
 
     
@@ -727,22 +863,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
@@ -785,7 +914,7 @@
   <span class="md-ellipsis">
     
   
-    Schémas PostgreSQL
+    Schéma PostgreSQL
   
 
     
@@ -813,7 +942,7 @@
   <span class="md-ellipsis">
     
   
-    Schémas MongoDB
+    Schéma MongoDB
   
 
     
@@ -844,22 +973,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -902,7 +1024,7 @@
   <span class="md-ellipsis">
     
   
-    Authentification & JWT
+    Authentification
   
 
     
@@ -933,22 +1055,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -991,7 +1106,7 @@
   <span class="md-ellipsis">
     
   
-    Couverture Fx1-Fx23
+    Couverture
   
 
     
@@ -1022,22 +1137,97 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/routes-completes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Routes complètes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   
@@ -1055,8 +1245,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1136,7 +1326,7 @@
   <span class="md-ellipsis">
     
   
-    Limites & Évolutions
+    Limites et évolutions
   
 
     
@@ -1153,6 +1343,33 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CHANGELOG_DOC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Journal des modifications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1184,6 +1401,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#vue-densemble" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vue d'ensemble
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vue d&#39;ensemble">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#stack-technique" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1193,26 +1422,42 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#les-6-depots" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#depots-github" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Les 6 dépôts
+        Dépôts GitHub
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#organisation-github" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#equipe" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Organisation GitHub
+        Équipe
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statut-du-projet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Statut du projet
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1221,6 +1466,100 @@
     <span class="md-ellipsis">
       
         Démarrage rapide
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structure-de-la-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structure de la documentation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Structure de la documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Services
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#donnees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Données
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#securite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sécurité
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fonctionnalites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fonctionnalités
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#liens-utiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liens utiles
       
     </span>
   </a>
@@ -1243,109 +1582,191 @@
                   
 
 
-  
-  
 
-
-<h1 id="breezy-reseau-social">Breezy — Réseau Social<a class="headerlink" href="#breezy-reseau-social" title="Permanent link">&para;</a></h1>
-<p><strong>L'essentiel, tout simplement.</strong></p>
-<p>Breezy est un réseau social de type microblogging construit en architecture <strong>microservices</strong>. Chaque service est indépendant, avec sa propre base de données et son propre dépôt Git.</p>
-<h2 id="stack-technique">Stack technique<a class="headerlink" href="#stack-technique" title="Permanent link">&para;</a></h2>
+<h1 id="breezy-documentation-technique">Breezy — Documentation technique</h1>
+<p>Bienvenue sur la documentation technique de <strong>Breezy</strong>, un réseau social moderne développé par une équipe de 4 membres. Cette documentation couvre l'architecture, les services, les données, la sécurité et les fonctionnalités de la plateforme.</p>
+<hr />
+<h2 id="vue-densemble">Vue d'ensemble</h2>
+<p>Breezy est une application web full-stack découpée en <strong>microservices</strong>, déployée avec <strong>Docker</strong> et orchestrée via <strong>docker-compose</strong>. L'infrastructure repose sur <strong>12 conteneurs</strong> interconnectés sur un réseau bridge dédié.</p>
+<h3 id="stack-technique">Stack technique</h3>
 <table>
 <thead>
 <tr>
-<th>Couche</th>
+<th>Composant</th>
 <th>Technologie</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>Frontend</strong></td>
-<td>Next.js 14 (App Router), React 18, Tailwind CSS 3</td>
+<td>Next.js 14.2.0, React 18.2.0, Tailwind CSS 3.4.1</td>
 </tr>
 <tr>
 <td><strong>API Gateway</strong></td>
-<td>Express 4 + http-proxy-middleware</td>
+<td>Express 4.19.2, http-proxy-middleware 3.x</td>
 </tr>
 <tr>
-<td><strong>Backend</strong></td>
-<td>Node.js, Express 5 (auth/user) / Express 5 (post/profil)</td>
+<td><strong>Auth Service</strong></td>
+<td>Express 5.2.1, PostgreSQL 15 (via Sequelize 6)</td>
 </tr>
 <tr>
-<td><strong>BDD relationnelle</strong></td>
-<td>PostgreSQL 15 (auth-service, user-service) via Sequelize 6</td>
+<td><strong>User Service</strong></td>
+<td>Express 5.2.1, PostgreSQL 15 (via Sequelize 6)</td>
 </tr>
 <tr>
-<td><strong>BDD document</strong></td>
-<td>MongoDB 6 (post-service, profil-service) via Mongoose 9</td>
+<td><strong>Post Service</strong></td>
+<td>Express 5.2.1, MongoDB 6 (via Mongoose 9.7.0)</td>
 </tr>
 <tr>
-<td><strong>Reverse proxy</strong></td>
-<td>Nginx</td>
+<td><strong>Profil Service</strong></td>
+<td>Express 5.2.1, MongoDB 6 (via Mongoose 9.7.0)</td>
+</tr>
+<tr>
+<td><strong>Reverse Proxy</strong></td>
+<td>Nginx (Alpine)</td>
 </tr>
 <tr>
 <td><strong>Conteneurisation</strong></td>
-<td>Docker &amp; Docker Compose</td>
-</tr>
-<tr>
-<td><strong>Authentification</strong></td>
-<td>JWT (access token) + Refresh Token (cookie httpOnly)</td>
-</tr>
-<tr>
-<td><strong>Tests</strong></td>
-<td>Jest + Supertest (auth-service, user-service)</td>
+<td>Docker, docker-compose</td>
 </tr>
 </tbody>
 </table>
-<h2 id="les-6-depots">Les 6 dépôts<a class="headerlink" href="#les-6-depots" title="Permanent link">&para;</a></h2>
+<h3 id="depots-github">Dépôts GitHub</h3>
+<p>Tous les dépôts sont hébergés sous l'organisation GitHub <code>El-Pouleto-ultimate</code> :</p>
 <table>
 <thead>
 <tr>
+<th>Service</th>
 <th>Dépôt</th>
-<th>Rôle</th>
-<th>Port par défaut</th>
+<th>Port interne</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>API Gateway</td>
+<td><code>breezy-infra</code> (dossier <code>gateway/</code>)</td>
+<td><code>:3000</code></td>
+</tr>
+<tr>
+<td>Auth Service</td>
 <td><code>breezy-auth-service</code></td>
-<td>Inscription, connexion, JWT, refresh tokens, bannissement</td>
-<td>3001</td>
+<td><code>:3001</code></td>
 </tr>
 <tr>
+<td>User Service</td>
 <td><code>breezy-user-service</code></td>
-<td>Profils publics, follow/unfollow, recherche utilisateurs, modération</td>
-<td>3002</td>
+<td><code>:3002</code></td>
 </tr>
 <tr>
+<td>Post Service</td>
 <td><code>breezy-post-service</code></td>
-<td>Posts, feed, likes, commentaires, signalement</td>
-<td>3003</td>
+<td><code>:3003</code></td>
 </tr>
 <tr>
+<td>Profil Service</td>
 <td><code>breezy-profil-service</code></td>
-<td>Bio, avatar, bannière, notifications</td>
-<td>3004</td>
+<td><code>:3004</code></td>
 </tr>
 <tr>
+<td>Frontend</td>
 <td><code>breezy-frontend</code></td>
-<td>Interface React/Next.js, gestion JWT côté client</td>
-<td>3000</td>
-</tr>
-<tr>
-<td><code>breezy-infra</code></td>
-<td>Docker Compose, Nginx, API Gateway</td>
-<td>80 (Nginx)</td>
+<td><code>:3000</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="organisation-github">Organisation GitHub<a class="headerlink" href="#organisation-github" title="Permanent link">&para;</a></h2>
-<p>Tous les dépôts sont hébergés sous l'organisation <strong><a href="https://github.com/El-Pouleto-ultimate">El-Pouleto-ultimate</a></strong>.</p>
-<h2 id="demarrage-rapide">Démarrage rapide<a class="headerlink" href="#demarrage-rapide" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Depuis le dossier breezy-infra/</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>docker-compose<span class="w"> </span>up<span class="w"> </span>--build
-</span></code></pre></div>
-<p>Le site sera accessible sur <code>http://localhost</code> (port 80 via Nginx).</p>
+<h3 id="equipe">Équipe</h3>
+<table>
+<thead>
+<tr>
+<th>Membre</th>
+<th>Responsabilité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Arthur</strong></td>
+<td>Auth Service, User Service, bases PostgreSQL</td>
+</tr>
+<tr>
+<td><strong>Maxime</strong></td>
+<td>Post Service, Profil Service, bases MongoDB</td>
+</tr>
+<tr>
+<td><strong>Jessica</strong></td>
+<td>Frontend Next.js (React, Tailwind)</td>
+</tr>
+<tr>
+<td><strong>Esteban</strong></td>
+<td>Infrastructure Docker, API Gateway, Nginx</td>
+</tr>
+</tbody>
+</table>
+<h3 id="statut-du-projet">Statut du projet</h3>
+<p>Les fonctionnalités <strong>principales</strong> sont opérationnelles :
+- Inscription et connexion (JWT + refresh tokens)
+- Publication de posts (texte, tags, images)
+- Likes, commentaires et réponses
+- Abonnements (follow / unfollow)
+- Fil d'actualité personnalisé
+- Profils utilisateur (bio, avatar, bannière)
+- Notifications (likes, mentions, follow, commentaires)
+- Recherche de posts par tags et contenu
+- Signalement de posts
+- Modération (bannissement, modérateurs / admins)</p>
+<p>En attente / à implémenter :
+- Messagerie privée
+- Signalement et gestion de la modération avancée</p>
+<hr />
+<h2 id="demarrage-rapide">Démarrage rapide</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Cloner le projet</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/El-Pouleto-ultimate/breezy-infra.git
+
+<span class="c1"># Lancer l&#39;infrastructure complète</span>
+<span class="nb">cd</span><span class="w"> </span>breezy-infra
+docker-compose<span class="w"> </span>up<span class="w"> </span>--build
+</code></pre></div>
+<p>L'application est accessible sur <code>http://localhost:80</code>.</p>
+<hr />
+<h2 id="structure-de-la-documentation">Structure de la documentation</h2>
+<h3 id="architecture">Architecture</h3>
+<ul>
+<li><strong><a href="architecture/vue-ensemble/">Vue d'ensemble</a></strong> : Diagramme des conteneurs, flux réseau, stack complète</li>
+<li><strong><a href="architecture/communication-services/">Communication inter-services</a></strong> : Authentification JWT, appels internes, synchronisation</li>
+<li><strong><a href="architecture/flux-donnees/">Flux de données</a></strong> : Diagrammes de séquence pour les parcours utilisateur clés</li>
+<li><strong><a href="architecture/docker-deploiement/">Docker et déploiement</a></strong> : docker-compose, volumes, healthchecks</li>
+</ul>
+<h3 id="services">Services</h3>
+<ul>
+<li><strong><a href="services/gateway/">API Gateway</a></strong> : Proxy, JWT, rate limiting, table de routage</li>
+<li><strong><a href="services/auth-service/">Auth Service</a></strong> : Inscription, connexion, JWT, refresh tokens</li>
+<li><strong><a href="services/user-service/">User Service</a></strong> : Profils, abonnements, recherche, bannissement</li>
+<li><strong><a href="services/post-service/">Post Service</a></strong> : CRUD posts, likes, commentaires, upload, mentions</li>
+<li><strong><a href="services/profil-service/">Profil Service</a></strong> : Profils détaillés, notifications</li>
+<li><strong><a href="services/frontend/">Frontend</a></strong> : Application Next.js, composants, contexte d'authentification</li>
+</ul>
+<h3 id="donnees">Données</h3>
+<ul>
+<li><strong><a href="donnees/schema-postgresql/">Schéma PostgreSQL</a></strong> : Tables auth + user (users, refresh_tokens, user_profiles, follows)</li>
+<li><strong><a href="donnees/schema-mongodb/">Schéma MongoDB</a></strong> : Collections post + profil (posts, likes, comments, reposts, profiles, notifications)</li>
+</ul>
+<h3 id="securite">Sécurité</h3>
+<ul>
+<li><strong><a href="securite/authentification/">Authentification</a></strong> : JWT, refresh tokens, rotation, headers internes</li>
+</ul>
+<h3 id="fonctionnalites">Fonctionnalités</h3>
+<ul>
+<li><strong><a href="fonctionnalites/couverture-fx/">Couverture fonctionnelle</a></strong> : Tableau des fonctionnalités avec statut</li>
+</ul>
+<h3 id="api">API</h3>
+<ul>
+<li><strong><a href="api/routes-completes/">Routes complètes</a></strong> : Liste exhaustive de toutes les routes exposées</li>
+</ul>
+<hr />
+<h2 id="liens-utiles">Liens utiles</h2>
+<ul>
+<li><a href="https://github.com/El-Pouleto-ultimate">GitHub Organization</a></li>
+<li><a href="https://hub.docker.com/">Docker Hub</a></li>
+</ul>
 
 
 
@@ -1365,12 +1786,6 @@
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-        
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
-  Retour en haut de la page
-</button>
         
       </main>
       
@@ -1401,7 +1816,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": [], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
       <script src="assets/javascripts/bundle.79ae519e.min.js"></script>

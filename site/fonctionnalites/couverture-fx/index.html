@@ -6,17 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Documentation complète du réseau social Breezy (architecture microservices)">
+        <meta name="description" content="Documentation technique du réseau social Breezy">
       
-      
-        <meta name="author" content="Équipe Breezy">
       
       
       
         <link rel="prev" href="../../securite/authentification/">
       
       
-        <link rel="next" href="../../soutenance/questions-generales/">
+        <link rel="next" href="../../api/routes-completes/">
       
       
         
@@ -27,7 +25,7 @@
     
     
       
-        <title>Couverture Fx1-Fx23 - Breezy — Documentation Technique</title>
+        <title>Couverture - Breezy — Documentation</title>
       
     
     
@@ -64,12 +62,10 @@
   
     
     
-      
     
     
     
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -78,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#couverture-fonctionnelle-fx1-fx23" class="md-skip">
+        <a href="#couverture-fonctionnelle" class="md-skip">
           Aller au contenu
         </a>
       
@@ -94,7 +90,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="En-tête">
-    <a href="../.." title="Breezy — Documentation Technique" class="md-header__button md-logo" aria-label="Breezy — Documentation Technique" data-md-component="logo">
+    <a href="../.." title="Breezy — Documentation" class="md-header__button md-logo" aria-label="Breezy — Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -108,13 +104,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Breezy — Documentation Technique
+            Breezy — Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Couverture Fx1-Fx23
+              Couverture
             
           </span>
         </div>
@@ -122,33 +118,7 @@
     </div>
     
       
-        <form class="md-header__option" data-md-component="palette">
-  
     
-    
-    
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Passer en mode sombre"  type="radio" name="__palette" id="__palette_0">
-    
-      <label class="md-header__button md-icon" title="Passer en mode sombre" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
-      </label>
-    
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Passer en mode clair"  type="radio" name="__palette" id="__palette_1">
-    
-      <label class="md-header__button md-icon" title="Passer en mode clair" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
-      </label>
-    
-  
-</form>
-      
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -177,8 +147,6 @@
         </button>
       </nav>
       
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
@@ -194,18 +162,6 @@
 </div>
       
     
-    
-      <div class="md-header__source">
-        <a href="https://github.com/El-Pouleto-ultimate" title="Aller au dépôt" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
-  </div>
-  <div class="md-source__repository">
-    El-Pouleto-ultimate
-  </div>
-</a>
-      </div>
     
   </nav>
   
@@ -232,26 +188,14 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Breezy — Documentation Technique" class="md-nav__button md-logo" aria-label="Breezy — Documentation Technique" data-md-component="logo">
+    <a href="../.." title="Breezy — Documentation" class="md-nav__button md-logo" aria-label="Breezy — Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    Breezy — Documentation Technique
+    Breezy — Documentation
   </label>
-  
-    <div class="md-nav__source">
-      <a href="https://github.com/El-Pouleto-ultimate" title="Aller au dépôt" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
-  </div>
-  <div class="md-source__repository">
-    El-Pouleto-ultimate
-  </div>
-</a>
-    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -292,22 +236,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -399,6 +336,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../architecture/flux-donnees/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flux de données
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/diagramme-composants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagramme de composants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../architecture/docker-deploiement/" class="md-nav__link">
         
   
@@ -437,22 +430,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -480,6 +466,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -607,7 +621,7 @@
   <span class="md-ellipsis">
     
   
-    Frontend (Next.js)
+    Frontend
   
 
     
@@ -638,22 +652,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
@@ -696,7 +703,7 @@
   <span class="md-ellipsis">
     
   
-    Schémas PostgreSQL
+    Schéma PostgreSQL
   
 
     
@@ -724,7 +731,7 @@
   <span class="md-ellipsis">
     
   
-    Schémas MongoDB
+    Schéma MongoDB
   
 
     
@@ -755,22 +762,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -813,7 +813,7 @@
   <span class="md-ellipsis">
     
   
-    Authentification & JWT
+    Authentification
   
 
     
@@ -846,20 +846,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -911,7 +906,7 @@
   <span class="md-ellipsis">
     
   
-    Couverture Fx1-Fx23
+    Couverture
   
 
     
@@ -929,7 +924,7 @@
   <span class="md-ellipsis">
     
   
-    Couverture Fx1-Fx23
+    Couverture
   
 
     
@@ -955,10 +950,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#legende" class="md-nav__link">
+  <a href="#tableau-des-fonctionnalites" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Légende
+        Tableau des fonctionnalites
       
     </span>
   </a>
@@ -966,35 +961,146 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tableau-de-couverture" class="md-nav__link">
+  <a href="#details-des-fonctionnalites-partielles-ou-absentes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tableau de couverture
+        Details des fonctionnalites partielles ou absentes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Details des fonctionnalites partielles ou absentes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fx19-signalement-partiel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fx19 - Signalement (PARTIEL)
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#fonctionnalites-transverses" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#fx21-bannissement-partiel" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fonctionnalités transverses
+        Fx21 - Bannissement (PARTIEL)
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#divergences-frontendbackend" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#fx22-messagerie-absent" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Divergences frontend/backend
+        Fx22 - Messagerie (ABSENT)
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx23-mot-de-passe-oublie-absent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fx23 - Mot de passe oublie (ABSENT)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#divergences-et-problemes-identifies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Divergences et problemes identifies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Divergences et problemes identifies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-divergence-de-validation-des-mots-de-passe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Divergence de validation des mots de passe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-divergence-de-validation-du-username" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Divergence de validation du username
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-absence-du-header-x-user-username-pour-le-user-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Absence du header x-user-username pour le user-service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-route-de-profil-divergence-dappel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Route de profil : divergence d'appel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-rate-limiting-desactive-en-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Rate limiting desactive en Docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-pas-de-route-de-filtrage-des-posts-signales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Pas de route de filtrage des posts signales
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1024,22 +1130,97 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/routes-completes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Routes complètes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   
@@ -1057,8 +1238,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1138,7 +1319,7 @@
   <span class="md-ellipsis">
     
   
-    Limites & Évolutions
+    Limites et évolutions
   
 
     
@@ -1155,6 +1336,33 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CHANGELOG_DOC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Journal des modifications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1186,10 +1394,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#legende" class="md-nav__link">
+  <a href="#tableau-des-fonctionnalites" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Légende
+        Tableau des fonctionnalites
       
     </span>
   </a>
@@ -1197,35 +1405,146 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tableau-de-couverture" class="md-nav__link">
+  <a href="#details-des-fonctionnalites-partielles-ou-absentes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tableau de couverture
+        Details des fonctionnalites partielles ou absentes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Details des fonctionnalites partielles ou absentes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fx19-signalement-partiel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fx19 - Signalement (PARTIEL)
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#fonctionnalites-transverses" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#fx21-bannissement-partiel" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fonctionnalités transverses
+        Fx21 - Bannissement (PARTIEL)
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#divergences-frontendbackend" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#fx22-messagerie-absent" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Divergences frontend/backend
+        Fx22 - Messagerie (ABSENT)
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx23-mot-de-passe-oublie-absent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fx23 - Mot de passe oublie (ABSENT)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#divergences-et-problemes-identifies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Divergences et problemes identifies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Divergences et problemes identifies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-divergence-de-validation-des-mots-de-passe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Divergence de validation des mots de passe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-divergence-de-validation-du-username" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Divergence de validation du username
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-absence-du-header-x-user-username-pour-le-user-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Absence du header x-user-username pour le user-service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-route-de-profil-divergence-dappel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Route de profil : divergence d'appel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-rate-limiting-desactive-en-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Rate limiting desactive en Docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-pas-de-route-de-filtrage-des-posts-signales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Pas de route de filtrage des posts signales
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1245,339 +1564,288 @@
                   
 
 
-  
-  
 
-
-<h1 id="couverture-fonctionnelle-fx1-fx23">Couverture fonctionnelle Fx1-Fx23<a class="headerlink" href="#couverture-fonctionnelle-fx1-fx23" title="Permanent link">&para;</a></h1>
-<p>Ce tableau recense les fonctionnalités attendues du sujet et leur statut d'implémentation réel dans le code.</p>
-<h2 id="legende">Légende<a class="headerlink" href="#legende" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Statut</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>✅ Implémenté</td>
-<td>Fonctionnalité complète et fonctionnelle</td>
-</tr>
-<tr>
-<td>⚠️ Partiel</td>
-<td>Fonctionnalité partiellement implémentée</td>
-</tr>
-<tr>
-<td>❌ Non implémenté</td>
-<td>Fonctionnalité absente du code</td>
-</tr>
-</tbody>
-</table>
-<h2 id="tableau-de-couverture">Tableau de couverture<a class="headerlink" href="#tableau-de-couverture" title="Permanent link">&para;</a></h2>
+<h1 id="couverture-fonctionnelle">Couverture Fonctionnelle</h1>
+<h2 id="tableau-des-fonctionnalites">Tableau des fonctionnalites</h2>
 <table>
 <thead>
 <tr>
 <th>Fx</th>
-<th>Fonctionnalité</th>
+<th>Description</th>
+<th>Backend</th>
+<th>Frontend</th>
 <th>Statut</th>
-<th>Service(s)</th>
-<th>Détail</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Fx1</td>
 <td>Inscription</td>
-<td>✅ Implémenté</td>
-<td>auth-service, frontend</td>
-<td><code>POST /auth/register</code> — validation username/email/password, hash bcrypt, génération JWT + refresh token, sync vers user-service</td>
+<td>✅ auth-service (<code>POST /auth/register</code>)</td>
+<td>✅ <code>/register</code>, validation email/username/password</td>
+<td>✅ Complet</td>
 </tr>
 <tr>
 <td>Fx2</td>
 <td>Connexion</td>
-<td>✅ Implémenté</td>
-<td>auth-service, frontend</td>
-<td><code>POST /auth/login</code> — vérification credentials, vérification ban/inactif, émission JWT</td>
+<td>✅ auth-service (<code>POST /auth/login</code>)</td>
+<td>✅ <code>/signin</code>, gestion erreurs bannissement</td>
+<td>✅ Complet</td>
 </tr>
 <tr>
 <td>Fx3</td>
-<td>Déconnexion</td>
-<td>✅ Implémenté</td>
-<td>auth-service, frontend</td>
-<td><code>POST /auth/logout</code> — révocation du refresh token, suppression cookie</td>
+<td>JWT + Refresh Token</td>
+<td>✅ Rotation + detection vol + revocation</td>
+<td>✅ Interceptor Axios + file attente requetes</td>
+<td>✅ Complet</td>
 </tr>
 <tr>
 <td>Fx4</td>
 <td>Profil utilisateur</td>
-<td>✅ Implémenté</td>
-<td>profil-service, user-service, frontend</td>
-<td>Profil étendu (bio, avatar, bannière) dans profil-service + profil public (username, compteurs) dans user-service</td>
+<td>✅ user-service + profil-service</td>
+<td>✅ <code>/profile</code>, <code>/profile/:id</code>, <code>getFullProfile</code> fusion</td>
+<td>✅ Complet</td>
 </tr>
 <tr>
 <td>Fx5</td>
-<td>Modification du profil</td>
-<td>✅ Implémenté</td>
-<td>profil-service, frontend</td>
-<td><code>PUT /profiles/:userId</code> — display_name, bio (160 chars max), avatar_url, banner_url</td>
+<td>Edition profil</td>
+<td>✅ profil-service (<code>PUT /profils/:userId</code>)</td>
+<td>✅ <code>/profile/edit</code></td>
+<td>✅ Complet</td>
 </tr>
 <tr>
 <td>Fx6</td>
-<td>Publier un post</td>
-<td>✅ Implémenté</td>
-<td>post-service, frontend</td>
-<td><code>POST /posts</code> — contenu 280 chars max, tags (max 5), media_urls</td>
+<td>Follow/Unfollow</td>
+<td>✅ Transactions atomiques + notifications</td>
+<td>✅ <code>useFollow</code> hook (optimistic)</td>
+<td>✅ Complet</td>
 </tr>
 <tr>
 <td>Fx7</td>
-<td>Supprimer un post</td>
-<td>✅ Implémenté</td>
-<td>post-service, frontend</td>
-<td><code>DELETE /posts/:id</code> — par l'auteur ou modérateur/admin, suppression en cascade (likes + commentaires)</td>
+<td>Feed</td>
+<td>✅ Base sur following list (<code>$in</code>)</td>
+<td>✅ Infinite scroll pagination</td>
+<td>✅ Complet</td>
 </tr>
 <tr>
 <td>Fx8</td>
-<td>Feed / Fil d'actualité</td>
-<td>✅ Implémenté</td>
-<td>post-service, user-service, frontend</td>
-<td><code>GET /posts/feed</code> — basé sur les abonnements, appel inter-service au user-service, pagination</td>
+<td>Creation post</td>
+<td>✅ 280 chars + tags (max 5) + media</td>
+<td>✅ <code>/compose</code> + <code>PostForm</code> avec autocomplete @mentions</td>
+<td>✅ Complet</td>
 </tr>
 <tr>
 <td>Fx9</td>
-<td>Liker un post</td>
-<td>✅ Implémenté</td>
-<td>post-service, frontend</td>
-<td><code>POST /posts/:id/like</code> — compteur atomique ($inc), index unique empêche le double like, notification envoyée</td>
+<td>Like/Unlike</td>
+<td>✅ <code>$inc</code> atomique + notif + index unique</td>
+<td>✅ <code>useLike</code> (optimistic, rollback)</td>
+<td>✅ Complet</td>
 </tr>
 <tr>
 <td>Fx10</td>
-<td>Retirer un like</td>
-<td>✅ Implémenté</td>
-<td>post-service, frontend</td>
-<td><code>DELETE /posts/:id/like</code> — décrémentation du compteur</td>
+<td>Commentaires</td>
+<td>✅ + reponses 1 niveau (MAX_DEPTH) + cascade</td>
+<td>✅ <code>CommentThread</code> avec reponses imbriquees</td>
+<td>✅ Complet</td>
 </tr>
 <tr>
 <td>Fx11</td>
-<td>Commenter un post</td>
-<td>✅ Implémenté</td>
-<td>post-service, frontend</td>
-<td><code>POST /posts/:id/comments</code> — 280 chars max, incrémente comments_count</td>
+<td>Recherche utilisateurs</td>
+<td>✅ <code>Op.iLike</code>, exclut bannis, tri followers_count</td>
+<td>✅ <code>/search</code>, <code>SearchBar</code></td>
+<td>✅ Complet</td>
 </tr>
 <tr>
 <td>Fx12</td>
-<td>Répondre à un commentaire</td>
-<td>✅ Implémenté</td>
-<td>post-service, frontend</td>
-<td><code>POST /posts/:id/comments/:commentId/replies</code> — profondeur limitée à 1 niveau</td>
+<td>Recherche posts</td>
+<td>✅ regex content/tags/username</td>
+<td>✅ <code>/search</code>, meme page que recherche users</td>
+<td>✅ Complet</td>
 </tr>
 <tr>
 <td>Fx13</td>
-<td>Suivre un utilisateur (Follow)</td>
-<td>✅ Implémenté</td>
-<td>user-service, frontend</td>
-<td><code>POST /users/:id/follow</code> — transaction atomique, compteurs mis à jour, protection self-follow</td>
+<td>Notifications</td>
+<td>✅ like, follow, mention, comment, reply</td>
+<td>✅ <code>/notifications</code> + badge compteur non lues</td>
+<td>✅ Complet</td>
 </tr>
 <tr>
 <td>Fx14</td>
-<td>Ne plus suivre (Unfollow)</td>
-<td>✅ Implémenté</td>
-<td>user-service, frontend</td>
-<td><code>DELETE /users/:id/follow</code> — transaction atomique, décrémentation des compteurs</td>
+<td>@mentions</td>
+<td>✅ Extraction regex + resolution + notification</td>
+<td>✅ <code>useMentions</code> dropdown autocomplete</td>
+<td>✅ Complet</td>
 </tr>
 <tr>
 <td>Fx15</td>
-<td>Voir les followers</td>
-<td>✅ Implémenté</td>
-<td>user-service, frontend</td>
-<td><code>GET /users/:id/followers</code> — paginé avec profils complets</td>
+<td>Upload media</td>
+<td>✅ multer 5MB, images seulement</td>
+<td>✅ <code>PostForm</code> + <code>ComposeFab</code> avec preview</td>
+<td>✅ Complet</td>
 </tr>
 <tr>
 <td>Fx16</td>
-<td>Voir les following</td>
-<td>✅ Implémenté</td>
-<td>user-service, frontend</td>
-<td><code>GET /users/:id/following</code> — retourne les IDs uniquement</td>
+<td>Repost</td>
+<td>✅ toggle avec <code>$inc</code> + index unique</td>
+<td>✅ <code>PostActions</code> toggle (optimistic)</td>
+<td>✅ Complet</td>
 </tr>
 <tr>
 <td>Fx17</td>
-<td>Recherche utilisateurs</td>
-<td>✅ Implémenté</td>
-<td>user-service, frontend</td>
-<td><code>GET /users/search?q=</code> — iLike, exclut bannis/inactifs, trié par followers_count</td>
+<td>Edition post</td>
+<td>✅ <code>PUT /posts/:id</code> (owner only)</td>
+<td>✅ <code>PostCard</code> inline edit</td>
+<td>✅ Complet</td>
 </tr>
 <tr>
 <td>Fx18</td>
-<td>Recherche par tag</td>
-<td>✅ Implémenté</td>
-<td>post-service, frontend</td>
-<td><code>GET /posts/search?tag=</code> — recherche en minuscules</td>
+<td>Suppression post</td>
+<td>✅ Cascade likes+comments+reposts</td>
+<td>✅ <code>PostActions</code> menu avec confirmation</td>
+<td>✅ Complet</td>
 </tr>
 <tr>
 <td>Fx19</td>
-<td>Notifications</td>
-<td>✅ Implémenté</td>
-<td>profil-service, post-service, frontend</td>
-<td>Types: like, follow, mention, comment, reply — marquer lu/tout lu</td>
+<td>Signalement</td>
+<td>✅ <code>is_reported=true</code> via <code>POST /posts/:id/report</code></td>
+<td>❌ Pas d'UI signalement</td>
+<td>⚠️ Partiel</td>
 </tr>
 <tr>
 <td>Fx20</td>
-<td>Signalement de post</td>
-<td>⚠️ Partiel</td>
-<td>post-service</td>
-<td><code>POST /posts/:id/report</code> — met <code>is_reported: true</code> mais pas de workflow de modération pour traiter les signalements</td>
+<td>Changement mot de passe</td>
+<td>✅ <code>POST /auth/change-password</code></td>
+<td>✅ <code>/settings</code></td>
+<td>✅ Complet</td>
 </tr>
 <tr>
 <td>Fx21</td>
 <td>Bannissement</td>
-<td>✅ Implémenté</td>
-<td>user-service, auth-service</td>
-<td><code>PUT /users/:id/ban</code> — réservé aux modérateurs/admins, propagation inter-service, vérification au login</td>
+<td>✅ user-service + auth-service sync</td>
+<td>❌ Pas d'UI moderation</td>
+<td>⚠️ Partiel</td>
 </tr>
 <tr>
 <td>Fx22</td>
-<td>Messagerie privée</td>
-<td>❌ Non implémenté</td>
-<td>—</td>
-<td>Le frontend a les pages et composants (<code>messages/</code>, <code>ConversationList</code>, <code>MessageThread</code>, <code>MessageInput</code>) mais aucun backend n'existe. Fonctionne uniquement en mode mock.</td>
+<td>Messagerie</td>
+<td>❌ Aucun backend</td>
+<td>⚠️ Page placeholder, composants <code>ConversationList</code> + <code>MessageThread</code></td>
+<td>❌ Absent</td>
 </tr>
 <tr>
 <td>Fx23</td>
-<td>Changement de mot de passe</td>
-<td>❌ Non implémenté</td>
-<td>—</td>
-<td>Le frontend appelle <code>POST /auth/change-password</code> mais cette route n'existe pas dans l'auth-service</td>
+<td>Mot de passe oublie</td>
+<td>❌ Aucun backend</td>
+<td>⚠️ Bouton "Oublie?" inactif, message indisponibilite</td>
+<td>❌ Absent</td>
 </tr>
 </tbody>
 </table>
-<h2 id="fonctionnalites-transverses">Fonctionnalités transverses<a class="headerlink" href="#fonctionnalites-transverses" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Fonctionnalité</th>
-<th>Statut</th>
-<th>Détail</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>API Gateway</td>
-<td>✅</td>
-<td>Routage, vérification JWT, injection headers, rate limiting</td>
-</tr>
-<tr>
-<td>Rate limiting</td>
-<td>✅</td>
-<td>Double couche : Nginx (30/min global, 5/min auth) + Gateway (100/15min, 10/15min auth)</td>
-</tr>
-<tr>
-<td>Refresh token avec rotation</td>
-<td>✅</td>
-<td>Cookie httpOnly, hashé SHA-256, détection de vol</td>
-</tr>
-<tr>
-<td>Docker Compose</td>
-<td>✅</td>
-<td>11 conteneurs (4 services + gateway + frontend + nginx + 4 BDD)</td>
-</tr>
-<tr>
-<td>Tests unitaires/intégration</td>
-<td>⚠️</td>
-<td>Présents pour auth-service (15 tests) et user-service (14 tests), absents pour post-service et profil-service</td>
-</tr>
-<tr>
-<td>Mode mock (frontend)</td>
-<td>✅</td>
-<td>Développement sans backend via <code>NEXT_PUBLIC_USE_MOCKS=true</code></td>
-</tr>
-<tr>
-<td>Pages légales</td>
-<td>✅</td>
-<td>CGU, confidentialité, cookies, accessibilité, publicité</td>
-</tr>
-<tr>
-<td>Health checks</td>
-<td>✅</td>
-<td><code>/health</code> sur auth-service et user-service, <code>/api/health</code> sur gateway</td>
-</tr>
-<tr>
-<td>Repost / Partage</td>
-<td>❌</td>
-<td>Le frontend a <code>toggleRepost()</code> mais aucune route backend n'existe</td>
-</tr>
-<tr>
-<td>Modification de post</td>
-<td>❌</td>
-<td>Le frontend a <code>updatePost()</code> mais aucune route <code>PUT /posts/:id</code> n'existe dans le backend</td>
-</tr>
-<tr>
-<td>Réinitialisation de mot de passe</td>
-<td>❌</td>
-<td>Le bouton "Oublié ?" dans le frontend affiche un faux message de succès</td>
-</tr>
-</tbody>
-</table>
-<h2 id="divergences-frontendbackend">Divergences frontend/backend<a class="headerlink" href="#divergences-frontendbackend" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Appel frontend</th>
-<th>Route backend attendue</th>
-<th>Existe ?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>POST /auth/change-password</code></td>
-<td><code>POST /auth/change-password</code></td>
-<td>❌</td>
-</tr>
-<tr>
-<td><code>GET /posts/user/:uid/replies</code></td>
-<td>—</td>
-<td>❌</td>
-</tr>
-<tr>
-<td><code>GET /posts/user/:uid/media</code></td>
-<td>—</td>
-<td>❌</td>
-</tr>
-<tr>
-<td><code>GET /posts/user/:uid/likes</code></td>
-<td>—</td>
-<td>❌</td>
-</tr>
-<tr>
-<td><code>GET /posts/user/:uid/reposts</code></td>
-<td>—</td>
-<td>❌</td>
-</tr>
-<tr>
-<td><code>PUT /posts/:id</code></td>
-<td>—</td>
-<td>❌</td>
-</tr>
-<tr>
-<td><code>POST /posts/:id/repost</code></td>
-<td>—</td>
-<td>❌</td>
-</tr>
-<tr>
-<td><code>GET /posts/search?q=</code></td>
-<td><code>GET /posts/search?tag=</code></td>
-<td>⚠️ Param différent</td>
-</tr>
-<tr>
-<td><code>PUT /users/:id</code> (updateProfile)</td>
-<td><code>PUT /profiles/:userId</code> (profil-service)</td>
-<td>⚠️ Mauvais service</td>
-</tr>
-<tr>
-<td><code>GET /messages/unread-count</code></td>
-<td>—</td>
-<td>❌</td>
-</tr>
-</tbody>
-</table>
+<hr />
+<h2 id="details-des-fonctionnalites-partielles-ou-absentes">Details des fonctionnalites partielles ou absentes</h2>
+<h3 id="fx19-signalement-partiel">Fx19 - Signalement (PARTIEL)</h3>
+<p><strong>Backend</strong> : La route <code>POST /api/posts/:id/report</code> existe et fonctionne. Elle passe <code>is_reported: true</code> sur le post.</p>
+<p><strong>Frontend</strong> : Aucun bouton "Signaler" n'est implemente dans le menu d'options des posts (<code>PostActions.js</code>). Les seules options disponibles sont "Modifier" et "Supprimer" (pour le proprietaire uniquement).</p>
+<p><strong>Impact</strong> : La fonctionnalite backend est inutilisable sans interface frontend. Les moderators ne peuvent pas voir la liste des posts signales (pas de route de filtrage par <code>is_reported</code>).</p>
+<hr />
+<h3 id="fx21-bannissement-partiel">Fx21 - Bannissement (PARTIEL)</h3>
+<p><strong>Backend</strong> : La route <code>PUT /api/users/:id/ban</code> existe dans le user-service. Elle verifie le role (<code>moderator</code> ou <code>admin</code>), met a jour <code>is_banned</code> localement et propage vers l'auth-service via <code>POST /auth/internal/ban</code>. La propagation est <strong>non bloquante</strong> (timeout 3s, ignore les erreurs).</p>
+<p><strong>Frontend</strong> : Aucun panneau d'administration ou de moderation n'est implemente. Il n'y a pas :
+- De page de liste des utilisateurs pour les moderators
+- De bouton "Bannir" sur les profils
+- De visualisation des posts signales
+- De notification de bannissement a l'utilisateur concerne</p>
+<p><strong>Impact</strong> : Le bannissement n'est utilisable que via des appels API directs (curl, Postman).</p>
+<hr />
+<h3 id="fx22-messagerie-absent">Fx22 - Messagerie (ABSENT)</h3>
+<p><strong>Backend</strong> : Aucun service de messagerie n'existe. Aucune collection, route ou controller dedie.</p>
+<p><strong>Frontend</strong> : Deux composants existent (<code>ConversationList</code>, <code>MessageThread</code>) mais ne sont pas relies a une API. La page <code>/messages</code> affiche un message placeholder :</p>
+<div class="highlight"><pre><span></span><code>&quot;La messagerie directe sera disponible dans une prochaine version de Breezy.&quot;
+</code></pre></div>
+<p><strong>Probleme detecte</strong> : Le <code>AuthContext</code> appelle <code>getUnreadMessagesCount()</code> depuis <code>messageService.js</code>, mais cette fonction est un stub qui retourne toujours <code>0</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// frontend/src/services/messageService.js</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">getUnreadMessagesCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mf">0</span>
+</code></pre></div>
+<p>Cette fonction est importee et appelee dans <code>AuthContext.js</code> ligne 5 et 40, mais la route backend correspondante n'existe pas.</p>
+<hr />
+<h3 id="fx23-mot-de-passe-oublie-absent">Fx23 - Mot de passe oublie (ABSENT)</h3>
+<p><strong>Backend</strong> : Aucune route de reinitialisation de mot de passe n'existe. Pas de token de reset, pas d'envoi d'email, pas de logique de validation.</p>
+<p><strong>Frontend</strong> : Le bouton "Oublie?" sur la page <code>/signin</code> affiche un message d'indisponibilite :</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">handleForgotPassword</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">setInfoMessage</span><span class="p">(</span>
+<span class="w">        </span><span class="s1">&#39;La reinitialisation de mot de passe n\&#39;est pas encore disponible. &#39;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">        </span><span class="s1">&#39;Contactez un administrateur.&#39;</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Impact</strong> : Si un utilisateur oublie son mot de passe, la seule solution est de contacter un administrateur pour une reinitialisation manuelle en base de donnees.</p>
+<hr />
+<h2 id="divergences-et-problemes-identifies">Divergences et problemes identifies</h2>
+<h3 id="1-divergence-de-validation-des-mots-de-passe">1. Divergence de validation des mots de passe</h3>
+<p>Le fichier <code>frontend/src/utils/validators.js</code> contient deux fonctions avec des regles differentes :</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Fonction generique -- PLUS PERMISSIVE</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">isValidPassword</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">p</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">p</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;string&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">6</span><span class="p">;</span>
+
+<span class="c1">// Validation du formulaire d&#39;inscription -- COHERENTE avec le backend</span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">form</span><span class="p">.</span><span class="nx">password</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">8</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="sr">/[A-Z]/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">form</span><span class="p">.</span><span class="nx">password</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="sr">/[0-9]/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">form</span><span class="p">.</span><span class="nx">password</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><code>isValidPassword</code> : &gt;= 6 caracteres, aucune complexite requise</li>
+<li><code>validateRegisterForm</code> : &gt;= 8 caracteres, &gt;= 1 majuscule, &gt;= 1 chiffre (coherent avec le backend)</li>
+<li>Backend (express-validator) : &gt;= 8 caracteres, &gt;= 1 majuscule, &gt;= 1 chiffre</li>
+</ul>
+<p>La fonction <code>isValidPassword</code> n'est pas utilisee dans le formulaire d'inscription, mais pourrait etre utilisee ailleurs (changement de mot de passe par exemple), creant un risque de validation inconsistante.</p>
+<h3 id="2-divergence-de-validation-du-username">2. Divergence de validation du username</h3>
+<ul>
+<li><strong>Frontend</strong> (<code>isValidUsername</code>) : &gt;= 2 caracteres</li>
+<li><strong>Backend</strong> (express-validator) : 3-50 caracteres, alphanumerique + underscores</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// Backend auth-service/src/routes/auth.routes.js</span>
+<span class="nx">body</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">isLength</span><span class="p">({</span><span class="w"> </span><span class="nx">min</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">matches</span><span class="p">(</span><span class="sr">/^[a-zA-Z0-9_]+$/</span><span class="p">)</span>
+</code></pre></div>
+<p>Le backend rejette les noms de 2 caracteres qui pourraient etre acceptes par le frontend.</p>
+<h3 id="3-absence-du-header-x-user-username-pour-le-user-service">3. Absence du header x-user-username pour le user-service</h3>
+<p>La gateway n'injecte pas le header <code>x-user-username</code> pour les routes <code>/api/users/*</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// gateway/src/index.js — routes /api/users</span>
+<span class="nx">proxyReq</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;x-user-id&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">sub</span><span class="p">);</span>
+<span class="nx">proxyReq</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;x-user-role&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">role</span><span class="p">);</span>
+<span class="c1">// x-user-username MANQUANT</span>
+<span class="nx">fixRequestBody</span><span class="p">(</span><span class="nx">proxyReq</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">);</span>
+</code></pre></div>
+<p>Les autres services recoivent bien ce header :
+<div class="highlight"><pre><span></span><code><span class="c1">// gateway/src/index.js — routes /api/posts, /api/profils, etc.</span>
+<span class="nx">proxyReq</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;x-user-username&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">username</span><span class="p">);</span>
+</code></pre></div></p>
+<p><strong>Impact</strong> : Dans le user-service, le controller <code>follow</code> utilise <code>req.username</code> pour envoyer une notification de follow. Comme <code>x-user-username</code> n'est pas injecte, <code>req.username</code> est <code>undefined</code> et la notification de follow contiendra <code>from_username: undefined</code>.</p>
+<h3 id="4-route-de-profil-divergence-dappel">4. Route de profil : divergence d'appel</h3>
+<p>Le frontend a ete verifie : il utilise bien <code>PUT /profils/:userId</code> (profil-service) via <code>userService.updateProfile()</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// frontend/src/services/userService.js</span>
+<span class="nx">updateProfile</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">d</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">api</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="sb">`/profils/</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="nx">d</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">data</span><span class="p">),</span>
+</code></pre></div>
+<p>Le controleur de profile utilise bien <code>PUT /api/profils/:userId</code>. Les appels sont corrects.</p>
+<h3 id="5-rate-limiting-desactive-en-docker">5. Rate limiting desactive en Docker</h3>
+<p>Le docker-compose.yml definit <code>NODE_ENV=test</code> pour la gateway :</p>
+<div class="highlight"><pre><span></span><code><span class="nt">gateway</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NODE_ENV=test</span><span class="w">  </span><span class="c1"># Desactive le rate limiting</span>
+</code></pre></div>
+<p>Le code de la gateway desactive effectivement les limiteurs en mode test :</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">isTest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;test&#39;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">globalLimiter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rateLimit</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">windowMs</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="nx">isTest</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">999999</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">500</span><span class="p">,</span><span class="w">  </span><span class="c1">// 999999 en test</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>En production, <code>NODE_ENV</code> ne doit pas etre <code>test</code>.</p>
+<h3 id="6-pas-de-route-de-filtrage-des-posts-signales">6. Pas de route de filtrage des posts signales</h3>
+<p>Bien que la route <code>POST /api/posts/:id/report</code> existe et marque <code>is_reported: true</code>, il n'y a aucune route pour :
+- Lister les posts signales (<code>GET /api/posts/reported</code>)
+- Lever un signalement (<code>PUT /api/posts/:id/unreport</code>)
+- Supprimer un post signale apres moderation (la suppression classique existe deja)</p>
 
 
 
@@ -1597,12 +1865,6 @@
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-        
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
-  Retour en haut de la page
-</button>
         
       </main>
       
@@ -1633,7 +1895,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>

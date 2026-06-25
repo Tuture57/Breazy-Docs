@@ -6,10 +6,8 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Documentation complète du réseau social Breezy (architecture microservices)">
+        <meta name="description" content="Documentation technique du réseau social Breezy">
       
-      
-        <meta name="author" content="Équipe Breezy">
       
       
       
@@ -27,7 +25,7 @@
     
     
       
-        <title>Questions par membre - Breezy — Documentation Technique</title>
+        <title>Questions par membre - Breezy — Documentation</title>
       
     
     
@@ -64,12 +62,10 @@
   
     
     
-      
     
     
     
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -78,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#questions-par-membreservice" class="md-skip">
+        <a href="#questions-par-membre" class="md-skip">
           Aller au contenu
         </a>
       
@@ -94,7 +90,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="En-tête">
-    <a href="../.." title="Breezy — Documentation Technique" class="md-header__button md-logo" aria-label="Breezy — Documentation Technique" data-md-component="logo">
+    <a href="../.." title="Breezy — Documentation" class="md-header__button md-logo" aria-label="Breezy — Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -108,7 +104,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Breezy — Documentation Technique
+            Breezy — Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -122,33 +118,7 @@
     </div>
     
       
-        <form class="md-header__option" data-md-component="palette">
-  
     
-    
-    
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Passer en mode sombre"  type="radio" name="__palette" id="__palette_0">
-    
-      <label class="md-header__button md-icon" title="Passer en mode sombre" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
-      </label>
-    
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Passer en mode clair"  type="radio" name="__palette" id="__palette_1">
-    
-      <label class="md-header__button md-icon" title="Passer en mode clair" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
-      </label>
-    
-  
-</form>
-      
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -177,8 +147,6 @@
         </button>
       </nav>
       
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
@@ -194,18 +162,6 @@
 </div>
       
     
-    
-      <div class="md-header__source">
-        <a href="https://github.com/El-Pouleto-ultimate" title="Aller au dépôt" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
-  </div>
-  <div class="md-source__repository">
-    El-Pouleto-ultimate
-  </div>
-</a>
-      </div>
     
   </nav>
   
@@ -232,26 +188,14 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Breezy — Documentation Technique" class="md-nav__button md-logo" aria-label="Breezy — Documentation Technique" data-md-component="logo">
+    <a href="../.." title="Breezy — Documentation" class="md-nav__button md-logo" aria-label="Breezy — Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    Breezy — Documentation Technique
+    Breezy — Documentation
   </label>
-  
-    <div class="md-nav__source">
-      <a href="https://github.com/El-Pouleto-ultimate" title="Aller au dépôt" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
-  </div>
-  <div class="md-source__repository">
-    El-Pouleto-ultimate
-  </div>
-</a>
-    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -292,22 +236,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -399,6 +336,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../architecture/flux-donnees/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flux de données
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/diagramme-composants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagramme de composants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../architecture/docker-deploiement/" class="md-nav__link">
         
   
@@ -437,22 +430,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -480,6 +466,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../services/gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -607,7 +621,7 @@
   <span class="md-ellipsis">
     
   
-    Frontend (Next.js)
+    Frontend
   
 
     
@@ -638,22 +652,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
@@ -696,7 +703,7 @@
   <span class="md-ellipsis">
     
   
-    Schémas PostgreSQL
+    Schéma PostgreSQL
   
 
     
@@ -724,7 +731,7 @@
   <span class="md-ellipsis">
     
   
-    Schémas MongoDB
+    Schéma MongoDB
   
 
     
@@ -755,22 +762,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -813,7 +813,7 @@
   <span class="md-ellipsis">
     
   
-    Authentification & JWT
+    Authentification
   
 
     
@@ -844,22 +844,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -902,7 +895,89 @@
   <span class="md-ellipsis">
     
   
-    Couverture Fx1-Fx23
+    Couverture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/routes-completes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Routes complètes
   
 
     
@@ -935,20 +1010,15 @@
     
     
     
-      
-        
-        
-      
     
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   
@@ -966,8 +1036,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1072,22 +1142,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#membre-responsable-de-lauth-service" class="md-nav__link">
+  <a href="#arthur-auth-service-user-service" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Membre responsable de l'auth-service
+        Arthur -- Auth Service + User Service
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Membre responsable de l&#39;auth-service">
+    <nav class="md-nav" aria-label="Arthur -- Auth Service + User Service">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#q1-comment-fonctionne-la-rotation-des-refresh-tokens" class="md-nav__link">
+  <a href="#q1-comment-fonctionne-la-rotation-des-refresh-tokens-et-la-detection-de-vol" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q1 : Comment fonctionne la rotation des refresh tokens ?
+        Q1 : Comment fonctionne la rotation des refresh tokens et la detection de vol ?
       
     </span>
   </a>
@@ -1095,10 +1165,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q2-pourquoi-bcryptjs-et-pas-bcrypt-natif" class="md-nav__link">
+  <a href="#q2-pourquoi-avoir-separe-auth-service-et-user-service-au-lieu-dun-seul-service-utilisateur" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q2 : Pourquoi bcryptjs et pas bcrypt natif ?
+        Q2 : Pourquoi avoir separe auth-service et user-service au lieu d'un seul service utilisateur ?
       
     </span>
   </a>
@@ -1106,10 +1176,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q3-comment-la-synchronisation-auth-user-service-fonctionne-t-elle" class="md-nav__link">
+  <a href="#q3-comment-garantis-tu-latomicite-des-compteurs-followersfollowing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q3 : Comment la synchronisation auth → user-service fonctionne-t-elle ?
+        Q3 : Comment garantis-tu l'atomicite des compteurs followers/following ?
       
     </span>
   </a>
@@ -1117,10 +1187,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q4-comment-avez-vous-structure-vos-tests" class="md-nav__link">
+  <a href="#q4-explique-le-flux-dinscription-complet-de-la-creation-du-compte-a-la-sync-profil" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q4 : Comment avez-vous structuré vos tests ?
+        Q4 : Explique le flux d'inscription complet, de la creation du compte a la sync profil
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q5-comment-le-ban-est-il-propage-entre-user-service-et-auth-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q5 : Comment le ban est-il propage entre user-service et auth-service ?
       
     </span>
   </a>
@@ -1133,22 +1214,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#membre-responsable-du-user-service" class="md-nav__link">
+  <a href="#maxime-post-service-profil-service" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Membre responsable du user-service
+        Maxime -- Post Service + Profil Service
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Membre responsable du user-service">
+    <nav class="md-nav" aria-label="Maxime -- Post Service + Profil Service">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#q1-comment-les-transactions-atomiques-fonctionnent-pour-le-followunfollow" class="md-nav__link">
+  <a href="#q1-comment-fonctionne-lalgorithme-du-feed" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q1 : Comment les transactions atomiques fonctionnent pour le follow/unfollow ?
+        Q1 : Comment fonctionne l'algorithme du feed ?
       
     </span>
   </a>
@@ -1156,10 +1237,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q2-comment-fonctionne-la-recherche-dutilisateurs" class="md-nav__link">
+  <a href="#q2-pourquoi-mongodb-plutot-que-postgresql-pour-les-posts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q2 : Comment fonctionne la recherche d'utilisateurs ?
+        Q2 : Pourquoi MongoDB plutot que PostgreSQL pour les posts ?
       
     </span>
   </a>
@@ -1167,10 +1248,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q3-comment-le-bannissement-se-propage-entre-les-services" class="md-nav__link">
+  <a href="#q3-comment-geres-tu-la-coherence-des-compteurs-likes_count-comments_count" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q3 : Comment le bannissement se propage entre les services ?
+        Q3 : Comment geres-tu la coherence des compteurs (likes_count, comments_count) ?
       
     </span>
   </a>
@@ -1178,10 +1259,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q4-pourquoi-la-table-follows-na-pas-de-foreign-key-sequelize" class="md-nav__link">
+  <a href="#q4-explique-le-systeme-de-notifications-comment-sont-elles-creees-et-consommrees" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q4 : Pourquoi la table follows n'a pas de foreign key Sequelize ?
+        Q4 : Explique le systeme de notifications : comment sont-elles creees et consommrees ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q5-pourquoi-limiter-la-profondeur-des-commentaires-a-1-niveau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q5 : Pourquoi limiter la profondeur des commentaires a 1 niveau ?
       
     </span>
   </a>
@@ -1194,22 +1286,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#membre-responsable-du-post-service" class="md-nav__link">
+  <a href="#jessica-frontend" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Membre responsable du post-service
+        Jessica -- Frontend
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Membre responsable du post-service">
+    <nav class="md-nav" aria-label="Jessica -- Frontend">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#q1-comment-le-feed-est-il-construit" class="md-nav__link">
+  <a href="#q1-comment-le-jwt-est-il-gere-cote-client" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q1 : Comment le feed est-il construit ?
+        Q1 : Comment le JWT est-il gere cote client ?
       
     </span>
   </a>
@@ -1217,10 +1309,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q2-comment-fonctionne-le-systeme-de-likes-avec-mongodb" class="md-nav__link">
+  <a href="#q2-comment-fonctionne-lintercepteur-axios-pour-le-refresh-automatique" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q2 : Comment fonctionne le système de likes avec MongoDB ?
+        Q2 : Comment fonctionne l'intercepteur Axios pour le refresh automatique ?
       
     </span>
   </a>
@@ -1228,10 +1320,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q3-pourquoi-limiter-la-profondeur-des-commentaires-a-1-niveau" class="md-nav__link">
+  <a href="#q3-explique-le-systeme-de-mocks-et-son-utilite" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q3 : Pourquoi limiter la profondeur des commentaires à 1 niveau ?
+        Q3 : Explique le systeme de mocks et son utilite
       
     </span>
   </a>
@@ -1239,10 +1331,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q4-pourquoi-morgan-pour-les-logs" class="md-nav__link">
+  <a href="#q4-comment-sont-gerees-les-mises-a-jour-optimistes-likes-follows" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q4 : Pourquoi morgan pour les logs ?
+        Q4 : Comment sont gerees les mises a jour optimistes (likes, follows) ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q5-quels-sont-les-choix-de-composants-reutilisables-et-pourquoi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q5 : Quels sont les choix de composants reutilisables et pourquoi ?
       
     </span>
   </a>
@@ -1255,22 +1358,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#membre-responsable-du-profil-service" class="md-nav__link">
+  <a href="#esteban-infra-gateway" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Membre responsable du profil-service
+        Esteban -- Infra &amp; Gateway
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Membre responsable du profil-service">
+    <nav class="md-nav" aria-label="Esteban -- Infra &amp; Gateway">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#q1-pourquoi-separer-le-profil-service-du-user-service" class="md-nav__link">
+  <a href="#q1-comment-la-gateway-verifie-t-elle-les-jwt-et-injecte-t-elle-les-headers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q1 : Pourquoi séparer le profil-service du user-service ?
+        Q1 : Comment la Gateway verifie-t-elle les JWT et injecte-t-elle les headers ?
       
     </span>
   </a>
@@ -1278,10 +1381,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q2-comment-fonctionne-lupsert-automatique-du-profil" class="md-nav__link">
+  <a href="#q2-pourquoi-un-double-niveau-de-rate-limiting-nginx-gateway" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q2 : Comment fonctionne l'upsert automatique du profil ?
+        Q2 : Pourquoi un double niveau de rate limiting (Nginx + Gateway) ?
       
     </span>
   </a>
@@ -1289,10 +1392,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q3-comment-les-notifications-sont-elles-creees-par-les-autres-services" class="md-nav__link">
+  <a href="#q3-comment-les-services-communiquent-ils-entre-eux-dans-docker" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q3 : Comment les notifications sont-elles créées par les autres services ?
+        Q3 : Comment les services communiquent-ils entre eux dans Docker ?
       
     </span>
   </a>
@@ -1300,38 +1403,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q4-pourquoi-les-notifications-nont-pas-de-updatedat" class="md-nav__link">
+  <a href="#q4-comment-sont-geres-les-fichiers-uploades-dans-linfrastructure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q4 : Pourquoi les notifications n'ont pas de updatedAt ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#membre-responsable-du-frontend" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Membre responsable du frontend
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Membre responsable du frontend">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#q1-comment-fonctionne-le-systeme-de-mocks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q1 : Comment fonctionne le système de mocks ?
+        Q4 : Comment sont geres les fichiers uploades dans l'infrastructure ?
       
     </span>
   </a>
@@ -1339,71 +1414,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q2-comment-la-protection-des-routes-est-elle-geree" class="md-nav__link">
+  <a href="#q5-que-se-passe-t-il-si-le-gateway-est-down-et-si-un-service-backend-est-down" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q2 : Comment la protection des routes est-elle gérée ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#q3-pourquoi-nextjs-app-router-plutot-que-pages-router" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q3 : Pourquoi Next.js App Router plutôt que Pages Router ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#membre-responsable-de-linfra" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Membre responsable de l'infra
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Membre responsable de l&#39;infra">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#q1-pourquoi-nginx-en-plus-de-la-gateway" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q1 : Pourquoi Nginx en plus de la Gateway ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#q2-comment-les-variables-denvironnement-sont-elles-gerees" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q2 : Comment les variables d'environnement sont-elles gérées ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#q3-comment-fonctionne-le-reseau-docker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q3 : Comment fonctionne le réseau Docker ?
+        Q5 : Que se passe-t-il si le gateway est down ? Et si un service backend est down ?
       
     </span>
   </a>
@@ -1438,7 +1452,7 @@
   <span class="md-ellipsis">
     
   
-    Limites & Évolutions
+    Limites et évolutions
   
 
     
@@ -1455,6 +1469,33 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CHANGELOG_DOC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Journal des modifications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1486,22 +1527,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#membre-responsable-de-lauth-service" class="md-nav__link">
+  <a href="#arthur-auth-service-user-service" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Membre responsable de l'auth-service
+        Arthur -- Auth Service + User Service
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Membre responsable de l&#39;auth-service">
+    <nav class="md-nav" aria-label="Arthur -- Auth Service + User Service">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#q1-comment-fonctionne-la-rotation-des-refresh-tokens" class="md-nav__link">
+  <a href="#q1-comment-fonctionne-la-rotation-des-refresh-tokens-et-la-detection-de-vol" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q1 : Comment fonctionne la rotation des refresh tokens ?
+        Q1 : Comment fonctionne la rotation des refresh tokens et la detection de vol ?
       
     </span>
   </a>
@@ -1509,10 +1550,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q2-pourquoi-bcryptjs-et-pas-bcrypt-natif" class="md-nav__link">
+  <a href="#q2-pourquoi-avoir-separe-auth-service-et-user-service-au-lieu-dun-seul-service-utilisateur" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q2 : Pourquoi bcryptjs et pas bcrypt natif ?
+        Q2 : Pourquoi avoir separe auth-service et user-service au lieu d'un seul service utilisateur ?
       
     </span>
   </a>
@@ -1520,10 +1561,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q3-comment-la-synchronisation-auth-user-service-fonctionne-t-elle" class="md-nav__link">
+  <a href="#q3-comment-garantis-tu-latomicite-des-compteurs-followersfollowing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q3 : Comment la synchronisation auth → user-service fonctionne-t-elle ?
+        Q3 : Comment garantis-tu l'atomicite des compteurs followers/following ?
       
     </span>
   </a>
@@ -1531,10 +1572,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q4-comment-avez-vous-structure-vos-tests" class="md-nav__link">
+  <a href="#q4-explique-le-flux-dinscription-complet-de-la-creation-du-compte-a-la-sync-profil" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q4 : Comment avez-vous structuré vos tests ?
+        Q4 : Explique le flux d'inscription complet, de la creation du compte a la sync profil
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q5-comment-le-ban-est-il-propage-entre-user-service-et-auth-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q5 : Comment le ban est-il propage entre user-service et auth-service ?
       
     </span>
   </a>
@@ -1547,22 +1599,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#membre-responsable-du-user-service" class="md-nav__link">
+  <a href="#maxime-post-service-profil-service" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Membre responsable du user-service
+        Maxime -- Post Service + Profil Service
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Membre responsable du user-service">
+    <nav class="md-nav" aria-label="Maxime -- Post Service + Profil Service">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#q1-comment-les-transactions-atomiques-fonctionnent-pour-le-followunfollow" class="md-nav__link">
+  <a href="#q1-comment-fonctionne-lalgorithme-du-feed" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q1 : Comment les transactions atomiques fonctionnent pour le follow/unfollow ?
+        Q1 : Comment fonctionne l'algorithme du feed ?
       
     </span>
   </a>
@@ -1570,10 +1622,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q2-comment-fonctionne-la-recherche-dutilisateurs" class="md-nav__link">
+  <a href="#q2-pourquoi-mongodb-plutot-que-postgresql-pour-les-posts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q2 : Comment fonctionne la recherche d'utilisateurs ?
+        Q2 : Pourquoi MongoDB plutot que PostgreSQL pour les posts ?
       
     </span>
   </a>
@@ -1581,10 +1633,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q3-comment-le-bannissement-se-propage-entre-les-services" class="md-nav__link">
+  <a href="#q3-comment-geres-tu-la-coherence-des-compteurs-likes_count-comments_count" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q3 : Comment le bannissement se propage entre les services ?
+        Q3 : Comment geres-tu la coherence des compteurs (likes_count, comments_count) ?
       
     </span>
   </a>
@@ -1592,10 +1644,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q4-pourquoi-la-table-follows-na-pas-de-foreign-key-sequelize" class="md-nav__link">
+  <a href="#q4-explique-le-systeme-de-notifications-comment-sont-elles-creees-et-consommrees" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q4 : Pourquoi la table follows n'a pas de foreign key Sequelize ?
+        Q4 : Explique le systeme de notifications : comment sont-elles creees et consommrees ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q5-pourquoi-limiter-la-profondeur-des-commentaires-a-1-niveau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q5 : Pourquoi limiter la profondeur des commentaires a 1 niveau ?
       
     </span>
   </a>
@@ -1608,22 +1671,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#membre-responsable-du-post-service" class="md-nav__link">
+  <a href="#jessica-frontend" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Membre responsable du post-service
+        Jessica -- Frontend
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Membre responsable du post-service">
+    <nav class="md-nav" aria-label="Jessica -- Frontend">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#q1-comment-le-feed-est-il-construit" class="md-nav__link">
+  <a href="#q1-comment-le-jwt-est-il-gere-cote-client" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q1 : Comment le feed est-il construit ?
+        Q1 : Comment le JWT est-il gere cote client ?
       
     </span>
   </a>
@@ -1631,10 +1694,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q2-comment-fonctionne-le-systeme-de-likes-avec-mongodb" class="md-nav__link">
+  <a href="#q2-comment-fonctionne-lintercepteur-axios-pour-le-refresh-automatique" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q2 : Comment fonctionne le système de likes avec MongoDB ?
+        Q2 : Comment fonctionne l'intercepteur Axios pour le refresh automatique ?
       
     </span>
   </a>
@@ -1642,10 +1705,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q3-pourquoi-limiter-la-profondeur-des-commentaires-a-1-niveau" class="md-nav__link">
+  <a href="#q3-explique-le-systeme-de-mocks-et-son-utilite" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q3 : Pourquoi limiter la profondeur des commentaires à 1 niveau ?
+        Q3 : Explique le systeme de mocks et son utilite
       
     </span>
   </a>
@@ -1653,10 +1716,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q4-pourquoi-morgan-pour-les-logs" class="md-nav__link">
+  <a href="#q4-comment-sont-gerees-les-mises-a-jour-optimistes-likes-follows" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q4 : Pourquoi morgan pour les logs ?
+        Q4 : Comment sont gerees les mises a jour optimistes (likes, follows) ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q5-quels-sont-les-choix-de-composants-reutilisables-et-pourquoi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q5 : Quels sont les choix de composants reutilisables et pourquoi ?
       
     </span>
   </a>
@@ -1669,22 +1743,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#membre-responsable-du-profil-service" class="md-nav__link">
+  <a href="#esteban-infra-gateway" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Membre responsable du profil-service
+        Esteban -- Infra &amp; Gateway
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Membre responsable du profil-service">
+    <nav class="md-nav" aria-label="Esteban -- Infra &amp; Gateway">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#q1-pourquoi-separer-le-profil-service-du-user-service" class="md-nav__link">
+  <a href="#q1-comment-la-gateway-verifie-t-elle-les-jwt-et-injecte-t-elle-les-headers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q1 : Pourquoi séparer le profil-service du user-service ?
+        Q1 : Comment la Gateway verifie-t-elle les JWT et injecte-t-elle les headers ?
       
     </span>
   </a>
@@ -1692,10 +1766,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q2-comment-fonctionne-lupsert-automatique-du-profil" class="md-nav__link">
+  <a href="#q2-pourquoi-un-double-niveau-de-rate-limiting-nginx-gateway" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q2 : Comment fonctionne l'upsert automatique du profil ?
+        Q2 : Pourquoi un double niveau de rate limiting (Nginx + Gateway) ?
       
     </span>
   </a>
@@ -1703,10 +1777,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q3-comment-les-notifications-sont-elles-creees-par-les-autres-services" class="md-nav__link">
+  <a href="#q3-comment-les-services-communiquent-ils-entre-eux-dans-docker" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q3 : Comment les notifications sont-elles créées par les autres services ?
+        Q3 : Comment les services communiquent-ils entre eux dans Docker ?
       
     </span>
   </a>
@@ -1714,38 +1788,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q4-pourquoi-les-notifications-nont-pas-de-updatedat" class="md-nav__link">
+  <a href="#q4-comment-sont-geres-les-fichiers-uploades-dans-linfrastructure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q4 : Pourquoi les notifications n'ont pas de updatedAt ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#membre-responsable-du-frontend" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Membre responsable du frontend
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Membre responsable du frontend">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#q1-comment-fonctionne-le-systeme-de-mocks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q1 : Comment fonctionne le système de mocks ?
+        Q4 : Comment sont geres les fichiers uploades dans l'infrastructure ?
       
     </span>
   </a>
@@ -1753,71 +1799,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#q2-comment-la-protection-des-routes-est-elle-geree" class="md-nav__link">
+  <a href="#q5-que-se-passe-t-il-si-le-gateway-est-down-et-si-un-service-backend-est-down" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Q2 : Comment la protection des routes est-elle gérée ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#q3-pourquoi-nextjs-app-router-plutot-que-pages-router" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q3 : Pourquoi Next.js App Router plutôt que Pages Router ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#membre-responsable-de-linfra" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Membre responsable de l'infra
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Membre responsable de l&#39;infra">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#q1-pourquoi-nginx-en-plus-de-la-gateway" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q1 : Pourquoi Nginx en plus de la Gateway ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#q2-comment-les-variables-denvironnement-sont-elles-gerees" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q2 : Comment les variables d'environnement sont-elles gérées ?
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#q3-comment-fonctionne-le-reseau-docker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Q3 : Comment fonctionne le réseau Docker ?
+        Q5 : Que se passe-t-il si le gateway est down ? Et si un service backend est down ?
       
     </span>
   </a>
@@ -1845,196 +1830,434 @@
                   
 
 
-  
-  
 
-
-<h1 id="questions-par-membreservice">Questions par membre/service<a class="headerlink" href="#questions-par-membreservice" title="Permanent link">&para;</a></h1>
-<h2 id="membre-responsable-de-lauth-service">Membre responsable de l'auth-service<a class="headerlink" href="#membre-responsable-de-lauth-service" title="Permanent link">&para;</a></h2>
-<h3 id="q1-comment-fonctionne-la-rotation-des-refresh-tokens">Q1 : Comment fonctionne la rotation des refresh tokens ?<a class="headerlink" href="#q1-comment-fonctionne-la-rotation-des-refresh-tokens" title="Permanent link">&para;</a></h3>
-<p><strong>Points clés à mentionner :</strong></p>
-<ul>
-<li>À chaque appel <code>POST /auth/refresh</code>, l'ancien token est marqué <code>is_revoked: true</code></li>
-<li>Un nouveau token aléatoire (64 bytes hex) est généré et hashé en SHA-256 avant stockage</li>
-<li>Si un token déjà révoqué est présenté → <strong>tous les tokens du compte</strong> sont révoqués (détection de vol de session)</li>
-<li>Le token est envoyé via cookie <code>httpOnly</code> + <code>sameSite: Strict</code> + <code>secure</code> en production</li>
-</ul>
-<p><strong>Fichier :</strong> <code>breezy-auth-service/src/controllers/auth.controller.js</code> (lignes 113-166)</p>
-<h3 id="q2-pourquoi-bcryptjs-et-pas-bcrypt-natif">Q2 : Pourquoi bcryptjs et pas bcrypt natif ?<a class="headerlink" href="#q2-pourquoi-bcryptjs-et-pas-bcrypt-natif" title="Permanent link">&para;</a></h3>
-<ul>
-<li><code>bcryptjs</code> est une implémentation <strong>pure JavaScript</strong> de bcrypt, pas de dépendance C++ à compiler</li>
-<li>Plus simple à installer, surtout en environnement Docker</li>
-<li>Performance légèrement inférieure mais acceptable pour un projet de cette taille (12 rounds ≈ 250ms)</li>
-</ul>
-<h3 id="q3-comment-la-synchronisation-auth-user-service-fonctionne-t-elle">Q3 : Comment la synchronisation auth → user-service fonctionne-t-elle ?<a class="headerlink" href="#q3-comment-la-synchronisation-auth-user-service-fonctionne-t-elle" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Après <code>User.create()</code>, un appel <code>axios.post</code> vers <code>{USER_SERVICE_URL}/users/sync</code> envoie <code>{id, username, role}</code></li>
-<li>C'est dans un <code>try/catch</code> séparé : si le user-service est down, l'inscription réussit quand même</li>
-<li>Timeout de 3 secondes pour ne pas bloquer l'utilisateur</li>
-<li>Le user-service fait un <code>upsert</code> (insert ou update si existe déjà)</li>
-</ul>
-<h3 id="q4-comment-avez-vous-structure-vos-tests">Q4 : Comment avez-vous structuré vos tests ?<a class="headerlink" href="#q4-comment-avez-vous-structure-vos-tests" title="Permanent link">&para;</a></h3>
-<ul>
-<li>15 tests d'intégration avec <strong>Supertest</strong> (requêtes HTTP réelles sur l'app Express)</li>
-<li><strong>Mocks</strong> : <code>axios</code> est mocké pour ne pas dépendre du user-service pendant les tests</li>
-<li><strong>Isolation</strong> : base de données de test séparée, <code>beforeEach</code> nettoie les tables</li>
-<li><strong>Couverture</strong> : register (5 cas), login (3 cas), refresh (2 cas), logout (1 cas), internal/ban (2 cas)</li>
-</ul>
+<h1 id="questions-par-membre">Questions par membre</h1>
 <hr />
-<h2 id="membre-responsable-du-user-service">Membre responsable du user-service<a class="headerlink" href="#membre-responsable-du-user-service" title="Permanent link">&para;</a></h2>
-<h3 id="q1-comment-les-transactions-atomiques-fonctionnent-pour-le-followunfollow">Q1 : Comment les transactions atomiques fonctionnent pour le follow/unfollow ?<a class="headerlink" href="#q1-comment-les-transactions-atomiques-fonctionnent-pour-le-followunfollow" title="Permanent link">&para;</a></h3>
-<p><strong>Points clés à mentionner :</strong></p>
-<div class="language-javascript highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">await</span><span class="w"> </span><span class="nx">sequelize</span><span class="p">.</span><span class="nx">transaction</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">t</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="nx">created</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Follow</span><span class="p">.</span><span class="nx">findOrCreate</span><span class="p">({</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">follower_id</span><span class="p">,</span><span class="w"> </span><span class="nx">followed_id</span><span class="w"> </span><span class="p">},</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="nx">transaction</span><span class="o">:</span><span class="w"> </span><span class="nx">t</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="p">});</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">UserProfile</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="s1">&#39;following_count&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">followerId</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">transaction</span><span class="o">:</span><span class="w"> </span><span class="nx">t</span><span class="w"> </span><span class="p">});</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">UserProfile</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="s1">&#39;followers_count&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">followedId</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">transaction</span><span class="o">:</span><span class="w"> </span><span class="nx">t</span><span class="w"> </span><span class="p">});</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">});</span>
-</span></code></pre></div>
-<ul>
-<li>Les 3 opérations (create follow + increment follower + increment following) sont dans une <strong>transaction</strong></li>
-<li>Si une échoue, tout est annulé → les compteurs restent cohérents</li>
-<li><code>findOrCreate</code> empêche de suivre deux fois (retourne <code>created: false</code> si déjà suivi)</li>
-</ul>
-<p><strong>Fichier :</strong> <code>breezy-user-service/src/controllers/user.controller.js</code> (lignes 83-96)</p>
-<h3 id="q2-comment-fonctionne-la-recherche-dutilisateurs">Q2 : Comment fonctionne la recherche d'utilisateurs ?<a class="headerlink" href="#q2-comment-fonctionne-la-recherche-dutilisateurs" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Utilise l'opérateur <code>iLike</code> de PostgreSQL (insensible à la casse)</li>
-<li>Filtre les comptes bannis (<code>is_banned: false</code>) et inactifs (<code>is_active: true</code>)</li>
-<li>Trié par <code>followers_count</code> décroissant (les comptes les plus populaires en premier)</li>
-<li>Minimum 2 caractères requis pour la requête</li>
-<li>Paginé avec <code>limit</code> et <code>offset</code></li>
-</ul>
-<h3 id="q3-comment-le-bannissement-se-propage-entre-les-services">Q3 : Comment le bannissement se propage entre les services ?<a class="headerlink" href="#q3-comment-le-bannissement-se-propage-entre-les-services" title="Permanent link">&para;</a></h3>
+<h2 id="arthur-auth-service-user-service">Arthur -- Auth Service + User Service</h2>
+<h3 id="q1-comment-fonctionne-la-rotation-des-refresh-tokens-et-la-detection-de-vol">Q1 : Comment fonctionne la rotation des refresh tokens et la detection de vol ?</h3>
+<p>La fonction <code>refresh</code> dans <code>auth.controller.js</code> met en oeuvre un pattern de rotation avec detection de rejeu (token reuse detection).</p>
+<p><strong>Flux normal :</strong>
+1. Le refresh token est recu du cookie httpOnly ou du body
+2. Il est hache avec SHA-256 et recherche en base
+3. Si trouve et non revoque, l'ancien token est marque <code>is_revoked = true</code>
+4. Un nouveau token est genere et stocke (hash)
+5. Un nouveau JWT est renvoye</p>
+<p><strong>Detection de vol :</strong>
+Si un refresh token deja revoque est presente (<code>stored.is_revoked === true</code>), c'est le signe qu'un attaquant a peut-etre vole le token et l'a utilise en premier. Dans ce cas, TOUS les refresh tokens de l'utilisateur sont revoques massivement :
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">RefreshToken</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span><span class="w"> </span><span class="nx">is_revoked</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">user_id</span><span class="o">:</span><span class="w"> </span><span class="nx">stored</span><span class="p">.</span><span class="nx">user_id</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div></p>
+<p>Ceci force l'utilisateur a se reconnecter -- l'attaquant et la victime sont tous deux deconnectes.</p>
+<p><strong>Sources :</strong>
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\controllers\auth.controller.js</code>, lignes 115-166
+- Detection de vol : lignes 133-138
+- Hash SHA-256 : <code>C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\utils\jwt.utils.js</code>, ligne 12</p>
+<hr />
+<h3 id="q2-pourquoi-avoir-separe-auth-service-et-user-service-au-lieu-dun-seul-service-utilisateur">Q2 : Pourquoi avoir separe auth-service et user-service au lieu d'un seul service utilisateur ?</h3>
+<p>La separation repose sur le principe de responsabilite unique et des besoins de persistence differents :</p>
+<p><strong>Auth-service</strong> (PostgreSQL <code>breezy_auth</code>) :
+- Gerer les credentials (email, password_hash)
+- Emettre les JWT et refresh tokens
+- Verifier les bans au login
+- Table <code>users</code> avec donnees sensibles</p>
+<p><strong>User-service</strong> (PostgreSQL <code>breezy_users</code>) :
+- Gerer les profils publics (username, role, stats)
+- Gerer les relations de follow (table <code>follows</code>)
+- Gerer les compteurs (followers_count, following_count)
+- Table <code>user_profiles</code> sans donnees sensibles</p>
+<p>Cette separation permet :
+- De faire evoluer les schemas independamment
+- D'appliquer des politiques de securite differentes (auth plus restreint)
+- De scaler independamment (le user-service a plus de trafic que l'auth-service)</p>
+<p><strong>Sources :</strong>
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\models\user.model.js</code> (password_hash, email, is_banned)
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-user-service\src\models\userProfile.model.js</code> (followers_count, following_count, pas de password)
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-auth-service\.env.example</code> (DATABASE_URL differente)
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-user-service\.env.example</code> (DATABASE_URL differente)</p>
+<hr />
+<h3 id="q3-comment-garantis-tu-latomicite-des-compteurs-followersfollowing">Q3 : Comment garantis-tu l'atomicite des compteurs followers/following ?</h3>
+<p>J'utilise <code>sequelize.transaction()</code> pour encapsuler les operations de follow et unfollow. Les deux operations (creation/suppression du lien + increments/decrements des compteurs) sont dans la meme transaction. Si une etape echoue, les deux sont rollback.</p>
+<p><strong>Follow :</strong>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">sequelize</span><span class="p">.</span><span class="nx">transaction</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">t</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">follow</span><span class="p">,</span><span class="w"> </span><span class="nx">created</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Follow</span><span class="p">.</span><span class="nx">findOrCreate</span><span class="p">(</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">follower_id</span><span class="p">,</span><span class="w"> </span><span class="nx">followed_id</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">transaction</span><span class="o">:</span><span class="w"> </span><span class="nx">t</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">created</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">FollowError</span><span class="p">(</span><span class="s1">&#39;ALREADY_FOLLOWING&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">UserProfile</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="s1">&#39;following_count&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">by</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">follower_id</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">transaction</span><span class="o">:</span><span class="w"> </span><span class="nx">t</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">UserProfile</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="s1">&#39;followers_count&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">by</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">followed_id</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">transaction</span><span class="o">:</span><span class="w"> </span><span class="nx">t</span><span class="w"> </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></p>
+<p>L'index unique composite <code>[follower_id, followed_id]</code> sur la table <code>follows</code> empeche les doublons au niveau base de donnees.</p>
+<p><strong>Sources :</strong>
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-user-service\src\controllers\user.controller.js</code>, lignes 89-102 (follow transaction)
+- Lignes 136-148 (unfollow transaction)
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-user-service\src\models\follow.model.js</code>, ligne 20 (index unique)</p>
+<hr />
+<h3 id="q4-explique-le-flux-dinscription-complet-de-la-creation-du-compte-a-la-sync-profil">Q4 : Explique le flux d'inscription complet, de la creation du compte a la sync profil</h3>
 <ol>
-<li>Le modérateur appelle <code>PUT /users/:id/ban</code> sur le user-service</li>
-<li>Le user-service met <code>is_banned: true</code> dans <code>user_profiles</code></li>
-<li>En parallèle (non bloquant), il appelle <code>POST /auth/internal/ban</code> sur l'auth-service</li>
-<li>L'auth-service met <code>is_banned: true</code> dans <code>users</code></li>
-<li>Au prochain login, l'auth-service vérifie <code>is_banned</code> et refuse l'accès (403)</li>
+<li><strong>Validation</strong> : les donnees (username 3-50 chars, email valide, password 8+ avec majuscule et chiffre) sont validees par <code>express-validator</code></li>
+<li><strong>Unicite</strong> : verification que l'email et le username sont uniques (409 sinon)</li>
+<li><strong>Hash</strong> : le mot de passe est hache avec <code>bcrypt</code> (10 rounds dans l'env de dev)</li>
+<li><strong>Creation</strong> : un utilisateur est cree dans la table <code>users</code> de l'auth-service (PostgreSQL)</li>
+<li><strong>Sync non-bloquant</strong> : appel <code>POST /users/sync</code> vers le user-service avec <code>{ id, username, role }</code> et le header <code>x-internal-secret</code></li>
+<li><strong>Tokens</strong> : generation du JWT (15 min) et du refresh token (7 jours, hache SHA-256)</li>
+<li><strong>Cookie</strong> : le refresh token est place en cookie httpOnly</li>
+<li><strong>Reponse</strong> : 201 avec <code>{ user, token }</code></li>
 </ol>
-<h3 id="q4-pourquoi-la-table-follows-na-pas-de-foreign-key-sequelize">Q4 : Pourquoi la table <code>follows</code> n'a pas de foreign key Sequelize ?<a class="headerlink" href="#q4-pourquoi-la-table-follows-na-pas-de-foreign-key-sequelize" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Les <code>follow</code> référencent des <code>user_profiles</code> mais il n'y a pas de <code>belongsTo</code>/<code>hasMany</code> défini dans le modèle</li>
-<li>La cohérence est assurée au <strong>niveau applicatif</strong> (le controller vérifie que la cible existe avant de créer le follow)</li>
-<li>L'index unique <code>(follower_id, followed_id)</code> empêche les doublons en base</li>
-</ul>
+<p>Si le user-service est down, l'etape 5 echoue silencieusement (warning log), mais l'inscription est toujours valide.</p>
+<p><strong>Sources :</strong>
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\controllers\auth.controller.js</code>, lignes 19-70
+- Sync non-bloquant : lignes 37-48
+- Validation : <code>C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\routes\auth.routes.js</code>, lignes 8-26</p>
 <hr />
-<h2 id="membre-responsable-du-post-service">Membre responsable du post-service<a class="headerlink" href="#membre-responsable-du-post-service" title="Permanent link">&para;</a></h2>
-<h3 id="q1-comment-le-feed-est-il-construit">Q1 : Comment le feed est-il construit ?<a class="headerlink" href="#q1-comment-le-feed-est-il-construit" title="Permanent link">&para;</a></h3>
-<p><strong>Points clés :</strong></p>
+<h3 id="q5-comment-le-ban-est-il-propage-entre-user-service-et-auth-service">Q5 : Comment le ban est-il propage entre user-service et auth-service ?</h3>
+<p>Le ban est initie depuis le user-service (<code>PUT /users/:id/ban</code>). La propagation suit ce chemin :</p>
 <ol>
-<li>Le post-service appelle le user-service : <code>GET /users/{userId}/following</code> → liste d'IDs</li>
-<li>Si le user-service est indisponible, retourne un <strong>feed vide</strong> (pas d'erreur 500)</li>
-<li>Requête MongoDB : <code>Post.find({ user_id: { $in: followingIds } })</code> trié par <code>created_at DESC</code></li>
-<li>Pagination avec <code>skip</code> et <code>limit</code></li>
+<li><strong>Verification du role</strong> : seuls <code>moderator</code> ou <code>admin</code> peuvent bannir (ligne 215)</li>
+<li><strong>Ban local</strong> : <code>user.update({ is_banned: true })</code> dans <code>user_profiles</code> (ligne 224)</li>
+<li><strong>Propagation non-bloquante</strong> : <code>POST /auth/internal/ban</code> avec <code>{ userId }</code> (lignes 227-236)</li>
+<li><strong>Cote auth</strong> : l'endpoint interne verifie <code>x-internal-secret</code>, trouve l'utilisateur par PK, met <code>is_banned: true</code></li>
 </ol>
-<p><strong>Fichier :</strong> <code>breezy-post-service/src/controllers/post.controller.js</code> (lignes 50-84)</p>
-<h3 id="q2-comment-fonctionne-le-systeme-de-likes-avec-mongodb">Q2 : Comment fonctionne le système de likes avec MongoDB ?<a class="headerlink" href="#q2-comment-fonctionne-le-systeme-de-likes-avec-mongodb" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Un document <code>Like</code> est créé avec un <strong>index unique</strong> sur <code>(post_id, user_id)</code> → impossible de liker deux fois</li>
-<li>Le compteur <code>likes_count</code> du post est incrémenté avec <code>$inc</code> (opération <strong>atomique</strong> MongoDB)</li>
-<li>Si le <code>Like.create</code> échoue avec erreur 11000 (duplicate key), on renvoie 409 <code>ALREADY_LIKED</code></li>
-<li>Une notification est envoyée au profil-service (non bloquant, timeout 1s)</li>
-</ul>
-<h3 id="q3-pourquoi-limiter-la-profondeur-des-commentaires-a-1-niveau">Q3 : Pourquoi limiter la profondeur des commentaires à 1 niveau ?<a class="headerlink" href="#q3-pourquoi-limiter-la-profondeur-des-commentaires-a-1-niveau" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Évite l'<strong>imbrication infinie</strong> ("poupée russe") qui complique l'affichage</li>
-<li>Simplifie la requête : on charge les commentaires racines (<code>parent_comment_id: null</code>) puis les réponses pour chacun</li>
-<li>Choix de design similaire à Twitter/X : on peut répondre à un commentaire mais pas à une réponse</li>
-</ul>
-<h3 id="q4-pourquoi-morgan-pour-les-logs">Q4 : Pourquoi <code>morgan</code> pour les logs ?<a class="headerlink" href="#q4-pourquoi-morgan-pour-les-logs" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Middleware de logging HTTP pour Express</li>
-<li>Affiche le méthode, URL, status code et temps de réponse dans la console</li>
-<li>Mode <code>dev</code> pour un format lisible pendant le développement</li>
-<li>Les auth-service et user-service n'utilisent pas morgan (ils ont des <code>console.error</code> manuels)</li>
-</ul>
+<p>Le ban est propage aux deux services car chacun verifie ce flag a des moments differents :
+- <strong>Auth</strong> : au login (ligne 83-85) et au refresh (lignes 146-151)
+- <strong>User</strong> : lors des requetes GET et follow</p>
+<p>Le flux est non-bloquant : si l'auth-service est down, le ban local est applique immediatement.</p>
+<p><strong>Sources :</strong>
+- banUser : <code>C:\Users\barto\Desktop\breezy projet\breezy-user-service\src\controllers\user.controller.js</code>, lignes 213-243
+- internalBan : <code>C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\controllers\auth.controller.js</code>, lignes 225-247
+- Verification ban login : <code>C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\controllers\auth.controller.js</code>, lignes 83-85</p>
 <hr />
-<h2 id="membre-responsable-du-profil-service">Membre responsable du profil-service<a class="headerlink" href="#membre-responsable-du-profil-service" title="Permanent link">&para;</a></h2>
-<h3 id="q1-pourquoi-separer-le-profil-service-du-user-service">Q1 : Pourquoi séparer le profil-service du user-service ?<a class="headerlink" href="#q1-pourquoi-separer-le-profil-service-du-user-service" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Le <strong>user-service</strong> gère les données "sociales" (follow/unfollow, compteurs, recherche) → PostgreSQL</li>
-<li>Le <strong>profil-service</strong> gère les données "personnelles" (bio, avatar, bannière) → MongoDB</li>
-<li>Les notifications sont dans le profil-service car elles sont liées à l'activité de l'utilisateur</li>
-<li>Chaque service peut évoluer indépendamment (ex: ajouter un système de badges au profil)</li>
-</ul>
-<h3 id="q2-comment-fonctionne-lupsert-automatique-du-profil">Q2 : Comment fonctionne l'upsert automatique du profil ?<a class="headerlink" href="#q2-comment-fonctionne-lupsert-automatique-du-profil" title="Permanent link">&para;</a></h3>
-<div class="language-javascript highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">profile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Profile</span><span class="p">.</span><span class="nx">findOneAndUpdate</span><span class="p">(</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">user_id</span><span class="o">:</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">userId</span><span class="w"> </span><span class="p">},</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">$setOnInsert</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">user_id</span><span class="o">:</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">userId</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">upsert</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="ow">new</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">);</span>
-</span></code></pre></div>
-<ul>
-<li><code>findOneAndUpdate</code> avec <code>upsert: true</code> : crée le document s'il n'existe pas</li>
-<li><code>$setOnInsert</code> : ne définit le champ que lors de la création (pas de l'update)</li>
-<li><code>new: true</code> : retourne le document après modification</li>
-<li>Le profil est créé "à la demande" au premier accès, pas à l'inscription</li>
-</ul>
-<h3 id="q3-comment-les-notifications-sont-elles-creees-par-les-autres-services">Q3 : Comment les notifications sont-elles créées par les autres services ?<a class="headerlink" href="#q3-comment-les-notifications-sont-elles-creees-par-les-autres-services" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Route interne <code>POST /notifications/internal</code> protégée par <code>INTERNAL_SECRET</code></li>
-<li>Le post-service l'appelle quand quelqu'un like un post (avec <code>type: 'like'</code>)</li>
-<li>L'appel est non bloquant (timeout 1s)</li>
-<li>Auto-notification ignorée : si <code>recipient === from_user</code>, 204 No Content</li>
-<li>Types supportés : <code>like</code>, <code>follow</code>, <code>mention</code>, <code>comment</code>, <code>reply</code></li>
-</ul>
-<h3 id="q4-pourquoi-les-notifications-nont-pas-de-updatedat">Q4 : Pourquoi les notifications n'ont pas de <code>updatedAt</code> ?<a class="headerlink" href="#q4-pourquoi-les-notifications-nont-pas-de-updatedat" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Une notification ne se "modifie" pas vraiment : elle est créée, puis marquée comme lue (<code>is_read: true</code>)</li>
-<li><code>updatedAt: false</code> dans le schéma Mongoose évite une colonne inutile</li>
-<li>Seul le champ <code>is_read</code> change, via <code>findOneAndUpdate</code> dans les endpoints <code>/read</code> et <code>/read-all</code></li>
-</ul>
+<h2 id="maxime-post-service-profil-service">Maxime -- Post Service + Profil Service</h2>
+<h3 id="q1-comment-fonctionne-lalgorithme-du-feed">Q1 : Comment fonctionne l'algorithme du feed ?</h3>
+<p>L'algorithme dans <code>getFeed</code> suit 4 etapes :</p>
+<p><strong>Etape 1 - Recuperation des abonnements :</strong>
+Le post-service appelle <code>GET /users/:userId/following</code> sur le user-service avec un timeout de 3 secondes. Si le user-service est indisponible, la liste est vide (fallback).</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span>
+<span class="w">    </span><span class="sb">`</span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">USER_SERVICE_URL</span><span class="si">}</span><span class="sb">/users/</span><span class="si">${</span><span class="nx">userId</span><span class="si">}</span><span class="sb">/following`</span><span class="p">,</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s1">&#39;x-user-id&#39;</span><span class="o">:</span><span class="w"> </span><span class="nx">userId</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">timeout</span><span class="o">:</span><span class="w"> </span><span class="mf">3000</span><span class="w"> </span><span class="p">}</span>
+<span class="p">);</span>
+<span class="nx">followingIds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">ids</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[];</span>
+</code></pre></div>
+<p><strong>Etape 2 - Fusion :</strong> on combine l'ID de l'utilisateur courant avec les IDs des abonnements.</p>
+<p><strong>Etape 3 - Requete MongoDB :</strong> posts tries par <code>created_at: -1</code> avec pagination offset-based.</p>
+<p><strong>Etape 4 - Enrichissement :</strong> deux requetes paralleles (<code>Promise.all</code>) sur Like et Repost pour determiner <code>likedByMe</code> et <code>repostedByMe</code> pour chaque post.</p>
+<p><strong>Sources :</strong>
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\post.controller.js</code>, lignes 111-161
+- Fallback user-service : ligne 128
+- Enrichissement likedByMe : lignes 140-151</p>
 <hr />
-<h2 id="membre-responsable-du-frontend">Membre responsable du frontend<a class="headerlink" href="#membre-responsable-du-frontend" title="Permanent link">&para;</a></h2>
-<h3 id="q1-comment-fonctionne-le-systeme-de-mocks">Q1 : Comment fonctionne le système de mocks ?<a class="headerlink" href="#q1-comment-fonctionne-le-systeme-de-mocks" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Chaque service (auth, post, user, etc.) a un fichier <code>.mock.js</code> avec les mêmes fonctions</li>
-<li>La variable <code>NEXT_PUBLIC_USE_MOCKS=true</code> active le mode mock</li>
-<li>Chaque export vérifie <code>isMockEnabled()</code> et route vers le mock ou l'API réelle</li>
-<li>Permet de développer et tester le frontend <strong>sans aucun backend</strong></li>
-</ul>
-<h3 id="q2-comment-la-protection-des-routes-est-elle-geree">Q2 : Comment la protection des routes est-elle gérée ?<a class="headerlink" href="#q2-comment-la-protection-des-routes-est-elle-geree" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Le layout <code>(app)/layout.js</code> vérifie la présence du token au montage</li>
-<li>Si pas de token → <code>router.replace('/connect')</code></li>
-<li>Pendant le chargement → affichage d'un <code>Spinner</code></li>
-<li>L'intercepteur Axios sur les 401 supprime le token et redirige vers <code>/signin</code></li>
-<li>Le <code>AuthContext</code> lit le token synchroniquement depuis <code>localStorage</code> pour éviter les flash de déconnexion</li>
-</ul>
-<h3 id="q3-pourquoi-nextjs-app-router-plutot-que-pages-router">Q3 : Pourquoi Next.js App Router plutôt que Pages Router ?<a class="headerlink" href="#q3-pourquoi-nextjs-app-router-plutot-que-pages-router" title="Permanent link">&para;</a></h3>
-<ul>
-<li>App Router est la <strong>direction officielle</strong> de Next.js 14</li>
-<li>Les <strong>route groups</strong> <code>(auth)</code> et <code>(app)</code> permettent de séparer les layouts sans affecter l'URL</li>
-<li>Les <strong>Server Components</strong> améliorent les performances (même si ici tout est <code>'use client'</code>)</li>
-<li>Meilleure organisation du code avec le système de layouts imbriqués</li>
-</ul>
+<h3 id="q2-pourquoi-mongodb-plutot-que-postgresql-pour-les-posts">Q2 : Pourquoi MongoDB plutot que PostgreSQL pour les posts ?</h3>
+<p>Le choix de MongoDB pour le post-service est justifie par plusieurs facteurs :</p>
+<ol>
+<li><strong>Schema flexible</strong> : un post peut avoir des tags (array), des medias (array), et des champs optionnels. Avec MongoDB, on ajoute un champ sans migration</li>
+<li><strong>Operations atomiques</strong> : <code>$inc</code> pour les compteurs (likes_count, comments_count, reposts_count) sans transaction</li>
+<li><strong>Index compose</strong> : index sur <code>{ user_id, created_at }</code> optimise les requetes de feed et de profil</li>
+<li><strong>Horizontal scaling</strong> : le sharding natif de MongoDB permet de distribuer les posts sur plusieurs serveurs</li>
+<li><strong>Document-oriented</strong> : les posts sont des documents autonomes, pas besoin de jointures complexes</li>
+</ol>
+<p><strong>Sources :</strong>
+- Post model : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\models\post.model.js</code> (tags en array ligne 7, media_urls ligne 8)
+- Index compose feed : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\models\post.model.js</code>, ligne 17
+- $inc likes : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\like.controller.js</code>, ligne 18</p>
 <hr />
-<h2 id="membre-responsable-de-linfra">Membre responsable de l'infra<a class="headerlink" href="#membre-responsable-de-linfra" title="Permanent link">&para;</a></h2>
-<h3 id="q1-pourquoi-nginx-en-plus-de-la-gateway">Q1 : Pourquoi Nginx en plus de la Gateway ?<a class="headerlink" href="#q1-pourquoi-nginx-en-plus-de-la-gateway" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Nginx</strong> : reverse proxy "classique", sert le frontend et route <code>/api/*</code> vers la gateway, rate limiting au niveau IP</li>
-<li><strong>Gateway</strong> : logique applicative (vérification JWT, injection de headers, rate limiting applicatif)</li>
-<li>Séparation des préoccupations : Nginx gère le réseau, la Gateway gère la logique métier</li>
-<li>En production, Nginx pourrait servir les assets statiques et gérer le SSL/TLS</li>
-</ul>
-<h3 id="q2-comment-les-variables-denvironnement-sont-elles-gerees">Q2 : Comment les variables d'environnement sont-elles gérées ?<a class="headerlink" href="#q2-comment-les-variables-denvironnement-sont-elles-gerees" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Un fichier <code>.env</code> à la racine de <code>breezy-infra/</code> (non versionné)</li>
-<li>Docker Compose injecte les variables dans chaque conteneur via la section <code>environment</code></li>
-<li>Chaque service charge son <code>.env</code> local avec <code>dotenv</code> pour le développement sans Docker</li>
-<li>Variables critiques : <code>JWT_SECRET</code>, <code>INTERNAL_SECRET</code>, URLs des bases de données</li>
-</ul>
-<h3 id="q3-comment-fonctionne-le-reseau-docker">Q3 : Comment fonctionne le réseau Docker ?<a class="headerlink" href="#q3-comment-fonctionne-le-reseau-docker" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Tous les conteneurs sont sur le réseau bridge <code>breezy-network</code></li>
-<li>Les conteneurs se référencent par leur <strong>nom de service</strong> (DNS Docker interne)</li>
-<li>Seul Nginx expose le port <strong>80</strong> vers la machine hôte</li>
-<li>Les ports internes (<code>3001</code>, <code>3002</code>, etc.) ne sont pas accessibles depuis l'extérieur</li>
-</ul>
+<h3 id="q3-comment-geres-tu-la-coherence-des-compteurs-likes_count-comments_count">Q3 : Comment geres-tu la coherence des compteurs (likes_count, comments_count) ?</h3>
+<p>Les compteurs sont geres avec <code>$inc</code> atomique de MongoDB, ce qui garantit qu'il n'y a pas de race condition entre increments simultanes.</p>
+<p><strong>Like :</strong>
+<div class="highlight"><pre><span></span><code><span class="c1">// Creation du like</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">Like</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"> </span><span class="nx">post_id</span><span class="o">:</span><span class="w"> </span><span class="nx">postId</span><span class="p">,</span><span class="w"> </span><span class="nx">user_id</span><span class="o">:</span><span class="w"> </span><span class="nx">userId</span><span class="w"> </span><span class="p">});</span>
+<span class="c1">// Incrementation atomique</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">updated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Post</span><span class="p">.</span><span class="nx">findByIdAndUpdate</span><span class="p">(</span><span class="nx">postId</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">$inc</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">likes_count</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="ow">new</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div></p>
+<p><strong>Protection contre les doublons :</strong>
+Les collections Like et Repost ont un index unique compose <code>{ post_id: 1, user_id: 1 }</code>. Si un utilisateur tente de liker deux fois le meme post, MongoDB renvoie une erreur 11000 qui est interceptee et transformee en 409 ALREADY_LIKED.</p>
+<p><strong>Protection contre les negatifs :</strong>
+Lors d'un unlike, on utilise <code>Math.max(0, updated.likes_count)</code> pour empecher un compteur negatif en cas de race condition.</p>
+<p><strong>Sources :</strong>
+- $inc likes : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\like.controller.js</code>, lignes 15-20
+- Detection doublon : ligne 37 (<code>err.code === 11000</code>)
+- Math.max securite : ligne 60
+- Index unique Like : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\models\like.model.js</code>, ligne 11
+- Index unique Repost : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\models\repost.model.js</code>, ligne 11</p>
+<hr />
+<h3 id="q4-explique-le-systeme-de-notifications-comment-sont-elles-creees-et-consommrees">Q4 : Explique le systeme de notifications : comment sont-elles creees et consommrees ?</h3>
+<p>Les notifications sont gerees par le profil-service.</p>
+<p><strong>Creation (endpoint interne) :</strong>
+<div class="highlight"><pre><span></span><code><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">notifications</span><span class="o">/</span><span class="nx">internal</span>
+<span class="nx">Body</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">recipient_user_id</span><span class="p">,</span><span class="w"> </span><span class="nx">type</span><span class="p">,</span><span class="w"> </span><span class="nx">from_user_id</span><span class="p">,</span><span class="w"> </span><span class="nx">from_username</span><span class="p">,</span><span class="w"> </span><span class="nx">post_id</span><span class="w"> </span><span class="p">}</span>
+<span class="nx">Header</span><span class="o">:</span><span class="w"> </span><span class="nx">x</span><span class="o">-</span><span class="nx">internal</span><span class="o">-</span><span class="nx">secret</span>
+</code></pre></div></p>
+<p>Les notifications sont creees depuis :
+- <strong>Like</strong> : quand un utilisateur like un post
+- <strong>Follow</strong> : quand un utilisateur en suit un autre
+- <strong>Mention</strong> : quand un post contient <code>@username</code>
+- <strong>Comment/Reply</strong> : types definis dans le schema mais pas generes actuellement</p>
+<p><strong>Protection :</strong>
+- Auto-notification ignoree : <code>recipient_user_id === from_user_id</code> =&gt; 204 No Content
+- Secret interne : <code>x-internal-secret</code> requis
+- Timeout court : 1 seconde (non-bloquant)</p>
+<p><strong>Consommation (frontend) :</strong>
+<div class="highlight"><pre><span></span><code><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">notifications</span><span class="o">?</span><span class="nx">page</span><span class="o">=</span><span class="mf">1</span><span class="o">&amp;</span><span class="nx">unread_only</span><span class="o">=</span><span class="kc">true</span>
+<span class="nx">PUT</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">notifications</span><span class="o">/</span><span class="nx">read</span><span class="o">-</span><span class="nx">all</span><span class="w">  </span><span class="p">(</span><span class="nx">tout</span><span class="w"> </span><span class="nx">marquer</span><span class="w"> </span><span class="nx">comme</span><span class="w"> </span><span class="nx">lu</span><span class="p">)</span>
+<span class="nx">PUT</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">notifications</span><span class="o">/:</span><span class="nx">id</span><span class="o">/</span><span class="nx">read</span><span class="w"> </span><span class="p">(</span><span class="nx">marquer</span><span class="w"> </span><span class="nx">une</span><span class="w"> </span><span class="nx">comme</span><span class="w"> </span><span class="nx">lue</span><span class="p">)</span>
+</code></pre></div></p>
+<p><strong>Sources :</strong>
+- Notification model : <code>C:\Users\barto\Desktop\breezy projet\breezy-profil-service\src\models\notification.model.js</code>, lignes 1-19
+- createNotification : <code>C:\Users\barto\Desktop\breezy projet\breezy-profil-service\src\controllers\notification.controller.js</code>, lignes 60-75
+- Auto-notification ignoree : lignes 68-70
+- Appel depuis like : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\like.controller.js</code>, lignes 22-33
+- Types supportes : <code>['like', 'follow', 'mention', 'comment', 'reply']</code></p>
+<hr />
+<h3 id="q5-pourquoi-limiter-la-profondeur-des-commentaires-a-1-niveau">Q5 : Pourquoi limiter la profondeur des commentaires a 1 niveau ?</h3>
+<p>La limite a 1 niveau de profondeur (commentaire principal + reponses directes, pas de reponse-a-reponse) est un choix de conception :</p>
+<ol>
+<li><strong>UX simplifiee</strong> : un fil de commentaires plat est plus lisible qu'un arbre complexe de 3+ niveaux</li>
+<li><strong>Performance</strong> : evite les requetes recursives, les aggregations MongoDB complexes et les rendus cote client couteux</li>
+<li><strong>Implementation simple</strong> : chaque commentaire peut avoir un tableau <code>replies</code> charge en une seule requete supplementaire</li>
+<li><strong>Cas d'usage</strong> : pour un micro-blogging, les conversations profondes sont rares</li>
+</ol>
+<p>La limite est enforcee dans le controller :
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">parentComment</span><span class="p">.</span><span class="nx">parent_comment_id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">code</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;MAX_DEPTH&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Reponse a une reponse non autorisee.&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Sources :</strong>
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\comment.controller.js</code>, lignes 120-122
+- getComments avec replies : lignes 10-21</p>
+<hr />
+<h2 id="jessica-frontend">Jessica -- Frontend</h2>
+<h3 id="q1-comment-le-jwt-est-il-gere-cote-client">Q1 : Comment le JWT est-il gere cote client ?</h3>
+<p>Le JWT est stocke dans <code>localStorage</code> sous une cle configurable via <code>NEXT_PUBLIC_TOKEN_KEY</code> (par defaut <code>'breezy_token'</code>).</p>
+<p><strong>AuthContext :</strong>
+- Lecture synchrone dans <code>useState</code> pour eviter les deconnexions flash :
+  <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">setToken</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nb">window</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">&#39;undefined&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="nx">TOKEN_KEY</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span>
+<span class="p">})</span>
+</code></pre></div>
+- <code>saveToken(t)</code> ecrit a la fois dans le state React et dans <code>localStorage</code>
+- Au montage, si un token existe, <code>getMe()</code> est appele pour recuperer les infos utilisateur
+- <code>logout()</code> appelle l'API de deconnexion, vide le state et <code>localStorage</code>
+- Le context expose aussi le compteur de notifications non lues et de messages non lus</p>
+<p><strong>Request interceptor Axios :</strong>
+Chaque requete est interceptee pour ajouter le header <code>Authorization: Bearer &lt;token&gt;</code> depuis <code>localStorage</code>.</p>
+<p><strong>Sources :</strong>
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-frontend\src\context\AuthContext.js</code>, lignes 1-97
+- Token dans localStorage : lignes 12-17 (lecture synchrone)
+- saveToken : lignes 74-77
+- logout : lignes 79-84
+- Intercepteur requete : <code>C:\Users\barto\Desktop\breezy projet\breezy-frontend\src\services\api.js</code>, lignes 11-17</p>
+<hr />
+<h3 id="q2-comment-fonctionne-lintercepteur-axios-pour-le-refresh-automatique">Q2 : Comment fonctionne l'intercepteur Axios pour le refresh automatique ?</h3>
+<p>L'intercepteur de reponse dans <code>api.js</code> gere le refresh automatique avec une file d'attente :</p>
+<ol>
+<li>Quand une requete recoit un 401, l'intercepteur est declenche</li>
+<li>Si la requete est sur <code>/auth/login</code>, on laisse l'erreur passer (mauvais credentials)</li>
+<li>Si la requete est sur <code>/auth/refresh</code> et echoue, on redirige vers <code>/signin</code></li>
+<li>Si un refresh est deja en cours (<code>isRefreshing === true</code>), la requete est mise en file d'attente (<code>failedQueue</code>)</li>
+<li>Sinon, on appelle <code>POST /auth/refresh</code> :</li>
+<li><strong>Succes</strong> : le nouveau token est sauvegarde, la file d'attente est resolue avec le nouveau token, toutes les requetes sont rejoue</li>
+<li><strong>Echec</strong> : le token est supprime de <code>localStorage</code>, redirection vers <code>/signin</code></li>
+</ol>
+<p>Ce systeme permet d'eviter que plusieurs requetes ne declenchent des refresh concurrents et garantit que toutes les requetes pendantes sont replayees apres le refresh.</p>
+<p><strong>Sources :</strong>
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-frontend\src\services\api.js</code>, lignes 19-79
+- File d'attente : lignes 19-28 (processQueue)
+- Gestion refresh concurrent : lignes 47-53 (isRefreshing)
+- Refresh effectif : lignes 56-74</p>
+<hr />
+<h3 id="q3-explique-le-systeme-de-mocks-et-son-utilite">Q3 : Explique le systeme de mocks et son utilite</h3>
+<p>Le systeme de mocks permet de developper et tester le frontend independamment du backend.</p>
+<p><strong>Activation :</strong> <code>NEXT_PUBLIC_USE_MOCKS=true</code> dans <code>.env.local</code></p>
+<p><strong>Detection :</strong>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">isMockEnabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span>
+<span class="w">  </span><span class="ow">typeof</span><span class="w"> </span><span class="nb">window</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">&#39;undefined&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">  </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NEXT_PUBLIC_USE_MOCKS</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;true&#39;</span>
+</code></pre></div></p>
+<p><strong>Aiguillage :</strong> chaque service (authService, postService, etc.) exporte des fonctions qui appellent soit l'implementation reelle (Axios), soit l'implementation mockee :
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(...</span><span class="nx">a</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">isMockEnabled</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">mock</span><span class="p">.</span><span class="nx">login</span><span class="p">(...</span><span class="nx">a</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">real</span><span class="p">.</span><span class="nx">login</span><span class="p">(...</span><span class="nx">a</span><span class="p">)</span>
+</code></pre></div></p>
+<p><strong>Donnees de test :</strong> 5 utilisateurs fictifs, 8 posts realistes, 3 jeux de commentaires, 6 notifications, 5 conversations avec un token JWT factice.</p>
+<p><strong>Persistence :</strong> les posts et commentaires crees en mode mock sont stockes dans <code>sessionStorage</code> sous les cles <code>breezy_mock_posts</code> et <code>breezy_mock_comments</code>, ce qui permet de conserver les donnees entre les navigations mais pas entre les sessions.</p>
+<p><strong>Utilite :</strong>
+- Permet le developpement frontend sans backend
+- Tests de l'UI sans dependance externe
+- Scenarios de test rapides sans nettoyage de base de donnees
+- Demo de l'application sans infrastructure</p>
+<p><strong>Sources :</strong>
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-frontend\src\mocks\utils.js</code>, lignes 1-8
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-frontend\src\mocks\data.js</code>, lignes 1-260
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-frontend\src\mocks\authService.mock.js</code>
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-frontend\src\mocks\postService.mock.js</code></p>
+<hr />
+<h3 id="q4-comment-sont-gerees-les-mises-a-jour-optimistes-likes-follows">Q4 : Comment sont gerees les mises a jour optimistes (likes, follows) ?</h3>
+<p>Les hooks <code>useLike</code> et <code>useFollow</code> implementent un pattern de mise a jour optimiste.</p>
+<p><strong>useLike :</strong>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">handleLike</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">loading</span><span class="p">)</span><span class="w"> </span><span class="k">return</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">was</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">liked</span><span class="p">;</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">count</span>
+<span class="w">  </span><span class="nx">setLiked</span><span class="p">(</span><span class="o">!</span><span class="nx">was</span><span class="p">);</span><span class="w"> </span><span class="nx">setCount</span><span class="p">(</span><span class="nx">was</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">prev</span><span class="o">-</span><span class="mf">1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">prev</span><span class="o">+</span><span class="mf">1</span><span class="p">)</span><span class="w">  </span><span class="c1">// UI update immediate</span>
+<span class="w">  </span><span class="nx">setLoad</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">was</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">unlikePost</span><span class="p">(</span><span class="nx">post</span><span class="p">.</span><span class="nx">_id</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">likePost</span><span class="p">(</span><span class="nx">post</span><span class="p">.</span><span class="nx">_id</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">setLiked</span><span class="p">(</span><span class="o">!</span><span class="nx">was</span><span class="p">);</span><span class="w"> </span><span class="nx">setCount</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">likes_count</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">onUpdate</span><span class="o">?</span><span class="p">.({</span><span class="w"> </span><span class="p">...</span><span class="nx">post</span><span class="p">,</span><span class="w"> </span><span class="nx">likedByMe</span><span class="o">:</span><span class="w"> </span><span class="o">!</span><span class="nx">was</span><span class="p">,</span><span class="w"> </span><span class="nx">likes_count</span><span class="o">:</span><span class="w"> </span><span class="nx">d</span><span class="p">.</span><span class="nx">likes_count</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">setLiked</span><span class="p">(</span><span class="nx">was</span><span class="p">);</span><span class="w"> </span><span class="nx">setCount</span><span class="p">(</span><span class="nx">prev</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// Rollback sur erreur</span>
+<span class="w">  </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">setLoad</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>useFollow :</strong>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">toggle</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">loading</span><span class="p">)</span><span class="w"> </span><span class="k">return</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">was</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">following</span><span class="p">;</span><span class="w"> </span><span class="nx">setF</span><span class="p">(</span><span class="o">!</span><span class="nx">was</span><span class="p">);</span><span class="w"> </span><span class="nx">setL</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w">  </span><span class="c1">// UI update immediate</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">was</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">unfollowUser</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">followUser</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="k">catch</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">setF</span><span class="p">(</span><span class="nx">was</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// Rollback sur erreur</span>
+<span class="w">  </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">setL</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Points communs :</strong>
+1. L'interface utilisateur est mise a jour immediatement (UX reactive)
+2. L'etat precedent est sauvegarde avant la mutation
+3. Si l'appel API echoue, l'etat est restaure (rollback)
+4. Un flag <code>loading</code> empeche les clics multiples
+5. Le parent peut etre notifie via un callback <code>onUpdate</code></p>
+<p><strong>Sources :</strong>
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-frontend\src\hooks\useLike.js</code>, lignes 1-25
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-frontend\src\hooks\useFollow.js</code>, lignes 1-18</p>
+<hr />
+<h3 id="q5-quels-sont-les-choix-de-composants-reutilisables-et-pourquoi">Q5 : Quels sont les choix de composants reutilisables et pourquoi ?</h3>
+<p>Nous avons concu une bibliotheque de composants UI reutilisables pour garantir la coherence visuelle et reduire la duplication.</p>
+<p><strong>Button</strong> (7 variantes) :
+- <code>primary</code> : fond sombre, texte blanc (action principale)
+- <code>secondary</code> : fond blanc, bordure (action secondaire)
+- <code>ghost</code> : texte seul (action tertiaire)
+- <code>follow</code> / <code>unfollow</code> : etats specifiques pour le bouton de follow
+- <code>primary_pill</code> / <code>secondary_pill</code> : variantes arrondies pleine largeur</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">VARIANTS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">primary</span><span class="o">:</span><span class="w">   </span><span class="s1">&#39;bg-breezy-dark text-white hover:bg-black&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">secondary</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bg-white text-breezy-dark border border-breezy-border hover:bg-gray-50&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">ghost</span><span class="o">:</span><span class="w">     </span><span class="s1">&#39;text-breezy-dark hover:bg-breezy-hover&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">follow</span><span class="o">:</span><span class="w">    </span><span class="s1">&#39;bg-breezy-dark text-white ... rounded-full hover:bg-black&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">unfollow</span><span class="o">:</span><span class="w">  </span><span class="s1">&#39;bg-white text-breezy-dark ... rounded-full border ... hover:text-red-600&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">primary_pill</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bg-breezy-dark text-white ... rounded-full w-full&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">secondary_pill</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bg-white ... rounded-full border w-full&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Avatar</strong> (5 tailles) : <code>xs</code> (28px), <code>sm</code> (36px), <code>md</code> (44px), <code>lg</code> (64px), <code>xl</code> (96px). Affiche l'image ou la premiere lettre du username.</p>
+<p><strong>Input</strong> : supporte <code>label</code>, <code>error</code>, <code>icon</code> (gauche), <code>rightIcon</code>, etat focus/error.</p>
+<p><strong>Spinner</strong> : 3 tailles (16px, 24px, 32px) avec animation CSS <code>animate-spin</code>.</p>
+<p><strong>AppShell</strong> : layout principal avec sidebar desktop, contenu central (max-w-[600px]), et bottom nav mobile.</p>
+<p><strong>Sources :</strong>
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-frontend\src\components\ui\Button.js</code>, lignes 1-24
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-frontend\src\components\ui\Avatar.js</code>, lignes 1-14
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-frontend\src\components\layout\AppShell.js</code></p>
+<hr />
+<h2 id="esteban-infra-gateway">Esteban -- Infra &amp; Gateway</h2>
+<h3 id="q1-comment-la-gateway-verifie-t-elle-les-jwt-et-injecte-t-elle-les-headers">Q1 : Comment la Gateway verifie-t-elle les JWT et injecte-t-elle les headers ?</h3>
+<p><strong>Verification JWT (middleware <code>auth.js</code>) :</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">authenticate</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">authHeader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;authorization&#39;</span><span class="p">];</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">authHeader</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;No token provided&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">authHeader</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mf">1</span><span class="p">];</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">decoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">verifyToken</span><span class="p">(</span><span class="nx">token</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">decoded</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Invalid or expired token&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">decoded</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">next</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Injection des headers :</strong>
+Apres verification, chaque proxy route injecte les headers <code>x-user-*</code> dans la requete transferee au service backend :
+<div class="highlight"><pre><span></span><code><span class="nx">proxyReq</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;x-user-id&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">sub</span><span class="p">);</span>
+<span class="nx">proxyReq</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;x-user-role&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">role</span><span class="p">);</span>
+<span class="nx">proxyReq</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;x-user-username&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">username</span><span class="p">);</span>
+</code></pre></div></p>
+<p>Le JWT est decode avec <code>jwt.verify(token, JWT_SECRET)</code> qui retourne le payload <code>{ sub, username, role, iat, exp }</code>. Le <code>sub</code> (subject) correspond a l'UUID de l'utilisateur.</p>
+<p><strong>Sources :</strong>
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-infra\gateway\src\middleware\auth.js</code>, lignes 1-21
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-infra\gateway\src\utils\jwt.utils.js</code>, lignes 1-13
+- Injection headers user-service : <code>C:\Users\barto\Desktop\breezy projet\breezy-infra\gateway\src\index.js</code>, lignes 111-113
+- Injection headers post-service : lignes 163-165</p>
+<hr />
+<h3 id="q2-pourquoi-un-double-niveau-de-rate-limiting-nginx-gateway">Q2 : Pourquoi un double niveau de rate limiting (Nginx + Gateway) ?</h3>
+<p>La double couche offre une defense en profondeur :</p>
+<p><strong>Nginx (infrastructure, couche 1) :</strong>
+- Agit au niveau TCP avant meme que la requete n'atteigne Node.js
+- Consomme extremement peu de ressources
+- Protege contre les attaques DDoS de base
+- Zones memoire partagee : <code>global:10m</code> (30 req/min), <code>auth:10m</code> (5 req/min)</p>
+<p><strong>Gateway (application, couche 2) :</strong>
+- Rate limiting plus fin, avec des messages d'erreur personnalises en francais
+- Limiteur global : 500 req/15min/IP
+- Limiteur auth : 20 req/15min/IP (login/register)
+- Headers standardises (<code>RateLimit-*</code>) pour que le client sache quand il est limite
+- Possibilite de desactiver en mode test (<code>NODE_ENV=test</code>)</p>
+<p>En production, les deux couches seraient actives. En environnement Docker actuel, seuls les limiteurs Express sont effectifs.</p>
+<p><strong>Sources :</strong>
+- Nginx rate limit zones : <code>C:\Users\barto\Desktop\breezy projet\breezy-infra\nginx\nginx.conf</code>, lignes 16-17
+- Gateway global limiter : <code>C:\Users\barto\Desktop\breezy projet\breezy-infra\gateway\src\index.js</code>, lignes 19-25
+- Gateway auth limiter : lignes 28-34
+- Application selectif : lignes 37-43</p>
+<hr />
+<h3 id="q3-comment-les-services-communiquent-ils-entre-eux-dans-docker">Q3 : Comment les services communiquent-ils entre eux dans Docker ?</h3>
+<p>Les services communiquent via le reseau bridge <code>breezy-network</code> defini dans <code>docker-compose.yml</code>. Chaque service peut acceder aux autres par leur nom de conteneur (hostname DNS interne).</p>
+<p><strong>Configuration reseau :</strong>
+<div class="highlight"><pre><span></span><code><span class="nt">networks</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">breezy-network</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bridge</span>
+</code></pre></div></p>
+<p><strong>Variables d'environnement pour les URLs internes (fichier <code>.env</code> de breezy-infra) :</strong>
+<div class="highlight"><pre><span></span><code>AUTH_SERVICE_URL=http://auth-service:3001
+USER_SERVICE_URL=http://user-service:3002
+POST_SERVICE_URL=http://post-service:3003
+PROFIL_SERVICE_URL=http://profil-service:3004
+</code></pre></div></p>
+<p>Seul Nginx expose un port public (80:80). Tous les services backend utilisent <code>expose</code> (accessible uniquement depuis le reseau interne).</p>
+<p><strong>Sources :</strong>
+- <code>C:\Users\barto\Desktop\breezy projet\breezy-infra\docker-compose.yml</code>, lignes 244-247 (reseau)
+- Variables d'environnement : lignes 40-43 (gateway), 63-65 (auth), etc.
+- Nginx unique point d'entree : ligne 9 (<code>"80:80"</code>)</p>
+<hr />
+<h3 id="q4-comment-sont-geres-les-fichiers-uploades-dans-linfrastructure">Q4 : Comment sont geres les fichiers uploades dans l'infrastructure ?</h3>
+<p><strong>Upload :</strong>
+1. Le frontend envoie le fichier vers <code>POST /api/upload</code> (proxy Gateway)
+2. La Gateway verifie le JWT, injecte <code>x-user-*</code> headers
+3. Le post-service recoit la requete, multer traite le fichier
+4. Validation : image uniquement, maximum 5MB
+5. Stockage : disque local dans <code>uploads/</code> avec nom unique (<code>timestamp-randomNumber.ext</code>)</p>
+<p><strong>Stockage :</strong> un volume Docker nomme <code>uploads_data</code> est monte sur le conteneur du post-service :
+<div class="highlight"><pre><span></span><code><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uploads_data:/app/uploads</span>
+</code></pre></div></p>
+<p><strong>Servi statiquement :</strong>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/api/uploads&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">express</span><span class="p">.</span><span class="k">static</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;..&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;uploads&#39;</span><span class="p">)));</span>
+</code></pre></div>
+Les fichiers sont accessibles publiquement via <code>GET /api/uploads/&lt;filename&gt;</code> (proxy Gateway sans authentification).</p>
+<p><strong>Sources :</strong>
+- Multer config : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\middleware\upload.middleware.js</code>, lignes 1-35
+- uploadMedia controller : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\post.controller.js</code>, lignes 334-350
+- Static serving : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\app.js</code>, ligne 16
+- Volume uploads_data : <code>C:\Users\barto\Desktop\breezy projet\breezy-infra\docker-compose.yml</code>, ligne 115
+- Gateway proxy public uploads : <code>C:\Users\barto\Desktop\breezy projet\breezy-infra\gateway\src\index.js</code>, lignes 141-153</p>
+<hr />
+<h3 id="q5-que-se-passe-t-il-si-le-gateway-est-down-et-si-un-service-backend-est-down">Q5 : Que se passe-t-il si le gateway est down ? Et si un service backend est down ?</h3>
+<p><strong>Gateway down = tout down :</strong>
+La Gateway est un single point of failure. Toutes les requetes API passent par elle. Si elle est indisponible :
+- Nginx renvoie une erreur 502 Bad Gateway
+- Le frontend ne peut plus faire aucun appel API
+- Les utilisateurs voient une page vide ou une erreur reseau</p>
+<p>C'est la principale limitation de l'infrastructure actuelle. En production, il faudrait load-balancer plusieurs instances de Gateway.</p>
+<p><strong>Service backend down :</strong>
+Grace au pattern fail-safe, le systeme continue de fonctionner partiellement :
+- <strong>User-service down</strong> : le feed affiche seulement les posts de l'utilisateur courant, les likes/notifications ne sont pas envoyees
+- <strong>Post-service down</strong> : le feed ne se charge pas, la creation de post echoue
+- <strong>Profil-service down</strong> : les notifications ne sont pas sauvegardees
+- <strong>Auth-service down</strong> : les connexions et refresh echouent, les utilisateurs deja connectes continuent jusqu'a expiration du JWT</p>
+<p>La Gateway renvoie un 502 avec un message explicite pour chaque proxy quand le backend est indisponible.</p>
+<p><strong>Sources :</strong>
+- Gateway 502 handlers : <code>C:\Users\barto\Desktop\breezy projet\breezy-infra\gateway\src\index.js</code>, lignes 59-61, 77-79, 95-97, 115-117, 134-136, 149-151, 168-170, 187-189, 206-208
+- Feed fallback : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\post.controller.js</code>, ligne 128</p>
 
 
 
@@ -2054,12 +2277,6 @@
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-        
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
-  Retour en haut de la page
-</button>
         
       </main>
       
@@ -2090,7 +2307,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
