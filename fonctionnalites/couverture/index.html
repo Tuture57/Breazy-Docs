@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../../api/routes/">
+        <link rel="prev" href="../../securite/secrets-configuration/">
       
       
-        <link rel="next" href="../secrets-configuration/">
+        <link rel="next" href="../../soutenance/questions/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Authentification - Breezy — Documentation</title>
+        <title>Couverture Fx1→Fx23 - Breezy — Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#authentification" class="md-skip">
+        <a href="#couverture-fonctionnelle" class="md-skip">
           Aller au contenu
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Authentification
+              Couverture Fx1→Fx23
             
           </span>
         </div>
@@ -830,8 +830,6 @@
       
   
   
-    
-  
   
   
     
@@ -844,11 +842,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
@@ -869,7 +867,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -884,37 +882,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Authentification
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../securite/authentification/" class="md-nav__link">
         
   
   
@@ -930,170 +901,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#flux-complet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Flux complet
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#jwt-access-token" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        JWT (access token)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="JWT (access token)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#payload-exact" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Payload exact
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#generation-duree" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Génération &amp; durée
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verification-gateway-uniquement" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Vérification (gateway uniquement)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#refresh-token" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Refresh token
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Refresh token">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rotation-detection-de-vol" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rotation &amp; détection de vol
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hachage-des-mots-de-passe" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hachage des mots de passe
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bannissement" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bannissement
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#communication-inter-services-internal_secret" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Communication inter-services (INTERNAL_SECRET)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rate-limiting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rate limiting
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#protection-contre-les-attaques" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Protection contre les attaques
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1106,7 +913,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../secrets-configuration/" class="md-nav__link">
+      <a href="../../securite/secrets-configuration/" class="md-nav__link">
         
   
   
@@ -1138,8 +945,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -1150,11 +959,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
@@ -1175,7 +984,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1190,10 +999,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../fonctionnalites/couverture/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Couverture Fx1→Fx23
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1209,6 +1045,120 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tableau-fx1-fx23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tableau Fx1 → Fx23
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fonctionnalite-hors-perimetre-initial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fonctionnalité hors périmètre initial
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detail-des-fonctionnalites-partielles-ou-absentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Détail des fonctionnalités partielles ou absentes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Détail des fonctionnalités partielles ou absentes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fx19-signalement-partiel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fx19 — Signalement (⚠️ partiel)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx21-bannissement-partiel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fx21 — Bannissement (⚠️ partiel)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx22-messagerie-absente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fx22 — Messagerie (❌ absente)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx23-mot-de-passe-oublie-absente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fx23 — Mot de passe oublié (❌ absente)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#divergences-incoherences-relevees-dans-le-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Divergences &amp; incohérences relevées dans le code
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1418,10 +1368,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#flux-complet" class="md-nav__link">
+  <a href="#tableau-fx1-fx23" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Flux complet
+        Tableau Fx1 → Fx23
       
     </span>
   </a>
@@ -1429,22 +1379,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#jwt-access-token" class="md-nav__link">
+  <a href="#fonctionnalite-hors-perimetre-initial" class="md-nav__link">
     <span class="md-ellipsis">
       
-        JWT (access token)
+        Fonctionnalité hors périmètre initial
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="JWT (access token)">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detail-des-fonctionnalites-partielles-ou-absentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Détail des fonctionnalités partielles ou absentes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Détail des fonctionnalités partielles ou absentes">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#payload-exact" class="md-nav__link">
+  <a href="#fx19-signalement-partiel" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Payload exact
+        Fx19 — Signalement (⚠️ partiel)
       
     </span>
   </a>
@@ -1452,10 +1413,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#generation-duree" class="md-nav__link">
+  <a href="#fx21-bannissement-partiel" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Génération &amp; durée
+        Fx21 — Bannissement (⚠️ partiel)
       
     </span>
   </a>
@@ -1463,10 +1424,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#verification-gateway-uniquement" class="md-nav__link">
+  <a href="#fx22-messagerie-absente" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Vérification (gateway uniquement)
+        Fx22 — Messagerie (❌ absente)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx23-mot-de-passe-oublie-absente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fx23 — Mot de passe oublié (❌ absente)
       
     </span>
   </a>
@@ -1479,82 +1451,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#refresh-token" class="md-nav__link">
+  <a href="#divergences-incoherences-relevees-dans-le-code" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Refresh token
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Refresh token">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rotation-detection-de-vol" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rotation &amp; détection de vol
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hachage-des-mots-de-passe" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hachage des mots de passe
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bannissement" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bannissement
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#communication-inter-services-internal_secret" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Communication inter-services (INTERNAL_SECRET)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rate-limiting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rate limiting
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#protection-contre-les-attaques" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Protection contre les attaques
+        Divergences &amp; incohérences relevées dans le code
       
     </span>
   </a>
@@ -1578,314 +1478,326 @@
 
 
 
-<h1 id="authentification">Authentification</h1>
-<p>L'authentification repose sur un <strong>double token</strong> (JWT court + refresh token long) et une
-<strong>gateway centralisée</strong> : elle seule vérifie le JWT, puis injecte l'identité dans des headers à
-destination des services backend (qui ne vérifient jamais le JWT eux-mêmes).</p>
-<hr />
-<h2 id="flux-complet">Flux complet</h2>
-<pre class="mermaid"><code>sequenceDiagram
-    participant C as Client
-    participant G as Gateway
-    participant A as auth-service
-    participant DB as PostgreSQL
-
-    Note over C,DB: Inscription / Connexion
-    C-&gt;&gt;G: POST /api/auth/register|login
-    G-&gt;&gt;A: proxy (route publique)
-    A-&gt;&gt;A: bcrypt.hash / compare
-    A-&gt;&gt;DB: INSERT user / refresh_token (hash SHA-256)
-    A--&gt;&gt;C: { user, token } + Set-Cookie refreshToken (httpOnly)
-
-    Note over C,DB: Requête authentifiée
-    C-&gt;&gt;G: GET /api/... (Bearer JWT)
-    G-&gt;&gt;G: jwt.verify → x-user-id/role/username
-    G--&gt;&gt;C: réponse
-
-    Note over C,DB: Refresh (JWT expiré)
-    C-&gt;&gt;G: POST /api/auth/refresh (cookie)
-    G-&gt;&gt;A: proxy
-    A-&gt;&gt;DB: rotation (ancien révoqué, nouveau émis)
-    A--&gt;&gt;C: { token } + nouveau cookie
-
-    Note over C,DB: Logout
-    C-&gt;&gt;G: POST /api/auth/logout
-    A-&gt;&gt;DB: is_revoked = true
-    A--&gt;&gt;C: 204 + clearCookie</code></pre>
-<hr />
-<h2 id="jwt-access-token">JWT (access token)</h2>
-<h3 id="payload-exact">Payload exact</h3>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;uuid&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;johndoe&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718000000</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718000900</span><span class="w"> </span><span class="p">}</span>
-</code></pre></div>
+<h1 id="couverture-fonctionnelle">Couverture fonctionnelle</h1>
+<p>Statut <strong>réel</strong> de chaque fonctionnalité, vérifié dans le code (backend + frontend + intégration).</p>
 <table>
 <thead>
 <tr>
-<th>Champ</th>
+<th>Légende</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✅ Complet</td>
+<td>backend + frontend + intégration fonctionnels</td>
+</tr>
+<tr>
+<td>⚠️ Partiel</td>
+<td>une partie manque (précisée)</td>
+</tr>
+<tr>
+<td>❌ Absent</td>
+<td>non implémenté</td>
+</tr>
+<tr>
+<td>🔄 Backend only</td>
+<td>backend prêt, frontend manquant</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="tableau-fx1-fx23">Tableau Fx1 → Fx23</h2>
+<table>
+<thead>
+<tr>
+<th>Fx</th>
 <th>Description</th>
+<th>Backend</th>
+<th>Frontend</th>
+<th>Intégration</th>
+<th>Statut</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>sub</code></td>
-<td>UUID de l'utilisateur</td>
+<td>Fx1</td>
+<td>Inscription</td>
+<td><code>POST /auth/register</code></td>
+<td><code>/register</code> + validation</td>
+<td>✅</td>
+<td>✅</td>
 </tr>
 <tr>
-<td><code>username</code></td>
-<td>Nom d'utilisateur</td>
+<td>Fx2</td>
+<td>Connexion</td>
+<td><code>POST /auth/login</code> (ban/inactif gérés)</td>
+<td><code>/signin</code></td>
+<td>✅</td>
+<td>✅</td>
 </tr>
 <tr>
-<td><code>role</code></td>
-<td><code>user</code> / <code>moderator</code> / <code>admin</code></td>
+<td>Fx3</td>
+<td>JWT + Refresh</td>
+<td>rotation + détection de vol</td>
+<td>intercepteur Axios + file d'attente</td>
+<td>✅</td>
+<td>✅</td>
 </tr>
 <tr>
-<td><code>iat</code> / <code>exp</code></td>
-<td>Émission / expiration (ajoutés par jsonwebtoken)</td>
+<td>Fx4</td>
+<td>Profil utilisateur</td>
+<td>user-service + profil-service</td>
+<td><code>/profile</code>, <code>/profile/:id</code>, fusion</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Fx5</td>
+<td>Édition profil</td>
+<td><code>PUT /profils/:userId</code></td>
+<td><code>/profile/edit</code></td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Fx6</td>
+<td>Follow/Unfollow</td>
+<td>transactions + notification</td>
+<td><code>useFollow</code> (optimiste)</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Fx7</td>
+<td>Feed</td>
+<td>following <code>$in</code> + soi-même</td>
+<td>infinite scroll</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Fx8</td>
+<td>Création post</td>
+<td>≤280, ≤5 tags, médias</td>
+<td><code>/compose</code> + autocomplete @</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Fx9</td>
+<td>Like/Unlike</td>
+<td><code>$inc</code> + index unique + notif</td>
+<td><code>useLike</code> (optimiste, rollback)</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Fx10</td>
+<td>Commentaires</td>
+<td>+ réponses 1 niveau (<code>MAX_DEPTH</code>)</td>
+<td><code>CommentThread</code></td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Fx11</td>
+<td>Recherche utilisateurs</td>
+<td><code>ILIKE</code>, exclut bannis, tri followers</td>
+<td><code>/search</code></td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Fx12</td>
+<td>Recherche posts</td>
+<td>regex content/tags/username</td>
+<td><code>/search</code></td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Fx13</td>
+<td>Notifications</td>
+<td>like, follow, mention</td>
+<td><code>/notifications</code> + badge</td>
+<td>⚠️</td>
+<td>✅*</td>
+</tr>
+<tr>
+<td>Fx14</td>
+<td>@mentions</td>
+<td>extraction + résolution + notif</td>
+<td><code>useMentions</code> dropdown</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Fx15</td>
+<td>Upload média</td>
+<td>multer 5 Mo, images</td>
+<td><code>PostForm</code> + preview</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Fx16</td>
+<td>Repost</td>
+<td>toggle <code>$inc</code> + index unique</td>
+<td><code>PostActions</code> (optimiste)</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Fx17</td>
+<td>Édition post</td>
+<td><code>PUT /posts/:id</code> (owner)</td>
+<td>édition inline <code>PostCard</code></td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Fx18</td>
+<td>Suppression post</td>
+<td>cascade likes + comments</td>
+<td>menu + confirmation</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Fx19</td>
+<td>Signalement</td>
+<td><code>POST /posts/:id/report</code></td>
+<td><strong>❌ pas d'UI</strong></td>
+<td>—</td>
+<td>⚠️</td>
+</tr>
+<tr>
+<td>Fx20</td>
+<td>Changement mot de passe</td>
+<td><code>POST /auth/change-password</code></td>
+<td><code>/settings</code></td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Fx21</td>
+<td>Bannissement</td>
+<td>user + propagation auth</td>
+<td><strong>❌ pas d'UI modération</strong></td>
+<td>—</td>
+<td>⚠️</td>
+</tr>
+<tr>
+<td>Fx22</td>
+<td>Messagerie</td>
+<td><strong>❌ aucun backend</strong></td>
+<td>placeholder + composants morts</td>
+<td>—</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Fx23</td>
+<td>Mot de passe oublié</td>
+<td><strong>❌ aucun backend</strong></td>
+<td>bouton inactif</td>
+<td>—</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+<p>* <strong>Fx13 partiel</strong> : les notifications <code>like</code>, <code>follow</code> et <code>mention</code> fonctionnent ; les types
+<code>comment</code> et <code>reply</code> existent dans le schéma mais <strong>ne sont jamais générés</strong> par le post-service.</p>
+<hr />
+<h2 id="fonctionnalite-hors-perimetre-initial">Fonctionnalité hors périmètre initial</h2>
+<table>
+<thead>
+<tr>
+<th>Fonctionnalité</th>
+<th>Backend</th>
+<th>Frontend</th>
+<th>Statut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bot IA <code>@breezy_ai</code></strong></td>
+<td>post-service → OpenRouter (<code>gpt-oss-20b:free</code>)</td>
+<td>détection <code>@breezy_ai</code> dans <code>/home</code> (re-fetch +5 s)</td>
+<td>➕ Implémenté</td>
+</tr>
+</tbody>
+</table>
+<p>Mentionner <code>@breezy_ai</code> dans un post déclenche une réponse automatique publiée comme commentaire
+du compte bot. Voir <a href="../../services/post-service/#bot-ia-breezy_ai">Post Service</a>. ⚠️ La clé API
+est commitée en clair (voir <a href="../../securite/secrets-configuration/">Secrets</a>).</p>
+<hr />
+<h2 id="detail-des-fonctionnalites-partielles-ou-absentes">Détail des fonctionnalités partielles ou absentes</h2>
+<h3 id="fx19-signalement-partiel">Fx19 — Signalement (⚠️ partiel)</h3>
+<p>Backend : <code>POST /api/posts/:id/report</code> met <code>is_reported = true</code> (sans vérifier l'existence du
+post). <strong>Aucune UI</strong> de signalement (le menu <code>PostActions</code> n'a que Modifier/Supprimer), et
+aucune route pour lister/lever les signalements → fonctionnalité inutilisable en pratique.</p>
+<h3 id="fx21-bannissement-partiel">Fx21 — Bannissement (⚠️ partiel)</h3>
+<p>Backend complet : <code>PUT /api/users/:id/ban</code> (rôle modérateur/admin) + propagation non bloquante
+vers l'auth-service. <strong>Aucun panneau de modération</strong> côté frontend : pas de liste d'utilisateurs,
+pas de bouton « Bannir », pas de vue des signalements. Utilisable uniquement via appels API
+directs.</p>
+<h3 id="fx22-messagerie-absente">Fx22 — Messagerie (❌ absente)</h3>
+<p>Aucun backend (collection, route, contrôleur). Le frontend contient des composants
+(<code>ConversationList</code>, <code>MessageThread</code>, <code>MessageInput</code>) <strong>non connectés</strong> et une page placeholder.
+<code>messageService.getUnreadMessagesCount()</code> renvoie toujours <code>0</code> en dur.</p>
+<h3 id="fx23-mot-de-passe-oublie-absente">Fx23 — Mot de passe oublié (❌ absente)</h3>
+<p>Aucune route <code>/forgot-password</code> ni <code>/reset-password</code>, pas d'envoi d'email. Le bouton « Oublié ? »
+affiche un message d'indisponibilité.</p>
+<hr />
+<h2 id="divergences-incoherences-relevees-dans-le-code">Divergences &amp; incohérences relevées dans le code</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Constat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Validation mot de passe</strong> : <code>isValidPassword</code> (frontend) accepte ≥6 ; le formulaire et le backend exigent ≥8 + majuscule + chiffre</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Validation username</strong> : frontend ≥2, backend 3–50 alphanumérique → un username de 2 caractères est rejeté côté backend</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong><code>x-user-username</code> absent</strong> pour le user-service → <code>from_username: undefined</code> dans la notif de follow</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong><code>comments_count</code></strong> peut diverger (décrément de 1 même quand des réponses sont supprimées en cascade)</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong><code>likes_count</code></strong> peut devenir négatif en base (seul l'affichage est borné)</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Pas de route</strong> de filtrage des posts signalés (<code>is_reported</code>)</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Notifications <code>comment</code>/<code>reply</code></strong> : types prévus mais jamais générés</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Reposts</strong> non supprimés à la suppression d'un post (orphelins)</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
-<p class="admonition-title">Pas d'email dans le token</p>
-<p>Le payload ne contient que <code>sub</code>, <code>username</code>, <code>role</code>. La gateway les mappe respectivement
-vers <code>x-user-id</code>, <code>x-user-username</code>, <code>x-user-role</code>.</p>
-</div>
-<h3 id="generation-duree">Génération &amp; durée</h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// auth-service/src/utils/jwt.utils.js</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">generateAccessToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span>
-<span class="w">  </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">sign</span><span class="p">({</span><span class="w"> </span><span class="nx">sub</span><span class="o">:</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">username</span><span class="o">:</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">role</span><span class="w"> </span><span class="p">},</span>
-<span class="w">           </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">expiresIn</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_EXPIRES_IN</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;15m&#39;</span><span class="w"> </span><span class="p">});</span>
-</code></pre></div>
-<ul>
-<li><strong>Algorithme</strong> : HS256. <strong>Durée</strong> : <code>JWT_EXPIRES_IN</code>, défaut/docker <code>15m</code>.</li>
-<li><strong>Secret</strong> : <code>JWT_SECRET</code> (l'auth-service fait <code>exit(1)</code> s'il est absent).</li>
-</ul>
-<h3 id="verification-gateway-uniquement">Vérification (gateway uniquement)</h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// gateway/src/utils/jwt.utils.js</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">JWT_SECRET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;defaultSecret&quot;</span><span class="p">;</span><span class="w">   </span><span class="c1">// ⚠️ fallback</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">verifyToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">token</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">verify</span><span class="p">(</span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">JWT_SECRET</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
-</code></pre></div>
-<div class="admonition danger">
-<p class="admonition-title">Fallback <code>defaultSecret</code></p>
-<p>Si <code>JWT_SECRET</code> manquait côté gateway, elle accepterait des tokens signés avec
-<code>"defaultSecret"</code>. docker-compose fournit la variable, mais le fallback reste une faille
-latente.</p>
-</div>
-<hr />
-<h2 id="refresh-token">Refresh token</h2>
-<table>
-<thead>
-<tr>
-<th>Caractéristique</th>
-<th>Valeur</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Génération</td>
-<td><code>crypto.randomBytes(64).toString('hex')</code> (128 caractères hex, opaque)</td>
-</tr>
-<tr>
-<td>Stockage</td>
-<td>hash <strong>SHA-256</strong> uniquement (<code>token_hash</code>, jamais en clair)</td>
-</tr>
-<tr>
-<td>Durée</td>
-<td><code>REFRESH_TOKEN_DAYS</code>, défaut/docker <code>7</code> jours</td>
-</tr>
-<tr>
-<td>Transport</td>
-<td>cookie <code>refreshToken</code> : <code>httpOnly</code>, <code>secure</code> si <code>NODE_ENV=production</code>, <code>sameSite: 'Strict'</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="rotation-detection-de-vol">Rotation &amp; détection de vol</h3>
-<p>À chaque <code>POST /auth/refresh</code> : l'ancien token est révoqué, un nouveau est émis. Si un token
-<strong>déjà révoqué</strong> est présenté (signe d'un rejeu / vol), <strong>tous</strong> les tokens de l'utilisateur sont
-révoqués :</p>
-<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">stored</span><span class="p">.</span><span class="nx">is_revoked</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">RefreshToken</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span><span class="w"> </span><span class="nx">is_revoked</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">user_id</span><span class="o">:</span><span class="w"> </span><span class="nx">stored</span><span class="p">.</span><span class="nx">user_id</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
-<span class="w">  </span><span class="c1">// L&#39;attaquant ET l&#39;utilisateur légitime sont déconnectés.</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Le refresh échoue aussi (401 + <code>clearCookie</code>) si le token est introuvable, expiré, ou si
-l'utilisateur est inactif/banni. <strong><code>change-password</code> révoque également tous les refresh tokens.</strong></p>
-<hr />
-<h2 id="hachage-des-mots-de-passe">Hachage des mots de passe</h2>
-<table>
-<thead>
-<tr>
-<th>Élément</th>
-<th>Valeur</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Bibliothèque</td>
-<td><code>bcryptjs</code></td>
-</tr>
-<tr>
-<td>Rounds</td>
-<td><code>BCRYPT_ROUNDS</code> — <strong>défaut code 12, docker 10, tests 4</strong></td>
-</tr>
-<tr>
-<td>Vérification</td>
-<td><code>bcrypt.compare(password, user.password_hash)</code></td>
-</tr>
-</tbody>
-</table>
-<p>Validation à l'inscription (<code>express-validator</code>) : mot de passe ≥ 8, ≥ 1 majuscule, ≥ 1 chiffre ;
-username 3–50 alphanumérique + <code>_</code>.</p>
-<hr />
-<h2 id="bannissement">Bannissement</h2>
-<pre class="mermaid"><code>sequenceDiagram
-    participant M as Modérateur
-    participant U as user-service
-    participant A as auth-service
-    M-&gt;&gt;U: PUT /api/users/:id/ban (JWT, role=moderator/admin)
-    U-&gt;&gt;U: vérifie x-user-role ∈ {moderator, admin}
-    U-&gt;&gt;U: is_banned = true (user_profiles)
-    U-&gt;&gt;A: POST /auth/internal/ban {userId} (x-internal-secret, 3s)
-    A-&gt;&gt;A: is_banned = true (users)
-    U--&gt;&gt;M: 200</code></pre>
-<table>
-<thead>
-<tr>
-<th>Après bannissement</th>
-<th>Comportement</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Nouveau login</td>
-<td><code>403 ACCOUNT_BANNED</code></td>
-</tr>
-<tr>
-<td>JWT existant</td>
-<td>reste valide jusqu'à expiration (≤ 15 min)</td>
-</tr>
-<tr>
-<td>Refresh</td>
-<td>échoue (l'utilisateur est revérifié pendant le refresh)</td>
-</tr>
-<tr>
-<td>Visibilité</td>
-<td>exclu de <code>/users/search</code>, mais <strong>encore visible</strong> via <code>/users/:id</code></td>
-</tr>
-</tbody>
-</table>
-<p>La propagation auth est <strong>non bloquante</strong> : le ban local s'applique même si l'auth-service est
-indisponible. Pas de fonction d'unban.</p>
-<hr />
-<h2 id="communication-inter-services-internal_secret">Communication inter-services (<code>INTERNAL_SECRET</code>)</h2>
-<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;x-internal-secret&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">INTERNAL_SECRET</span><span class="p">)</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">code</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;UNAUTHORIZED&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
-</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Endpoint interne</th>
-<th>Service</th>
-<th>Appelé par</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>POST /users/sync</code></td>
-<td>user</td>
-<td>auth</td>
-</tr>
-<tr>
-<td><code>POST /auth/internal/ban</code></td>
-<td>auth</td>
-<td>user</td>
-</tr>
-<tr>
-<td><code>GET /auth/internal/users/:id/role</code></td>
-<td>auth</td>
-<td>profil</td>
-</tr>
-<tr>
-<td><code>POST /api/notifications/internal</code></td>
-<td>profil</td>
-<td>post, user</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Jamais exposé au client</strong> : la gateway ne transmet pas <code>x-internal-secret</code> et ne le possède pas.</p>
-<hr />
-<h2 id="rate-limiting">Rate limiting</h2>
-<table>
-<thead>
-<tr>
-<th>Couche</th>
-<th>Statut réel</th>
-<th>Détail</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Gateway</strong> (express-rate-limit)</td>
-<td>✅ <strong>actif</strong></td>
-<td>global 500/15min, auth 20/15min</td>
-</tr>
-<tr>
-<td><strong>Nginx</strong></td>
-<td>❌ <strong>non appliqué</strong></td>
-<td>zones définies (30 r/m, 5 r/m) mais aucune directive <code>limit_req</code></td>
-</tr>
-</tbody>
-</table>
-<div class="admonition note">
-<p class="admonition-title">Correction par rapport à l'ancienne doc</p>
-<p>L'ancienne documentation indiquait <code>NODE_ENV=test</code> désactivant le rate limiting de la
-gateway. Le <code>docker-compose.yml</code> actuel fixe <strong><code>NODE_ENV=production</code></strong> → les limiteurs de la
-gateway sont <strong>bien actifs</strong>. Le rate limiting Nginx, lui, n'a jamais été activé (zones
-déclarées mais inutilisées).</p>
-</div>
-<hr />
-<h2 id="protection-contre-les-attaques">Protection contre les attaques</h2>
-<table>
-<thead>
-<tr>
-<th>Attaque</th>
-<th>Protection</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Force brute</td>
-<td>Rate limiting gateway (20 req/15min sur login/register)</td>
-</tr>
-<tr>
-<td>Énumération de comptes</td>
-<td>Message <code>INVALID_CREDENTIALS</code> identique que l'email existe ou non</td>
-</tr>
-<tr>
-<td>Vol de JWT</td>
-<td>Durée courte (15 min), signature HMAC</td>
-</tr>
-<tr>
-<td>Vol de refresh token</td>
-<td>Rotation + détection de rejeu → révocation de tous les tokens</td>
-</tr>
-<tr>
-<td>XSS (vol de token)</td>
-<td>Refresh token en cookie <code>httpOnly</code></td>
-</tr>
-<tr>
-<td>CSRF</td>
-<td>Cookie <code>sameSite: Strict</code></td>
-</tr>
-<tr>
-<td>Auto-notification</td>
-<td>Ignorée si <code>recipient === sender</code> (profil-service)</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition warning">
-<p class="admonition-title">Limites connues</p>
-<p>Headers <code>x-user-*</code> non signés (usurpation possible si un service est compromis), JWT
-<code>secure</code> cookie uniquement en <code>production</code>, secrets en clair dans le dépôt. Voir
-<a href="../secrets-configuration/">Secrets &amp; configuration</a> et <a href="../../soutenance/limites/">Limites</a>.</p>
+<p class="admonition-title">Rate limiting désormais actif</p>
+<p>Contrairement à une ancienne version de la doc, le rate limiting de la gateway est <strong>actif</strong>
+(<code>NODE_ENV=production</code> dans docker-compose). Le rate limiting Nginx, lui, reste déclaré mais
+non appliqué.</p>
 </div>
 
 

@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../../api/routes/">
+        <link rel="prev" href="../flux-donnees/">
       
       
-        <link rel="next" href="../secrets-configuration/">
+        <link rel="next" href="../../services/gateway/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Authentification - Breezy — Documentation</title>
+        <title>Déploiement - Breezy — Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#authentification" class="md-skip">
+        <a href="#deploiement" class="md-skip">
           Aller au contenu
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Authentification
+              Déploiement
             
           </span>
         </div>
@@ -230,8 +230,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -242,11 +244,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -267,7 +269,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -285,7 +287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/vue-ensemble/" class="md-nav__link">
+      <a href="../vue-ensemble/" class="md-nav__link">
         
   
   
@@ -313,7 +315,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/communication/" class="md-nav__link">
+      <a href="../communication/" class="md-nav__link">
         
   
   
@@ -341,7 +343,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/flux-donnees/" class="md-nav__link">
+      <a href="../flux-donnees/" class="md-nav__link">
         
   
   
@@ -366,10 +368,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../architecture/deploiement/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Déploiement
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -385,6 +414,197 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prérequis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commandes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commandes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema-du-reseau-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schéma du réseau Docker
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-denvironnement-par-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables d'environnement par service
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variables d&#39;environnement par service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gateway
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auth-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        auth-service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        user-service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        post-service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profil-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        profil-service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        seed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#volumes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Volumes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependances-ordre-de-demarrage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dépendances &amp; ordre de démarrage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dockerfiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dockerfiles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nginx
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seed_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seed
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -830,8 +1050,6 @@
       
   
   
-    
-  
   
   
     
@@ -844,11 +1062,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
@@ -869,7 +1087,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -884,37 +1102,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Authentification
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../securite/authentification/" class="md-nav__link">
         
   
   
@@ -930,170 +1121,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#flux-complet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Flux complet
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#jwt-access-token" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        JWT (access token)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="JWT (access token)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#payload-exact" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Payload exact
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#generation-duree" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Génération &amp; durée
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verification-gateway-uniquement" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Vérification (gateway uniquement)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#refresh-token" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Refresh token
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Refresh token">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rotation-detection-de-vol" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rotation &amp; détection de vol
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hachage-des-mots-de-passe" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hachage des mots de passe
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bannissement" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bannissement
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#communication-inter-services-internal_secret" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Communication inter-services (INTERNAL_SECRET)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rate-limiting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rate limiting
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#protection-contre-les-attaques" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Protection contre les attaques
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1106,7 +1133,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../secrets-configuration/" class="md-nav__link">
+      <a href="../../securite/secrets-configuration/" class="md-nav__link">
         
   
   
@@ -1418,10 +1445,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#flux-complet" class="md-nav__link">
+  <a href="#prerequis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Flux complet
+        Prérequis
       
     </span>
   </a>
@@ -1429,22 +1456,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#jwt-access-token" class="md-nav__link">
+  <a href="#commandes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        JWT (access token)
+        Commandes
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="JWT (access token)">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema-du-reseau-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schéma du réseau Docker
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-denvironnement-par-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables d'environnement par service
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variables d&#39;environnement par service">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#payload-exact" class="md-nav__link">
+  <a href="#gateway" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Payload exact
+        Gateway
       
     </span>
   </a>
@@ -1452,10 +1501,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#generation-duree" class="md-nav__link">
+  <a href="#auth-service" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Génération &amp; durée
+        auth-service
       
     </span>
   </a>
@@ -1463,10 +1512,43 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#verification-gateway-uniquement" class="md-nav__link">
+  <a href="#user-service" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Vérification (gateway uniquement)
+        user-service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        post-service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profil-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        profil-service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        seed
       
     </span>
   </a>
@@ -1479,38 +1561,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#refresh-token" class="md-nav__link">
+  <a href="#volumes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Refresh token
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Refresh token">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rotation-detection-de-vol" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rotation &amp; détection de vol
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hachage-des-mots-de-passe" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hachage des mots de passe
+        Volumes
       
     </span>
   </a>
@@ -1518,10 +1572,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bannissement" class="md-nav__link">
+  <a href="#dependances-ordre-de-demarrage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bannissement
+        Dépendances &amp; ordre de démarrage
       
     </span>
   </a>
@@ -1529,10 +1583,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#communication-inter-services-internal_secret" class="md-nav__link">
+  <a href="#dockerfiles" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Communication inter-services (INTERNAL_SECRET)
+        Dockerfiles
       
     </span>
   </a>
@@ -1540,10 +1594,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rate-limiting" class="md-nav__link">
+  <a href="#nginx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rate limiting
+        Nginx
       
     </span>
   </a>
@@ -1551,10 +1605,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#protection-contre-les-attaques" class="md-nav__link">
+  <a href="#seed_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Protection contre les attaques
+        Seed
       
     </span>
   </a>
@@ -1578,314 +1632,406 @@
 
 
 
-<h1 id="authentification">Authentification</h1>
-<p>L'authentification repose sur un <strong>double token</strong> (JWT court + refresh token long) et une
-<strong>gateway centralisée</strong> : elle seule vérifie le JWT, puis injecte l'identité dans des headers à
-destination des services backend (qui ne vérifient jamais le JWT eux-mêmes).</p>
+<h1 id="deploiement">Déploiement</h1>
+<p>L'infrastructure (<code>breezy-infra</code>) orchestre les <strong>12 conteneurs</strong> via <code>docker-compose</code>, plus
+Nginx et un conteneur de seed.</p>
 <hr />
-<h2 id="flux-complet">Flux complet</h2>
-<pre class="mermaid"><code>sequenceDiagram
-    participant C as Client
-    participant G as Gateway
-    participant A as auth-service
-    participant DB as PostgreSQL
-
-    Note over C,DB: Inscription / Connexion
-    C-&gt;&gt;G: POST /api/auth/register|login
-    G-&gt;&gt;A: proxy (route publique)
-    A-&gt;&gt;A: bcrypt.hash / compare
-    A-&gt;&gt;DB: INSERT user / refresh_token (hash SHA-256)
-    A--&gt;&gt;C: { user, token } + Set-Cookie refreshToken (httpOnly)
-
-    Note over C,DB: Requête authentifiée
-    C-&gt;&gt;G: GET /api/... (Bearer JWT)
-    G-&gt;&gt;G: jwt.verify → x-user-id/role/username
-    G--&gt;&gt;C: réponse
-
-    Note over C,DB: Refresh (JWT expiré)
-    C-&gt;&gt;G: POST /api/auth/refresh (cookie)
-    G-&gt;&gt;A: proxy
-    A-&gt;&gt;DB: rotation (ancien révoqué, nouveau émis)
-    A--&gt;&gt;C: { token } + nouveau cookie
-
-    Note over C,DB: Logout
-    C-&gt;&gt;G: POST /api/auth/logout
-    A-&gt;&gt;DB: is_revoked = true
-    A--&gt;&gt;C: 204 + clearCookie</code></pre>
-<hr />
-<h2 id="jwt-access-token">JWT (access token)</h2>
-<h3 id="payload-exact">Payload exact</h3>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;uuid&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;johndoe&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718000000</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718000900</span><span class="w"> </span><span class="p">}</span>
-</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Champ</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>sub</code></td>
-<td>UUID de l'utilisateur</td>
-</tr>
-<tr>
-<td><code>username</code></td>
-<td>Nom d'utilisateur</td>
-</tr>
-<tr>
-<td><code>role</code></td>
-<td><code>user</code> / <code>moderator</code> / <code>admin</code></td>
-</tr>
-<tr>
-<td><code>iat</code> / <code>exp</code></td>
-<td>Émission / expiration (ajoutés par jsonwebtoken)</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition note">
-<p class="admonition-title">Pas d'email dans le token</p>
-<p>Le payload ne contient que <code>sub</code>, <code>username</code>, <code>role</code>. La gateway les mappe respectivement
-vers <code>x-user-id</code>, <code>x-user-username</code>, <code>x-user-role</code>.</p>
-</div>
-<h3 id="generation-duree">Génération &amp; durée</h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// auth-service/src/utils/jwt.utils.js</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">generateAccessToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span>
-<span class="w">  </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">sign</span><span class="p">({</span><span class="w"> </span><span class="nx">sub</span><span class="o">:</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">username</span><span class="o">:</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">role</span><span class="w"> </span><span class="p">},</span>
-<span class="w">           </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">expiresIn</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_EXPIRES_IN</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;15m&#39;</span><span class="w"> </span><span class="p">});</span>
-</code></pre></div>
+<h2 id="prerequis">Prérequis</h2>
 <ul>
-<li><strong>Algorithme</strong> : HS256. <strong>Durée</strong> : <code>JWT_EXPIRES_IN</code>, défaut/docker <code>15m</code>.</li>
-<li><strong>Secret</strong> : <code>JWT_SECRET</code> (l'auth-service fait <code>exit(1)</code> s'il est absent).</li>
+<li>Docker + docker-compose installés.</li>
+<li>Port <strong>80</strong> libre sur l'hôte (seul port publié).</li>
+<li>Un fichier <code>.env</code> présent dans <code>breezy-infra/</code> (les valeurs <code>${...}</code> du <code>docker-compose.yml</code>
+  en proviennent).</li>
 </ul>
-<h3 id="verification-gateway-uniquement">Vérification (gateway uniquement)</h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// gateway/src/utils/jwt.utils.js</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">JWT_SECRET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;defaultSecret&quot;</span><span class="p">;</span><span class="w">   </span><span class="c1">// ⚠️ fallback</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">verifyToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">token</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">verify</span><span class="p">(</span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">JWT_SECRET</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
-</code></pre></div>
-<div class="admonition danger">
-<p class="admonition-title">Fallback <code>defaultSecret</code></p>
-<p>Si <code>JWT_SECRET</code> manquait côté gateway, elle accepterait des tokens signés avec
-<code>"defaultSecret"</code>. docker-compose fournit la variable, mais le fallback reste une faille
-latente.</p>
-</div>
 <hr />
-<h2 id="refresh-token">Refresh token</h2>
+<h2 id="commandes">Commandes</h2>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>breezy-infra
+
+<span class="c1"># Démarrer (build + run)</span>
+docker-compose<span class="w"> </span>up<span class="w"> </span>--build
+docker-compose<span class="w"> </span>up<span class="w"> </span>--build<span class="w"> </span>-d<span class="w">        </span><span class="c1"># en arrière-plan</span>
+
+<span class="c1"># Arrêter</span>
+docker-compose<span class="w"> </span>down
+docker-compose<span class="w"> </span>down<span class="w"> </span>-v<span class="w">              </span><span class="c1"># + supprime les volumes (réinitialise les bases)</span>
+
+<span class="c1"># Logs</span>
+docker-compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w">              </span><span class="c1"># tous</span>
+docker-compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>gateway<span class="w">      </span><span class="c1"># un service</span>
+
+<span class="c1"># Relancer le seed manuellement</span>
+docker-compose<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>seed
+
+<span class="c1"># Accès direct</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>breezy-db-pg-auth<span class="w"> </span>psql<span class="w"> </span>-U<span class="w"> </span>user<span class="w"> </span>-d<span class="w"> </span>auth_db
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>breezy-db-mongo-posts<span class="w"> </span>mongosh<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-p<span class="w"> </span>breezy-mongo-2024
+</code></pre></div>
+<hr />
+<h2 id="schema-du-reseau-docker">Schéma du réseau Docker</h2>
+<pre class="mermaid"><code>graph TB
+    subgraph host["Hôte"]
+        PORT80(["localhost:80"])
+    end
+    subgraph breezy-network["breezy-network (bridge)"]
+        NGINX[nginx]
+        FRONT[frontend]
+        GW[gateway]
+        SVC["auth · user · post · profil"]
+        DBS[("pg-auth · pg-users&lt;br/&gt;mongo-posts · mongo-profils")]
+    end
+    PORT80 --&gt; NGINX
+    NGINX --&gt; FRONT
+    NGINX --&gt; GW
+    GW --&gt; SVC
+    SVC --&gt; DBS</code></pre>
+<p>Un seul réseau bridge : toutes les bases sont sur le <strong>même réseau</strong> que le reste (pas de réseau
+DB isolé). L'isolation repose sur l'absence de port publié.</p>
+<hr />
+<h2 id="variables-denvironnement-par-service">Variables d'environnement par service</h2>
+<p>Valeurs résolues telles qu'injectées par <code>docker-compose.yml</code> depuis <code>.env</code>.</p>
+<h3 id="gateway">Gateway</h3>
 <table>
 <thead>
 <tr>
-<th>Caractéristique</th>
+<th>Variable</th>
 <th>Valeur</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Génération</td>
-<td><code>crypto.randomBytes(64).toString('hex')</code> (128 caractères hex, opaque)</td>
+<td><code>NODE_ENV</code></td>
+<td><code>production</code></td>
 </tr>
 <tr>
-<td>Stockage</td>
-<td>hash <strong>SHA-256</strong> uniquement (<code>token_hash</code>, jamais en clair)</td>
+<td><code>PORT</code></td>
+<td><code>3000</code></td>
 </tr>
 <tr>
-<td>Durée</td>
-<td><code>REFRESH_TOKEN_DAYS</code>, défaut/docker <code>7</code> jours</td>
+<td><code>JWT_SECRET</code></td>
+<td><code>CACACACACACACACA</code></td>
 </tr>
 <tr>
-<td>Transport</td>
-<td>cookie <code>refreshToken</code> : <code>httpOnly</code>, <code>secure</code> si <code>NODE_ENV=production</code>, <code>sameSite: 'Strict'</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="rotation-detection-de-vol">Rotation &amp; détection de vol</h3>
-<p>À chaque <code>POST /auth/refresh</code> : l'ancien token est révoqué, un nouveau est émis. Si un token
-<strong>déjà révoqué</strong> est présenté (signe d'un rejeu / vol), <strong>tous</strong> les tokens de l'utilisateur sont
-révoqués :</p>
-<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">stored</span><span class="p">.</span><span class="nx">is_revoked</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">RefreshToken</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span><span class="w"> </span><span class="nx">is_revoked</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">user_id</span><span class="o">:</span><span class="w"> </span><span class="nx">stored</span><span class="p">.</span><span class="nx">user_id</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
-<span class="w">  </span><span class="c1">// L&#39;attaquant ET l&#39;utilisateur légitime sont déconnectés.</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Le refresh échoue aussi (401 + <code>clearCookie</code>) si le token est introuvable, expiré, ou si
-l'utilisateur est inactif/banni. <strong><code>change-password</code> révoque également tous les refresh tokens.</strong></p>
-<hr />
-<h2 id="hachage-des-mots-de-passe">Hachage des mots de passe</h2>
-<table>
-<thead>
-<tr>
-<th>Élément</th>
-<th>Valeur</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Bibliothèque</td>
-<td><code>bcryptjs</code></td>
-</tr>
-<tr>
-<td>Rounds</td>
-<td><code>BCRYPT_ROUNDS</code> — <strong>défaut code 12, docker 10, tests 4</strong></td>
-</tr>
-<tr>
-<td>Vérification</td>
-<td><code>bcrypt.compare(password, user.password_hash)</code></td>
-</tr>
-</tbody>
-</table>
-<p>Validation à l'inscription (<code>express-validator</code>) : mot de passe ≥ 8, ≥ 1 majuscule, ≥ 1 chiffre ;
-username 3–50 alphanumérique + <code>_</code>.</p>
-<hr />
-<h2 id="bannissement">Bannissement</h2>
-<pre class="mermaid"><code>sequenceDiagram
-    participant M as Modérateur
-    participant U as user-service
-    participant A as auth-service
-    M-&gt;&gt;U: PUT /api/users/:id/ban (JWT, role=moderator/admin)
-    U-&gt;&gt;U: vérifie x-user-role ∈ {moderator, admin}
-    U-&gt;&gt;U: is_banned = true (user_profiles)
-    U-&gt;&gt;A: POST /auth/internal/ban {userId} (x-internal-secret, 3s)
-    A-&gt;&gt;A: is_banned = true (users)
-    U--&gt;&gt;M: 200</code></pre>
-<table>
-<thead>
-<tr>
-<th>Après bannissement</th>
-<th>Comportement</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Nouveau login</td>
-<td><code>403 ACCOUNT_BANNED</code></td>
-</tr>
-<tr>
-<td>JWT existant</td>
-<td>reste valide jusqu'à expiration (≤ 15 min)</td>
-</tr>
-<tr>
-<td>Refresh</td>
-<td>échoue (l'utilisateur est revérifié pendant le refresh)</td>
-</tr>
-<tr>
-<td>Visibilité</td>
-<td>exclu de <code>/users/search</code>, mais <strong>encore visible</strong> via <code>/users/:id</code></td>
-</tr>
-</tbody>
-</table>
-<p>La propagation auth est <strong>non bloquante</strong> : le ban local s'applique même si l'auth-service est
-indisponible. Pas de fonction d'unban.</p>
-<hr />
-<h2 id="communication-inter-services-internal_secret">Communication inter-services (<code>INTERNAL_SECRET</code>)</h2>
-<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;x-internal-secret&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">INTERNAL_SECRET</span><span class="p">)</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">code</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;UNAUTHORIZED&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
-</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Endpoint interne</th>
-<th>Service</th>
-<th>Appelé par</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>POST /users/sync</code></td>
-<td>user</td>
-<td>auth</td>
-</tr>
-<tr>
-<td><code>POST /auth/internal/ban</code></td>
-<td>auth</td>
-<td>user</td>
-</tr>
-<tr>
-<td><code>GET /auth/internal/users/:id/role</code></td>
-<td>auth</td>
-<td>profil</td>
-</tr>
-<tr>
-<td><code>POST /api/notifications/internal</code></td>
-<td>profil</td>
-<td>post, user</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Jamais exposé au client</strong> : la gateway ne transmet pas <code>x-internal-secret</code> et ne le possède pas.</p>
-<hr />
-<h2 id="rate-limiting">Rate limiting</h2>
-<table>
-<thead>
-<tr>
-<th>Couche</th>
-<th>Statut réel</th>
-<th>Détail</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Gateway</strong> (express-rate-limit)</td>
-<td>✅ <strong>actif</strong></td>
-<td>global 500/15min, auth 20/15min</td>
-</tr>
-<tr>
-<td><strong>Nginx</strong></td>
-<td>❌ <strong>non appliqué</strong></td>
-<td>zones définies (30 r/m, 5 r/m) mais aucune directive <code>limit_req</code></td>
+<td><code>AUTH/USER/POST/PROFIL_SERVICE_URL</code></td>
+<td><code>http://&lt;service&gt;:&lt;port&gt;</code></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
-<p class="admonition-title">Correction par rapport à l'ancienne doc</p>
-<p>L'ancienne documentation indiquait <code>NODE_ENV=test</code> désactivant le rate limiting de la
-gateway. Le <code>docker-compose.yml</code> actuel fixe <strong><code>NODE_ENV=production</code></strong> → les limiteurs de la
-gateway sont <strong>bien actifs</strong>. Le rate limiting Nginx, lui, n'a jamais été activé (zones
-déclarées mais inutilisées).</p>
+<p class="admonition-title">La gateway ne reçoit PAS <code>INTERNAL_SECRET</code></p>
+<p>Seuls les 4 microservices le reçoivent.</p>
 </div>
-<hr />
-<h2 id="protection-contre-les-attaques">Protection contre les attaques</h2>
+<h3 id="auth-service">auth-service</h3>
 <table>
 <thead>
 <tr>
-<th>Attaque</th>
-<th>Protection</th>
+<th>Variable</th>
+<th>Valeur</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Force brute</td>
-<td>Rate limiting gateway (20 req/15min sur login/register)</td>
+<td><code>PORT</code></td>
+<td><code>3001</code></td>
 </tr>
 <tr>
-<td>Énumération de comptes</td>
-<td>Message <code>INVALID_CREDENTIALS</code> identique que l'email existe ou non</td>
+<td><code>NODE_ENV</code></td>
+<td><code>production</code></td>
 </tr>
 <tr>
-<td>Vol de JWT</td>
-<td>Durée courte (15 min), signature HMAC</td>
+<td><code>JWT_SECRET</code></td>
+<td><code>CACACACACACACACA</code></td>
 </tr>
 <tr>
-<td>Vol de refresh token</td>
-<td>Rotation + détection de rejeu → révocation de tous les tokens</td>
+<td><code>JWT_EXPIRES_IN</code></td>
+<td><code>15m</code></td>
 </tr>
 <tr>
-<td>XSS (vol de token)</td>
-<td>Refresh token en cookie <code>httpOnly</code></td>
+<td><code>REFRESH_TOKEN_DAYS</code></td>
+<td><code>7</code></td>
 </tr>
 <tr>
-<td>CSRF</td>
-<td>Cookie <code>sameSite: Strict</code></td>
+<td><code>BCRYPT_ROUNDS</code></td>
+<td><code>10</code></td>
 </tr>
 <tr>
-<td>Auto-notification</td>
-<td>Ignorée si <code>recipient === sender</code> (profil-service)</td>
+<td><code>DATABASE_URL</code></td>
+<td><code>postgres://user:auth-password@pg-auth:5432/auth_db</code></td>
+</tr>
+<tr>
+<td><code>USER_SERVICE_URL</code></td>
+<td><code>http://user-service:3002</code></td>
+</tr>
+<tr>
+<td><code>INTERNAL_SECRET</code></td>
+<td><code>PIPIPIIPIPI</code></td>
+</tr>
+<tr>
+<td><code>CORS_ORIGIN</code></td>
+<td><code>http://localhost:3000</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="user-service">user-service</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PORT</code></td>
+<td><code>3002</code></td>
+</tr>
+<tr>
+<td><code>DATABASE_URL</code></td>
+<td><code>postgres://user:user-password@pg-users:5432/users_db</code></td>
+</tr>
+<tr>
+<td><code>AUTH_SERVICE_URL</code></td>
+<td><code>http://auth-service:3001</code></td>
+</tr>
+<tr>
+<td><code>PROFIL_SERVICE_URL</code></td>
+<td><code>http://profil-service:3004</code></td>
+</tr>
+<tr>
+<td><code>INTERNAL_SECRET</code></td>
+<td><code>PIPIPIIPIPI</code></td>
+</tr>
+<tr>
+<td><code>CORS_ORIGIN</code></td>
+<td><code>http://localhost:3000</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="post-service">post-service</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PORT</code></td>
+<td><code>3003</code></td>
+</tr>
+<tr>
+<td><code>MONGO_URI</code></td>
+<td><code>mongodb://admin:breezy-mongo-2024@mongo-posts:27017/posts_db?authSource=admin</code></td>
+</tr>
+<tr>
+<td><code>USER_SERVICE_URL</code></td>
+<td><code>http://user-service:3002</code></td>
+</tr>
+<tr>
+<td><code>PROFIL_SERVICE_URL</code></td>
+<td><code>http://profil-service:3004</code></td>
+</tr>
+<tr>
+<td><code>INTERNAL_SECRET</code></td>
+<td><code>PIPIPIIPIPI</code></td>
+</tr>
+<tr>
+<td><code>OPENROUTER_API_KEY</code></td>
+<td>clé réelle (commitée en clair — voir <a href="../../securite/secrets-configuration/">Secrets</a>)</td>
+</tr>
+<tr>
+<td><code>CORS_ORIGIN</code></td>
+<td><code>http://localhost:3000</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="profil-service">profil-service</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PORT</code></td>
+<td><code>3004</code></td>
+</tr>
+<tr>
+<td><code>MONGO_URI</code></td>
+<td><code>mongodb://admin:breezy-mongo-2024@mongo-profils:27017/profils_db?authSource=admin</code></td>
+</tr>
+<tr>
+<td><code>AUTH_SERVICE_URL</code></td>
+<td><code>http://auth-service:3001</code></td>
+</tr>
+<tr>
+<td><code>INTERNAL_SECRET</code></td>
+<td><code>PIPIPIIPIPI</code></td>
+</tr>
+<tr>
+<td><code>CORS_ORIGIN</code></td>
+<td><code>http://localhost:3000</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="seed">seed</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GATEWAY_URL</code></td>
+<td><code>http://gateway:3000/api</code></td>
+</tr>
+<tr>
+<td><code>SEED_ROLE_MODE</code></td>
+<td><code>psql</code></td>
+</tr>
+<tr>
+<td><code>AUTH_DATABASE_URL</code></td>
+<td><code>postgres://user:auth-password@pg-auth:5432/auth_db</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="volumes">Volumes</h2>
+<table>
+<thead>
+<tr>
+<th>Volume</th>
+<th>Montage</th>
+<th>Utilité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pg_auth_data</code></td>
+<td><code>pg-auth:/var/lib/postgresql/data</code></td>
+<td>Persistance auth_db</td>
+</tr>
+<tr>
+<td><code>pg_users_data</code></td>
+<td><code>pg-users:/var/lib/postgresql/data</code></td>
+<td>Persistance users_db</td>
+</tr>
+<tr>
+<td><code>mongo_posts_data</code></td>
+<td><code>mongo-posts:/data/db</code></td>
+<td>Persistance posts_db</td>
+</tr>
+<tr>
+<td><code>mongo_profils_data</code></td>
+<td><code>mongo-profils:/data/db</code></td>
+<td>Persistance profils_db</td>
+</tr>
+<tr>
+<td><code>uploads_data</code></td>
+<td><code>post-service:/app/uploads</code></td>
+<td>Images uploadées (persistantes)</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition warning">
-<p class="admonition-title">Limites connues</p>
-<p>Headers <code>x-user-*</code> non signés (usurpation possible si un service est compromis), JWT
-<code>secure</code> cookie uniquement en <code>production</code>, secrets en clair dans le dépôt. Voir
-<a href="../secrets-configuration/">Secrets &amp; configuration</a> et <a href="../../soutenance/limites/">Limites</a>.</p>
+<p class="admonition-title">Bind-mounts de développement + <code>NODE_ENV=production</code></p>
+<p>Chaque microservice monte aussi son code source en bind-mount (<code>../breezy-&lt;svc&gt;:/app</code>) avec
+un volume anonyme protégeant <code>node_modules</code>. Cette configuration <strong>dev/hot-reload</strong> coexiste
+avec <code>NODE_ENV=production</code> : configuration hybride à clarifier avant un vrai déploiement.</p>
+</div>
+<hr />
+<h2 id="dependances-ordre-de-demarrage">Dépendances &amp; ordre de démarrage</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">auth-service</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">pg-auth</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service_healthy</span>
+</code></pre></div>
+<ul>
+<li>Les 4 microservices attendent leur base (<code>service_healthy</code>).</li>
+<li>La gateway attend les 4 microservices (<code>service_started</code>).</li>
+<li><code>seed</code> attend la gateway + les 4 bases.</li>
+<li><code>restart: on-failure</code> sur les microservices ; <code>restart: "no"</code> sur <code>seed</code>.</li>
+</ul>
+<hr />
+<h2 id="dockerfiles">Dockerfiles</h2>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Particularité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>auth / user / post / profil</td>
+<td><code>node:20-alpine</code>, <code>npm install</code>, <code>CMD npm start</code>, pas d'<code>EXPOSE</code></td>
+</tr>
+<tr>
+<td>gateway</td>
+<td>idem + <code>ENV PORT=3000</code>, <code>EXPOSE 3000</code></td>
+</tr>
+<tr>
+<td>frontend</td>
+<td>idem + <code>RUN npm run build</code>, <code>EXPOSE 3000</code></td>
+</tr>
+<tr>
+<td>nginx</td>
+<td><code>nginx:alpine</code>, copie <code>nginx.conf</code>, <code>EXPOSE 80</code></td>
+</tr>
+<tr>
+<td>seed</td>
+<td><code>node:20-alpine</code> + <code>apk add postgresql-client</code> (promotion des rôles via psql)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Pas de <code>npm ci</code>, pas de multi-stage</p>
+<p>Tous les Dockerfiles utilisent <code>npm install</code> (installe aussi les devDependencies) et un seul
+stage. Aucun utilisateur non-root.</p>
+</div>
+<hr />
+<h2 id="nginx">Nginx</h2>
+<div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">limit_req_zone</span><span class="w"> </span><span class="nv">$binary_remote_addr</span><span class="w"> </span><span class="s">zone=global:10m</span><span class="w"> </span><span class="s">rate=30r/m</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">limit_req_zone</span><span class="w"> </span><span class="nv">$binary_remote_addr</span><span class="w"> </span><span class="s">zone=auth:10m</span><span class="w">   </span><span class="s">rate=5r/m</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">client_max_body_size</span><span class="w"> </span><span class="mi">5m</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/api/</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://gateway:3000</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1"># sans slash final → URI complète transmise</span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w">     </span><span class="p">{</span><span class="w"> </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://frontend:3000</span><span class="p">;</span>
+<span class="w">                         </span><span class="kn">proxy_intercept_errors</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+<span class="w">                         </span><span class="kn">error_page</span><span class="w"> </span><span class="mi">404</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">/index.html</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">       </span><span class="c1"># fallback SPA</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Rate limiting Nginx déclaré mais NON appliqué</p>
+<p>Les zones <code>global</code> (30 r/m) et <code>auth</code> (5 r/m) sont <strong>définies</strong> mais aucune directive
+<code>limit_req</code> ne les active dans les <code>location</code>. Le rate limiting effectif est donc
+<strong>uniquement</strong> celui de la gateway (500/15min, 20/15min sur l'auth).</p>
+</div>
+<hr />
+<h2 id="seed_1">Seed</h2>
+<p>Le conteneur <code>seed</code> peuple les bases via l'API publique de la gateway, puis promeut les rôles en
+SQL direct.</p>
+<ul>
+<li><strong>12 comptes</strong> : 3 admin, 3 modérateurs, 6 utilisateurs (emails <code>@breezy.test</code>, mot de passe
+  commun <code>Breezy2024!</code>).</li>
+<li><strong>Déroulé</strong> : attente de la gateway (<code>/health</code>) → <code>register</code> (ou <code>login</code>) des comptes →
+  promotion des rôles (<code>UPDATE users SET role=...</code> via <code>psql</code>, mode <code>SEED_ROLE_MODE=psql</code>) →
+  re-login des comptes promus (pour un JWT avec le bon rôle) → posts → follows → likes →
+  commentaires.</li>
+<li>Écrit un récapitulatif <code>seed/accounts.json</code>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">HTTP uniquement</p>
+<p>Nginx écoute en HTTP sur le port 80, sans TLS. Voir <a href="../../soutenance/limites/">Limites &amp; évolutions</a>
+pour les prérequis production (HTTPS, monitoring, migrations, etc.).</p>
 </div>
 
 

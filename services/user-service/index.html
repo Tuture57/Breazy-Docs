@@ -236,15 +236,20 @@
     
     
     
+      
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -308,7 +313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/communication-services/" class="md-nav__link">
+      <a href="../../architecture/communication/" class="md-nav__link">
         
   
   
@@ -364,42 +369,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/diagramme-composants/" class="md-nav__link">
+      <a href="../../architecture/deploiement/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Diagramme de composants
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/docker-deploiement/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Docker & Déploiement
+    Déploiement
   
 
     
@@ -432,15 +409,20 @@
     
     
     
+      
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -592,10 +574,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#stack" class="md-nav__link">
+  <a href="#stack-dependances" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stack
+        Stack &amp; dépendances
       
     </span>
   </a>
@@ -603,22 +585,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#modeles" class="md-nav__link">
+  <a href="#modeles-de-donnees" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Modeles
+        Modèles de données
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Modeles">
+    <nav class="md-nav" aria-label="Modèles de données">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#userprofile-user_profiles-table" class="md-nav__link">
+  <a href="#table-user_profiles" class="md-nav__link">
     <span class="md-ellipsis">
       
-        UserProfile (user_profiles table)
+        Table user_profiles
       
     </span>
   </a>
@@ -626,10 +608,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#follow-follows-table" class="md-nav__link">
+  <a href="#table-follows" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Follow (follows table)
+        Table follows
       
     </span>
   </a>
@@ -650,14 +632,25 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Routes">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#endpoints-detailles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endpoints détaillés
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Endpoints détaillés">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#post-userssync" class="md-nav__link">
+  <a href="#post-userssync-interne" class="md-nav__link">
     <span class="md-ellipsis">
       
-        POST /users/sync
+        POST /users/sync (interne)
       
     </span>
   </a>
@@ -676,10 +669,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-usersby-usernameusername" class="md-nav__link">
+  <a href="#get-usersby-usernameusername-public" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GET /users/by-username/:username
+        GET /users/by-username/:username (public)
       
     </span>
   </a>
@@ -698,21 +691,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-usersidfollowers" class="md-nav__link">
+  <a href="#get-usersidfollowers-get-usersidfollowing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GET /users/:id/followers
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-usersidfollowing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /users/:id/following
+        GET /users/:id/followers · GET /users/:id/following
       
     </span>
   </a>
@@ -752,47 +734,30 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#get-health" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /health
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#middlewares" class="md-nav__link">
+  <a href="#logique-des-compteurs-followersfollowing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Middlewares
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Middlewares">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#identitymiddlewarejs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        identity.middleware.js
+        Logique des compteurs followers/following
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#appels-inter-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appels inter-services
+      
+    </span>
+  </a>
   
 </li>
       
@@ -808,10 +773,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes-dimplementation" class="md-nav__link">
+  <a href="#dockerfile" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notes d'implementation
+        Dockerfile
       
     </span>
   </a>
@@ -928,15 +893,20 @@
     
     
     
+      
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
@@ -972,14 +942,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../donnees/schema-postgresql/" class="md-nav__link">
+      <a href="../../donnees/postgresql/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Schéma PostgreSQL
+    PostgreSQL
   
 
     
@@ -1000,14 +970,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../donnees/schema-mongodb/" class="md-nav__link">
+      <a href="../../donnees/mongodb/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Schéma MongoDB
+    MongoDB
   
 
     
@@ -1038,22 +1008,27 @@
     
     
     
+      
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    Sécurité
+    API
   
 
     
@@ -1069,170 +1044,6 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Sécurité
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../securite/authentification/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Authentification
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Fonctionnalités
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Fonctionnalités
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../fonctionnalites/couverture-fx/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Couverture
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    API
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
     API
   
 
@@ -1246,7 +1057,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/routes-completes/" class="md-nav__link">
+      <a href="../../api/routes/" class="md-nav__link">
         
   
   
@@ -1284,15 +1095,222 @@
     
     
     
+      
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sécurité
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sécurité
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../securite/authentification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../securite/secrets-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Secrets & configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fonctionnalités
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fonctionnalités
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fonctionnalites/couverture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Couverture Fx1→Fx23
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
             
   
   
@@ -1328,7 +1346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../soutenance/questions-generales/" class="md-nav__link">
+      <a href="../../soutenance/questions/" class="md-nav__link">
         
   
   
@@ -1356,7 +1374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../soutenance/questions-par-membre/" class="md-nav__link">
+      <a href="../../soutenance/par-membre/" class="md-nav__link">
         
   
   
@@ -1384,14 +1402,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../soutenance/limites-evolutions/" class="md-nav__link">
+      <a href="../../soutenance/limites/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Limites et évolutions
+    Limites & évolutions
   
 
     
@@ -1419,7 +1437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CHANGELOG_DOC/" class="md-nav__link">
+      <a href="../../CHANGELOG/" class="md-nav__link">
         
   
   
@@ -1466,10 +1484,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#stack" class="md-nav__link">
+  <a href="#stack-dependances" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stack
+        Stack &amp; dépendances
       
     </span>
   </a>
@@ -1477,22 +1495,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#modeles" class="md-nav__link">
+  <a href="#modeles-de-donnees" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Modeles
+        Modèles de données
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Modeles">
+    <nav class="md-nav" aria-label="Modèles de données">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#userprofile-user_profiles-table" class="md-nav__link">
+  <a href="#table-user_profiles" class="md-nav__link">
     <span class="md-ellipsis">
       
-        UserProfile (user_profiles table)
+        Table user_profiles
       
     </span>
   </a>
@@ -1500,10 +1518,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#follow-follows-table" class="md-nav__link">
+  <a href="#table-follows" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Follow (follows table)
+        Table follows
       
     </span>
   </a>
@@ -1524,14 +1542,25 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Routes">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#endpoints-detailles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endpoints détaillés
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Endpoints détaillés">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#post-userssync" class="md-nav__link">
+  <a href="#post-userssync-interne" class="md-nav__link">
     <span class="md-ellipsis">
       
-        POST /users/sync
+        POST /users/sync (interne)
       
     </span>
   </a>
@@ -1550,10 +1579,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-usersby-usernameusername" class="md-nav__link">
+  <a href="#get-usersby-usernameusername-public" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GET /users/by-username/:username
+        GET /users/by-username/:username (public)
       
     </span>
   </a>
@@ -1572,21 +1601,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-usersidfollowers" class="md-nav__link">
+  <a href="#get-usersidfollowers-get-usersidfollowing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GET /users/:id/followers
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-usersidfollowing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /users/:id/following
+        GET /users/:id/followers · GET /users/:id/following
       
     </span>
   </a>
@@ -1626,47 +1644,30 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#get-health" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /health
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#middlewares" class="md-nav__link">
+  <a href="#logique-des-compteurs-followersfollowing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Middlewares
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Middlewares">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#identitymiddlewarejs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        identity.middleware.js
+        Logique des compteurs followers/following
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#appels-inter-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appels inter-services
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1682,10 +1683,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes-dimplementation" class="md-nav__link">
+  <a href="#dockerfile" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notes d'implementation
+        Dockerfile
       
     </span>
   </a>
@@ -1710,611 +1711,390 @@
 
 
 <h1 id="user-service">User Service</h1>
-<p>Microservice de gestion des profils utilisateur et des relations (follow) pour Breezy.</p>
+<p>Service des <strong>profils publics</strong> et des <strong>relations sociales</strong> : follow/unfollow avec compteurs
+atomiques, recherche d'utilisateurs, résolution username → ID (pour les mentions), et
+bannissement (propagé à l'auth-service).</p>
+<ul>
+<li><strong>Dépôt</strong> : <code>breezy-user-service</code></li>
+<li><strong>Port</strong> : <code>3002</code></li>
+<li><strong>Base de données</strong> : PostgreSQL <code>users_db</code> (conteneur <code>pg-users</code>)</li>
+<li><strong>ORM</strong> : Sequelize 6 — <code>sync({ alter: true })</code> au démarrage (<code>force: true</code> en test)</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Identité par header</p>
+<p>Comme tous les services backend, le user-service ne vérifie pas le JWT : il lit
+<code>x-user-id</code> / <code>x-user-role</code> injectés par la gateway. <strong><code>x-user-username</code> n'est pas injecté
+pour ce service</strong> (voir l'encart sur <code>follow</code>).</p>
+</div>
 <hr />
-<h2 id="stack">Stack</h2>
+<h2 id="stack-dependances">Stack &amp; dépendances</h2>
 <table>
 <thead>
 <tr>
-<th>Technologie</th>
+<th>Paquet</th>
 <th>Version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Node.js</td>
-<td>20 (Alpine)</td>
+<td>express</td>
+<td><code>^5.2.1</code></td>
 </tr>
 <tr>
-<td>Express</td>
-<td>5.2.1</td>
+<td>sequelize</td>
+<td><code>^6.37.8</code></td>
 </tr>
 <tr>
-<td>Sequelize</td>
-<td>6.37.8</td>
-</tr>
-<tr>
-<td>PostgreSQL</td>
-<td>15</td>
+<td>pg / pg-hstore</td>
+<td><code>^8.21.0</code> / <code>^2.3.4</code></td>
 </tr>
 <tr>
 <td>axios</td>
-<td>1.18.0</td>
+<td><code>^1.18.0</code></td>
 </tr>
 <tr>
-<td>pg</td>
-<td>8.21.0</td>
+<td>cors</td>
+<td><code>^2.8.6</code></td>
+</tr>
+<tr>
+<td>express-validator</td>
+<td><code>^7.3.2</code> ⚠️ <strong>déclaré mais jamais utilisé</strong> (validation manuelle)</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="modeles">Modeles</h2>
-<h3 id="userprofile-user_profiles-table">UserProfile (<code>user_profiles</code> table)</h3>
+<h2 id="modeles-de-donnees">Modèles de données</h2>
+<h3 id="table-user_profiles">Table <code>user_profiles</code></h3>
 <table>
 <thead>
 <tr>
-<th>Champ</th>
+<th>Colonne</th>
 <th>Type</th>
-<th>Contraintes</th>
+<th>Contraintes / défaut</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>id</code></td>
 <td>UUID</td>
-<td>PK (impose par auth-service, PAS auto-genere)</td>
+<td>PK — <strong>imposé par l'auth-service</strong> (pas de génération auto)</td>
 </tr>
 <tr>
 <td><code>username</code></td>
 <td>STRING(50)</td>
-<td>NOT NULL</td>
+<td><code>NOT NULL</code> — <strong>pas d'index unique</strong> dans le modèle</td>
 </tr>
 <tr>
 <td><code>role</code></td>
-<td>ENUM('user','moderator','admin')</td>
-<td>DEFAULT 'user'</td>
+<td>ENUM(<code>user</code>,<code>moderator</code>,<code>admin</code>)</td>
+<td>défaut <code>user</code> (répliqué depuis l'auth)</td>
 </tr>
 <tr>
 <td><code>is_active</code></td>
 <td>BOOLEAN</td>
-<td>DEFAULT true</td>
+<td>défaut <code>true</code></td>
 </tr>
 <tr>
 <td><code>is_banned</code></td>
 <td>BOOLEAN</td>
-<td>DEFAULT false</td>
+<td>défaut <code>false</code></td>
 </tr>
 <tr>
 <td><code>followers_count</code></td>
 <td>INTEGER</td>
-<td>DEFAULT 0 (mises a jour atomiques via transactions)</td>
+<td>défaut <code>0</code></td>
 </tr>
 <tr>
 <td><code>following_count</code></td>
 <td>INTEGER</td>
-<td>DEFAULT 0 (mises a jour atomiques via transactions)</td>
+<td>défaut <code>0</code></td>
+</tr>
+<tr>
+<td><code>created_at</code> / <code>updated_at</code></td>
+<td>TIMESTAMP</td>
+<td>auto</td>
 </tr>
 </tbody>
 </table>
-<h3 id="follow-follows-table">Follow (<code>follows</code> table)</h3>
+<h3 id="table-follows">Table <code>follows</code></h3>
 <table>
 <thead>
 <tr>
-<th>Champ</th>
+<th>Colonne</th>
 <th>Type</th>
 <th>Contraintes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td><code>id</code></td>
+<td>INTEGER</td>
+<td>PK auto-incrémentée</td>
+</tr>
+<tr>
 <td><code>follower_id</code></td>
 <td>UUID</td>
-<td>NOT NULL</td>
+<td><code>NOT NULL</code></td>
 </tr>
 <tr>
 <td><code>followed_id</code></td>
 <td>UUID</td>
-<td>NOT NULL</td>
+<td><code>NOT NULL</code></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>TIMESTAMP</td>
+<td>auto (<code>updatedAt: false</code>)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Index :</strong> Index unique sur <code>(follower_id, followed_id)</code>.</p>
-<p><strong>Particularite :</strong> Pas de colonne <code>updatedAt</code>. La table est creee avec <code>timestamps: { updatedAt: false }</code> dans la definition Sequelize.</p>
+<ul>
+<li><strong>Index unique composite</strong> <code>(follower_id, followed_id)</code> → empêche de suivre deux fois.</li>
+<li><strong>Aucune association Sequelize ni FK</strong> vers <code>user_profiles</code> : la jointure est faite côté
+  application (récupérer les <code>Follow</code>, puis <code>UserProfile.findAll</code> par IDs).</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Pas de cascade entre <code>follows</code> et <code>user_profiles</code></p>
+<p>Supprimer un profil ne nettoie pas les <code>follows</code> associés → risque de relations orphelines
+et de compteurs incohérents. Les compteurs n'ont pas de garde-fou contre les valeurs
+négatives en base.</p>
+</div>
 <hr />
 <h2 id="routes">Routes</h2>
-<h3 id="post-userssync">POST /users/sync</h3>
-<p>Cree ou met a jour un profil utilisateur (appele par auth-service apres inscription).</p>
-<p><strong>Middleware :</strong> aucun (securise par <code>INTERNAL_SECRET</code>)</p>
-<p><strong>Headers requis :</strong> <code>x-internal-secret</code></p>
-<p><strong>Corps de la requete (body JSON) :</strong></p>
 <table>
 <thead>
 <tr>
-<th>Champ</th>
-<th>Type</th>
-<th>Requis</th>
+<th>Méthode</th>
+<th>Path</th>
+<th>Middleware</th>
+<th>Auth</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>id</code></td>
-<td>string (UUID)</td>
-<td><strong>Oui</strong></td>
+<td>GET</td>
+<td><code>/health</code></td>
+<td>—</td>
+<td>Public</td>
 </tr>
 <tr>
-<td><code>username</code></td>
-<td>string</td>
-<td><strong>Oui</strong></td>
+<td>POST</td>
+<td><code>/users/sync</code></td>
+<td>— (<code>x-internal-secret</code>)</td>
+<td>Interne</td>
 </tr>
 <tr>
-<td><code>email</code></td>
-<td>string</td>
-<td>Non (utilise pour creation uniquement)</td>
+<td>GET</td>
+<td><code>/users/search</code></td>
+<td><code>identity</code></td>
+<td>JWT</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/users/by-username/:username</code></td>
+<td>—</td>
+<td><strong>Public</strong></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/users/:id</code></td>
+<td><code>identity</code></td>
+<td>JWT</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/users/:id/followers</code></td>
+<td><code>identity</code></td>
+<td>JWT</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/users/:id/following</code></td>
+<td><code>identity</code></td>
+<td>JWT</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/users/:id/follow</code></td>
+<td><code>identity</code></td>
+<td>JWT</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/users/:id/follow</code></td>
+<td><code>identity</code></td>
+<td>JWT</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td><code>/users/:id/ban</code></td>
+<td><code>identity</code></td>
+<td>JWT + rôle modérateur/admin</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>201 Created
-{
-  &quot;message&quot;: &quot;User profile created&quot;,
-  &quot;profile&quot;: {
-    &quot;id&quot;: &quot;uuid&quot;,
-    &quot;username&quot;: &quot;johndoe&quot;,
-    &quot;role&quot;: &quot;user&quot;,
-    &quot;is_active&quot;: true,
-    &quot;is_banned&quot;: false,
-    &quot;followers_count&quot;: 0,
-    &quot;following_count&quot;: 0
-  }
-}
-
-200 OK
-{
-  &quot;message&quot;: &quot;User profile synced&quot;,
-  &quot;profile&quot;: { ... }
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>403 Forbidden
-{
-  &quot;error&quot;: &quot;FORBIDDEN&quot;
-}
-
-500 Internal Server Error (si email est absent a la creation)
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Verifier le header <code>x-internal-secret</code>.
-2. Avec <code>findOrCreate</code> sur <code>UserProfile</code>, cle <code>id</code> : si trouve -&gt; mettre a jour <code>username</code> ; si cree -&gt; utiliser le flag <code>email</code> (present uniquement a la creation).
-3. Retourner le profil.</p>
+<p><code>/users/search</code> et <code>/users/by-username/:username</code> sont déclarées <strong>avant</strong> <code>/users/:id</code> pour
+éviter la capture par le paramètre <code>:id</code>.</p>
 <hr />
+<h2 id="endpoints-detailles">Endpoints détaillés</h2>
+<h3 id="post-userssync-interne">POST /users/sync <em>(interne)</em></h3>
+<p>Appelé par l'auth-service. Header <code>x-internal-secret</code>. Body <code>{ id, username, role }</code>.
+<code>UserProfile.upsert(...)</code> (création ou mise à jour). <strong>Succès <code>201</code></strong> : <code>{ ok: true }</code>.
+<code>401 UNAUTHORIZED</code> si secret invalide. Aucune validation des champs.</p>
 <h3 id="get-userssearch">GET /users/search</h3>
-<p>Recherche d'utilisateurs par username.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Parametres de requete (query string) :</strong></p>
-<table>
-<thead>
-<tr>
-<th>Champ</th>
-<th>Type</th>
-<th>Requis</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>q</code></td>
-<td>string</td>
-<td><strong>Oui</strong> (terme de recherche)</td>
-</tr>
-<tr>
-<td><code>page</code></td>
-<td>integer</td>
-<td>Non (defaut 1)</td>
-</tr>
-<tr>
-<td><code>limit</code></td>
-<td>integer</td>
-<td>Non (defaut 20)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;users&quot;: [
-    {
-      &quot;id&quot;: &quot;uuid&quot;,
-      &quot;username&quot;: &quot;johndoe&quot;,
-      &quot;display_name&quot;: &quot;John Doe&quot;,
-      &quot;avatar_url&quot;: &quot;https://...&quot;,
-      &quot;bio&quot;: &quot;Bio text...&quot;,
-      &quot;followers_count&quot;: 42
-    }
-  ],
-  &quot;total&quot;: 5,
-  &quot;page&quot;: 1,
-  &quot;limit&quot;: 20
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>401 Unauthorized
-{
-  &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Utiliser <code>Op.iLike</code> sur <code>username</code> pour une recherche partielle et insensible a la casse.
-2. Exclure les utilisateurs <code>is_banned = true</code> ou <code>is_active = false</code>.
-3. Trier par <code>followers_count DESC</code>.
-4. Paginer avec <code>offset</code> et <code>limit</code>.</p>
-<hr />
-<h3 id="get-usersby-usernameusername">GET /users/by-username/:username</h3>
-<p>Recuperer un profil public par son username.</p>
-<p><strong>Middleware :</strong> aucun (ROUTE PUBLIQUE)</p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;id&quot;: &quot;uuid&quot;,
-  &quot;username&quot;: &quot;johndoe&quot;,
-  &quot;display_name&quot;: &quot;John Doe&quot;,
-  &quot;avatar_url&quot;: &quot;https://...&quot;,
-  &quot;bio&quot;: &quot;...&quot;,
-  &quot;followers_count&quot;: 42,
-  &quot;following_count&quot;: 10
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>404 Not Found
-{
-  &quot;error&quot;: &quot;USER_NOT_FOUND&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Chercher par <code>username</code> avec <code>UserProfile.findOne</code>.
-2. Utilisee par le post-service pour la resolution des @mentions (ex: <code>@johndoe</code> -&gt; resoudre l'UUID).
-3. Aucune authentification requise.</p>
-<hr />
+<p>Query <code>q</code> (requis, ≥2 caractères), <code>page</code> (1), <code>limit</code> (10). Filtre <code>username ILIKE %q%</code>
+<strong>ET</strong> <code>is_active = true</code> <strong>ET</strong> <code>is_banned = false</code>, trié par <code>followers_count DESC</code>.</p>
+<ul>
+<li><strong>Succès <code>200</code></strong> : <code>{ data: [UserProfile], pagination: { page, limit, total, hasNext } }</code>.</li>
+<li><strong><code>400 QUERY_TOO_SHORT</code></strong> si <code>q</code> absent ou &lt; 2 caractères.</li>
+</ul>
+<h3 id="get-usersby-usernameusername-public">GET /users/by-username/:username <em>(public)</em></h3>
+<p><code>findOne({ where: { username } })</code>. <strong>Ne filtre pas</strong> les bannis/inactifs. Utilisé par le
+post-service pour résoudre les <code>@mentions</code>. <strong><code>404 USER_NOT_FOUND</code></strong> sinon.</p>
 <h3 id="get-usersid">GET /users/:id</h3>
-<p>Recuperer le profil complet d'un utilisateur.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;id&quot;: &quot;uuid&quot;,
-  &quot;username&quot;: &quot;johndoe&quot;,
-  &quot;display_name&quot;: &quot;John Doe&quot;,
-  &quot;avatar_url&quot;: &quot;https://...&quot;,
-  &quot;banner_url&quot;: &quot;https://...&quot;,
-  &quot;bio&quot;: &quot;...&quot;,
-  &quot;location&quot;: &quot;Paris&quot;,
-  &quot;followers_count&quot;: 42,
-  &quot;following_count&quot;: 10,
-  &quot;role&quot;: &quot;user&quot;,
-  &quot;is_active&quot;: true,
-  &quot;is_banned&quot;: false,
-  &quot;is_following&quot;: true
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>401 Unauthorized
-{
-  &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
-}
-
-404 Not Found
-{
-  &quot;error&quot;: &quot;USER_NOT_FOUND&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Recuperer l'utilisateur par son <code>id</code>.
-2. Verifier si l'utilisateur authentifie (<code>x-user-id</code>) suit cet utilisateur : requete sur la table <code>Follows</code>.
-3. Ajouter le champ <code>is_following</code> (boolean).</p>
-<hr />
-<h3 id="get-usersidfollowers">GET /users/:id/followers</h3>
-<p>Liste des abonnes (followers) d'un utilisateur.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Parametres de requete (query string) :</strong></p>
-<table>
-<thead>
-<tr>
-<th>Champ</th>
-<th>Type</th>
-<th>Requis</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>page</code></td>
-<td>integer</td>
-<td>Non (defaut 1)</td>
-</tr>
-<tr>
-<td><code>limit</code></td>
-<td>integer</td>
-<td>Non (defaut 20)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;followers&quot;: [...],
-  &quot;total&quot;: 42,
-  &quot;page&quot;: 1,
-  &quot;limit&quot;: 20
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>401 Unauthorized
-{
-  &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Requete <code>Follow.findAll({ where: { followed_id: id } })</code> avec <code>include: UserProfile</code> (alias follower).
-2. Pagination.</p>
-<hr />
-<h3 id="get-usersidfollowing">GET /users/:id/following</h3>
-<p>Liste des abonnements (following) d'un utilisateur.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Parametres de requete (query string) :</strong></p>
-<table>
-<thead>
-<tr>
-<th>Champ</th>
-<th>Type</th>
-<th>Requis</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>page</code></td>
-<td>integer</td>
-<td>Non (defaut 1)</td>
-</tr>
-<tr>
-<td><code>limit</code></td>
-<td>integer</td>
-<td>Non (defaut 20)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;data&quot;: [
-    {
-      &quot;id&quot;: &quot;uuid&quot;,
-      &quot;username&quot;: &quot;janedoe&quot;,
-      &quot;display_name&quot;: &quot;Jane Doe&quot;,
-      &quot;avatar_url&quot;: &quot;...&quot;,
-      &quot;bio&quot;: &quot;...&quot;
-    }
-  ],
-  &quot;ids&quot;: [&quot;uuid1&quot;, &quot;uuid2&quot;, &quot;uuid3&quot;],
-  &quot;total&quot;: 10,
-  &quot;page&quot;: 1,
-  &quot;limit&quot;: 20
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>401 Unauthorized
-{
-  &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Requete <code>Follow.findAll({ where: { follower_id: id } })</code> avec <code>include: UserProfile</code> (alias followed).
-2. Retourne DEUX formats dans la meme reponse :
-   - <code>data</code> : tableau des profils complets.
-   - <code>ids</code> : tableau plat des UUIDs uniquement.
-3. Le format <code>ids</code> est utilise par le post-service pour construire le feed.</p>
-<hr />
+<p><code>findByPk(id)</code>. Si <code>req.userId</code> ≠ <code>:id</code>, calcule <code>followedByMe</code> (l'appelant suit-il la cible ?).
+<strong>Succès <code>200</code></strong> : <code>{ ...UserProfile, followedByMe }</code>. Ne filtre pas les bannis.</p>
+<h3 id="get-usersidfollowers-get-usersidfollowing">GET /users/:id/followers · GET /users/:id/following</h3>
+<p>Pagination <code>page</code> (1) / <code>limit</code> (20). <code>followers</code> renvoie <code>{ data, pagination }</code>.</p>
+<p><code>following</code> renvoie <strong><code>{ data, ids, pagination }</code></strong> — <code>data</code> contient les objets <code>UserProfile</code>
+et <code>ids</code> les UUID suivis. C'est le champ <code>ids</code> (ou <code>data</code>) que le post-service exploite pour le
+feed.</p>
 <h3 id="post-usersidfollow">POST /users/:id/follow</h3>
-<p>Suivre un utilisateur.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;message&quot;: &quot;Followed successfully&quot;,
-  &quot;followers_count&quot;: 43
-}
+<p><code>followerId = req.userId</code>, <code>followedId = :id</code>. <strong>Transaction atomique</strong> :</p>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">sequelize</span><span class="p">.</span><span class="nx">transaction</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">t</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">follow</span><span class="p">,</span><span class="w"> </span><span class="nx">created</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Follow</span><span class="p">.</span><span class="nx">findOrCreate</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">follower_id</span><span class="p">,</span><span class="w"> </span><span class="nx">followed_id</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">transaction</span><span class="o">:</span><span class="w"> </span><span class="nx">t</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">created</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">FollowError</span><span class="p">(</span><span class="s1">&#39;ALREADY_FOLLOWING&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">UserProfile</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="s1">&#39;following_count&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">follower_id</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">transaction</span><span class="o">:</span><span class="w"> </span><span class="nx">t</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">UserProfile</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="s1">&#39;followers_count&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">followed_id</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">transaction</span><span class="o">:</span><span class="w"> </span><span class="nx">t</span><span class="w"> </span><span class="p">});</span>
+<span class="p">});</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>400 Bad Request
-{
-  &quot;error&quot;: &quot;CANNOT_FOLLOW_SELF&quot;
-}
-
-409 Conflict
-{
-  &quot;error&quot;: &quot;ALREADY_FOLLOWING&quot;
-}
-
-404 Not Found
-{
-  &quot;error&quot;: &quot;USER_NOT_FOUND&quot;
-}
-
-401 Unauthorized
-{
-  &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Verifier que <code>x-user-id</code> != <code>id</code> (ne pas se follow soi-meme).
-2. Verifier que la cible existe.
-3. Utiliser une <strong>transaction Sequelize</strong> :
-   - Creer l'entree dans <code>Follows</code>.
-   - Incrementer <code>followers_count</code> de la cible (<code>UserProfile.increment</code>).
-   - Incrementer <code>following_count</code> de l'utilisateur courant.
-4. Envoyer une notification au profil-service.</p>
-<hr />
-<h3 id="delete-usersidfollow">DELETE /users/:id/follow</h3>
-<p>Ne plus suivre un utilisateur.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;message&quot;: &quot;Unfollowed successfully&quot;,
-  &quot;followers_count&quot;: 42
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>400 Bad Request
-{
-  &quot;error&quot;: &quot;CANNOT_UNFOLLOW_SELF&quot;
-}
-
-400 Bad Request
-{
-  &quot;error&quot;: &quot;NOT_FOLLOWING&quot;
-}
-
-401 Unauthorized
-{
-  &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
-}
-
-404 Not Found
-{
-  &quot;error&quot;: &quot;USER_NOT_FOUND&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Verifier que <code>x-user-id</code> != <code>id</code>.
-2. Verifier que la cible existe.
-3. Verifier que la relation de follow existe.
-4. Utiliser une <strong>transaction Sequelize</strong> :
-   - Supprimer l'entree de <code>Follows</code>.
-   - Decrementer <code>followers_count</code> de la cible.
-   - Decrementer <code>following_count</code> de l'utilisateur courant.</p>
-<hr />
-<h3 id="put-usersidban">PUT /users/:id/ban</h3>
-<p>Bannir un utilisateur.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Corps de la requete (body JSON) :</strong></p>
+<p>Puis (hors transaction) envoie une notification de follow au profil-service.
+<strong>Succès <code>200</code></strong> : <code>{ message: "Vous suivez maintenant &lt;username&gt;." }</code>.</p>
 <table>
 <thead>
 <tr>
-<th>Champ</th>
-<th>Type</th>
-<th>Requis</th>
+<th>Code</th>
+<th>Erreur</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>ban</code></td>
-<td>boolean</td>
-<td><strong>Oui</strong></td>
+<td>400</td>
+<td><code>CANNOT_SELF_FOLLOW</code></td>
+</tr>
+<tr>
+<td>404</td>
+<td><code>USER_NOT_FOUND</code></td>
+</tr>
+<tr>
+<td>409</td>
+<td><code>ALREADY_FOLLOWING</code></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;message&quot;: &quot;User banned successfully&quot;,
-  &quot;is_banned&quot;: true
-}
-
-200 OK
-{
-  &quot;message&quot;: &quot;User unbanned successfully&quot;,
-  &quot;is_banned&quot;: false
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>401 Unauthorized
-{
-  &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
-}
-
-403 Forbidden
-{
-  &quot;error&quot;: &quot;INSUFFICIENT_PERMISSIONS&quot;
-}
-
-404 Not Found
-{
-  &quot;error&quot;: &quot;USER_NOT_FOUND&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Verifier que l'utilisateur authentifie a le role <code>moderator</code> ou <code>admin</code>.
-2. Si le role est insuffisant -&gt; <code>INSUFFICIENT_PERMISSIONS</code>.
-3. Mettre a jour <code>is_banned</code> sur le profil local.
-4. Propager le ban au auth-service via <code>POST /auth/internal/ban</code> avec le header <code>x-internal-secret</code>.</p>
+<h3 id="delete-usersidfollow">DELETE /users/:id/follow</h3>
+<p>Transaction symétrique : <code>Follow.destroy</code> puis <code>decrement</code> des deux compteurs. Si 0 ligne
+supprimée → <code>404 NOT_FOLLOWING</code>. <strong>Succès <code>204</code></strong> (corps vide). Ne vérifie pas l'existence de la
+cible, ne bloque pas l'auto-unfollow.</p>
+<h3 id="put-usersidban">PUT /users/:id/ban</h3>
+<p><code>req.userRole</code> doit être <code>moderator</code> ou <code>admin</code>, sinon <code>403 FORBIDDEN</code>. Met <code>is_banned = true</code>
+localement, puis propage vers l'auth-service (non bloquant). <strong>Succès <code>200</code></strong> :
+<code>{ message: "Utilisateur &lt;username&gt; banni." }</code>. Pas d'unban. <code>is_active</code> et les compteurs sont
+inchangés.</p>
+<div class="admonition warning">
+<p class="admonition-title">Le bannissement ne masque pas partout</p>
+<p>Les bannis sont exclus de <code>/users/search</code>, mais <strong>restent visibles</strong> via <code>/users/:id</code> et
+<code>/users/by-username/:username</code> (ces routes ne filtrent pas <code>is_banned</code>).</p>
+</div>
 <hr />
-<h3 id="get-health">GET /health</h3>
-<p>Healthcheck du service.</p>
-<p><strong>Middleware :</strong> aucun</p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;status&quot;: &quot;ok&quot;,
-  &quot;timestamp&quot;: &quot;2024-01-01T00:00:00.000Z&quot;
-}
-</code></pre></div>
+<h2 id="logique-des-compteurs-followersfollowing">Logique des compteurs followers/following</h2>
+<p>Les compteurs sont <strong>dénormalisés</strong> et maintenus uniquement par <code>follow</code> / <code>unfollow</code>, dans une
+transaction Sequelize qui englobe la création/suppression du lien <strong>et</strong> les deux incréments.
+Cette atomicité garantit la cohérence en cas d'échec partiel. Aucun <code>COUNT(*)</code> n'est fait à la
+lecture (performance), au prix d'une synchronisation à maintenir.</p>
 <hr />
-<h2 id="middlewares">Middlewares</h2>
-<h3 id="identitymiddlewarejs">identity.middleware.js</h3>
-<p>Identique a celui de auth-service : extrait <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code> des headers injectes par le gateway.</p>
+<h2 id="appels-inter-services">Appels inter-services</h2>
+<table>
+<thead>
+<tr>
+<th>Vers</th>
+<th>Endpoint</th>
+<th>Body</th>
+<th>Headers</th>
+<th>Timeout</th>
+<th>Quand</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>profil-service</td>
+<td><code>POST /api/notifications/internal</code></td>
+<td><code>{ recipient_user_id, type:'follow', from_user_id, from_username, recipient_role }</code></td>
+<td><code>x-internal-secret</code></td>
+<td>1000 ms</td>
+<td>après un follow réussi</td>
+</tr>
+<tr>
+<td>auth-service</td>
+<td><code>POST /auth/internal/ban</code></td>
+<td><code>{ userId }</code></td>
+<td><code>x-internal-secret</code></td>
+<td>3000 ms</td>
+<td>après un ban local</td>
+</tr>
+</tbody>
+</table>
+<p>Les deux appels sont non bloquants (<code>console.warn</code> en cas d'échec). <code>from_username</code> provient de
+<code>x-user-username</code> — <strong>non injecté</strong> pour le user-service, donc souvent <code>undefined</code> dans la
+notification de follow.</p>
 <hr />
 <h2 id="variables-denvironnement">Variables d'environnement</h2>
 <table>
 <thead>
 <tr>
 <th>Variable</th>
-<th>Defaut</th>
-<th>Requis</th>
-<th>Description</th>
+<th>Défaut</th>
+<th>Usage</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>PORT</code></td>
 <td><code>3002</code></td>
-<td>Non</td>
-<td>Port d'ecoute</td>
+<td>Port d'écoute</td>
 </tr>
 <tr>
 <td><code>DATABASE_URL</code></td>
-<td>--</td>
-<td><strong>Oui</strong></td>
-<td>URL de connexion PostgreSQL</td>
+<td>—</td>
+<td>Connexion PostgreSQL</td>
 </tr>
 <tr>
 <td><code>INTERNAL_SECRET</code></td>
-<td>--</td>
-<td>Non</td>
-<td>Secret pour les communications inter-services</td>
+<td>—</td>
+<td>Secret inter-services</td>
 </tr>
 <tr>
 <td><code>AUTH_SERVICE_URL</code></td>
-<td>--</td>
-<td>Non</td>
-<td>URL du auth-service (pour propagation ban)</td>
+<td>—</td>
+<td>Propagation du ban</td>
 </tr>
 <tr>
 <td><code>PROFIL_SERVICE_URL</code></td>
-<td>--</td>
-<td>Non</td>
-<td>URL du profil-service (pour notifications follow)</td>
+<td>—</td>
+<td>Notification de follow</td>
 </tr>
 <tr>
 <td><code>CORS_ORIGIN</code></td>
-<td>--</td>
-<td>Non</td>
-<td>Origine autorisee pour CORS</td>
+<td><code>http://localhost:3000</code></td>
+<td>CORS</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="notes-dimplementation">Notes d'implementation</h2>
-<ul>
-<li>Les routes <code>/users/:id/followers</code> et <code>/users/:id/following</code> exposent les donnees sans verifier le statut de la cible (publique).</li>
-<li>La route <code>/users/by-username/:username</code> est la seule route publique (sans middleware <code>identity</code>). Elle est utilisee par le post-service pour resoudre les @mentions.</li>
-<li>Les compteurs <code>followers_count</code> et <code>following_count</code> sont mis a jour atomiquement via <code>UserProfile.increment()</code> a l'interieur de transactions Sequelize, garantissant la coherence meme en cas de requetes concurrentes.</li>
-<li>Le ban est propage au auth-service via HTTP ; si le auth-service est inaccessible, le user-service ne peut pas completer l'operation de ban.</li>
-</ul>
+<h2 id="dockerfile">Dockerfile</h2>
+<p><code>node:20-alpine</code>, <code>npm install</code>, <code>CMD ["npm","start"]</code>. Pas d'<code>EXPOSE</code>. Le port 3002 est mappé
+via docker-compose / <code>docker run -p 3002:3002</code>.</p>
 
 
 
@@ -2364,7 +2144,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>

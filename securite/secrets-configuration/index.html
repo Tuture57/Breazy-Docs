@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../../api/routes/">
+        <link rel="prev" href="../authentification/">
       
       
-        <link rel="next" href="../secrets-configuration/">
+        <link rel="next" href="../../fonctionnalites/couverture/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Authentification - Breezy — Documentation</title>
+        <title>Secrets & configuration - Breezy — Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#authentification" class="md-skip">
+        <a href="#secrets-configuration" class="md-skip">
           Aller au contenu
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Authentification
+              Secrets & configuration
             
           </span>
         </div>
@@ -884,6 +884,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -903,7 +931,7 @@
   <span class="md-ellipsis">
     
   
-    Authentification
+    Secrets & configuration
   
 
     
@@ -921,7 +949,7 @@
   <span class="md-ellipsis">
     
   
-    Authentification
+    Secrets & configuration
   
 
     
@@ -947,10 +975,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#flux-complet" class="md-nav__link">
+  <a href="#secrets-presents-dans-les-depots" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Flux complet
+        Secrets présents dans les dépôts
       
     </span>
   </a>
@@ -958,88 +986,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#jwt-access-token" class="md-nav__link">
+  <a href="#configurations-a-risque" class="md-nav__link">
     <span class="md-ellipsis">
       
-        JWT (access token)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="JWT (access token)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#payload-exact" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Payload exact
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#generation-duree" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Génération &amp; durée
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verification-gateway-uniquement" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Vérification (gateway uniquement)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#refresh-token" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Refresh token
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Refresh token">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rotation-detection-de-vol" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rotation &amp; détection de vol
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hachage-des-mots-de-passe" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hachage des mots de passe
+        Configurations à risque
       
     </span>
   </a>
@@ -1047,10 +997,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bannissement" class="md-nav__link">
+  <a href="#coherence-des-secrets-entre-services" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bannissement
+        Cohérence des secrets entre services
       
     </span>
   </a>
@@ -1058,32 +1008,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#communication-inter-services-internal_secret" class="md-nav__link">
+  <a href="#recommandations-de-remediation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Communication inter-services (INTERNAL_SECRET)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rate-limiting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rate limiting
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#protection-contre-les-attaques" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Protection contre les attaques
+        Recommandations de remédiation
       
     </span>
   </a>
@@ -1094,34 +1022,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../secrets-configuration/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Secrets & configuration
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -1418,10 +1318,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#flux-complet" class="md-nav__link">
+  <a href="#secrets-presents-dans-les-depots" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Flux complet
+        Secrets présents dans les dépôts
       
     </span>
   </a>
@@ -1429,88 +1329,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#jwt-access-token" class="md-nav__link">
+  <a href="#configurations-a-risque" class="md-nav__link">
     <span class="md-ellipsis">
       
-        JWT (access token)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="JWT (access token)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#payload-exact" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Payload exact
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#generation-duree" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Génération &amp; durée
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verification-gateway-uniquement" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Vérification (gateway uniquement)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#refresh-token" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Refresh token
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Refresh token">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rotation-detection-de-vol" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rotation &amp; détection de vol
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hachage-des-mots-de-passe" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hachage des mots de passe
+        Configurations à risque
       
     </span>
   </a>
@@ -1518,10 +1340,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bannissement" class="md-nav__link">
+  <a href="#coherence-des-secrets-entre-services" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bannissement
+        Cohérence des secrets entre services
       
     </span>
   </a>
@@ -1529,32 +1351,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#communication-inter-services-internal_secret" class="md-nav__link">
+  <a href="#recommandations-de-remediation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Communication inter-services (INTERNAL_SECRET)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rate-limiting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rate limiting
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#protection-contre-les-attaques" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Protection contre les attaques
+        Recommandations de remédiation
       
     </span>
   </a>
@@ -1578,314 +1378,134 @@
 
 
 
-<h1 id="authentification">Authentification</h1>
-<p>L'authentification repose sur un <strong>double token</strong> (JWT court + refresh token long) et une
-<strong>gateway centralisée</strong> : elle seule vérifie le JWT, puis injecte l'identité dans des headers à
-destination des services backend (qui ne vérifient jamais le JWT eux-mêmes).</p>
-<hr />
-<h2 id="flux-complet">Flux complet</h2>
-<pre class="mermaid"><code>sequenceDiagram
-    participant C as Client
-    participant G as Gateway
-    participant A as auth-service
-    participant DB as PostgreSQL
-
-    Note over C,DB: Inscription / Connexion
-    C-&gt;&gt;G: POST /api/auth/register|login
-    G-&gt;&gt;A: proxy (route publique)
-    A-&gt;&gt;A: bcrypt.hash / compare
-    A-&gt;&gt;DB: INSERT user / refresh_token (hash SHA-256)
-    A--&gt;&gt;C: { user, token } + Set-Cookie refreshToken (httpOnly)
-
-    Note over C,DB: Requête authentifiée
-    C-&gt;&gt;G: GET /api/... (Bearer JWT)
-    G-&gt;&gt;G: jwt.verify → x-user-id/role/username
-    G--&gt;&gt;C: réponse
-
-    Note over C,DB: Refresh (JWT expiré)
-    C-&gt;&gt;G: POST /api/auth/refresh (cookie)
-    G-&gt;&gt;A: proxy
-    A-&gt;&gt;DB: rotation (ancien révoqué, nouveau émis)
-    A--&gt;&gt;C: { token } + nouveau cookie
-
-    Note over C,DB: Logout
-    C-&gt;&gt;G: POST /api/auth/logout
-    A-&gt;&gt;DB: is_revoked = true
-    A--&gt;&gt;C: 204 + clearCookie</code></pre>
-<hr />
-<h2 id="jwt-access-token">JWT (access token)</h2>
-<h3 id="payload-exact">Payload exact</h3>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;uuid&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;johndoe&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718000000</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718000900</span><span class="w"> </span><span class="p">}</span>
-</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Champ</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>sub</code></td>
-<td>UUID de l'utilisateur</td>
-</tr>
-<tr>
-<td><code>username</code></td>
-<td>Nom d'utilisateur</td>
-</tr>
-<tr>
-<td><code>role</code></td>
-<td><code>user</code> / <code>moderator</code> / <code>admin</code></td>
-</tr>
-<tr>
-<td><code>iat</code> / <code>exp</code></td>
-<td>Émission / expiration (ajoutés par jsonwebtoken)</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition note">
-<p class="admonition-title">Pas d'email dans le token</p>
-<p>Le payload ne contient que <code>sub</code>, <code>username</code>, <code>role</code>. La gateway les mappe respectivement
-vers <code>x-user-id</code>, <code>x-user-username</code>, <code>x-user-role</code>.</p>
-</div>
-<h3 id="generation-duree">Génération &amp; durée</h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// auth-service/src/utils/jwt.utils.js</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">generateAccessToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span>
-<span class="w">  </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">sign</span><span class="p">({</span><span class="w"> </span><span class="nx">sub</span><span class="o">:</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">username</span><span class="o">:</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">role</span><span class="w"> </span><span class="p">},</span>
-<span class="w">           </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">expiresIn</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_EXPIRES_IN</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;15m&#39;</span><span class="w"> </span><span class="p">});</span>
-</code></pre></div>
-<ul>
-<li><strong>Algorithme</strong> : HS256. <strong>Durée</strong> : <code>JWT_EXPIRES_IN</code>, défaut/docker <code>15m</code>.</li>
-<li><strong>Secret</strong> : <code>JWT_SECRET</code> (l'auth-service fait <code>exit(1)</code> s'il est absent).</li>
-</ul>
-<h3 id="verification-gateway-uniquement">Vérification (gateway uniquement)</h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// gateway/src/utils/jwt.utils.js</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">JWT_SECRET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;defaultSecret&quot;</span><span class="p">;</span><span class="w">   </span><span class="c1">// ⚠️ fallback</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">verifyToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">token</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">verify</span><span class="p">(</span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">JWT_SECRET</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
-</code></pre></div>
+<h1 id="secrets-configuration">Secrets &amp; configuration</h1>
 <div class="admonition danger">
-<p class="admonition-title">Fallback <code>defaultSecret</code></p>
-<p>Si <code>JWT_SECRET</code> manquait côté gateway, elle accepterait des tokens signés avec
-<code>"defaultSecret"</code>. docker-compose fournit la variable, mais le fallback reste une faille
-latente.</p>
+<p class="admonition-title">Page transversale — constats de sécurité réels</p>
+<p>Cette page recense les secrets et points de configuration sensibles <strong>observés dans le code
+et les fichiers <code>.env</code> du dépôt</strong>. Elle est destinée à la soutenance et à la remédiation,
+pas à exposer davantage les valeurs. Les secrets ci-dessous sont des valeurs de
+développement (placeholders), mais ils sont <strong>réellement commités</strong> dans les dépôts.</p>
 </div>
 <hr />
-<h2 id="refresh-token">Refresh token</h2>
+<h2 id="secrets-presents-dans-les-depots">Secrets présents dans les dépôts</h2>
 <table>
 <thead>
 <tr>
-<th>Caractéristique</th>
-<th>Valeur</th>
+<th>Secret</th>
+<th>Où</th>
+<th>Constat</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Génération</td>
-<td><code>crypto.randomBytes(64).toString('hex')</code> (128 caractères hex, opaque)</td>
+<td><code>JWT_SECRET</code></td>
+<td><code>.env</code> infra, <code>.env.example</code> auth</td>
+<td><code>CACACACACACACACA</code> (placeholder), commité</td>
 </tr>
 <tr>
-<td>Stockage</td>
-<td>hash <strong>SHA-256</strong> uniquement (<code>token_hash</code>, jamais en clair)</td>
+<td><code>INTERNAL_SECRET</code></td>
+<td><code>.env</code> des services + infra</td>
+<td><code>PIPIPIIPIPI</code>, commité en clair dans les <code>.env</code></td>
 </tr>
 <tr>
-<td>Durée</td>
-<td><code>REFRESH_TOKEN_DAYS</code>, défaut/docker <code>7</code> jours</td>
+<td><code>OPENROUTER_API_KEY</code></td>
+<td><code>.env</code> post-service</td>
+<td><strong>clé OpenRouter réelle</strong> (<code>sk-or-v1-...</code>) commitée — vide dans <code>.env.example</code></td>
 </tr>
 <tr>
-<td>Transport</td>
-<td>cookie <code>refreshToken</code> : <code>httpOnly</code>, <code>secure</code> si <code>NODE_ENV=production</code>, <code>sameSite: 'Strict'</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="rotation-detection-de-vol">Rotation &amp; détection de vol</h3>
-<p>À chaque <code>POST /auth/refresh</code> : l'ancien token est révoqué, un nouveau est émis. Si un token
-<strong>déjà révoqué</strong> est présenté (signe d'un rejeu / vol), <strong>tous</strong> les tokens de l'utilisateur sont
-révoqués :</p>
-<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">stored</span><span class="p">.</span><span class="nx">is_revoked</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">RefreshToken</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span><span class="w"> </span><span class="nx">is_revoked</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">user_id</span><span class="o">:</span><span class="w"> </span><span class="nx">stored</span><span class="p">.</span><span class="nx">user_id</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
-<span class="w">  </span><span class="c1">// L&#39;attaquant ET l&#39;utilisateur légitime sont déconnectés.</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Le refresh échoue aussi (401 + <code>clearCookie</code>) si le token est introuvable, expiré, ou si
-l'utilisateur est inactif/banni. <strong><code>change-password</code> révoque également tous les refresh tokens.</strong></p>
-<hr />
-<h2 id="hachage-des-mots-de-passe">Hachage des mots de passe</h2>
-<table>
-<thead>
-<tr>
-<th>Élément</th>
-<th>Valeur</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Bibliothèque</td>
-<td><code>bcryptjs</code></td>
-</tr>
-<tr>
-<td>Rounds</td>
-<td><code>BCRYPT_ROUNDS</code> — <strong>défaut code 12, docker 10, tests 4</strong></td>
-</tr>
-<tr>
-<td>Vérification</td>
-<td><code>bcrypt.compare(password, user.password_hash)</code></td>
-</tr>
-</tbody>
-</table>
-<p>Validation à l'inscription (<code>express-validator</code>) : mot de passe ≥ 8, ≥ 1 majuscule, ≥ 1 chiffre ;
-username 3–50 alphanumérique + <code>_</code>.</p>
-<hr />
-<h2 id="bannissement">Bannissement</h2>
-<pre class="mermaid"><code>sequenceDiagram
-    participant M as Modérateur
-    participant U as user-service
-    participant A as auth-service
-    M-&gt;&gt;U: PUT /api/users/:id/ban (JWT, role=moderator/admin)
-    U-&gt;&gt;U: vérifie x-user-role ∈ {moderator, admin}
-    U-&gt;&gt;U: is_banned = true (user_profiles)
-    U-&gt;&gt;A: POST /auth/internal/ban {userId} (x-internal-secret, 3s)
-    A-&gt;&gt;A: is_banned = true (users)
-    U--&gt;&gt;M: 200</code></pre>
-<table>
-<thead>
-<tr>
-<th>Après bannissement</th>
-<th>Comportement</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Nouveau login</td>
-<td><code>403 ACCOUNT_BANNED</code></td>
-</tr>
-<tr>
-<td>JWT existant</td>
-<td>reste valide jusqu'à expiration (≤ 15 min)</td>
-</tr>
-<tr>
-<td>Refresh</td>
-<td>échoue (l'utilisateur est revérifié pendant le refresh)</td>
-</tr>
-<tr>
-<td>Visibilité</td>
-<td>exclu de <code>/users/search</code>, mais <strong>encore visible</strong> via <code>/users/:id</code></td>
-</tr>
-</tbody>
-</table>
-<p>La propagation auth est <strong>non bloquante</strong> : le ban local s'applique même si l'auth-service est
-indisponible. Pas de fonction d'unban.</p>
-<hr />
-<h2 id="communication-inter-services-internal_secret">Communication inter-services (<code>INTERNAL_SECRET</code>)</h2>
-<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;x-internal-secret&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">INTERNAL_SECRET</span><span class="p">)</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">code</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;UNAUTHORIZED&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
-</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Endpoint interne</th>
-<th>Service</th>
-<th>Appelé par</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>POST /users/sync</code></td>
-<td>user</td>
-<td>auth</td>
-</tr>
-<tr>
-<td><code>POST /auth/internal/ban</code></td>
-<td>auth</td>
-<td>user</td>
-</tr>
-<tr>
-<td><code>GET /auth/internal/users/:id/role</code></td>
-<td>auth</td>
-<td>profil</td>
-</tr>
-<tr>
-<td><code>POST /api/notifications/internal</code></td>
-<td>profil</td>
-<td>post, user</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Jamais exposé au client</strong> : la gateway ne transmet pas <code>x-internal-secret</code> et ne le possède pas.</p>
-<hr />
-<h2 id="rate-limiting">Rate limiting</h2>
-<table>
-<thead>
-<tr>
-<th>Couche</th>
-<th>Statut réel</th>
-<th>Détail</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Gateway</strong> (express-rate-limit)</td>
-<td>✅ <strong>actif</strong></td>
-<td>global 500/15min, auth 20/15min</td>
-</tr>
-<tr>
-<td><strong>Nginx</strong></td>
-<td>❌ <strong>non appliqué</strong></td>
-<td>zones définies (30 r/m, 5 r/m) mais aucune directive <code>limit_req</code></td>
-</tr>
-</tbody>
-</table>
-<div class="admonition note">
-<p class="admonition-title">Correction par rapport à l'ancienne doc</p>
-<p>L'ancienne documentation indiquait <code>NODE_ENV=test</code> désactivant le rate limiting de la
-gateway. Le <code>docker-compose.yml</code> actuel fixe <strong><code>NODE_ENV=production</code></strong> → les limiteurs de la
-gateway sont <strong>bien actifs</strong>. Le rate limiting Nginx, lui, n'a jamais été activé (zones
-déclarées mais inutilisées).</p>
-</div>
-<hr />
-<h2 id="protection-contre-les-attaques">Protection contre les attaques</h2>
-<table>
-<thead>
-<tr>
-<th>Attaque</th>
-<th>Protection</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Force brute</td>
-<td>Rate limiting gateway (20 req/15min sur login/register)</td>
-</tr>
-<tr>
-<td>Énumération de comptes</td>
-<td>Message <code>INVALID_CREDENTIALS</code> identique que l'email existe ou non</td>
-</tr>
-<tr>
-<td>Vol de JWT</td>
-<td>Durée courte (15 min), signature HMAC</td>
-</tr>
-<tr>
-<td>Vol de refresh token</td>
-<td>Rotation + détection de rejeu → révocation de tous les tokens</td>
-</tr>
-<tr>
-<td>XSS (vol de token)</td>
-<td>Refresh token en cookie <code>httpOnly</code></td>
-</tr>
-<tr>
-<td>CSRF</td>
-<td>Cookie <code>sameSite: Strict</code></td>
-</tr>
-<tr>
-<td>Auto-notification</td>
-<td>Ignorée si <code>recipient === sender</code> (profil-service)</td>
+<td>Mots de passe BDD</td>
+<td><code>.env</code> infra</td>
+<td><code>auth-password</code>, <code>user-password</code>, <code>breezy-mongo-2024</code></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition warning">
-<p class="admonition-title">Limites connues</p>
-<p>Headers <code>x-user-*</code> non signés (usurpation possible si un service est compromis), JWT
-<code>secure</code> cookie uniquement en <code>production</code>, secrets en clair dans le dépôt. Voir
-<a href="../secrets-configuration/">Secrets &amp; configuration</a> et <a href="../../soutenance/limites/">Limites</a>.</p>
+<p class="admonition-title">Clé API réelle exposée</p>
+<p>Contrairement aux autres secrets (placeholders), la clé <code>OPENROUTER_API_KEY</code> du post-service
+est une <strong>vraie clé</strong> utilisable. Elle devrait être révoquée et sortie du versionnement
+(rotation + <code>.gitignore</code> + secret manager).</p>
+</div>
+<hr />
+<h2 id="configurations-a-risque">Configurations à risque</h2>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Constat</th>
+<th>Localisation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>JWT_SECRET \|\| "defaultSecret"</code></td>
+<td>Fallback dangereux : tokens acceptés si la var manque</td>
+<td><code>gateway/src/utils/jwt.utils.js</code></td>
+</tr>
+<tr>
+<td><code>sequelize.sync({ alter: true })</code></td>
+<td>Migration auto au démarrage, potentiellement destructrice</td>
+<td><code>auth/user config/database.js</code></td>
+</tr>
+<tr>
+<td><code>NODE_ENV=production</code> + bind-mounts</td>
+<td>Config hybride dev/prod (code monté en volume)</td>
+<td><code>docker-compose.yml</code></td>
+</tr>
+<tr>
+<td>Rate limiting Nginx non appliqué</td>
+<td>Zones définies mais aucune <code>limit_req</code></td>
+<td><code>nginx/nginx.conf</code></td>
+</tr>
+<tr>
+<td>Cookie <code>secure</code> conditionnel</td>
+<td><code>secure</code> seulement si <code>NODE_ENV=production</code> ; Nginx en HTTP</td>
+<td><code>auth.controller.js</code>, <code>nginx.conf</code></td>
+</tr>
+<tr>
+<td>Headers <code>x-user-*</code> non signés</td>
+<td>Usurpation possible si un service est joignable directement</td>
+<td>tous les services</td>
+</tr>
+<tr>
+<td><code>runValidators</code> absent (Mongoose)</td>
+<td><code>maxlength</code> non garantis sur les profils</td>
+<td><code>profil-service</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="coherence-des-secrets-entre-services">Cohérence des secrets entre services</h2>
+<pre class="mermaid"><code>graph TB
+    subgraph "JWT_SECRET (CACACACACACACACA)"
+        AUTHJWT[auth-service: signe] --&gt; GWJWT[gateway: vérifie]
+    end
+    subgraph "INTERNAL_SECRET (PIPIPIIPIPI)"
+        A[auth] --- U[user] --- P[post] --- PR[profil]
+    end</code></pre>
+<ul>
+<li><code>JWT_SECRET</code> doit être <strong>identique</strong> entre l'auth-service (qui signe) et la gateway (qui
+  vérifie). La gateway ne signe jamais.</li>
+<li><code>INTERNAL_SECRET</code> doit être <strong>identique</strong> dans les 4 microservices. La gateway ne le possède
+  pas (elle ne fait pas d'appel interne).</li>
+</ul>
+<hr />
+<h2 id="recommandations-de-remediation">Recommandations de remédiation</h2>
+<ol>
+<li><strong>Révoquer</strong> la clé OpenRouter exposée et la régénérer.</li>
+<li><strong>Sortir les <code>.env</code> du versionnement</strong> (<code>.gitignore</code>) ; ne committer que les <code>.env.example</code>
+   sans valeurs réelles.</li>
+<li><strong>Supprimer le fallback</strong> <code>"defaultSecret"</code> (échouer si <code>JWT_SECRET</code> manque, comme le fait
+   déjà l'auth-service).</li>
+<li><strong>Remplacer</strong> <code>sync({ alter: true })</code> par des migrations Sequelize explicites en production.</li>
+<li><strong>Signer</strong> les communications inter-services (JWT interne HMAC) plutôt que des headers en clair.</li>
+<li><strong>Activer HTTPS</strong> (TLS) pour que <code>secure</code>/<code>sameSite</code> aient un effet réel.</li>
+<li><strong>Activer</strong> le rate limiting Nginx (<code>limit_req</code>) ou le retirer pour éviter une fausse
+   impression de protection.</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Pour la soutenance</p>
+<p>Ces constats sont des <strong>points de vigilance assumés</strong> d'un projet pédagogique, pas des
+erreurs cachées. Les exposer clairement (et savoir comment les corriger) est valorisé.</p>
 </div>
 
 

@@ -236,15 +236,20 @@
     
     
     
+      
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -308,7 +313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/communication-services/" class="md-nav__link">
+      <a href="../../architecture/communication/" class="md-nav__link">
         
   
   
@@ -364,42 +369,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/diagramme-composants/" class="md-nav__link">
+      <a href="../../architecture/deploiement/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Diagramme de composants
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/docker-deploiement/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Docker & Déploiement
+    Déploiement
   
 
     
@@ -432,15 +409,20 @@
     
     
     
+      
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -620,10 +602,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#stack" class="md-nav__link">
+  <a href="#stack-dependances" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stack
+        Stack &amp; dépendances
       
     </span>
   </a>
@@ -631,22 +613,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#modeles-mongoose" class="md-nav__link">
+  <a href="#modeles-de-donnees" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Modeles Mongoose
+        Modèles de données
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Modeles Mongoose">
+    <nav class="md-nav" aria-label="Modèles de données">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#post" class="md-nav__link">
+  <a href="#posts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Post
+        posts
       
     </span>
   </a>
@@ -654,10 +636,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#like" class="md-nav__link">
+  <a href="#comments" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Like
+        comments
       
     </span>
   </a>
@@ -665,21 +647,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#comment" class="md-nav__link">
+  <a href="#likes-et-reposts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Comment
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#repost" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Repost
+        likes et reposts
       
     </span>
   </a>
@@ -692,22 +663,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#routes" class="md-nav__link">
+  <a href="#routes-prefixe-api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Routes
+        Routes (préfixe /api)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Routes">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#endpoints-detailles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endpoints détaillés
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Endpoints détaillés">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#post-apiposts" class="md-nav__link">
+  <a href="#post-apiposts-creer-un-post" class="md-nav__link">
     <span class="md-ellipsis">
       
-        POST /api/posts
+        POST /api/posts — créer un post
       
     </span>
   </a>
@@ -726,98 +708,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-apipostssearch" class="md-nav__link">
+  <a href="#get-apipostsid-put-apipostsid-delete-apipostsid" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GET /api/posts/search
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-apipostsuseruserid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /api/posts/user/:userId
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-apipostsuseruseridmedia" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /api/posts/user/:userId/media
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-apipostsuseruseridlikes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /api/posts/user/:userId/likes
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-apipostsuseruseridreplies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /api/posts/user/:userId/replies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-apipostsuseruseridreposts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /api/posts/user/:userId/reposts
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-apipostsid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /api/posts/:id
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#put-apipostsid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PUT /api/posts/:id
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#delete-apipostsid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DELETE /api/posts/:id
+        GET /api/posts/:id · PUT /api/posts/:id · DELETE /api/posts/:id
       
     </span>
   </a>
@@ -836,10 +730,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#post-apipostsidrepost" class="md-nav__link">
+  <a href="#post-apipostsidrepost-toggle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        POST /api/posts/:id/repost
+        POST /api/posts/:id/repost — toggle
       
     </span>
   </a>
@@ -847,10 +741,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#post-apipostsidlike" class="md-nav__link">
+  <a href="#post-apipostsidlike-delete-apipostsidlike" class="md-nav__link">
     <span class="md-ellipsis">
       
-        POST /api/posts/:id/like
+        POST /api/posts/:id/like · DELETE /api/posts/:id/like
       
     </span>
   </a>
@@ -858,65 +752,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#delete-apipostsidlike" class="md-nav__link">
+  <a href="#commentaires-reponses" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DELETE /api/posts/:id/like
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-apipostsidcomments" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /api/posts/:id/comments
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post-apipostsidcomments" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        POST /api/posts/:id/comments
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#put-apipostsidcommentscommentid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PUT /api/posts/:id/comments/:commentId
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#delete-apipostsidcommentscommentid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DELETE /api/posts/:id/comments/:commentId
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post-apipostsidcommentscommentidreplies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        POST /api/posts/:id/comments/:commentId/replies
+        Commentaires &amp; réponses
       
     </span>
   </a>
@@ -940,41 +779,35 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#middlewares" class="md-nav__link">
+  <a href="#recherche-par-tags-contenu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Middlewares
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Middlewares">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#identitymiddlewarejs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        identity.middleware.js
+        Recherche par tags &amp; contenu
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#validatemiddlewarejs" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#bot-ia-breezy_ai" class="md-nav__link">
     <span class="md-ellipsis">
       
-        validate.middleware.js
+        Bot IA @breezy_ai
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#appels-inter-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appels inter-services
+      
+    </span>
+  </a>
   
 </li>
       
@@ -990,10 +823,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes-dimplementation" class="md-nav__link">
+  <a href="#dockerfile" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notes d'implementation
+        Dockerfile
       
     </span>
   </a>
@@ -1082,15 +915,20 @@
     
     
     
+      
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
@@ -1126,14 +964,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../donnees/schema-postgresql/" class="md-nav__link">
+      <a href="../../donnees/postgresql/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Schéma PostgreSQL
+    PostgreSQL
   
 
     
@@ -1154,14 +992,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../donnees/schema-mongodb/" class="md-nav__link">
+      <a href="../../donnees/mongodb/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Schéma MongoDB
+    MongoDB
   
 
     
@@ -1192,22 +1030,27 @@
     
     
     
+      
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    Sécurité
+    API
   
 
     
@@ -1223,170 +1066,6 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Sécurité
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../securite/authentification/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Authentification
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Fonctionnalités
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Fonctionnalités
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../fonctionnalites/couverture-fx/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Couverture
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    API
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
     API
   
 
@@ -1400,7 +1079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/routes-completes/" class="md-nav__link">
+      <a href="../../api/routes/" class="md-nav__link">
         
   
   
@@ -1438,15 +1117,222 @@
     
     
     
+      
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sécurité
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sécurité
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../securite/authentification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../securite/secrets-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Secrets & configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fonctionnalités
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fonctionnalités
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fonctionnalites/couverture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Couverture Fx1→Fx23
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
             
   
   
@@ -1482,7 +1368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../soutenance/questions-generales/" class="md-nav__link">
+      <a href="../../soutenance/questions/" class="md-nav__link">
         
   
   
@@ -1510,7 +1396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../soutenance/questions-par-membre/" class="md-nav__link">
+      <a href="../../soutenance/par-membre/" class="md-nav__link">
         
   
   
@@ -1538,14 +1424,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../soutenance/limites-evolutions/" class="md-nav__link">
+      <a href="../../soutenance/limites/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Limites et évolutions
+    Limites & évolutions
   
 
     
@@ -1573,7 +1459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CHANGELOG_DOC/" class="md-nav__link">
+      <a href="../../CHANGELOG/" class="md-nav__link">
         
   
   
@@ -1620,10 +1506,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#stack" class="md-nav__link">
+  <a href="#stack-dependances" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stack
+        Stack &amp; dépendances
       
     </span>
   </a>
@@ -1631,22 +1517,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#modeles-mongoose" class="md-nav__link">
+  <a href="#modeles-de-donnees" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Modeles Mongoose
+        Modèles de données
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Modeles Mongoose">
+    <nav class="md-nav" aria-label="Modèles de données">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#post" class="md-nav__link">
+  <a href="#posts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Post
+        posts
       
     </span>
   </a>
@@ -1654,10 +1540,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#like" class="md-nav__link">
+  <a href="#comments" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Like
+        comments
       
     </span>
   </a>
@@ -1665,21 +1551,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#comment" class="md-nav__link">
+  <a href="#likes-et-reposts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Comment
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#repost" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Repost
+        likes et reposts
       
     </span>
   </a>
@@ -1692,22 +1567,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#routes" class="md-nav__link">
+  <a href="#routes-prefixe-api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Routes
+        Routes (préfixe /api)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Routes">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#endpoints-detailles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endpoints détaillés
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Endpoints détaillés">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#post-apiposts" class="md-nav__link">
+  <a href="#post-apiposts-creer-un-post" class="md-nav__link">
     <span class="md-ellipsis">
       
-        POST /api/posts
+        POST /api/posts — créer un post
       
     </span>
   </a>
@@ -1726,98 +1612,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-apipostssearch" class="md-nav__link">
+  <a href="#get-apipostsid-put-apipostsid-delete-apipostsid" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GET /api/posts/search
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-apipostsuseruserid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /api/posts/user/:userId
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-apipostsuseruseridmedia" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /api/posts/user/:userId/media
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-apipostsuseruseridlikes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /api/posts/user/:userId/likes
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-apipostsuseruseridreplies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /api/posts/user/:userId/replies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-apipostsuseruseridreposts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /api/posts/user/:userId/reposts
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-apipostsid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /api/posts/:id
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#put-apipostsid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PUT /api/posts/:id
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#delete-apipostsid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DELETE /api/posts/:id
+        GET /api/posts/:id · PUT /api/posts/:id · DELETE /api/posts/:id
       
     </span>
   </a>
@@ -1836,10 +1634,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#post-apipostsidrepost" class="md-nav__link">
+  <a href="#post-apipostsidrepost-toggle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        POST /api/posts/:id/repost
+        POST /api/posts/:id/repost — toggle
       
     </span>
   </a>
@@ -1847,10 +1645,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#post-apipostsidlike" class="md-nav__link">
+  <a href="#post-apipostsidlike-delete-apipostsidlike" class="md-nav__link">
     <span class="md-ellipsis">
       
-        POST /api/posts/:id/like
+        POST /api/posts/:id/like · DELETE /api/posts/:id/like
       
     </span>
   </a>
@@ -1858,65 +1656,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#delete-apipostsidlike" class="md-nav__link">
+  <a href="#commentaires-reponses" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DELETE /api/posts/:id/like
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-apipostsidcomments" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /api/posts/:id/comments
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post-apipostsidcomments" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        POST /api/posts/:id/comments
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#put-apipostsidcommentscommentid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PUT /api/posts/:id/comments/:commentId
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#delete-apipostsidcommentscommentid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DELETE /api/posts/:id/comments/:commentId
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post-apipostsidcommentscommentidreplies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        POST /api/posts/:id/comments/:commentId/replies
+        Commentaires &amp; réponses
       
     </span>
   </a>
@@ -1940,41 +1683,35 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#middlewares" class="md-nav__link">
+  <a href="#recherche-par-tags-contenu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Middlewares
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Middlewares">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#identitymiddlewarejs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        identity.middleware.js
+        Recherche par tags &amp; contenu
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#validatemiddlewarejs" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#bot-ia-breezy_ai" class="md-nav__link">
     <span class="md-ellipsis">
       
-        validate.middleware.js
+        Bot IA @breezy_ai
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#appels-inter-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appels inter-services
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1990,10 +1727,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes-dimplementation" class="md-nav__link">
+  <a href="#dockerfile" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notes d'implementation
+        Dockerfile
       
     </span>
   </a>
@@ -2018,54 +1755,65 @@
 
 
 <h1 id="post-service">Post Service</h1>
-<p>Microservice de gestion des posts, likes, commentaires, reposts, uploads et flux (feed) pour Breezy.</p>
+<p>Cœur social de Breezy : posts, likes, commentaires et réponses, reposts, signalement, upload
+d'images, mentions <code>@username</code>, et un <strong>bot IA</strong> (<code>@breezy_ai</code>). Stocke ses données dans
+MongoDB.</p>
+<ul>
+<li><strong>Dépôt</strong> : <code>breezy-post-service</code></li>
+<li><strong>Port</strong> : <code>3003</code></li>
+<li><strong>Base de données</strong> : MongoDB <code>posts_db</code> (conteneur <code>mongo-posts</code>)</li>
+<li><strong>ODM</strong> : Mongoose 9</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Aucune authentification interne</p>
+<p>Toutes les routes (sauf l'upload qui a multer) sont sans middleware : l'identité vient des
+headers <code>x-user-id</code> / <code>x-user-role</code> / <code>x-user-username</code> injectés par la gateway, lus
+directement dans les contrôleurs.</p>
+</div>
 <hr />
-<h2 id="stack">Stack</h2>
+<h2 id="stack-dependances">Stack &amp; dépendances</h2>
 <table>
 <thead>
 <tr>
-<th>Technologie</th>
+<th>Paquet</th>
 <th>Version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Node.js</td>
-<td>20 (Alpine)</td>
+<td>express</td>
+<td><code>^5.2.1</code></td>
 </tr>
 <tr>
-<td>Express</td>
-<td>5.2.1</td>
-</tr>
-<tr>
-<td>Mongoose</td>
-<td>9.7.0</td>
-</tr>
-<tr>
-<td>MongoDB</td>
-<td>6</td>
-</tr>
-<tr>
-<td>axios</td>
-<td>1.18.0</td>
+<td>mongoose</td>
+<td><code>^9.7.0</code></td>
 </tr>
 <tr>
 <td>multer</td>
-<td>1.4.5</td>
+<td><code>^1.4.5-lts.1</code></td>
+</tr>
+<tr>
+<td>axios</td>
+<td><code>^1.18.0</code></td>
 </tr>
 <tr>
 <td>morgan</td>
-<td>1.11.0</td>
+<td><code>^1.11.0</code></td>
+</tr>
+<tr>
+<td>cors</td>
+<td><code>^2.8.6</code></td>
 </tr>
 <tr>
 <td>express-validator</td>
-<td>7.3.2</td>
+<td><code>^7.3.2</code> ⚠️ <strong>déclaré mais jamais utilisé</strong></td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="modeles-mongoose">Modeles Mongoose</h2>
-<h3 id="post">Post</h3>
+<h2 id="modeles-de-donnees">Modèles de données</h2>
+<p>Tous les timestamps sont renommés <code>created_at</code> / <code>updated_at</code>.</p>
+<h3 id="posts"><code>posts</code></h3>
 <table>
 <thead>
 <tr>
@@ -2078,65 +1826,42 @@
 <tr>
 <td><code>user_id</code></td>
 <td>String</td>
-<td>Requis, indexe</td>
+<td><code>required</code>, <code>index</code></td>
 </tr>
 <tr>
 <td><code>username</code></td>
 <td>String</td>
-<td>Requis</td>
+<td><code>required</code> (dénormalisé)</td>
 </tr>
 <tr>
 <td><code>content</code></td>
 <td>String</td>
-<td>Requis, <code>maxlength</code> 280</td>
+<td><code>required</code>, max 280</td>
 </tr>
 <tr>
 <td><code>tags</code></td>
 <td>[String]</td>
-<td>Chaque tag <code>maxlength</code> 30</td>
+<td>chaque tag max 30</td>
 </tr>
 <tr>
 <td><code>media_urls</code></td>
 <td>[String]</td>
-<td>--</td>
+<td>—</td>
 </tr>
 <tr>
-<td><code>likes_count</code></td>
+<td><code>likes_count</code> / <code>comments_count</code> / <code>reposts_count</code></td>
 <td>Number</td>
-<td>Defaut 0, <code>min</code> 0</td>
-</tr>
-<tr>
-<td><code>comments_count</code></td>
-<td>Number</td>
-<td>Defaut 0, <code>min</code> 0</td>
-</tr>
-<tr>
-<td><code>reposts_count</code></td>
-<td>Number</td>
-<td>Defaut 0, <code>min</code> 0</td>
+<td>défaut 0, min 0</td>
 </tr>
 <tr>
 <td><code>is_reported</code></td>
 <td>Boolean</td>
-<td>Defaut false</td>
-</tr>
-<tr>
-<td><code>created_at</code></td>
-<td>Date</td>
-<td>Timestamp Mongoose</td>
-</tr>
-<tr>
-<td><code>updated_at</code></td>
-<td>Date</td>
-<td>Timestamp Mongoose</td>
+<td>défaut <code>false</code></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Index :</strong>
-- <code>{ user_id: 1, created_at: -1 }</code>
-- <code>{ tags: 1 }</code>
-- <code>{ created_at: -1 }</code></p>
-<h3 id="like">Like</h3>
+<p>Index : <code>{user_id:1}</code>, <code>{user_id:1, created_at:-1}</code>, <code>{tags:1}</code>, <code>{created_at:-1}</code>.</p>
+<h3 id="comments"><code>comments</code></h3>
 <table>
 <thead>
 <tr>
@@ -2149,717 +1874,435 @@
 <tr>
 <td><code>post_id</code></td>
 <td>ObjectId (ref <code>Post</code>)</td>
-<td>Requis</td>
+<td><code>required</code></td>
 </tr>
 <tr>
-<td><code>user_id</code></td>
+<td><code>user_id</code> / <code>username</code></td>
 <td>String</td>
-<td>Requis</td>
-</tr>
-<tr>
-<td><code>created_at</code></td>
-<td>Date</td>
-<td>Timestamp (creation only)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Index :</strong> Index unique compose <code>{ post_id: 1, user_id: 1 }</code></p>
-<h3 id="comment">Comment</h3>
-<table>
-<thead>
-<tr>
-<th>Champ</th>
-<th>Type</th>
-<th>Contraintes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>post_id</code></td>
-<td>ObjectId (ref <code>Post</code>)</td>
-<td>Requis</td>
-</tr>
-<tr>
-<td><code>user_id</code></td>
-<td>String</td>
-<td>Requis</td>
-</tr>
-<tr>
-<td><code>username</code></td>
-<td>String</td>
-<td>Requis</td>
+<td><code>required</code></td>
 </tr>
 <tr>
 <td><code>content</code></td>
 <td>String</td>
-<td>Requis, <code>maxlength</code> 280</td>
+<td><code>required</code>, max 280</td>
 </tr>
 <tr>
 <td><code>parent_comment_id</code></td>
 <td>ObjectId (ref <code>Comment</code>)</td>
-<td>Defaut null</td>
-</tr>
-<tr>
-<td><code>created_at</code></td>
-<td>Date</td>
-<td>Timestamp Mongoose</td>
-</tr>
-<tr>
-<td><code>updated_at</code></td>
-<td>Date</td>
-<td>Timestamp Mongoose</td>
+<td>défaut <code>null</code> (=<code>racine</code>)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Index :</strong>
-- <code>{ post_id: 1, created_at: 1 }</code>
-- <code>{ parent_comment_id: 1 }</code></p>
-<h3 id="repost">Repost</h3>
+<p>Index : <code>{post_id:1, created_at:1}</code>, <code>{parent_comment_id:1}</code>. Pas d'index unique.</p>
+<h3 id="likes-et-reposts"><code>likes</code> et <code>reposts</code></h3>
+<p>Structure identique : <code>post_id</code> (ref <code>Post</code>, required), <code>user_id</code> (required), <code>created_at</code>
+(<code>updatedAt: false</code>). <strong>Index unique <code>{post_id:1, user_id:1}</code></strong> → un seul like / repost par
+utilisateur et par post.</p>
+<hr />
+<h2 id="routes-prefixe-api">Routes (préfixe <code>/api</code>)</h2>
 <table>
 <thead>
 <tr>
-<th>Champ</th>
-<th>Type</th>
-<th>Contraintes</th>
+<th>Méthode</th>
+<th>Path</th>
+<th>Contrôleur</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>post_id</code></td>
-<td>ObjectId (ref <code>Post</code>)</td>
-<td>Requis</td>
+<td>POST</td>
+<td><code>/api/upload</code></td>
+<td><code>uploadMedia</code> (multer <code>single('file')</code>)</td>
 </tr>
 <tr>
-<td><code>user_id</code></td>
-<td>String</td>
-<td>Requis</td>
+<td>GET</td>
+<td><code>/api/posts/feed</code></td>
+<td><code>getFeed</code></td>
 </tr>
 <tr>
-<td><code>created_at</code></td>
-<td>Date</td>
-<td>Timestamp (creation only)</td>
+<td>GET</td>
+<td><code>/api/posts/search</code></td>
+<td><code>searchByTag</code></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/posts/user/:userId</code></td>
+<td><code>getByUser</code></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/posts/user/:userId/media</code></td>
+<td><code>getUserMedia</code></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/posts/user/:userId/likes</code></td>
+<td><code>getUserLikes</code></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/posts/user/:userId/replies</code></td>
+<td><code>getUserReplies</code></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/posts/user/:userId/reposts</code></td>
+<td><code>getUserReposts</code></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/posts</code></td>
+<td><code>create</code></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/posts/:id</code></td>
+<td><code>getById</code></td>
+</tr>
+<tr>
+<td>PUT</td>
+<td><code>/api/posts/:id</code></td>
+<td><code>update</code></td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/api/posts/:id</code></td>
+<td><code>delete</code></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/posts/:id/report</code></td>
+<td><code>report</code></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/posts/:id/repost</code></td>
+<td><code>toggleRepost</code></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/posts/:id/like</code></td>
+<td><code>like</code></td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/api/posts/:id/like</code></td>
+<td><code>unlike</code></td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/posts/:id/comments</code></td>
+<td><code>getComments</code></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/posts/:id/comments</code></td>
+<td><code>createComment</code></td>
+</tr>
+<tr>
+<td>PUT</td>
+<td><code>/api/posts/:id/comments/:commentId</code></td>
+<td><code>updateComment</code></td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/api/posts/:id/comments/:commentId</code></td>
+<td><code>deleteComment</code></td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/posts/:id/comments/:commentId/replies</code></td>
+<td><code>createReply</code></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Index :</strong> Index unique compose <code>{ post_id: 1, user_id: 1 }</code></p>
 <hr />
-<h2 id="routes">Routes</h2>
-<p>Toutes les routes sont montees sous <code>/api</code> dans <code>app.js</code>.</p>
-<h3 id="post-apiposts">POST /api/posts</h3>
-<p>Creer un nouveau post.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Corps de la requete (body JSON) :</strong></p>
+<h2 id="endpoints-detailles">Endpoints détaillés</h2>
+<p>Format d'erreur : <code>{ error: { code, message? } }</code>.</p>
+<h3 id="post-apiposts-creer-un-post">POST /api/posts — créer un post</h3>
 <table>
 <thead>
 <tr>
-<th>Champ</th>
+<th>Champ body</th>
 <th>Type</th>
-<th>Requis</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>content</code></td>
-<td>string</td>
-<td><strong>Oui</strong> (max 280 caracteres)</td>
-</tr>
-<tr>
-<td><code>tags</code></td>
-<td>string[]</td>
-<td>Non</td>
-</tr>
-<tr>
-<td><code>media_urls</code></td>
-<td>string[]</td>
-<td>Non</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>201 Created
-{
-  &quot;message&quot;: &quot;Post created&quot;,
-  &quot;post&quot;: {
-    &quot;_id&quot;: &quot;objectid&quot;,
-    &quot;user_id&quot;: &quot;uuid&quot;,
-    &quot;username&quot;: &quot;johndoe&quot;,
-    &quot;content&quot;: &quot;Mon premier post !&quot;,
-    &quot;tags&quot;: [&quot;breezy&quot;, &quot;hello&quot;],
-    &quot;media_urls&quot;: [],
-    &quot;likes_count&quot;: 0,
-    &quot;comments_count&quot;: 0,
-    &quot;reposts_count&quot;: 0,
-    &quot;is_reported&quot;: false,
-    &quot;created_at&quot;: &quot;2024-01-01T00:00:00.000Z&quot;,
-    &quot;updated_at&quot;: &quot;2024-01-01T00:00:00.000Z&quot;
-  }
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>400 Bad Request
-{
-  &quot;error&quot;: &quot;Content is required&quot;
-}
-
-401 Unauthorized
-{
-  &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Extraire l'identite depuis les headers.
-2. Valider le contenu.
-3. Analyser les @mentions avec la regex <code>@([a-zA-Z0-9_]+)</code>.
-4. Pour chaque mention, resoudre l'UUID via <code>GET USER_SERVICE_URL/users/by-username/:username</code>.
-5. Creer le post avec <code>Post.create()</code>.
-6. Envoyer une notification pour chaque mention resolue via <code>PROFIL_SERVICE_URL/notifications/internal</code>.</p>
-<hr />
-<h3 id="get-apipostsfeed">GET /api/posts/feed</h3>
-<p>Feed principal de l'utilisateur authentifie.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Parametres de requete (query string) :</strong></p>
-<table>
-<thead>
-<tr>
-<th>Champ</th>
-<th>Type</th>
-<th>Requis</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>page</code></td>
-<td>integer</td>
-<td>Non (defaut 1)</td>
-</tr>
-<tr>
-<td><code>limit</code></td>
-<td>integer</td>
-<td>Non (defaut 20)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;posts&quot;: [...],
-  &quot;total&quot;: 100,
-  &quot;page&quot;: 1,
-  &quot;limit&quot;: 20
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Recuperer la liste des <code>followingIds</code> depuis <code>GET USER_SERVICE_URL/users/:id/following</code> (utilise le champ <code>ids</code>).
-2. Construire la liste des auteurs : <code>[userId, ...followingIds]</code>.
-3. Requete <code>Post.find({ user_id: { $in: auteurs } })</code>, trie par <code>created_at: -1</code>, pagine.
-4. Enrichir chaque post :
-   - <code>likedByMe</code> : verifier existence dans la collection <code>Like</code> (<code>Like.findOne({ post_id, user_id })</code>).
-   - <code>repostedByMe</code> : verifier existence dans la collection <code>Repost</code>.
-5. Retourner les posts enrichis.</p>
-<hr />
-<h3 id="get-apipostssearch">GET /api/posts/search</h3>
-<p>Rechercher des posts.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Parametres de requete (query string) :</strong></p>
-<table>
-<thead>
-<tr>
-<th>Champ</th>
-<th>Type</th>
-<th>Requis</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>q</code></td>
-<td>string</td>
-<td><strong>Oui</strong></td>
-</tr>
-<tr>
-<td><code>page</code></td>
-<td>integer</td>
-<td>Non (defaut 1)</td>
-</tr>
-<tr>
-<td><code>limit</code></td>
-<td>integer</td>
-<td>Non (defaut 20)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;posts&quot;: [...],
-  &quot;total&quot;: 5,
-  &quot;page&quot;: 1,
-  &quot;limit&quot;: 20
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Utiliser <code>$or</code> sur trois champs :
-   - <code>content</code> : <code>{ $regex: q, $options: 'i' }</code> (recherche insensible a la casse).
-   - <code>tags</code> : correspondance exacte.
-   - <code>username</code> : <code>{ $regex: q, $options: 'i' }</code>.
-2. Pagination.</p>
-<hr />
-<h3 id="get-apipostsuseruserid">GET /api/posts/user/:userId</h3>
-<p>Posts d'un utilisateur specifique.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Parametres :</strong>
-- <code>userId</code> (parametre URL) : UUID de l'utilisateur.</p>
-<p><strong>Parametres optionnels (query) :</strong> <code>page</code>, <code>limit</code></p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;posts&quot;: [...],
-  &quot;total&quot;: 15,
-  &quot;page&quot;: 1,
-  &quot;limit&quot;: 20
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. <code>Post.find({ user_id: userId })</code>, trie par <code>created_at: -1</code>.
-2. Enrichir avec <code>likedByMe</code> et <code>repostedByMe</code>.</p>
-<hr />
-<h3 id="get-apipostsuseruseridmedia">GET /api/posts/user/:userId/media</h3>
-<p>Posts media d'un utilisateur (ceux avec <code>media_urls</code> non vides).</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Parametres :</strong> <code>userId</code>, optionnels <code>page</code>, <code>limit</code></p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;posts&quot;: [...],
-  &quot;total&quot;: 3,
-  &quot;page&quot;: 1,
-  &quot;limit&quot;: 20
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. <code>Post.find({ user_id: userId, media_urls: { $exists: true, $not: { $size: 0 } } })</code>.</p>
-<hr />
-<h3 id="get-apipostsuseruseridlikes">GET /api/posts/user/:userId/likes</h3>
-<p>Posts qu'un utilisateur a likés.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Parametres :</strong> <code>userId</code>, optionnels <code>page</code>, <code>limit</code></p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;posts&quot;: [...],
-  &quot;total&quot;: 7,
-  &quot;page&quot;: 1,
-  &quot;limit&quot;: 20
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Trouver tous les <code>Like</code> de l'utilisateur.
-2. Resoudre les <code>post_id</code> correspondants.
-3. Retourner les posts enrichis.</p>
-<hr />
-<h3 id="get-apipostsuseruseridreplies">GET /api/posts/user/:userId/replies</h3>
-<p>Commentaires (replies) d'un utilisateur.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Parametres :</strong> <code>userId</code>, optionnels <code>page</code>, <code>limit</code></p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;comments&quot;: [...],
-  &quot;total&quot;: 5,
-  &quot;page&quot;: 1,
-  &quot;limit&quot;: 20
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. <code>Comment.find({ user_id: userId })</code>, trie par <code>created_at: -1</code>.</p>
-<hr />
-<h3 id="get-apipostsuseruseridreposts">GET /api/posts/user/:userId/reposts</h3>
-<p>Reposts d'un utilisateur.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Parametres :</strong> <code>userId</code>, optionnels <code>page</code>, <code>limit</code></p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;posts&quot;: [...],
-  &quot;total&quot;: 2,
-  &quot;page&quot;: 1,
-  &quot;limit&quot;: 20
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Trouver tous les <code>Repost</code> de l'utilisateur.
-2. Resoudre les <code>post_id</code> correspondants.</p>
-<hr />
-<h3 id="get-apipostsid">GET /api/posts/:id</h3>
-<p>Recuperer un post par son ID.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;post&quot;: { ... }
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>404 Not Found
-{
-  &quot;error&quot;: &quot;Post not found&quot;
-}
-</code></pre></div>
-<hr />
-<h3 id="put-apipostsid">PUT /api/posts/:id</h3>
-<p>Modifier un post (proprietaire uniquement).</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Corps de la requete (body JSON) :</strong></p>
-<table>
-<thead>
-<tr>
-<th>Champ</th>
-<th>Type</th>
-<th>Requis</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>content</code></td>
-<td>string</td>
-<td><strong>Oui</strong></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;message&quot;: &quot;Post updated&quot;,
-  &quot;post&quot;: { ... }
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>403 Forbidden
-{
-  &quot;error&quot;: &quot;FORBIDDEN&quot;
-}
-
-404 Not Found
-{
-  &quot;error&quot;: &quot;Post not found&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Trouver le post.
-2. Verifier que <code>user_id === x-user-id</code>.
-3. Mettre a jour le contenu.</p>
-<hr />
-<h3 id="delete-apipostsid">DELETE /api/posts/:id</h3>
-<p>Supprimer un post (proprietaire uniquement).</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;message&quot;: &quot;Post deleted&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Verifier le proprietaire.
-2. Supprimer le post avec <code>Post.findByIdAndDelete</code>.
-3. <strong>Cascade</strong> : supprimer tous les <code>Like</code> et <code>Comment</code> associes.</p>
-<hr />
-<h3 id="post-apipostsidreport">POST /api/posts/:id/report</h3>
-<p>Signaler un post.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;message&quot;: &quot;Post reported&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Marquer <code>is_reported = true</code> sur le post.</p>
-<hr />
-<h3 id="post-apipostsidrepost">POST /api/posts/:id/repost</h3>
-<p>Reposter (ou annuler un repost) un post.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;message&quot;: &quot;Post reposted&quot;,
-  &quot;reposted&quot;: true,
-  &quot;reposts_count&quot;: 3
-}
-
-200 OK
-{
-  &quot;message&quot;: &quot;Repost removed&quot;,
-  &quot;reposted&quot;: false,
-  &quot;reposts_count&quot;: 2
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. <strong>Upsert pattern</strong> : tenter de trouver un <code>Repost</code> existant avec <code>findOne({ post_id, user_id })</code>.
-2. Si existe -&gt; supprimer le repost et <code>$inc: { reposts_count: -1 }</code>.
-3. Si n'existe pas -&gt; creer le repost et <code>$inc: { reposts_count: 1 }</code>.</p>
-<hr />
-<h3 id="post-apipostsidlike">POST /api/posts/:id/like</h3>
-<p>Liker un post.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;message&quot;: &quot;Post liked&quot;,
-  &quot;likes_count&quot;: 5
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>409 Conflict
-{
-  &quot;error&quot;: &quot;ALREADY_LIKED&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Tentative de creation d'un <code>Like</code> avec <code>create({ post_id, user_id })</code>.
-2. Si l'index unique <code>{ post_id, user_id }</code> est viole -&gt; MongoDB renvoie une erreur 11000 -&gt; capture et retour <code>409 ALREADY_LIKED</code>.
-3. <code>Post.findOneAndUpdate({ $inc: { likes_count: 1 } })</code>.
-4. Envoyer une notification <code>like</code> au profil-service.</p>
-<hr />
-<h3 id="delete-apipostsidlike">DELETE /api/posts/:id/like</h3>
-<p>Retirer un like.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;message&quot;: &quot;Like removed&quot;,
-  &quot;likes_count&quot;: 4
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>400 Bad Request
-{
-  &quot;error&quot;: &quot;NOT_LIKED&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Trouver et supprimer le <code>Like</code>.
-2. Si introuvable -&gt; <code>NOT_LIKED</code>.
-3. <code>Post.findOneAndUpdate({ $inc: { likes_count: -1 } })</code>.</p>
-<hr />
-<h3 id="get-apipostsidcomments">GET /api/posts/:id/comments</h3>
-<p>Recuperer les commentaires d'un post.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Parametres optionnels (query) :</strong> <code>page</code>, <code>limit</code></p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;comments&quot;: [...],
-  &quot;total&quot;: 10,
-  &quot;page&quot;: 1,
-  &quot;limit&quot;: 20
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. <code>Comment.find({ post_id }).sort({ created_at: 1 })</code>.
-2. Pagination.</p>
-<hr />
-<h3 id="post-apipostsidcomments">POST /api/posts/:id/comments</h3>
-<p>Ajouter un commentaire a un post.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Corps de la requete (body JSON) :</strong></p>
-<table>
-<thead>
-<tr>
-<th>Champ</th>
-<th>Type</th>
-<th>Requis</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>content</code></td>
-<td>string</td>
-<td><strong>Oui</strong> (max 280)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>201 Created
-{
-  &quot;message&quot;: &quot;Comment added&quot;,
-  &quot;comment&quot;: {
-    &quot;_id&quot;: &quot;objectid&quot;,
-    &quot;post_id&quot;: &quot;objectid&quot;,
-    &quot;user_id&quot;: &quot;uuid&quot;,
-    &quot;username&quot;: &quot;johndoe&quot;,
-    &quot;content&quot;: &quot;Super post !&quot;,
-    &quot;parent_comment_id&quot;: null,
-    &quot;created_at&quot;: &quot;...&quot;,
-    &quot;updated_at&quot;: &quot;...&quot;
-  },
-  &quot;comments_count&quot;: 6
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Creer le commentaire.
-2. Incrementer <code>comments_count</code> du post.
-3. Envoyer notification <code>comment</code> au profil-service.</p>
-<hr />
-<h3 id="put-apipostsidcommentscommentid">PUT /api/posts/:id/comments/:commentId</h3>
-<p>Modifier un commentaire (proprietaire uniquement).</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Corps de la requete (body JSON) :</strong></p>
-<table>
-<thead>
-<tr>
-<th>Champ</th>
-<th>Type</th>
-<th>Requis</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>content</code></td>
-<td>string</td>
-<td><strong>Oui</strong></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="delete-apipostsidcommentscommentid">DELETE /api/posts/:id/comments/:commentId</h3>
-<p>Supprimer un commentaire (proprietaire uniquement).</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;message&quot;: &quot;Comment deleted&quot;,
-  &quot;comments_count&quot;: 5
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Verifier le proprietaire.
-2. Supprimer le commentaire.
-3. Decrementer <code>comments_count</code> du post.</p>
-<hr />
-<h3 id="post-apipostsidcommentscommentidreplies">POST /api/posts/:id/comments/:commentId/replies</h3>
-<p>Repondre a un commentaire.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Corps de la requete (body JSON) :</strong></p>
-<table>
-<thead>
-<tr>
-<th>Champ</th>
-<th>Type</th>
-<th>Requis</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>content</code></td>
-<td>string</td>
-<td><strong>Oui</strong> (max 280)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>201 Created
-{
-  &quot;message&quot;: &quot;Reply added&quot;,
-  &quot;comment&quot;: { ... },
-  &quot;comments_count&quot;: 6
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>400 Bad Request
-{
-  &quot;error&quot;: &quot;MAX_DEPTH&quot;,
-  &quot;message&quot;: &quot;Cannot reply to a reply&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Verifier que <code>parent_comment_id</code> du commentaire cible est <code>null</code> (max 1 niveau de profondeur).
-2. Si le commentaire cible est deja une reponse (<code>parent_comment_id !== null</code>) -&gt; erreur <code>MAX_DEPTH</code>.
-3. Creer le commentaire avec <code>parent_comment_id</code> defini.
-4. Incrementer <code>comments_count</code>.
-5. Envoyer notification <code>reply</code> au profil-service.</p>
-<hr />
-<h3 id="post-apiupload">POST /api/upload</h3>
-<p>Upload de fichiers media.</p>
-<p><strong>Middleware :</strong> <code>identity</code> + <code>multer</code></p>
-<p><strong>Headers requis :</strong> <code>Content-Type: multipart/form-data</code></p>
-<p><strong>Taille max :</strong> 5 Mo</p>
-<p><strong>Types acceptes :</strong> images uniquement</p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>201 Created
-{
-  &quot;message&quot;: &quot;File uploaded&quot;,
-  &quot;urls&quot;: [&quot;https://cdn.breezy.app/uploads/filename.jpg&quot;]
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>400 Bad Request
-{
-  &quot;error&quot;: &quot;File too large&quot;,
-  &quot;maxSize&quot;: &quot;5MB&quot;
-}
-
-400 Bad Request
-{
-  &quot;error&quot;: &quot;Only image files are allowed&quot;
-}
-</code></pre></div>
-<hr />
-<h2 id="middlewares">Middlewares</h2>
-<h3 id="identitymiddlewarejs">identity.middleware.js</h3>
-<p>Identique aux autres services. Extrait <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code> des headers injectes par le gateway.</p>
-<h3 id="validatemiddlewarejs">validate.middleware.js</h3>
-<p>Gestionnaire centralise des erreurs express-validator.</p>
-<hr />
-<h2 id="variables-denvironnement">Variables d'environnement</h2>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Defaut</th>
 <th>Requis</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td><code>content</code></td>
+<td>string</td>
+<td>✅</td>
+<td>max 280</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>string[]</td>
+<td>non</td>
+<td>max 5 tags</td>
+</tr>
+<tr>
+<td><code>media_urls</code></td>
+<td>string[]</td>
+<td>non</td>
+<td>URLs renvoyées par <code>/api/upload</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Succès <code>201</code></strong> : le document Post complet.</li>
+<li>Effets de bord (non bloquants) : notifications de mention, réponse du bot IA.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Erreur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>400</td>
+<td><code>INVALID_CONTENT</code> (vide ou &gt; 280)</td>
+</tr>
+<tr>
+<td>400</td>
+<td><code>TOO_MANY_TAGS</code> (&gt; 5)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="get-apipostsfeed">GET /api/posts/feed</h3>
+<p>Query <code>page</code> (1), <code>limit</code> (20). <strong>Algorithme</strong> :</p>
+<ol>
+<li>Appel <code>GET {USER_SERVICE_URL}/users/{userId}/following</code> (timeout 3 s) → <code>ids</code>. En cas
+   d'échec, <code>followingIds = []</code> (le feed n'affiche que les posts de l'utilisateur).</li>
+<li><code>feedUserIds = Set([userId, ...followingIds])</code> → <strong>inclut les propres posts</strong>.</li>
+<li><code>Post.find({ user_id: { $in } }).sort({ created_at: -1 }).skip().limit()</code> — tri purement
+   chronologique, <strong>pas de ranking</strong>.</li>
+<li>
+<p>Enrichissement parallèle (<code>Like.find</code> + <code>Repost.find</code>) → <code>likedByMe</code> / <code>repostedByMe</code>.</p>
+</li>
+<li>
+<p><strong>Succès <code>200</code></strong> : <code>{ data: [posts enrichis], pagination: { page, limit, total, hasNext } }</code>.</p>
+</li>
+</ol>
+<h3 id="get-apipostsid-put-apipostsid-delete-apipostsid">GET /api/posts/:id · PUT /api/posts/:id · DELETE /api/posts/:id</h3>
+<ul>
+<li><strong>GET</strong> : <code>200</code> post, <code>404 POST_NOT_FOUND</code>.</li>
+<li><strong>PUT</strong> (édition) : body <code>{ content, tags, media_urls? }</code>. <strong>Auteur uniquement</strong> (sinon
+  <code>403 FORBIDDEN</code>, pas d'exception modérateur). <code>media_urls</code> mis à jour seulement si fourni.</li>
+<li><strong>DELETE</strong> : auteur <strong>ou</strong> rôle <code>moderator</code>/<code>admin</code>. <strong>Cascade</strong> : supprime les <code>likes</code> et
+  <code>comments</code> du post. ⚠️ <strong>les <code>reposts</code> ne sont pas supprimés</strong> (orphelins possibles).
+  <strong>Succès <code>204</code></strong>.</li>
+</ul>
+<h3 id="post-apipostsidreport">POST /api/posts/:id/report</h3>
+<p>Met <code>is_reported = true</code>. <strong>Succès <code>200</code></strong> : <code>{ message: 'Post signalé.' }</code>. ⚠️ Ne vérifie pas
+l'existence du post (pas de <code>404</code>). Aucune route ne liste ni ne lève les signalements.</p>
+<h3 id="post-apipostsidrepost-toggle">POST /api/posts/:id/repost — toggle</h3>
+<p><code>404 POST_NOT_FOUND</code> si absent. Si déjà reposté → suppression + <code>$inc reposts_count -1</code> →
+<code>{ reposts_count, reposted: false }</code>. Sinon création + <code>$inc +1</code> → <code>{ reposts_count, reposted: true }</code>.</p>
+<h3 id="post-apipostsidlike-delete-apipostsidlike">POST /api/posts/:id/like · DELETE /api/posts/:id/like</h3>
+<ul>
+<li><strong>like</strong> : crée un <code>Like</code> + <code>$inc likes_count +1</code>. Double-like → erreur Mongo <code>11000</code>
+  interceptée → <strong><code>409 ALREADY_LIKED</code></strong>. <code>404 POST_NOT_FOUND</code> si absent. <strong>Succès <code>200</code></strong> :
+  <code>{ likes_count }</code>. Notification de like envoyée (voir inter-services).</li>
+<li><strong>unlike</strong> : <code>findOneAndDelete</code> ; si rien → <code>404 LIKE_NOT_FOUND</code>. Sinon <code>$inc -1</code> →
+  <code>{ likes_count: max(0, ...) }</code>.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Compteur de like potentiellement négatif en base</p>
+<p><code>max(0, ...)</code> borne seulement l'<strong>affichage</strong>. Une valeur négative stockée n'est pas
+corrigée.</p>
+</div>
+<h3 id="commentaires-reponses">Commentaires &amp; réponses</h3>
+<ul>
+<li><strong>GET /comments</strong> : renvoie les commentaires racines (<code>parent_comment_id: null</code>) paginés, tri
+  <code>created_at:1</code>, chacun avec son tableau <code>replies</code>. <code>total</code> = nombre de <strong>racines</strong> seulement.</li>
+<li><strong>POST /comments</strong> : body <code>{ content }</code> (max 280). Crée une racine + <code>$inc comments_count +1</code>.
+  <strong><code>201</code></strong>.</li>
+<li><strong>PUT /comments/:commentId</strong> : auteur uniquement (<code>403 FORBIDDEN</code>).</li>
+<li><strong>DELETE /comments/:commentId</strong> : auteur <strong>ou</strong> modérateur/admin. Supprime le commentaire +
+  ses réponses (<code>deleteMany({ parent_comment_id })</code>) + <code>$inc comments_count -1</code>. <strong><code>204</code></strong>.</li>
+<li><strong>POST /comments/:commentId/replies</strong> : <strong>profondeur max 1</strong> — si le parent est déjà une
+  réponse (<code>parent_comment_id</code> non nul) → <code>400 MAX_DEPTH</code>. Crée la réponse + <code>$inc comments_count +1</code>.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Incohérence de <code>comments_count</code> à la suppression</p>
+<p>Supprimer un commentaire ayant des réponses décrémente le compteur de <strong>1 seulement</strong>, alors
+que plusieurs documents (le commentaire + ses réponses) sont supprimés → <code>comments_count</code>
+peut diverger.</p>
+</div>
+<h3 id="post-apiupload">POST /api/upload</h3>
+<p><code>multipart/form-data</code>, champ <code>file</code>. multer <code>diskStorage</code> vers <code>&lt;racine&gt;/uploads</code>, nom
+<code>Date.now()-&lt;random&gt;.&lt;ext&gt;</code>, <strong>images uniquement</strong> (filtre <code>mimetype</code> <code>image/*</code>), <strong>5 Mo max</strong>.
+Servi en statique sur <code>/api/uploads/&lt;filename&gt;</code>. <strong>Succès <code>201</code></strong> : <code>{ url: "/api/uploads/&lt;filename&gt;" }</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Erreur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>400</td>
+<td><code>NO_FILE</code></td>
+</tr>
+<tr>
+<td>413</td>
+<td><code>FILE_TOO_LARGE</code> (&gt; 5 Mo)</td>
+</tr>
+<tr>
+<td>400</td>
+<td><code>INVALID_FILE</code> (non-image)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Uploads non persistants par défaut au build</p>
+<p>Les fichiers vivent dans <code>/app/uploads</code>. La persistance est assurée par le volume
+<code>uploads_data</code> monté en docker-compose, <strong>pas</strong> par le Dockerfile (aucun volume déclaré).</p>
+</div>
+<hr />
+<h2 id="recherche-par-tags-contenu">Recherche par tags &amp; contenu</h2>
+<p><code>GET /api/posts/search?q=...</code> ou <code>?tag=...</code> (sinon <code>400 MISSING_QUERY</code>). Filtre <code>$or</code> :
+<code>content</code> (regex insensible à la casse), <code>tags</code> (égalité exacte sur <code>q.toLowerCase()</code>),
+<code>username</code> (regex insensible). <strong>Pas d'index full-text MongoDB.</strong> Les tags ne sont pas
+normalisés en minuscules à la création, alors que la recherche compare au <code>toLowerCase()</code> de la
+requête → matching de tag imparfait.</p>
+<hr />
+<h2 id="bot-ia-breezy_ai">Bot IA <code>@breezy_ai</code></h2>
+<div class="admonition tip">
+<p class="admonition-title">Fonctionnalité absente de l'ancienne documentation</p>
+<p>À la création d'un post, si <code>content</code> contient <code>@breezy_ai</code> (insensible à la casse), le
+service appelle <strong>OpenRouter</strong> (<code>https://openrouter.ai/api/v1/chat/completions</code>, modèle
+<code>openai/gpt-oss-20b:free</code>, timeout 15 s, <code>Authorization: Bearer ${OPENROUTER_API_KEY}</code>).
+La réponse est créée comme un <strong>commentaire racine</strong> du compte bot
+(<code>user_id = a7af3029-cd8b-4cda-b827-aab8095cf800</code>, username <code>breezy_ai</code>), tronquée à 280
+caractères, avec <code>$inc comments_count +1</code>. L'appel est non bloquant (pas de <code>await</code> dans
+<code>create</code>).</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Clé API exposée</p>
+<p><code>OPENROUTER_API_KEY</code> est <strong>vide dans <code>.env.example</code></strong> mais une <strong>clé réelle est commitée en
+clair dans le <code>.env</code></strong> du dépôt. Voir <a href="../../securite/secrets-configuration/">Secrets &amp; configuration</a>.</p>
+</div>
+<hr />
+<h2 id="appels-inter-services">Appels inter-services</h2>
+<table>
+<thead>
+<tr>
+<th>Quand</th>
+<th>Méthode + URL</th>
+<th>Headers</th>
+<th>Timeout</th>
+<th>Échec</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Feed</td>
+<td><code>GET {USER_SERVICE_URL}/users/{userId}/following</code></td>
+<td><code>x-user-id</code></td>
+<td>3000 ms</td>
+<td>following = []</td>
+</tr>
+<tr>
+<td>Mentions (<code>@user</code>)</td>
+<td><code>GET {USER_SERVICE_URL}/users/by-username/{name}</code></td>
+<td><code>x-user-id</code></td>
+<td>défaut</td>
+<td>catch silencieux</td>
+</tr>
+<tr>
+<td>Mentions</td>
+<td><code>POST {PROFIL_SERVICE_URL}/api/notifications/internal</code> (<code>type:'mention'</code>)</td>
+<td><code>x-internal-secret</code></td>
+<td>1000 ms</td>
+<td>catch silencieux</td>
+</tr>
+<tr>
+<td>Like</td>
+<td><code>GET {USER_SERVICE_URL}/users/{post.user_id}</code> (récupère le <code>role</code>)</td>
+<td><code>x-user-id</code></td>
+<td>1000 ms</td>
+<td>role = null</td>
+</tr>
+<tr>
+<td>Like</td>
+<td><code>POST {PROFIL_SERVICE_URL}/api/notifications/internal</code> (<code>type:'like'</code>, + <code>recipient_role</code>)</td>
+<td><code>x-internal-secret</code></td>
+<td>1000 ms</td>
+<td>catch silencieux</td>
+</tr>
+<tr>
+<td>Bot IA</td>
+<td><code>POST https://openrouter.ai/api/v1/chat/completions</code></td>
+<td><code>Authorization: Bearer</code></td>
+<td>15000 ms</td>
+<td>warn, ignoré</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Notifications comment/reply non générées</p>
+<p>Les types <code>comment</code> et <code>reply</code> existent dans le schéma du profil-service, mais le
+post-service <strong>ne déclenche que</strong> les notifications <code>like</code> et <code>mention</code>. Aucune notification
+n'est créée à la publication d'un commentaire ou d'une réponse.</p>
+</div>
+<hr />
+<h2 id="variables-denvironnement">Variables d'environnement</h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Défaut</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
 <td><code>PORT</code></td>
 <td><code>3003</code></td>
-<td>Non</td>
-<td>Port d'ecoute</td>
+<td>Port d'écoute</td>
 </tr>
 <tr>
 <td><code>MONGO_URI</code></td>
-<td>--</td>
-<td><strong>Oui</strong></td>
-<td>URI de connexion MongoDB</td>
+<td><code>mongodb://localhost:27017/breezy-post</code></td>
+<td>Connexion MongoDB</td>
 </tr>
 <tr>
 <td><code>USER_SERVICE_URL</code></td>
-<td>--</td>
-<td>Non</td>
-<td>URL du user-service (feed, mentions)</td>
+<td>—</td>
+<td>Feed, mentions, rôle du destinataire</td>
 </tr>
 <tr>
 <td><code>PROFIL_SERVICE_URL</code></td>
-<td>--</td>
-<td>Non</td>
-<td>URL du profil-service (notifications)</td>
+<td>—</td>
+<td>Notifications</td>
 </tr>
 <tr>
 <td><code>INTERNAL_SECRET</code></td>
-<td>--</td>
-<td>Non</td>
-<td>Secret pour les communications inter-services</td>
+<td>—</td>
+<td>Secret inter-services</td>
+</tr>
+<tr>
+<td><code>OPENROUTER_API_KEY</code></td>
+<td>(vide dans <code>.env.example</code>)</td>
+<td>Bot IA</td>
+</tr>
+<tr>
+<td><code>CORS_ORIGIN</code></td>
+<td><code>http://localhost:3000</code></td>
+<td>CORS (absent de <code>.env.example</code>)</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="notes-dimplementation">Notes d'implementation</h2>
-<ul>
-<li>Le feed est construit en interrogeant le user-service pour obtenir la liste des abonnements de l'utilisateur. Si le user-service est inaccessible, le feed echoue.</li>
-<li>L'enrichissement (<code>likedByMe</code>, <code>repostedByMe</code>) est fait post-requete : pour chaque post du resultat, une requete supplementaire est faite sur les collections <code>Like</code> et <code>Repost</code>. Ce n'est pas optimal pour de grandes pages.</li>
-<li>La detection des @mentions utilise la regex <code>@([a-zA-Z0-9_]+)</code> sur le contenu du post avant creation.</li>
-<li>Les notifications sont envoyees de maniere synchrone au profil-service. Un echec d'envoi de notification n'empeche pas la creation du post, mais peut entrainer des notifications manquantes.</li>
-</ul>
+<h2 id="dockerfile">Dockerfile</h2>
+<p><code>node:20-alpine</code>, <code>npm install</code>, <code>CMD ["npm","start"]</code>. Pas d'<code>EXPOSE</code>, pas de volume <code>uploads</code>
+dans le Dockerfile (la persistance est gérée par docker-compose).</p>
 
 
 
@@ -2909,7 +2352,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>

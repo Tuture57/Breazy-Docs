@@ -11,7 +11,7 @@
       
       
       
-        <link rel="prev" href="../../architecture/docker-deploiement/">
+        <link rel="prev" href="../../architecture/deploiement/">
       
       
         <link rel="next" href="../auth-service/">
@@ -236,15 +236,20 @@
     
     
     
+      
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -308,7 +313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/communication-services/" class="md-nav__link">
+      <a href="../../architecture/communication/" class="md-nav__link">
         
   
   
@@ -364,42 +369,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/diagramme-composants/" class="md-nav__link">
+      <a href="../../architecture/deploiement/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Diagramme de composants
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/docker-deploiement/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Docker & Déploiement
+    Déploiement
   
 
     
@@ -432,15 +409,20 @@
     
     
     
+      
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -536,10 +518,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#stack-technique" class="md-nav__link">
+  <a href="#role-dans-larchitecture" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stack technique
+        Rôle dans l'architecture
       
     </span>
   </a>
@@ -547,10 +529,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#role" class="md-nav__link">
+  <a href="#table-de-routage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rôle
+        Table de routage
       
     </span>
   </a>
@@ -558,38 +540,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#routes-proxy" class="md-nav__link">
+  <a href="#routes-publiques-vs-protegees" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Routes proxy
+        Routes publiques vs protégées
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Routes proxy">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#detail-des-headers-injectes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Détail des headers injectés
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#middleware-jwt" class="md-nav__link">
+  <a href="#middlewares-ordre-exact-dapplication" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Middleware JWT
+        Middlewares (ordre exact d'application)
       
     </span>
   </a>
@@ -600,29 +565,7 @@
   <a href="#rate-limiting" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rate Limiting
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#health-check" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Health Check
+        Rate limiting
       
     </span>
   </a>
@@ -641,10 +584,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rewriting-de-chemins" class="md-nav__link">
+  <a href="#details-dimplementation-notables" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rewriting de chemins
+        Détails d'implémentation notables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-denvironnement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables d'environnement
       
     </span>
   </a>
@@ -817,15 +771,20 @@
     
     
     
+      
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
@@ -861,14 +820,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../donnees/schema-postgresql/" class="md-nav__link">
+      <a href="../../donnees/postgresql/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Schéma PostgreSQL
+    PostgreSQL
   
 
     
@@ -889,14 +848,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../donnees/schema-mongodb/" class="md-nav__link">
+      <a href="../../donnees/mongodb/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Schéma MongoDB
+    MongoDB
   
 
     
@@ -927,22 +886,27 @@
     
     
     
+      
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    Sécurité
+    API
   
 
     
@@ -958,170 +922,6 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Sécurité
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../securite/authentification/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Authentification
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Fonctionnalités
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Fonctionnalités
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../fonctionnalites/couverture-fx/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Couverture
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    API
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
     API
   
 
@@ -1135,7 +935,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/routes-completes/" class="md-nav__link">
+      <a href="../../api/routes/" class="md-nav__link">
         
   
   
@@ -1173,15 +973,222 @@
     
     
     
+      
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sécurité
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sécurité
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../securite/authentification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../securite/secrets-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Secrets & configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fonctionnalités
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fonctionnalités
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fonctionnalites/couverture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Couverture Fx1→Fx23
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
             
   
   
@@ -1217,7 +1224,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../soutenance/questions-generales/" class="md-nav__link">
+      <a href="../../soutenance/questions/" class="md-nav__link">
         
   
   
@@ -1245,7 +1252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../soutenance/questions-par-membre/" class="md-nav__link">
+      <a href="../../soutenance/par-membre/" class="md-nav__link">
         
   
   
@@ -1273,14 +1280,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../soutenance/limites-evolutions/" class="md-nav__link">
+      <a href="../../soutenance/limites/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Limites et évolutions
+    Limites & évolutions
   
 
     
@@ -1308,7 +1315,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CHANGELOG_DOC/" class="md-nav__link">
+      <a href="../../CHANGELOG/" class="md-nav__link">
         
   
   
@@ -1355,10 +1362,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#stack-technique" class="md-nav__link">
+  <a href="#role-dans-larchitecture" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stack technique
+        Rôle dans l'architecture
       
     </span>
   </a>
@@ -1366,10 +1373,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#role" class="md-nav__link">
+  <a href="#table-de-routage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rôle
+        Table de routage
       
     </span>
   </a>
@@ -1377,38 +1384,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#routes-proxy" class="md-nav__link">
+  <a href="#routes-publiques-vs-protegees" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Routes proxy
+        Routes publiques vs protégées
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Routes proxy">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#detail-des-headers-injectes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Détail des headers injectés
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#middleware-jwt" class="md-nav__link">
+  <a href="#middlewares-ordre-exact-dapplication" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Middleware JWT
+        Middlewares (ordre exact d'application)
       
     </span>
   </a>
@@ -1419,29 +1409,7 @@
   <a href="#rate-limiting" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rate Limiting
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#health-check" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Health Check
+        Rate limiting
       
     </span>
   </a>
@@ -1460,10 +1428,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rewriting-de-chemins" class="md-nav__link">
+  <a href="#details-dimplementation-notables" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rewriting de chemins
+        Détails d'implémentation notables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-denvironnement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables d'environnement
       
     </span>
   </a>
@@ -1488,352 +1467,322 @@
 
 
 <h1 id="api-gateway">API Gateway</h1>
-<h2 id="stack-technique">Stack technique</h2>
-<table>
-<thead>
-<tr>
-<th>Technologie</th>
-<th>Version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Node.js</td>
-<td>20 (Alpine)</td>
-</tr>
-<tr>
-<td>Express</td>
-<td>4.19.2</td>
-</tr>
-<tr>
-<td>http-proxy-middleware</td>
-<td>3.x</td>
-</tr>
-<tr>
-<td>jsonwebtoken</td>
-<td>9.x</td>
-</tr>
-<tr>
-<td>express-rate-limit</td>
-<td>7.2.0</td>
-</tr>
-<tr>
-<td>dotenv</td>
-<td>16.4.5</td>
-</tr>
-<tr>
-<td>cors</td>
-<td>2.8.5</td>
-</tr>
-<tr>
-<td>nodemon (dev)</td>
-<td>3.1.0</td>
-</tr>
-</tbody>
-</table>
+<p>Point d'entrée unique de toute l'API Breezy. La gateway est un <strong>reverse proxy applicatif</strong>
+Express : elle vérifie le JWT une seule fois, injecte l'identité de l'utilisateur dans des
+headers, applique le rate limiting, puis transmet la requête au microservice cible.</p>
 <ul>
-<li><strong>Port interne</strong> : 3000</li>
-<li><strong>Dossier</strong> : <code>breezy-infra/gateway/</code></li>
+<li><strong>Dépôt / dossier</strong> : <code>breezy-infra/gateway/</code></li>
+<li><strong>Port interne</strong> : <code>3000</code> (jamais publié — accessible via Nginx uniquement)</li>
+<li><strong>Stack</strong> : Express <code>4.19</code>, <code>http-proxy-middleware</code> v3, <code>jsonwebtoken</code> v9, <code>express-rate-limit</code> v7.2</li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">La gateway ne signe aucun token</p>
+<p>Elle ne fait que <strong>vérifier</strong> les JWT émis par l'auth-service. Elle ne possède pas de base
+de données et n'appelle pas les services en interne — elle se contente de proxifier.</p>
+</div>
 <hr />
-<h2 id="role">Rôle</h2>
-<p>L'API Gateway est le point d'entrée unique pour toutes les requêtes API. Elle assure :</p>
+<h2 id="role-dans-larchitecture">Rôle dans l'architecture</h2>
+<pre class="mermaid"><code>flowchart LR
+    Client[Navigateur] --&gt;|HTTP :80| Nginx
+    Nginx --&gt;|/api/*| GW[API Gateway :3000]
+    GW --&gt;|x-user-*| Auth[auth-service :3001]
+    GW --&gt;|x-user-*| User[user-service :3002]
+    GW --&gt;|x-user-*| Post[post-service :3003]
+    GW --&gt;|x-user-*| Profil[profil-service :3004]</code></pre>
 <ol>
-<li><strong>Vérification des tokens JWT</strong> (middleware <code>auth.js</code>)</li>
-<li><strong>Injection des headers d'identité</strong> dans les requêtes proxyfiées</li>
-<li><strong>Rate limiting</strong> global et spécifique à l'auth</li>
-<li><strong>Proxy</strong> vers les 4 services backend</li>
-<li><strong>Health check</strong> pour la supervision</li>
+<li>Reçoit toutes les requêtes <code>/api/*</code> depuis Nginx.</li>
+<li>Pour les routes protégées : vérifie le header <code>Authorization: Bearer &lt;JWT&gt;</code>.</li>
+<li>Décode le payload <code>{ sub, username, role }</code> et l'injecte dans des headers <code>x-user-*</code>.</li>
+<li>Proxifie vers le service cible (résolu via les variables <code>*_SERVICE_URL</code>).</li>
+<li>Renvoie un <strong>502</strong> si le service backend est injoignable.</li>
 </ol>
 <hr />
-<h2 id="routes-proxy">Routes proxy</h2>
+<h2 id="table-de-routage">Table de routage</h2>
+<p>Ordre = ordre réel d'enregistrement dans <code>gateway/src/index.js</code> (premier match gagnant).</p>
 <table>
 <thead>
 <tr>
-<th>Chemin client</th>
-<th>JWT requis</th>
-<th>Cible</th>
+<th>#</th>
+<th>Path entrant</th>
+<th>Service cible</th>
+<th>Réécriture <code>^/</code> →</th>
+<th>Auth</th>
 <th>Headers injectés</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>1</td>
 <td><code>/api/auth/me</code></td>
-<td>Oui</td>
-<td><code>AUTH_SERVICE_URL</code></td>
+<td>AUTH</td>
+<td><code>/auth/me</code></td>
+<td><strong>JWT</strong></td>
 <td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
 </tr>
 <tr>
+<td>2</td>
 <td><code>/api/auth/change-password</code></td>
-<td>Oui</td>
-<td><code>AUTH_SERVICE_URL</code></td>
-<td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
+<td>AUTH</td>
+<td><code>/auth/change-password</code></td>
+<td><strong>JWT</strong></td>
+<td>id, role, username</td>
 </tr>
 <tr>
-<td><code>/api/auth/*</code> (login, register, refresh, logout)</td>
-<td>Non</td>
-<td><code>AUTH_SERVICE_URL</code></td>
-<td>Aucun</td>
+<td>3</td>
+<td><code>/api/auth/username</code></td>
+<td>AUTH</td>
+<td><code>/auth/username</code></td>
+<td><strong>JWT</strong></td>
+<td>id, role, username</td>
 </tr>
 <tr>
-<td><code>/api/users/*</code></td>
-<td>Oui</td>
-<td><code>USER_SERVICE_URL</code></td>
-<td><code>x-user-id</code>, <code>x-user-role</code></td>
+<td>4</td>
+<td><code>/api/auth/admin</code></td>
+<td>AUTH</td>
+<td><code>/auth/admin/</code></td>
+<td><strong>JWT</strong></td>
+<td>id, role, username</td>
 </tr>
 <tr>
-<td><code>/api/posts/*</code></td>
-<td>Oui</td>
-<td><code>POST_SERVICE_URL</code></td>
-<td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
+<td>5</td>
+<td><code>/api/auth</code> (catch-all)</td>
+<td>AUTH</td>
+<td><code>/auth/</code></td>
+<td><strong>Public</strong></td>
+<td>aucun</td>
 </tr>
 <tr>
+<td>6</td>
+<td><code>/api/users</code></td>
+<td>USER</td>
+<td><code>/users/</code></td>
+<td><strong>JWT</strong></td>
+<td><code>x-user-id</code>, <code>x-user-role</code> <strong>(pas username)</strong></td>
+</tr>
+<tr>
+<td>7</td>
 <td><code>/api/upload</code></td>
-<td>Oui</td>
-<td><code>POST_SERVICE_URL</code></td>
-<td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
+<td>POST</td>
+<td><code>/api/upload</code></td>
+<td><strong>JWT</strong></td>
+<td>id, role, username</td>
 </tr>
 <tr>
-<td><code>/api/uploads/*</code> (fichiers statiques)</td>
-<td>Non</td>
-<td><code>POST_SERVICE_URL</code></td>
-<td>Aucun</td>
+<td>8</td>
+<td><code>/api/uploads</code></td>
+<td>POST</td>
+<td><code>/api/uploads/</code></td>
+<td><strong>Public</strong></td>
+<td>aucun (fichiers statiques)</td>
 </tr>
 <tr>
-<td><code>/api/profils/*</code></td>
-<td>Oui</td>
-<td><code>PROFIL_SERVICE_URL</code></td>
-<td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
+<td>9</td>
+<td><code>/api/posts</code></td>
+<td>POST</td>
+<td><code>/api/posts/</code></td>
+<td><strong>JWT</strong></td>
+<td>id, role, username</td>
 </tr>
 <tr>
-<td><code>/api/notifications/*</code></td>
-<td>Oui</td>
-<td><code>PROFIL_SERVICE_URL</code></td>
-<td><code>x-user-id</code>, <code>x-user-role</code>, <code>x-user-username</code></td>
+<td>10</td>
+<td><code>/api/profils</code></td>
+<td>PROFIL</td>
+<td><code>/api/profils/</code></td>
+<td><strong>JWT</strong></td>
+<td>id, role, username</td>
 </tr>
 <tr>
-<td><code>/api/health</code></td>
-<td>Non</td>
-<td>Local (Gateway)</td>
-<td>Aucun</td>
+<td>11</td>
+<td><code>/api/notifications</code></td>
+<td>PROFIL</td>
+<td><code>/api/notifications/</code></td>
+<td><strong>JWT</strong></td>
+<td>id, role, username</td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>GET /api/health</code></td>
+<td>gateway</td>
+<td>—</td>
+<td><strong>Public</strong></td>
+<td>renvoie <code>{ status: 'UP', service: 'api-gateway' }</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="detail-des-headers-injectes">Détail des headers injectés</h3>
-<p>La Gateway injecte les headers suivants après vérification du JWT :</p>
-<div class="highlight"><pre><span></span><code><span class="nx">proxyReq</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;x-user-id&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">sub</span><span class="p">);</span>
-<span class="nx">proxyReq</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;x-user-role&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">role</span><span class="p">);</span>
-<span class="nx">proxyReq</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;x-user-username&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">username</span><span class="p">);</span><span class="w">  </span><span class="c1">// Sauf pour /api/users</span>
-</code></pre></div>
-<p><strong>IMPORTANT</strong> : Les routes <code>/api/users/*</code> ne reçoivent <strong>pas</strong> le header <code>x-user-username</code>. Elles reçoivent uniquement <code>x-user-id</code> et <code>x-user-role</code>.</p>
-<p>Les routes auth publiques (login, register, refresh, logout) ne reçoivent <strong>aucun</strong> header d'identité.</p>
+<div class="admonition warning">
+<p class="admonition-title">L'ordre des routes <code>/api/auth</code> est critique</p>
+<p>Les sous-routes protégées (<code>/me</code>, <code>/change-password</code>, <code>/username</code>, <code>/admin</code>) sont déclarées
+<strong>avant</strong> le catch-all public <code>/api/auth</code>. Si on inversait l'ordre, le catch-all
+intercepterait ces routes sensibles <strong>sans authentification</strong>. Le code contient des
+commentaires explicites à ce sujet.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Le user-service ne reçoit pas <code>x-user-username</code></p>
+<p>Les routes <code>/api/users/*</code> n'injectent <strong>que</strong> <code>x-user-id</code> et <code>x-user-role</code>. Conséquence : le
+contrôleur <code>follow</code> du user-service lit <code>req.username</code> (issu de <code>x-user-username</code>) qui vaut
+<code>undefined</code>, donc la notification de follow part avec <code>from_username: undefined</code>.</p>
+</div>
 <hr />
-<h2 id="middleware-jwt">Middleware JWT</h2>
-<p>Fichier : <code>gateway/src/middleware/auth.js</code></p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">verifyToken</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;../utils/jwt.utils.js&quot;</span><span class="p">);</span>
-
+<h2 id="routes-publiques-vs-protegees">Routes publiques vs protégées</h2>
+<table>
+<thead>
+<tr>
+<th>Public (sans JWT)</th>
+<th>Protégé (JWT requis)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/api/auth/*</code> hors me/change-password/username/admin (login, register, refresh, logout)</td>
+<td><code>/api/auth/me</code>, <code>/api/auth/change-password</code>, <code>/api/auth/username</code>, <code>/api/auth/admin/*</code></td>
+</tr>
+<tr>
+<td><code>/api/uploads/*</code> (fichiers statiques)</td>
+<td><code>/api/users/*</code>, <code>/api/posts/*</code>, <code>/api/upload</code>, <code>/api/profils/*</code>, <code>/api/notifications/*</code></td>
+</tr>
+<tr>
+<td><code>GET /api/health</code></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="middlewares-ordre-exact-dapplication">Middlewares (ordre exact d'application)</h2>
+<ol>
+<li><code>express.json({ limit: '5mb' })</code> — parsing du body, limite 5 Mo.</li>
+<li><code>globalLimiter</code> — <strong>500 requêtes / 15 min / IP</strong> (sauf <code>NODE_ENV=test</code>).</li>
+<li><code>authLimiter</code> — <strong>20 requêtes / 15 min / IP</strong> sur <code>/api/auth/login</code> et <code>/api/auth/register</code>.</li>
+<li>Par route protégée : <code>authMiddleware</code> <strong>puis</strong> <code>createProxyMiddleware</code>.</li>
+<li><code>errorHandler</code> — handler d'erreurs Express enregistré en dernier.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1">// gateway/src/middleware/auth.js</span>
 <span class="kd">function</span><span class="w"> </span><span class="nx">authenticate</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">authHeader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;authorization&#39;</span><span class="p">];</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">authHeader</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;No token provided&quot;</span><span class="w"> </span><span class="p">});</span>
-<span class="w">    </span><span class="p">}</span>
-
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">authHeader</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;No token provided&quot;</span><span class="w"> </span><span class="p">});</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">authHeader</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mf">1</span><span class="p">];</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">decoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">verifyToken</span><span class="p">(</span><span class="nx">token</span><span class="p">);</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">decoded</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Invalid or expired token&quot;</span><span class="w"> </span><span class="p">});</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">decoded</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">decoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">verifyToken</span><span class="p">(</span><span class="nx">token</span><span class="p">);</span><span class="w">            </span><span class="c1">// jwt.verify(token, JWT_SECRET)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">decoded</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Invalid or expired token&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">decoded</span><span class="p">;</span><span class="w">                            </span><span class="c1">// { sub, username, role, iat, exp }</span>
 <span class="w">    </span><span class="nx">next</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
-<ul>
-<li>Extrait le token du header <code>Authorization: Bearer &lt;token&gt;</code></li>
-<li>Appelle <code>jwt.verify(token, JWT_SECRET)</code> </li>
-<li>Retourne <code>401</code> si le token est manquant ou invalide</li>
-<li>Stocke le payload décodé dans <code>req.user</code> (contient <code>sub</code>, <code>username</code>, <code>role</code>)</li>
-</ul>
+<div class="admonition danger">
+<p class="admonition-title">Fallback de secret dangereux</p>
+<p><code>gateway/src/utils/jwt.utils.js</code> définit <code>JWT_SECRET = process.env.JWT_SECRET || "defaultSecret"</code>.
+Si la variable d'environnement manquait, la gateway accepterait des tokens signés avec
+<code>"defaultSecret"</code>. En l'état, docker-compose fournit bien <code>JWT_SECRET</code>, mais le fallback
+reste une faille latente.</p>
+</div>
 <hr />
-<h2 id="rate-limiting">Rate Limiting</h2>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">isTest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;test&#39;</span><span class="p">;</span>
-
-<span class="c1">// Global : 500 requêtes / 15 minutes par IP</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">globalLimiter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rateLimit</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">windowMs</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="nx">isTest</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">999999</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">500</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Trop de requêtes, réessaie dans 15 minutes&#39;</span><span class="w"> </span><span class="p">},</span>
-<span class="p">});</span>
-
-<span class="c1">// Auth : 20 tentatives / 15 minutes sur login et register</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">authLimiter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rateLimit</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">windowMs</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="nx">isTest</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">999999</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Trop de tentatives de connexion, réessaie dans 15 minutes&#39;</span><span class="w"> </span><span class="p">},</span>
-<span class="p">});</span>
-
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">isTest</span><span class="p">)</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">globalLimiter</span><span class="p">);</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">isTest</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/api/auth/login&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">authLimiter</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/api/auth/register&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">authLimiter</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
+<h2 id="rate-limiting">Rate limiting</h2>
 <table>
 <thead>
 <tr>
 <th>Limiteur</th>
 <th>Fenêtre</th>
-<th>Maximum</th>
-<th>Route</th>
+<th>Limite</th>
+<th>Champ d'application</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Global</td>
 <td>15 min</td>
-<td>500 req</td>
-<td>Toutes les routes</td>
+<td>500 req / IP</td>
+<td>Toutes les routes API</td>
 </tr>
 <tr>
 <td>Auth</td>
 <td>15 min</td>
-<td>20 req</td>
+<td>20 req / IP</td>
 <td><code>/api/auth/login</code>, <code>/api/auth/register</code></td>
 </tr>
 </tbody>
 </table>
-<p>Les deux limiteurs sont <strong>désactivés</strong> lorsque <code>NODE_ENV=test</code> (valeur par défaut dans docker-compose).</p>
+<div class="admonition note">
+<p class="admonition-title">Le rate limiting est ACTIF dans Docker</p>
+<p>Le rate limiting est désactivé uniquement si <code>NODE_ENV === 'test'</code>. Or <strong>docker-compose
+fixe <code>NODE_ENV=production</code></strong> pour la gateway → les deux limiteurs sont <strong>bien actifs</strong>.
+(Ce point était documenté à tort comme « désactivé » dans l'ancienne doc.)</p>
+</div>
 <hr />
-<h2 id="configuration">Configuration</h2>
-<p>Variables d'environnement utilisées par la Gateway :</p>
+<h2 id="gestion-des-erreurs">Gestion des erreurs</h2>
+<ul>
+<li><strong>Backend injoignable</strong> : chaque proxy possède un handler <code>error</code> qui renvoie un <strong>502</strong> avec
+  un message français spécifique (« Auth/User/Post/Profil/Notification service indisponible »).</li>
+<li><strong>Erreur générique</strong> : <code>errorHandler.js</code> log <code>[Gateway Error]</code> et renvoie <code>err.status || 500</code>
+  avec <code>{ error: err.message || 'Erreur interne du serveur' }</code>.</li>
+</ul>
+<pre class="mermaid"><code>sequenceDiagram
+    participant C as Client
+    participant G as Gateway
+    participant S as Service backend
+    C-&gt;&gt;G: GET /api/posts/feed (Bearer JWT)
+    G-&gt;&gt;G: jwt.verify → req.user
+    G-&gt;&gt;S: GET /api/posts/feed + x-user-id/role/username
+    alt Service OK
+        S--&gt;&gt;G: 200 données
+        G--&gt;&gt;C: 200 données
+    else Service down
+        G--&gt;&gt;C: 502 « Post service indisponible »
+    end</code></pre>
+<hr />
+<h2 id="details-dimplementation-notables">Détails d'implémentation notables</h2>
+<ul>
+<li><code>app.set('trust proxy', 1)</code> : la gateway est derrière Nginx, l'IP réelle est lue dans
+  <code>X-Forwarded-For</code>.</li>
+<li><code>fixRequestBody</code> est rappelé dans chaque <code>proxyReq</code> pour ré-émettre le body JSON déjà parsé
+  par <code>express.json</code> (nécessaire avec <code>http-proxy-middleware</code> v3).</li>
+<li>La gateway <strong>ne reçoit pas <code>INTERNAL_SECRET</code></strong> (ni dans docker-compose, ni dans son code) :
+  le secret inter-services ne concerne que les 4 microservices.</li>
+<li><code>cors</code> est listé en dépendance mais <strong>jamais importé</strong> : le CORS est géré par chaque
+  microservice via <code>CORS_ORIGIN</code>.</li>
+</ul>
+<hr />
+<h2 id="variables-denvironnement">Variables d'environnement</h2>
 <table>
 <thead>
 <tr>
 <th>Variable</th>
-<th>Défaut</th>
-<th>Description</th>
+<th>Valeur (docker-compose)</th>
+<th>Usage</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td><code>NODE_ENV</code></td>
+<td><code>production</code></td>
+<td>Active le rate limiting</td>
+</tr>
+<tr>
 <td><code>PORT</code></td>
-<td>3000</td>
+<td><code>3000</code></td>
 <td>Port d'écoute</td>
 </tr>
 <tr>
 <td><code>JWT_SECRET</code></td>
-<td><code>defaultSecret</code></td>
-<td>Clé de signature JWT</td>
+<td><code>CACACACACACACACA</code></td>
+<td>Vérification de la signature JWT</td>
 </tr>
 <tr>
 <td><code>AUTH_SERVICE_URL</code></td>
-<td>-</td>
-<td>URL du Auth Service</td>
+<td><code>http://auth-service:3001</code></td>
+<td>Cible proxy auth</td>
 </tr>
 <tr>
 <td><code>USER_SERVICE_URL</code></td>
-<td>-</td>
-<td>URL du User Service</td>
+<td><code>http://user-service:3002</code></td>
+<td>Cible proxy user</td>
 </tr>
 <tr>
 <td><code>POST_SERVICE_URL</code></td>
-<td>-</td>
-<td>URL du Post Service</td>
+<td><code>http://post-service:3003</code></td>
+<td>Cible proxy post</td>
 </tr>
 <tr>
 <td><code>PROFIL_SERVICE_URL</code></td>
-<td>-</td>
-<td>URL du Profil Service</td>
-</tr>
-<tr>
-<td><code>NODE_ENV</code></td>
-<td>-</td>
-<td><code>test</code> désactive le rate limiting</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="health-check">Health Check</h2>
-<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/api/health&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;UP&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;api-gateway&#39;</span><span class="w"> </span><span class="p">});</span>
-<span class="p">});</span>
-</code></pre></div>
-<h2 id="gestion-des-erreurs">Gestion des erreurs</h2>
-<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">errorHandler</span><span class="p">);</span>
-
-<span class="c1">// errorHandler.js</span>
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`[Gateway Error] </span><span class="si">${</span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">500</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;Erreur interne du serveur&#39;</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">};</span>
-</code></pre></div>
-<p>Chaque proxy route gère également les erreurs de connexion au service cible :</p>
-<div class="highlight"><pre><span></span><code><span class="nx">on</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">502</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Auth service indisponible&#39;</span><span class="w"> </span><span class="p">});</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<ul>
-<li><strong>502 Bad Gateway</strong> : retourné si le service backend est inaccessible</li>
-<li><strong>500</strong> : erreur interne non gérée</li>
-<li>Codes d'erreur des services backend : proxyfiés tels quels</li>
-</ul>
-<hr />
-<h2 id="rewriting-de-chemins">Rewriting de chemins</h2>
-<p>Les chemins d'URL sont réécrits avant d'être envoyés aux services backend :</p>
-<table>
-<thead>
-<tr>
-<th>Chemin entrant</th>
-<th>Chemin sortant</th>
-<th>Cible</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>/api/auth/me</code></td>
-<td><code>/auth/me</code></td>
-<td>Auth Service</td>
-</tr>
-<tr>
-<td><code>/api/auth/*</code></td>
-<td><code>/auth/*</code></td>
-<td>Auth Service</td>
-</tr>
-<tr>
-<td><code>/api/users/*</code></td>
-<td><code>/users/*</code></td>
-<td>User Service</td>
-</tr>
-<tr>
-<td><code>/api/posts/*</code></td>
-<td><code>/api/posts/*</code></td>
-<td>Post Service</td>
-</tr>
-<tr>
-<td><code>/api/upload</code></td>
-<td><code>/api/upload</code></td>
-<td>Post Service</td>
-</tr>
-<tr>
-<td><code>/api/uploads/*</code></td>
-<td><code>/api/uploads/*</code></td>
-<td>Post Service</td>
-</tr>
-<tr>
-<td><code>/api/profils/*</code></td>
-<td><code>/api/profils/*</code></td>
-<td>Profil Service</td>
-</tr>
-<tr>
-<td><code>/api/notifications/*</code></td>
-<td><code>/api/notifications/*</code></td>
-<td>Profil Service</td>
+<td><code>http://profil-service:3004</code></td>
+<td>Cible proxy profil</td>
 </tr>
 </tbody>
 </table>
@@ -1886,7 +1835,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
