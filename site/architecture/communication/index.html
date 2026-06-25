@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../../api/routes/">
+        <link rel="prev" href="../vue-ensemble/">
       
       
-        <link rel="next" href="../secrets-configuration/">
+        <link rel="next" href="../flux-donnees/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Authentification - Breezy — Documentation</title>
+        <title>Communication inter-services - Breezy — Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#authentification" class="md-skip">
+        <a href="#communication-inter-services" class="md-skip">
           Aller au contenu
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Authentification
+              Communication inter-services
             
           </span>
         </div>
@@ -230,8 +230,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -242,11 +244,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -267,7 +269,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -285,7 +287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/vue-ensemble/" class="md-nav__link">
+      <a href="../vue-ensemble/" class="md-nav__link">
         
   
   
@@ -310,10 +312,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../architecture/communication/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Communication inter-services
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -329,6 +358,98 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-ce-que-fait-la-gateway-a-chaque-requete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ce que fait la gateway à chaque requête
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-headers-injectes-par-la-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Headers injectés par la gateway
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tous-les-appels-inter-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Tous les appels inter-services
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-communication-interne-vs-externe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Communication interne vs externe
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Communication interne vs externe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strategie-fire-and-forget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stratégie « fire-and-forget »
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-securite-des-appels-internes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Sécurité des appels internes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -341,7 +462,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/flux-donnees/" class="md-nav__link">
+      <a href="../flux-donnees/" class="md-nav__link">
         
   
   
@@ -369,7 +490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/deploiement/" class="md-nav__link">
+      <a href="../deploiement/" class="md-nav__link">
         
   
   
@@ -830,8 +951,6 @@
       
   
   
-    
-  
   
   
     
@@ -844,11 +963,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
@@ -869,7 +988,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -884,37 +1003,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Authentification
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../securite/authentification/" class="md-nav__link">
         
   
   
@@ -930,170 +1022,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#flux-complet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Flux complet
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#jwt-access-token" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        JWT (access token)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="JWT (access token)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#payload-exact" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Payload exact
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#generation-duree" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Génération &amp; durée
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verification-gateway-uniquement" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Vérification (gateway uniquement)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#refresh-token" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Refresh token
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Refresh token">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rotation-detection-de-vol" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rotation &amp; détection de vol
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hachage-des-mots-de-passe" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hachage des mots de passe
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bannissement" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bannissement
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#communication-inter-services-internal_secret" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Communication inter-services (INTERNAL_SECRET)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rate-limiting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rate limiting
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#protection-contre-les-attaques" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Protection contre les attaques
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1106,7 +1034,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../secrets-configuration/" class="md-nav__link">
+      <a href="../../securite/secrets-configuration/" class="md-nav__link">
         
   
   
@@ -1418,10 +1346,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#flux-complet" class="md-nav__link">
+  <a href="#1-ce-que-fait-la-gateway-a-chaque-requete" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Flux complet
+        1. Ce que fait la gateway à chaque requête
       
     </span>
   </a>
@@ -1429,44 +1357,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#jwt-access-token" class="md-nav__link">
+  <a href="#2-headers-injectes-par-la-gateway" class="md-nav__link">
     <span class="md-ellipsis">
       
-        JWT (access token)
+        2. Headers injectés par la gateway
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="JWT (access token)">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tous-les-appels-inter-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Tous les appels inter-services
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-communication-interne-vs-externe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Communication interne vs externe
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Communication interne vs externe">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#payload-exact" class="md-nav__link">
+  <a href="#strategie-fire-and-forget" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Payload exact
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#generation-duree" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Génération &amp; durée
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verification-gateway-uniquement" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Vérification (gateway uniquement)
+        Stratégie « fire-and-forget »
       
     </span>
   </a>
@@ -1479,82 +1407,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#refresh-token" class="md-nav__link">
+  <a href="#5-securite-des-appels-internes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Refresh token
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Refresh token">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rotation-detection-de-vol" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rotation &amp; détection de vol
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hachage-des-mots-de-passe" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hachage des mots de passe
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bannissement" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bannissement
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#communication-inter-services-internal_secret" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Communication inter-services (INTERNAL_SECRET)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rate-limiting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rate limiting
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#protection-contre-les-attaques" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Protection contre les attaques
+        5. Sécurité des appels internes
       
     </span>
   </a>
@@ -1578,314 +1434,253 @@
 
 
 
-<h1 id="authentification">Authentification</h1>
-<p>L'authentification repose sur un <strong>double token</strong> (JWT court + refresh token long) et une
-<strong>gateway centralisée</strong> : elle seule vérifie le JWT, puis injecte l'identité dans des headers à
-destination des services backend (qui ne vérifient jamais le JWT eux-mêmes).</p>
+<h1 id="communication-inter-services">Communication inter-services</h1>
+<p>Deux mécanismes coexistent :</p>
+<ol>
+<li><strong>Authentification utilisateur</strong> — JWT + refresh tokens, vérifiés <strong>uniquement</strong> par la gateway.</li>
+<li><strong>Communication interne</strong> — appels HTTP synchrones, non bloquants, protégés par
+   <code>x-internal-secret</code>.</li>
+</ol>
 <hr />
-<h2 id="flux-complet">Flux complet</h2>
+<h2 id="1-ce-que-fait-la-gateway-a-chaque-requete">1. Ce que fait la gateway à chaque requête</h2>
 <pre class="mermaid"><code>sequenceDiagram
-    participant C as Client
+    participant C as Navigateur
     participant G as Gateway
     participant A as auth-service
-    participant DB as PostgreSQL
+    participant S as Service backend
 
-    Note over C,DB: Inscription / Connexion
-    C-&gt;&gt;G: POST /api/auth/register|login
-    G-&gt;&gt;A: proxy (route publique)
-    A-&gt;&gt;A: bcrypt.hash / compare
-    A-&gt;&gt;DB: INSERT user / refresh_token (hash SHA-256)
-    A--&gt;&gt;C: { user, token } + Set-Cookie refreshToken (httpOnly)
+    Note over C,S: Connexion
+    C-&gt;&gt;G: POST /api/auth/login {email, password}
+    G-&gt;&gt;A: POST /auth/login (route publique, sans JWT)
+    A--&gt;&gt;G: JWT + Set-Cookie refreshToken (httpOnly)
+    G--&gt;&gt;C: JWT + cookie
 
-    Note over C,DB: Requête authentifiée
-    C-&gt;&gt;G: GET /api/... (Bearer JWT)
-    G-&gt;&gt;G: jwt.verify → x-user-id/role/username
-    G--&gt;&gt;C: réponse
-
-    Note over C,DB: Refresh (JWT expiré)
-    C-&gt;&gt;G: POST /api/auth/refresh (cookie)
-    G-&gt;&gt;A: proxy
-    A-&gt;&gt;DB: rotation (ancien révoqué, nouveau émis)
-    A--&gt;&gt;C: { token } + nouveau cookie
-
-    Note over C,DB: Logout
-    C-&gt;&gt;G: POST /api/auth/logout
-    A-&gt;&gt;DB: is_revoked = true
-    A--&gt;&gt;C: 204 + clearCookie</code></pre>
+    Note over C,S: Requête authentifiée
+    C-&gt;&gt;G: GET /api/posts/feed (Bearer JWT)
+    G-&gt;&gt;G: jwt.verify(token, JWT_SECRET) → {sub, username, role}
+    G-&gt;&gt;S: GET /api/posts/feed + x-user-id/role/username
+    S-&gt;&gt;S: identity middleware lit les headers
+    S--&gt;&gt;G: réponse
+    G--&gt;&gt;C: réponse</code></pre>
+<p>Pour chaque requête protégée, la gateway :</p>
+<ol>
+<li>lit <code>Authorization: Bearer &lt;token&gt;</code> (sinon <code>401 No token provided</code>) ;</li>
+<li>vérifie la signature (<code>jwt.verify</code>) — <code>401 Invalid or expired token</code> si KO ;</li>
+<li>décode <code>{ sub, username, role }</code> dans <code>req.user</code> ;</li>
+<li>injecte les headers d'identité ;</li>
+<li>proxifie vers le service cible.</li>
+</ol>
 <hr />
-<h2 id="jwt-access-token">JWT (access token)</h2>
-<h3 id="payload-exact">Payload exact</h3>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;uuid&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;johndoe&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718000000</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718000900</span><span class="w"> </span><span class="p">}</span>
-</code></pre></div>
+<h2 id="2-headers-injectes-par-la-gateway">2. Headers injectés par la gateway</h2>
 <table>
 <thead>
 <tr>
-<th>Champ</th>
-<th>Description</th>
+<th>Header</th>
+<th>Source</th>
+<th>Services qui le reçoivent</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>sub</code></td>
-<td>UUID de l'utilisateur</td>
+<td><code>x-user-id</code></td>
+<td><code>req.user.sub</code></td>
+<td>auth, <strong>user</strong>, post, profil</td>
 </tr>
 <tr>
-<td><code>username</code></td>
-<td>Nom d'utilisateur</td>
+<td><code>x-user-role</code></td>
+<td><code>req.user.role</code></td>
+<td>auth, <strong>user</strong>, post, profil</td>
 </tr>
 <tr>
-<td><code>role</code></td>
-<td><code>user</code> / <code>moderator</code> / <code>admin</code></td>
-</tr>
-<tr>
-<td><code>iat</code> / <code>exp</code></td>
-<td>Émission / expiration (ajoutés par jsonwebtoken)</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition note">
-<p class="admonition-title">Pas d'email dans le token</p>
-<p>Le payload ne contient que <code>sub</code>, <code>username</code>, <code>role</code>. La gateway les mappe respectivement
-vers <code>x-user-id</code>, <code>x-user-username</code>, <code>x-user-role</code>.</p>
-</div>
-<h3 id="generation-duree">Génération &amp; durée</h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// auth-service/src/utils/jwt.utils.js</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">generateAccessToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span>
-<span class="w">  </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">sign</span><span class="p">({</span><span class="w"> </span><span class="nx">sub</span><span class="o">:</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">username</span><span class="o">:</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">role</span><span class="w"> </span><span class="p">},</span>
-<span class="w">           </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">expiresIn</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_EXPIRES_IN</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;15m&#39;</span><span class="w"> </span><span class="p">});</span>
-</code></pre></div>
-<ul>
-<li><strong>Algorithme</strong> : HS256. <strong>Durée</strong> : <code>JWT_EXPIRES_IN</code>, défaut/docker <code>15m</code>.</li>
-<li><strong>Secret</strong> : <code>JWT_SECRET</code> (l'auth-service fait <code>exit(1)</code> s'il est absent).</li>
-</ul>
-<h3 id="verification-gateway-uniquement">Vérification (gateway uniquement)</h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// gateway/src/utils/jwt.utils.js</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">JWT_SECRET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;defaultSecret&quot;</span><span class="p">;</span><span class="w">   </span><span class="c1">// ⚠️ fallback</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">verifyToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">token</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">verify</span><span class="p">(</span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">JWT_SECRET</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
-</code></pre></div>
-<div class="admonition danger">
-<p class="admonition-title">Fallback <code>defaultSecret</code></p>
-<p>Si <code>JWT_SECRET</code> manquait côté gateway, elle accepterait des tokens signés avec
-<code>"defaultSecret"</code>. docker-compose fournit la variable, mais le fallback reste une faille
-latente.</p>
-</div>
-<hr />
-<h2 id="refresh-token">Refresh token</h2>
-<table>
-<thead>
-<tr>
-<th>Caractéristique</th>
-<th>Valeur</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Génération</td>
-<td><code>crypto.randomBytes(64).toString('hex')</code> (128 caractères hex, opaque)</td>
-</tr>
-<tr>
-<td>Stockage</td>
-<td>hash <strong>SHA-256</strong> uniquement (<code>token_hash</code>, jamais en clair)</td>
-</tr>
-<tr>
-<td>Durée</td>
-<td><code>REFRESH_TOKEN_DAYS</code>, défaut/docker <code>7</code> jours</td>
-</tr>
-<tr>
-<td>Transport</td>
-<td>cookie <code>refreshToken</code> : <code>httpOnly</code>, <code>secure</code> si <code>NODE_ENV=production</code>, <code>sameSite: 'Strict'</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="rotation-detection-de-vol">Rotation &amp; détection de vol</h3>
-<p>À chaque <code>POST /auth/refresh</code> : l'ancien token est révoqué, un nouveau est émis. Si un token
-<strong>déjà révoqué</strong> est présenté (signe d'un rejeu / vol), <strong>tous</strong> les tokens de l'utilisateur sont
-révoqués :</p>
-<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">stored</span><span class="p">.</span><span class="nx">is_revoked</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">RefreshToken</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span><span class="w"> </span><span class="nx">is_revoked</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">user_id</span><span class="o">:</span><span class="w"> </span><span class="nx">stored</span><span class="p">.</span><span class="nx">user_id</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
-<span class="w">  </span><span class="c1">// L&#39;attaquant ET l&#39;utilisateur légitime sont déconnectés.</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Le refresh échoue aussi (401 + <code>clearCookie</code>) si le token est introuvable, expiré, ou si
-l'utilisateur est inactif/banni. <strong><code>change-password</code> révoque également tous les refresh tokens.</strong></p>
-<hr />
-<h2 id="hachage-des-mots-de-passe">Hachage des mots de passe</h2>
-<table>
-<thead>
-<tr>
-<th>Élément</th>
-<th>Valeur</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Bibliothèque</td>
-<td><code>bcryptjs</code></td>
-</tr>
-<tr>
-<td>Rounds</td>
-<td><code>BCRYPT_ROUNDS</code> — <strong>défaut code 12, docker 10, tests 4</strong></td>
-</tr>
-<tr>
-<td>Vérification</td>
-<td><code>bcrypt.compare(password, user.password_hash)</code></td>
-</tr>
-</tbody>
-</table>
-<p>Validation à l'inscription (<code>express-validator</code>) : mot de passe ≥ 8, ≥ 1 majuscule, ≥ 1 chiffre ;
-username 3–50 alphanumérique + <code>_</code>.</p>
-<hr />
-<h2 id="bannissement">Bannissement</h2>
-<pre class="mermaid"><code>sequenceDiagram
-    participant M as Modérateur
-    participant U as user-service
-    participant A as auth-service
-    M-&gt;&gt;U: PUT /api/users/:id/ban (JWT, role=moderator/admin)
-    U-&gt;&gt;U: vérifie x-user-role ∈ {moderator, admin}
-    U-&gt;&gt;U: is_banned = true (user_profiles)
-    U-&gt;&gt;A: POST /auth/internal/ban {userId} (x-internal-secret, 3s)
-    A-&gt;&gt;A: is_banned = true (users)
-    U--&gt;&gt;M: 200</code></pre>
-<table>
-<thead>
-<tr>
-<th>Après bannissement</th>
-<th>Comportement</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Nouveau login</td>
-<td><code>403 ACCOUNT_BANNED</code></td>
-</tr>
-<tr>
-<td>JWT existant</td>
-<td>reste valide jusqu'à expiration (≤ 15 min)</td>
-</tr>
-<tr>
-<td>Refresh</td>
-<td>échoue (l'utilisateur est revérifié pendant le refresh)</td>
-</tr>
-<tr>
-<td>Visibilité</td>
-<td>exclu de <code>/users/search</code>, mais <strong>encore visible</strong> via <code>/users/:id</code></td>
-</tr>
-</tbody>
-</table>
-<p>La propagation auth est <strong>non bloquante</strong> : le ban local s'applique même si l'auth-service est
-indisponible. Pas de fonction d'unban.</p>
-<hr />
-<h2 id="communication-inter-services-internal_secret">Communication inter-services (<code>INTERNAL_SECRET</code>)</h2>
-<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;x-internal-secret&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">INTERNAL_SECRET</span><span class="p">)</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">code</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;UNAUTHORIZED&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
-</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Endpoint interne</th>
-<th>Service</th>
-<th>Appelé par</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>POST /users/sync</code></td>
-<td>user</td>
-<td>auth</td>
-</tr>
-<tr>
-<td><code>POST /auth/internal/ban</code></td>
-<td>auth</td>
-<td>user</td>
-</tr>
-<tr>
-<td><code>GET /auth/internal/users/:id/role</code></td>
-<td>auth</td>
-<td>profil</td>
-</tr>
-<tr>
-<td><code>POST /api/notifications/internal</code></td>
-<td>profil</td>
-<td>post, user</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Jamais exposé au client</strong> : la gateway ne transmet pas <code>x-internal-secret</code> et ne le possède pas.</p>
-<hr />
-<h2 id="rate-limiting">Rate limiting</h2>
-<table>
-<thead>
-<tr>
-<th>Couche</th>
-<th>Statut réel</th>
-<th>Détail</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Gateway</strong> (express-rate-limit)</td>
-<td>✅ <strong>actif</strong></td>
-<td>global 500/15min, auth 20/15min</td>
-</tr>
-<tr>
-<td><strong>Nginx</strong></td>
-<td>❌ <strong>non appliqué</strong></td>
-<td>zones définies (30 r/m, 5 r/m) mais aucune directive <code>limit_req</code></td>
-</tr>
-</tbody>
-</table>
-<div class="admonition note">
-<p class="admonition-title">Correction par rapport à l'ancienne doc</p>
-<p>L'ancienne documentation indiquait <code>NODE_ENV=test</code> désactivant le rate limiting de la
-gateway. Le <code>docker-compose.yml</code> actuel fixe <strong><code>NODE_ENV=production</code></strong> → les limiteurs de la
-gateway sont <strong>bien actifs</strong>. Le rate limiting Nginx, lui, n'a jamais été activé (zones
-déclarées mais inutilisées).</p>
-</div>
-<hr />
-<h2 id="protection-contre-les-attaques">Protection contre les attaques</h2>
-<table>
-<thead>
-<tr>
-<th>Attaque</th>
-<th>Protection</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Force brute</td>
-<td>Rate limiting gateway (20 req/15min sur login/register)</td>
-</tr>
-<tr>
-<td>Énumération de comptes</td>
-<td>Message <code>INVALID_CREDENTIALS</code> identique que l'email existe ou non</td>
-</tr>
-<tr>
-<td>Vol de JWT</td>
-<td>Durée courte (15 min), signature HMAC</td>
-</tr>
-<tr>
-<td>Vol de refresh token</td>
-<td>Rotation + détection de rejeu → révocation de tous les tokens</td>
-</tr>
-<tr>
-<td>XSS (vol de token)</td>
-<td>Refresh token en cookie <code>httpOnly</code></td>
-</tr>
-<tr>
-<td>CSRF</td>
-<td>Cookie <code>sameSite: Strict</code></td>
-</tr>
-<tr>
-<td>Auto-notification</td>
-<td>Ignorée si <code>recipient === sender</code> (profil-service)</td>
+<td><code>x-user-username</code></td>
+<td><code>req.user.username</code></td>
+<td>auth (me, change-password, username, admin), post, profil</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition warning">
-<p class="admonition-title">Limites connues</p>
-<p>Headers <code>x-user-*</code> non signés (usurpation possible si un service est compromis), JWT
-<code>secure</code> cookie uniquement en <code>production</code>, secrets en clair dans le dépôt. Voir
-<a href="../secrets-configuration/">Secrets &amp; configuration</a> et <a href="../../soutenance/limites/">Limites</a>.</p>
+<p class="admonition-title"><code>x-user-username</code> n'est PAS injecté pour le user-service</p>
+<p>Les routes <code>/api/users/*</code> ne reçoivent que <code>x-user-id</code> et <code>x-user-role</code>. Le middleware
+<code>identity</code> du user-service lit alors <code>req.username = undefined</code>. Impact concret : la
+notification de follow part avec <code>from_username: undefined</code>.</p>
+</div>
+<p>Côté service, le middleware d'identité <strong>ne vérifie aucun JWT</strong> :</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// &lt;service&gt;/src/middleware/identity.middleware.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">userId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;x-user-id&#39;</span><span class="p">];</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">userId</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">code</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;MISSING_IDENTITY&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Identité manquante.&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="nx">req</span><span class="p">.</span><span class="nx">userId</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nx">userId</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">req</span><span class="p">.</span><span class="nx">userRole</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;x-user-role&#39;</span><span class="p">];</span>
+<span class="w">  </span><span class="nx">req</span><span class="p">.</span><span class="nx">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;x-user-username&#39;</span><span class="p">];</span>
+<span class="w">  </span><span class="nx">next</span><span class="p">();</span>
+<span class="p">};</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Confiance aveugle envers les headers</p>
+<p>Les services font confiance aux <code>x-user-*</code> sans vérifier qu'ils proviennent de la gateway.
+Un appel direct à un service (en contournant la gateway) permettrait d'usurper n'importe
+quelle identité. La seule protection actuelle est l'<strong>isolation réseau</strong> : aucun service
+backend ne publie de port (seul Nginx est exposé).</p>
+</div>
+<hr />
+<h2 id="3-tous-les-appels-inter-services">3. Tous les appels inter-services</h2>
+<table>
+<thead>
+<tr>
+<th>Appelant</th>
+<th>Cible</th>
+<th>Endpoint</th>
+<th>Quand</th>
+<th>Authentification</th>
+<th>Timeout</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>auth</td>
+<td>user</td>
+<td><code>POST /users/sync</code></td>
+<td>inscription, change-username, admin create</td>
+<td><code>x-internal-secret</code></td>
+<td>3 s</td>
+</tr>
+<tr>
+<td>user</td>
+<td>auth</td>
+<td><code>POST /auth/internal/ban</code></td>
+<td>bannissement</td>
+<td><code>x-internal-secret</code></td>
+<td>3 s</td>
+</tr>
+<tr>
+<td>user</td>
+<td>profil</td>
+<td><code>POST /api/notifications/internal</code></td>
+<td>follow</td>
+<td><code>x-internal-secret</code></td>
+<td>1 s</td>
+</tr>
+<tr>
+<td>post</td>
+<td>user</td>
+<td><code>GET /users/:id/following</code></td>
+<td>feed</td>
+<td><code>x-user-id</code></td>
+<td>3 s</td>
+</tr>
+<tr>
+<td>post</td>
+<td>user</td>
+<td><code>GET /users/by-username/:username</code></td>
+<td>mention <code>@user</code></td>
+<td><code>x-user-id</code></td>
+<td>défaut</td>
+</tr>
+<tr>
+<td>post</td>
+<td>user</td>
+<td><code>GET /users/:id</code></td>
+<td>like (rôle du destinataire)</td>
+<td><code>x-user-id</code></td>
+<td>1 s</td>
+</tr>
+<tr>
+<td>post</td>
+<td>profil</td>
+<td><code>POST /api/notifications/internal</code></td>
+<td>like, mention</td>
+<td><code>x-internal-secret</code></td>
+<td>1 s</td>
+</tr>
+<tr>
+<td>profil</td>
+<td>auth</td>
+<td><code>GET /auth/internal/users/:id/role</code></td>
+<td>filtrage notif like/follow</td>
+<td><code>x-internal-secret</code></td>
+<td>2 s</td>
+</tr>
+<tr>
+<td>post</td>
+<td>OpenRouter (externe)</td>
+<td><code>POST /chat/completions</code></td>
+<td>mention <code>@breezy_ai</code></td>
+<td><code>Authorization: Bearer</code></td>
+<td>15 s</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>graph LR
+    A[auth] --&gt;|sync| U[user]
+    U --&gt;|ban| A
+    U --&gt;|notif follow| PR[profil]
+    P[post] --&gt;|following| U
+    P --&gt;|by-username| U
+    P --&gt;|role du like| U
+    P --&gt;|notif like/mention| PR
+    PR --&gt;|role| A
+    P --&gt;|bot IA| OR[(OpenRouter)]</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Détection de vol côté refresh</p>
+<p>Le cycle de vie du refresh token (rotation + révocation massive sur rejeu) est détaillé dans
+<a href="../../securite/authentification/">Authentification</a>.</p>
+</div>
+<hr />
+<h2 id="4-communication-interne-vs-externe">4. Communication interne vs externe</h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Externe (client → gateway)</th>
+<th>Interne (service → service)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authentification</td>
+<td>JWT (Bearer)</td>
+<td><code>x-internal-secret</code> (ou <code>x-user-id</code> transmis)</td>
+</tr>
+<tr>
+<td>Vérification</td>
+<td>Gateway (<code>jwt.verify</code>)</td>
+<td>Comparaison inline dans le contrôleur</td>
+</tr>
+<tr>
+<td>Réseau</td>
+<td>via Nginx (port 80 public)</td>
+<td>DNS Docker interne, aucun port public</td>
+</tr>
+<tr>
+<td>Tolérance aux pannes</td>
+<td>erreur visible (502 si backend down)</td>
+<td>non bloquant (échec loggé, opération principale OK)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="strategie-fire-and-forget">Stratégie « fire-and-forget »</h3>
+<p>Tous les appels internes sont conçus pour ne <strong>jamais</strong> bloquer le flux principal :</p>
+<ul>
+<li>user-service indisponible au feed → liste de following vide (l'utilisateur voit ses propres posts) ;</li>
+<li>user-service indisponible à l'inscription → compte créé, sync différé (warning) ;</li>
+<li>profil-service indisponible à un like → like enregistré, notification perdue ;</li>
+<li>auth-service indisponible à un ban → ban local appliqué, propagation différée.</li>
+</ul>
+<p>Ce découplage évite les pannes en cascade, au prix d'une <strong>cohérence éventuelle</strong> (compteurs,
+notifications manquantes).</p>
+<hr />
+<h2 id="5-securite-des-appels-internes">5. Sécurité des appels internes</h2>
+<ul>
+<li><strong><code>INTERNAL_SECRET</code></strong> : même valeur dans les 4 microservices (injectée par docker-compose).
+  La <strong>gateway ne le reçoit pas</strong> : elle ne fait jamais d'appel interne authentifié par secret.</li>
+<li>Vérifié côté récepteur : <code>req.headers['x-internal-secret'] !== process.env.INTERNAL_SECRET → 401</code>.</li>
+<li><strong>Jamais exposé au client</strong> : la gateway ne transmet pas ce header.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Headers non signés</p>
+<p>Ni <code>x-user-*</code> ni <code>x-internal-secret</code> ne sont signés. Un service compromis pourrait forger
+l'identité d'un autre. Pistes d'amélioration : JWT interne signé (HMAC) pour les appels
+service-à-service. Voir <a href="../../soutenance/limites/">Limites &amp; évolutions</a>.</p>
 </div>
 
 

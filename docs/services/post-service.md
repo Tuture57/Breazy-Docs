@@ -1,770 +1,259 @@
 # Post Service
 
-Microservice de gestion des posts, likes, commentaires, reposts, uploads et flux (feed) pour Breezy.
+Cœur social de Breezy : posts, likes, commentaires et réponses, reposts, signalement, upload
+d'images, mentions `@username`, et un **bot IA** (`@breezy_ai`). Stocke ses données dans
+MongoDB.
+
+- **Dépôt** : `breezy-post-service`
+- **Port** : `3003`
+- **Base de données** : MongoDB `posts_db` (conteneur `mongo-posts`)
+- **ODM** : Mongoose 9
+
+!!! info "Aucune authentification interne"
+    Toutes les routes (sauf l'upload qui a multer) sont sans middleware : l'identité vient des
+    headers `x-user-id` / `x-user-role` / `x-user-username` injectés par la gateway, lus
+    directement dans les contrôleurs.
 
 ---
 
-## Stack
+## Stack & dépendances
 
-| Technologie | Version |
+| Paquet | Version |
 |---|---|
-| Node.js | 20 (Alpine) |
-| Express | 5.2.1 |
-| Mongoose | 9.7.0 |
-| MongoDB | 6 |
-| axios | 1.18.0 |
-| multer | 1.4.5 |
-| morgan | 1.11.0 |
-| express-validator | 7.3.2 |
+| express | `^5.2.1` |
+| mongoose | `^9.7.0` |
+| multer | `^1.4.5-lts.1` |
+| axios | `^1.18.0` |
+| morgan | `^1.11.0` |
+| cors | `^2.8.6` |
+| express-validator | `^7.3.2` ⚠️ **déclaré mais jamais utilisé** |
 
 ---
 
-## Modeles Mongoose
+## Modèles de données
 
-### Post
+Tous les timestamps sont renommés `created_at` / `updated_at`.
 
-| Champ | Type | Contraintes |
-|---|---|---|
-| `user_id` | String | Requis, indexe |
-| `username` | String | Requis |
-| `content` | String | Requis, `maxlength` 280 |
-| `tags` | [String] | Chaque tag `maxlength` 30 |
-| `media_urls` | [String] | -- |
-| `likes_count` | Number | Defaut 0, `min` 0 |
-| `comments_count` | Number | Defaut 0, `min` 0 |
-| `reposts_count` | Number | Defaut 0, `min` 0 |
-| `is_reported` | Boolean | Defaut false |
-| `created_at` | Date | Timestamp Mongoose |
-| `updated_at` | Date | Timestamp Mongoose |
-
-**Index :**
-- `{ user_id: 1, created_at: -1 }`
-- `{ tags: 1 }`
-- `{ created_at: -1 }`
-
-### Like
+### `posts`
 
 | Champ | Type | Contraintes |
 |---|---|---|
-| `post_id` | ObjectId (ref `Post`) | Requis |
-| `user_id` | String | Requis |
-| `created_at` | Date | Timestamp (creation only) |
+| `user_id` | String | `required`, `index` |
+| `username` | String | `required` (dénormalisé) |
+| `content` | String | `required`, max 280 |
+| `tags` | [String] | chaque tag max 30 |
+| `media_urls` | [String] | — |
+| `likes_count` / `comments_count` / `reposts_count` | Number | défaut 0, min 0 |
+| `is_reported` | Boolean | défaut `false` |
 
-**Index :** Index unique compose `{ post_id: 1, user_id: 1 }`
+Index : `{user_id:1}`, `{user_id:1, created_at:-1}`, `{tags:1}`, `{created_at:-1}`.
 
-### Comment
-
-| Champ | Type | Contraintes |
-|---|---|---|
-| `post_id` | ObjectId (ref `Post`) | Requis |
-| `user_id` | String | Requis |
-| `username` | String | Requis |
-| `content` | String | Requis, `maxlength` 280 |
-| `parent_comment_id` | ObjectId (ref `Comment`) | Defaut null |
-| `created_at` | Date | Timestamp Mongoose |
-| `updated_at` | Date | Timestamp Mongoose |
-
-**Index :**
-- `{ post_id: 1, created_at: 1 }`
-- `{ parent_comment_id: 1 }`
-
-### Repost
+### `comments`
 
 | Champ | Type | Contraintes |
 |---|---|---|
-| `post_id` | ObjectId (ref `Post`) | Requis |
-| `user_id` | String | Requis |
-| `created_at` | Date | Timestamp (creation only) |
+| `post_id` | ObjectId (ref `Post`) | `required` |
+| `user_id` / `username` | String | `required` |
+| `content` | String | `required`, max 280 |
+| `parent_comment_id` | ObjectId (ref `Comment`) | défaut `null` (=`racine`) |
 
-**Index :** Index unique compose `{ post_id: 1, user_id: 1 }`
+Index : `{post_id:1, created_at:1}`, `{parent_comment_id:1}`. Pas d'index unique.
+
+### `likes` et `reposts`
+
+Structure identique : `post_id` (ref `Post`, required), `user_id` (required), `created_at`
+(`updatedAt: false`). **Index unique `{post_id:1, user_id:1}`** → un seul like / repost par
+utilisateur et par post.
 
 ---
 
-## Routes
+## Routes (préfixe `/api`)
 
-Toutes les routes sont montees sous `/api` dans `app.js`.
-
-### POST /api/posts
-
-Creer un nouveau post.
-
-**Middleware :** `identity`
-
-**Headers requis :** `x-user-id`, `x-user-role`, `x-username`
-
-**Corps de la requete (body JSON) :**
-
-| Champ | Type | Requis |
+| Méthode | Path | Contrôleur |
 |---|---|---|
-| `content` | string | **Oui** (max 280 caracteres) |
-| `tags` | string[] | Non |
-| `media_urls` | string[] | Non |
-
-**Reponses :**
-
-```
-201 Created
-{
-  "message": "Post created",
-  "post": {
-    "_id": "objectid",
-    "user_id": "uuid",
-    "username": "johndoe",
-    "content": "Mon premier post !",
-    "tags": ["breezy", "hello"],
-    "media_urls": [],
-    "likes_count": 0,
-    "comments_count": 0,
-    "reposts_count": 0,
-    "is_reported": false,
-    "created_at": "2024-01-01T00:00:00.000Z",
-    "updated_at": "2024-01-01T00:00:00.000Z"
-  }
-}
-```
-
-```
-400 Bad Request
-{
-  "error": "Content is required"
-}
-
-401 Unauthorized
-{
-  "error": "MISSING_IDENTITY"
-}
-```
-
-**Logique metier :**
-1. Extraire l'identite depuis les headers.
-2. Valider le contenu.
-3. Analyser les @mentions avec la regex `@([a-zA-Z0-9_]+)`.
-4. Pour chaque mention, resoudre l'UUID via `GET USER_SERVICE_URL/users/by-username/:username`.
-5. Creer le post avec `Post.create()`.
-6. Envoyer une notification pour chaque mention resolue via `PROFIL_SERVICE_URL/notifications/internal`.
+| POST | `/api/upload` | `uploadMedia` (multer `single('file')`) |
+| GET | `/api/posts/feed` | `getFeed` |
+| GET | `/api/posts/search` | `searchByTag` |
+| GET | `/api/posts/user/:userId` | `getByUser` |
+| GET | `/api/posts/user/:userId/media` | `getUserMedia` |
+| GET | `/api/posts/user/:userId/likes` | `getUserLikes` |
+| GET | `/api/posts/user/:userId/replies` | `getUserReplies` |
+| GET | `/api/posts/user/:userId/reposts` | `getUserReposts` |
+| POST | `/api/posts` | `create` |
+| GET | `/api/posts/:id` | `getById` |
+| PUT | `/api/posts/:id` | `update` |
+| DELETE | `/api/posts/:id` | `delete` |
+| POST | `/api/posts/:id/report` | `report` |
+| POST | `/api/posts/:id/repost` | `toggleRepost` |
+| POST | `/api/posts/:id/like` | `like` |
+| DELETE | `/api/posts/:id/like` | `unlike` |
+| GET | `/api/posts/:id/comments` | `getComments` |
+| POST | `/api/posts/:id/comments` | `createComment` |
+| PUT | `/api/posts/:id/comments/:commentId` | `updateComment` |
+| DELETE | `/api/posts/:id/comments/:commentId` | `deleteComment` |
+| POST | `/api/posts/:id/comments/:commentId/replies` | `createReply` |
 
 ---
+
+## Endpoints détaillés
+
+Format d'erreur : `{ error: { code, message? } }`.
+
+### POST /api/posts — créer un post
+
+| Champ body | Type | Requis | Description |
+|---|---|---|---|
+| `content` | string | ✅ | max 280 |
+| `tags` | string[] | non | max 5 tags |
+| `media_urls` | string[] | non | URLs renvoyées par `/api/upload` |
+
+- **Succès `201`** : le document Post complet.
+- Effets de bord (non bloquants) : notifications de mention, réponse du bot IA.
+
+| Code | Erreur |
+|---|---|
+| 400 | `INVALID_CONTENT` (vide ou > 280) |
+| 400 | `TOO_MANY_TAGS` (> 5) |
 
 ### GET /api/posts/feed
 
-Feed principal de l'utilisateur authentifie.
-
-**Middleware :** `identity`
-
-**Headers requis :** `x-user-id`, `x-user-role`, `x-username`
-
-**Parametres de requete (query string) :**
-
-| Champ | Type | Requis |
-|---|---|---|
-| `page` | integer | Non (defaut 1) |
-| `limit` | integer | Non (defaut 20) |
-
-**Reponses :**
-
-```
-200 OK
-{
-  "posts": [...],
-  "total": 100,
-  "page": 1,
-  "limit": 20
-}
-```
-
-**Logique metier :**
-1. Recuperer la liste des `followingIds` depuis `GET USER_SERVICE_URL/users/:id/following` (utilise le champ `ids`).
-2. Construire la liste des auteurs : `[userId, ...followingIds]`.
-3. Requete `Post.find({ user_id: { $in: auteurs } })`, trie par `created_at: -1`, pagine.
-4. Enrichir chaque post :
-   - `likedByMe` : verifier existence dans la collection `Like` (`Like.findOne({ post_id, user_id })`).
-   - `repostedByMe` : verifier existence dans la collection `Repost`.
-5. Retourner les posts enrichis.
-
----
-
-### GET /api/posts/search
-
-Rechercher des posts.
-
-**Middleware :** `identity`
-
-**Headers requis :** `x-user-id`, `x-user-role`, `x-username`
-
-**Parametres de requete (query string) :**
-
-| Champ | Type | Requis |
-|---|---|---|
-| `q` | string | **Oui** |
-| `page` | integer | Non (defaut 1) |
-| `limit` | integer | Non (defaut 20) |
-
-**Reponses :**
-
-```
-200 OK
-{
-  "posts": [...],
-  "total": 5,
-  "page": 1,
-  "limit": 20
-}
-```
-
-**Logique metier :**
-1. Utiliser `$or` sur trois champs :
-   - `content` : `{ $regex: q, $options: 'i' }` (recherche insensible a la casse).
-   - `tags` : correspondance exacte.
-   - `username` : `{ $regex: q, $options: 'i' }`.
-2. Pagination.
-
----
-
-### GET /api/posts/user/:userId
-
-Posts d'un utilisateur specifique.
-
-**Middleware :** `identity`
-
-**Headers requis :** `x-user-id`, `x-user-role`, `x-username`
-
-**Parametres :**
-- `userId` (parametre URL) : UUID de l'utilisateur.
-
-**Parametres optionnels (query) :** `page`, `limit`
-
-**Reponses :**
-
-```
-200 OK
-{
-  "posts": [...],
-  "total": 15,
-  "page": 1,
-  "limit": 20
-}
-```
-
-**Logique metier :**
-1. `Post.find({ user_id: userId })`, trie par `created_at: -1`.
-2. Enrichir avec `likedByMe` et `repostedByMe`.
-
----
-
-### GET /api/posts/user/:userId/media
-
-Posts media d'un utilisateur (ceux avec `media_urls` non vides).
-
-**Middleware :** `identity`
-
-**Headers requis :** `x-user-id`, `x-user-role`, `x-username`
-
-**Parametres :** `userId`, optionnels `page`, `limit`
-
-**Reponses :**
-
-```
-200 OK
-{
-  "posts": [...],
-  "total": 3,
-  "page": 1,
-  "limit": 20
-}
-```
-
-**Logique metier :**
-1. `Post.find({ user_id: userId, media_urls: { $exists: true, $not: { $size: 0 } } })`.
-
----
-
-### GET /api/posts/user/:userId/likes
-
-Posts qu'un utilisateur a likés.
-
-**Middleware :** `identity`
-
-**Headers requis :** `x-user-id`, `x-user-role`, `x-username`
-
-**Parametres :** `userId`, optionnels `page`, `limit`
-
-**Reponses :**
-
-```
-200 OK
-{
-  "posts": [...],
-  "total": 7,
-  "page": 1,
-  "limit": 20
-}
-```
-
-**Logique metier :**
-1. Trouver tous les `Like` de l'utilisateur.
-2. Resoudre les `post_id` correspondants.
-3. Retourner les posts enrichis.
-
----
-
-### GET /api/posts/user/:userId/replies
-
-Commentaires (replies) d'un utilisateur.
-
-**Middleware :** `identity`
-
-**Parametres :** `userId`, optionnels `page`, `limit`
-
-**Reponses :**
-
-```
-200 OK
-{
-  "comments": [...],
-  "total": 5,
-  "page": 1,
-  "limit": 20
-}
-```
-
-**Logique metier :**
-1. `Comment.find({ user_id: userId })`, trie par `created_at: -1`.
-
----
-
-### GET /api/posts/user/:userId/reposts
-
-Reposts d'un utilisateur.
-
-**Middleware :** `identity`
-
-**Parametres :** `userId`, optionnels `page`, `limit`
-
-**Reponses :**
-
-```
-200 OK
-{
-  "posts": [...],
-  "total": 2,
-  "page": 1,
-  "limit": 20
-}
-```
-
-**Logique metier :**
-1. Trouver tous les `Repost` de l'utilisateur.
-2. Resoudre les `post_id` correspondants.
-
----
-
-### GET /api/posts/:id
-
-Recuperer un post par son ID.
-
-**Middleware :** `identity`
-
-**Reponses :**
-
-```
-200 OK
-{
-  "post": { ... }
-}
-```
-
-```
-404 Not Found
-{
-  "error": "Post not found"
-}
-```
-
----
-
-### PUT /api/posts/:id
-
-Modifier un post (proprietaire uniquement).
-
-**Middleware :** `identity`
-
-**Headers requis :** `x-user-id`, `x-user-role`, `x-username`
-
-**Corps de la requete (body JSON) :**
-
-| Champ | Type | Requis |
-|---|---|---|
-| `content` | string | **Oui** |
-
-**Reponses :**
-
-```
-200 OK
-{
-  "message": "Post updated",
-  "post": { ... }
-}
-```
-
-```
-403 Forbidden
-{
-  "error": "FORBIDDEN"
-}
-
-404 Not Found
-{
-  "error": "Post not found"
-}
-```
-
-**Logique metier :**
-1. Trouver le post.
-2. Verifier que `user_id === x-user-id`.
-3. Mettre a jour le contenu.
-
----
-
-### DELETE /api/posts/:id
-
-Supprimer un post (proprietaire uniquement).
-
-**Middleware :** `identity`
-
-**Reponses :**
-
-```
-200 OK
-{
-  "message": "Post deleted"
-}
-```
-
-**Logique metier :**
-1. Verifier le proprietaire.
-2. Supprimer le post avec `Post.findByIdAndDelete`.
-3. **Cascade** : supprimer tous les `Like` et `Comment` associes.
-
----
+Query `page` (1), `limit` (20). **Algorithme** :
+
+1. Appel `GET {USER_SERVICE_URL}/users/{userId}/following` (timeout 3 s) → `ids`. En cas
+   d'échec, `followingIds = []` (le feed n'affiche que les posts de l'utilisateur).
+2. `feedUserIds = Set([userId, ...followingIds])` → **inclut les propres posts**.
+3. `Post.find({ user_id: { $in } }).sort({ created_at: -1 }).skip().limit()` — tri purement
+   chronologique, **pas de ranking**.
+4. Enrichissement parallèle (`Like.find` + `Repost.find`) → `likedByMe` / `repostedByMe`.
+
+- **Succès `200`** : `{ data: [posts enrichis], pagination: { page, limit, total, hasNext } }`.
+
+### GET /api/posts/:id · PUT /api/posts/:id · DELETE /api/posts/:id
+
+- **GET** : `200` post, `404 POST_NOT_FOUND`.
+- **PUT** (édition) : body `{ content, tags, media_urls? }`. **Auteur uniquement** (sinon
+  `403 FORBIDDEN`, pas d'exception modérateur). `media_urls` mis à jour seulement si fourni.
+- **DELETE** : auteur **ou** rôle `moderator`/`admin`. **Cascade** : supprime les `likes` et
+  `comments` du post. ⚠️ **les `reposts` ne sont pas supprimés** (orphelins possibles).
+  **Succès `204`**.
 
 ### POST /api/posts/:id/report
 
-Signaler un post.
-
-**Middleware :** `identity`
-
-**Reponses :**
-
-```
-200 OK
-{
-  "message": "Post reported"
-}
-```
-
-**Logique metier :**
-1. Marquer `is_reported = true` sur le post.
-
----
-
-### POST /api/posts/:id/repost
-
-Reposter (ou annuler un repost) un post.
-
-**Middleware :** `identity`
-
-**Reponses :**
-
-```
-200 OK
-{
-  "message": "Post reposted",
-  "reposted": true,
-  "reposts_count": 3
-}
-
-200 OK
-{
-  "message": "Repost removed",
-  "reposted": false,
-  "reposts_count": 2
-}
-```
-
-**Logique metier :**
-1. **Upsert pattern** : tenter de trouver un `Repost` existant avec `findOne({ post_id, user_id })`.
-2. Si existe -> supprimer le repost et `$inc: { reposts_count: -1 }`.
-3. Si n'existe pas -> creer le repost et `$inc: { reposts_count: 1 }`.
-
----
-
-### POST /api/posts/:id/like
-
-Liker un post.
-
-**Middleware :** `identity`
-
-**Reponses :**
-
-```
-200 OK
-{
-  "message": "Post liked",
-  "likes_count": 5
-}
-```
-
-```
-409 Conflict
-{
-  "error": "ALREADY_LIKED"
-}
-```
-
-**Logique metier :**
-1. Tentative de creation d'un `Like` avec `create({ post_id, user_id })`.
-2. Si l'index unique `{ post_id, user_id }` est viole -> MongoDB renvoie une erreur 11000 -> capture et retour `409 ALREADY_LIKED`.
-3. `Post.findOneAndUpdate({ $inc: { likes_count: 1 } })`.
-4. Envoyer une notification `like` au profil-service.
-
----
-
-### DELETE /api/posts/:id/like
-
-Retirer un like.
-
-**Middleware :** `identity`
-
-**Reponses :**
-
-```
-200 OK
-{
-  "message": "Like removed",
-  "likes_count": 4
-}
-```
-
-```
-400 Bad Request
-{
-  "error": "NOT_LIKED"
-}
-```
-
-**Logique metier :**
-1. Trouver et supprimer le `Like`.
-2. Si introuvable -> `NOT_LIKED`.
-3. `Post.findOneAndUpdate({ $inc: { likes_count: -1 } })`.
-
----
-
-### GET /api/posts/:id/comments
-
-Recuperer les commentaires d'un post.
-
-**Middleware :** `identity`
-
-**Parametres optionnels (query) :** `page`, `limit`
-
-**Reponses :**
-
-```
-200 OK
-{
-  "comments": [...],
-  "total": 10,
-  "page": 1,
-  "limit": 20
-}
-```
-
-**Logique metier :**
-1. `Comment.find({ post_id }).sort({ created_at: 1 })`.
-2. Pagination.
-
----
-
-### POST /api/posts/:id/comments
-
-Ajouter un commentaire a un post.
-
-**Middleware :** `identity`
-
-**Corps de la requete (body JSON) :**
-
-| Champ | Type | Requis |
-|---|---|---|
-| `content` | string | **Oui** (max 280) |
-
-**Reponses :**
-
-```
-201 Created
-{
-  "message": "Comment added",
-  "comment": {
-    "_id": "objectid",
-    "post_id": "objectid",
-    "user_id": "uuid",
-    "username": "johndoe",
-    "content": "Super post !",
-    "parent_comment_id": null,
-    "created_at": "...",
-    "updated_at": "..."
-  },
-  "comments_count": 6
-}
-```
-
-**Logique metier :**
-1. Creer le commentaire.
-2. Incrementer `comments_count` du post.
-3. Envoyer notification `comment` au profil-service.
-
----
-
-### PUT /api/posts/:id/comments/:commentId
-
-Modifier un commentaire (proprietaire uniquement).
-
-**Middleware :** `identity`
-
-**Corps de la requete (body JSON) :**
-
-| Champ | Type | Requis |
-|---|---|---|
-| `content` | string | **Oui** |
-
----
-
-### DELETE /api/posts/:id/comments/:commentId
-
-Supprimer un commentaire (proprietaire uniquement).
-
-**Middleware :** `identity`
-
-**Reponses :**
-
-```
-200 OK
-{
-  "message": "Comment deleted",
-  "comments_count": 5
-}
-```
-
-**Logique metier :**
-1. Verifier le proprietaire.
-2. Supprimer le commentaire.
-3. Decrementer `comments_count` du post.
-
----
-
-### POST /api/posts/:id/comments/:commentId/replies
-
-Repondre a un commentaire.
-
-**Middleware :** `identity`
-
-**Corps de la requete (body JSON) :**
-
-| Champ | Type | Requis |
-|---|---|---|
-| `content` | string | **Oui** (max 280) |
-
-**Reponses :**
-
-```
-201 Created
-{
-  "message": "Reply added",
-  "comment": { ... },
-  "comments_count": 6
-}
-```
-
-```
-400 Bad Request
-{
-  "error": "MAX_DEPTH",
-  "message": "Cannot reply to a reply"
-}
-```
-
-**Logique metier :**
-1. Verifier que `parent_comment_id` du commentaire cible est `null` (max 1 niveau de profondeur).
-2. Si le commentaire cible est deja une reponse (`parent_comment_id !== null`) -> erreur `MAX_DEPTH`.
-3. Creer le commentaire avec `parent_comment_id` defini.
-4. Incrementer `comments_count`.
-5. Envoyer notification `reply` au profil-service.
-
----
+Met `is_reported = true`. **Succès `200`** : `{ message: 'Post signalé.' }`. ⚠️ Ne vérifie pas
+l'existence du post (pas de `404`). Aucune route ne liste ni ne lève les signalements.
+
+### POST /api/posts/:id/repost — toggle
+
+`404 POST_NOT_FOUND` si absent. Si déjà reposté → suppression + `$inc reposts_count -1` →
+`{ reposts_count, reposted: false }`. Sinon création + `$inc +1` → `{ reposts_count, reposted: true }`.
+
+### POST /api/posts/:id/like · DELETE /api/posts/:id/like
+
+- **like** : crée un `Like` + `$inc likes_count +1`. Double-like → erreur Mongo `11000`
+  interceptée → **`409 ALREADY_LIKED`**. `404 POST_NOT_FOUND` si absent. **Succès `200`** :
+  `{ likes_count }`. Notification de like envoyée (voir inter-services).
+- **unlike** : `findOneAndDelete` ; si rien → `404 LIKE_NOT_FOUND`. Sinon `$inc -1` →
+  `{ likes_count: max(0, ...) }`.
+
+!!! warning "Compteur de like potentiellement négatif en base"
+    `max(0, ...)` borne seulement l'**affichage**. Une valeur négative stockée n'est pas
+    corrigée.
+
+### Commentaires & réponses
+
+- **GET /comments** : renvoie les commentaires racines (`parent_comment_id: null`) paginés, tri
+  `created_at:1`, chacun avec son tableau `replies`. `total` = nombre de **racines** seulement.
+- **POST /comments** : body `{ content }` (max 280). Crée une racine + `$inc comments_count +1`.
+  **`201`**.
+- **PUT /comments/:commentId** : auteur uniquement (`403 FORBIDDEN`).
+- **DELETE /comments/:commentId** : auteur **ou** modérateur/admin. Supprime le commentaire +
+  ses réponses (`deleteMany({ parent_comment_id })`) + `$inc comments_count -1`. **`204`**.
+- **POST /comments/:commentId/replies** : **profondeur max 1** — si le parent est déjà une
+  réponse (`parent_comment_id` non nul) → `400 MAX_DEPTH`. Crée la réponse + `$inc comments_count +1`.
+
+!!! warning "Incohérence de `comments_count` à la suppression"
+    Supprimer un commentaire ayant des réponses décrémente le compteur de **1 seulement**, alors
+    que plusieurs documents (le commentaire + ses réponses) sont supprimés → `comments_count`
+    peut diverger.
 
 ### POST /api/upload
 
-Upload de fichiers media.
+`multipart/form-data`, champ `file`. multer `diskStorage` vers `<racine>/uploads`, nom
+`Date.now()-<random>.<ext>`, **images uniquement** (filtre `mimetype` `image/*`), **5 Mo max**.
+Servi en statique sur `/api/uploads/<filename>`. **Succès `201`** : `{ url: "/api/uploads/<filename>" }`.
 
-**Middleware :** `identity` + `multer`
+| Code | Erreur |
+|---|---|
+| 400 | `NO_FILE` |
+| 413 | `FILE_TOO_LARGE` (> 5 Mo) |
+| 400 | `INVALID_FILE` (non-image) |
 
-**Headers requis :** `Content-Type: multipart/form-data`
-
-**Taille max :** 5 Mo
-
-**Types acceptes :** images uniquement
-
-**Reponses :**
-
-```
-201 Created
-{
-  "message": "File uploaded",
-  "urls": ["https://cdn.breezy.app/uploads/filename.jpg"]
-}
-```
-
-```
-400 Bad Request
-{
-  "error": "File too large",
-  "maxSize": "5MB"
-}
-
-400 Bad Request
-{
-  "error": "Only image files are allowed"
-}
-```
+!!! warning "Uploads non persistants par défaut au build"
+    Les fichiers vivent dans `/app/uploads`. La persistance est assurée par le volume
+    `uploads_data` monté en docker-compose, **pas** par le Dockerfile (aucun volume déclaré).
 
 ---
 
-## Middlewares
+## Recherche par tags & contenu
 
-### identity.middleware.js
+`GET /api/posts/search?q=...` ou `?tag=...` (sinon `400 MISSING_QUERY`). Filtre `$or` :
+`content` (regex insensible à la casse), `tags` (égalité exacte sur `q.toLowerCase()`),
+`username` (regex insensible). **Pas d'index full-text MongoDB.** Les tags ne sont pas
+normalisés en minuscules à la création, alors que la recherche compare au `toLowerCase()` de la
+requête → matching de tag imparfait.
 
-Identique aux autres services. Extrait `x-user-id`, `x-user-role`, `x-username` des headers injectes par le gateway.
+---
 
-### validate.middleware.js
+## Bot IA `@breezy_ai`
 
-Gestionnaire centralise des erreurs express-validator.
+!!! tip "Fonctionnalité absente de l'ancienne documentation"
+    À la création d'un post, si `content` contient `@breezy_ai` (insensible à la casse), le
+    service appelle **OpenRouter** (`https://openrouter.ai/api/v1/chat/completions`, modèle
+    `openai/gpt-oss-20b:free`, timeout 15 s, `Authorization: Bearer ${OPENROUTER_API_KEY}`).
+    La réponse est créée comme un **commentaire racine** du compte bot
+    (`user_id = a7af3029-cd8b-4cda-b827-aab8095cf800`, username `breezy_ai`), tronquée à 280
+    caractères, avec `$inc comments_count +1`. L'appel est non bloquant (pas de `await` dans
+    `create`).
+
+!!! danger "Clé API exposée"
+    `OPENROUTER_API_KEY` est **vide dans `.env.example`** mais une **clé réelle est commitée en
+    clair dans le `.env`** du dépôt. Voir [Secrets & configuration](../securite/secrets-configuration.md).
+
+---
+
+## Appels inter-services
+
+| Quand | Méthode + URL | Headers | Timeout | Échec |
+|---|---|---|---|---|
+| Feed | `GET {USER_SERVICE_URL}/users/{userId}/following` | `x-user-id` | 3000 ms | following = [] |
+| Mentions (`@user`) | `GET {USER_SERVICE_URL}/users/by-username/{name}` | `x-user-id` | défaut | catch silencieux |
+| Mentions | `POST {PROFIL_SERVICE_URL}/api/notifications/internal` (`type:'mention'`) | `x-internal-secret` | 1000 ms | catch silencieux |
+| Like | `GET {USER_SERVICE_URL}/users/{post.user_id}` (récupère le `role`) | `x-user-id` | 1000 ms | role = null |
+| Like | `POST {PROFIL_SERVICE_URL}/api/notifications/internal` (`type:'like'`, + `recipient_role`) | `x-internal-secret` | 1000 ms | catch silencieux |
+| Bot IA | `POST https://openrouter.ai/api/v1/chat/completions` | `Authorization: Bearer` | 15000 ms | warn, ignoré |
+
+!!! note "Notifications comment/reply non générées"
+    Les types `comment` et `reply` existent dans le schéma du profil-service, mais le
+    post-service **ne déclenche que** les notifications `like` et `mention`. Aucune notification
+    n'est créée à la publication d'un commentaire ou d'une réponse.
 
 ---
 
 ## Variables d'environnement
 
-| Variable | Defaut | Requis | Description |
-|---|---|---|---|
-| `PORT` | `3003` | Non | Port d'ecoute |
-| `MONGO_URI` | -- | **Oui** | URI de connexion MongoDB |
-| `USER_SERVICE_URL` | -- | Non | URL du user-service (feed, mentions) |
-| `PROFIL_SERVICE_URL` | -- | Non | URL du profil-service (notifications) |
-| `INTERNAL_SECRET` | -- | Non | Secret pour les communications inter-services |
+| Variable | Défaut | Usage |
+|---|---|---|
+| `PORT` | `3003` | Port d'écoute |
+| `MONGO_URI` | `mongodb://localhost:27017/breezy-post` | Connexion MongoDB |
+| `USER_SERVICE_URL` | — | Feed, mentions, rôle du destinataire |
+| `PROFIL_SERVICE_URL` | — | Notifications |
+| `INTERNAL_SECRET` | — | Secret inter-services |
+| `OPENROUTER_API_KEY` | (vide dans `.env.example`) | Bot IA |
+| `CORS_ORIGIN` | `http://localhost:3000` | CORS (absent de `.env.example`) |
 
 ---
 
-## Notes d'implementation
+## Dockerfile
 
-- Le feed est construit en interrogeant le user-service pour obtenir la liste des abonnements de l'utilisateur. Si le user-service est inaccessible, le feed echoue.
-- L'enrichissement (`likedByMe`, `repostedByMe`) est fait post-requete : pour chaque post du resultat, une requete supplementaire est faite sur les collections `Like` et `Repost`. Ce n'est pas optimal pour de grandes pages.
-- La detection des @mentions utilise la regex `@([a-zA-Z0-9_]+)` sur le contenu du post avant creation.
-- Les notifications sont envoyees de maniere synchrone au profil-service. Un echec d'envoi de notification n'empeche pas la creation du post, mais peut entrainer des notifications manquantes.
+`node:20-alpine`, `npm install`, `CMD ["npm","start"]`. Pas d'`EXPOSE`, pas de volume `uploads`
+dans le Dockerfile (la persistance est gérée par docker-compose).

@@ -5,14 +5,16 @@ theme:
   language: fr
   palette:
     primary: indigo
+  features:
+    - navigation.sections
+    - content.code.copy
 nav:
   - Accueil: index.md
   - Architecture:
     - Vue d'ensemble: architecture/vue-ensemble.md
-    - Communication inter-services: architecture/communication-services.md
+    - Communication inter-services: architecture/communication.md
     - Flux de données: architecture/flux-donnees.md
-    - Diagramme de composants: architecture/diagramme-composants.md
-    - Docker & Déploiement: architecture/docker-deploiement.md
+    - Déploiement: architecture/deploiement.md
   - Services:
     - API Gateway: services/gateway.md
     - Auth Service: services/auth-service.md
@@ -21,19 +23,20 @@ nav:
     - Profil Service: services/profil-service.md
     - Frontend: services/frontend.md
   - Données:
-    - Schéma PostgreSQL: donnees/schema-postgresql.md
-    - Schéma MongoDB: donnees/schema-mongodb.md
+    - PostgreSQL: donnees/postgresql.md
+    - MongoDB: donnees/mongodb.md
+  - API:
+    - Routes complètes: api/routes.md
   - Sécurité:
     - Authentification: securite/authentification.md
+    - Secrets & configuration: securite/secrets-configuration.md
   - Fonctionnalités:
-    - Couverture: fonctionnalites/couverture-fx.md
-  - API:
-    - Routes complètes: api/routes-completes.md
+    - Couverture Fx1→Fx23: fonctionnalites/couverture.md
   - Soutenance:
-    - Questions générales: soutenance/questions-generales.md
-    - Questions par membre: soutenance/questions-par-membre.md
-    - Limites et évolutions: soutenance/limites-evolutions.md
-  - Journal des modifications: CHANGELOG_DOC.md
+    - Questions générales: soutenance/questions.md
+    - Questions par membre: soutenance/par-membre.md
+    - Limites & évolutions: soutenance/limites.md
+  - Journal des modifications: CHANGELOG.md
 markdown_extensions:
   - admonition
   - tables

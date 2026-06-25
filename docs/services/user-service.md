@@ -1,533 +1,201 @@
 # User Service
 
-Microservice de gestion des profils utilisateur et des relations (follow) pour Breezy.
+Service des **profils publics** et des **relations sociales** : follow/unfollow avec compteurs
+atomiques, recherche d'utilisateurs, résolution username → ID (pour les mentions), et
+bannissement (propagé à l'auth-service).
+
+- **Dépôt** : `breezy-user-service`
+- **Port** : `3002`
+- **Base de données** : PostgreSQL `users_db` (conteneur `pg-users`)
+- **ORM** : Sequelize 6 — `sync({ alter: true })` au démarrage (`force: true` en test)
+
+!!! info "Identité par header"
+    Comme tous les services backend, le user-service ne vérifie pas le JWT : il lit
+    `x-user-id` / `x-user-role` injectés par la gateway. **`x-user-username` n'est pas injecté
+    pour ce service** (voir l'encart sur `follow`).
 
 ---
 
-## Stack
+## Stack & dépendances
 
-| Technologie | Version |
+| Paquet | Version |
 |---|---|
-| Node.js | 20 (Alpine) |
-| Express | 5.2.1 |
-| Sequelize | 6.37.8 |
-| PostgreSQL | 15 |
-| axios | 1.18.0 |
-| pg | 8.21.0 |
+| express | `^5.2.1` |
+| sequelize | `^6.37.8` |
+| pg / pg-hstore | `^8.21.0` / `^2.3.4` |
+| axios | `^1.18.0` |
+| cors | `^2.8.6` |
+| express-validator | `^7.3.2` ⚠️ **déclaré mais jamais utilisé** (validation manuelle) |
 
 ---
 
-## Modeles
+## Modèles de données
 
-### UserProfile (`user_profiles` table)
+### Table `user_profiles`
 
-| Champ | Type | Contraintes |
+| Colonne | Type | Contraintes / défaut |
 |---|---|---|
-| `id` | UUID | PK (impose par auth-service, PAS auto-genere) |
-| `username` | STRING(50) | NOT NULL |
-| `role` | ENUM('user','moderator','admin') | DEFAULT 'user' |
-| `is_active` | BOOLEAN | DEFAULT true |
-| `is_banned` | BOOLEAN | DEFAULT false |
-| `followers_count` | INTEGER | DEFAULT 0 (mises a jour atomiques via transactions) |
-| `following_count` | INTEGER | DEFAULT 0 (mises a jour atomiques via transactions) |
+| `id` | UUID | PK — **imposé par l'auth-service** (pas de génération auto) |
+| `username` | STRING(50) | `NOT NULL` — **pas d'index unique** dans le modèle |
+| `role` | ENUM(`user`,`moderator`,`admin`) | défaut `user` (répliqué depuis l'auth) |
+| `is_active` | BOOLEAN | défaut `true` |
+| `is_banned` | BOOLEAN | défaut `false` |
+| `followers_count` | INTEGER | défaut `0` |
+| `following_count` | INTEGER | défaut `0` |
+| `created_at` / `updated_at` | TIMESTAMP | auto |
 
-### Follow (`follows` table)
+### Table `follows`
 
-| Champ | Type | Contraintes |
+| Colonne | Type | Contraintes |
 |---|---|---|
-| `follower_id` | UUID | NOT NULL |
-| `followed_id` | UUID | NOT NULL |
+| `id` | INTEGER | PK auto-incrémentée |
+| `follower_id` | UUID | `NOT NULL` |
+| `followed_id` | UUID | `NOT NULL` |
+| `created_at` | TIMESTAMP | auto (`updatedAt: false`) |
 
-**Index :** Index unique sur `(follower_id, followed_id)`.
+- **Index unique composite** `(follower_id, followed_id)` → empêche de suivre deux fois.
+- **Aucune association Sequelize ni FK** vers `user_profiles` : la jointure est faite côté
+  application (récupérer les `Follow`, puis `UserProfile.findAll` par IDs).
 
-**Particularite :** Pas de colonne `updatedAt`. La table est creee avec `timestamps: { updatedAt: false }` dans la definition Sequelize.
+!!! warning "Pas de cascade entre `follows` et `user_profiles`"
+    Supprimer un profil ne nettoie pas les `follows` associés → risque de relations orphelines
+    et de compteurs incohérents. Les compteurs n'ont pas de garde-fou contre les valeurs
+    négatives en base.
 
 ---
 
 ## Routes
 
-### POST /users/sync
+| Méthode | Path | Middleware | Auth |
+|---|---|---|---|
+| GET | `/health` | — | Public |
+| POST | `/users/sync` | — (`x-internal-secret`) | Interne |
+| GET | `/users/search` | `identity` | JWT |
+| GET | `/users/by-username/:username` | — | **Public** |
+| GET | `/users/:id` | `identity` | JWT |
+| GET | `/users/:id/followers` | `identity` | JWT |
+| GET | `/users/:id/following` | `identity` | JWT |
+| POST | `/users/:id/follow` | `identity` | JWT |
+| DELETE | `/users/:id/follow` | `identity` | JWT |
+| PUT | `/users/:id/ban` | `identity` | JWT + rôle modérateur/admin |
 
-Cree ou met a jour un profil utilisateur (appele par auth-service apres inscription).
-
-**Middleware :** aucun (securise par `INTERNAL_SECRET`)
-
-**Headers requis :** `x-internal-secret`
-
-**Corps de la requete (body JSON) :**
-
-| Champ | Type | Requis |
-|---|---|---|
-| `id` | string (UUID) | **Oui** |
-| `username` | string | **Oui** |
-| `email` | string | Non (utilise pour creation uniquement) |
-
-**Reponses :**
-
-```
-201 Created
-{
-  "message": "User profile created",
-  "profile": {
-    "id": "uuid",
-    "username": "johndoe",
-    "role": "user",
-    "is_active": true,
-    "is_banned": false,
-    "followers_count": 0,
-    "following_count": 0
-  }
-}
-
-200 OK
-{
-  "message": "User profile synced",
-  "profile": { ... }
-}
-```
-
-```
-403 Forbidden
-{
-  "error": "FORBIDDEN"
-}
-
-500 Internal Server Error (si email est absent a la creation)
-```
-
-**Logique metier :**
-1. Verifier le header `x-internal-secret`.
-2. Avec `findOrCreate` sur `UserProfile`, cle `id` : si trouve -> mettre a jour `username` ; si cree -> utiliser le flag `email` (present uniquement a la creation).
-3. Retourner le profil.
+`/users/search` et `/users/by-username/:username` sont déclarées **avant** `/users/:id` pour
+éviter la capture par le paramètre `:id`.
 
 ---
+
+## Endpoints détaillés
+
+### POST /users/sync *(interne)*
+
+Appelé par l'auth-service. Header `x-internal-secret`. Body `{ id, username, role }`.
+`UserProfile.upsert(...)` (création ou mise à jour). **Succès `201`** : `{ ok: true }`.
+`401 UNAUTHORIZED` si secret invalide. Aucune validation des champs.
 
 ### GET /users/search
 
-Recherche d'utilisateurs par username.
+Query `q` (requis, ≥2 caractères), `page` (1), `limit` (10). Filtre `username ILIKE %q%`
+**ET** `is_active = true` **ET** `is_banned = false`, trié par `followers_count DESC`.
 
-**Middleware :** `identity`
+- **Succès `200`** : `{ data: [UserProfile], pagination: { page, limit, total, hasNext } }`.
+- **`400 QUERY_TOO_SHORT`** si `q` absent ou < 2 caractères.
 
-**Headers requis :** `x-user-id`, `x-user-role`, `x-username`
+### GET /users/by-username/:username *(public)*
 
-**Parametres de requete (query string) :**
-
-| Champ | Type | Requis |
-|---|---|---|
-| `q` | string | **Oui** (terme de recherche) |
-| `page` | integer | Non (defaut 1) |
-| `limit` | integer | Non (defaut 20) |
-
-**Reponses :**
-
-```
-200 OK
-{
-  "users": [
-    {
-      "id": "uuid",
-      "username": "johndoe",
-      "display_name": "John Doe",
-      "avatar_url": "https://...",
-      "bio": "Bio text...",
-      "followers_count": 42
-    }
-  ],
-  "total": 5,
-  "page": 1,
-  "limit": 20
-}
-```
-
-```
-401 Unauthorized
-{
-  "error": "MISSING_IDENTITY"
-}
-```
-
-**Logique metier :**
-1. Utiliser `Op.iLike` sur `username` pour une recherche partielle et insensible a la casse.
-2. Exclure les utilisateurs `is_banned = true` ou `is_active = false`.
-3. Trier par `followers_count DESC`.
-4. Paginer avec `offset` et `limit`.
-
----
-
-### GET /users/by-username/:username
-
-Recuperer un profil public par son username.
-
-**Middleware :** aucun (ROUTE PUBLIQUE)
-
-**Reponses :**
-
-```
-200 OK
-{
-  "id": "uuid",
-  "username": "johndoe",
-  "display_name": "John Doe",
-  "avatar_url": "https://...",
-  "bio": "...",
-  "followers_count": 42,
-  "following_count": 10
-}
-```
-
-```
-404 Not Found
-{
-  "error": "USER_NOT_FOUND"
-}
-```
-
-**Logique metier :**
-1. Chercher par `username` avec `UserProfile.findOne`.
-2. Utilisee par le post-service pour la resolution des @mentions (ex: `@johndoe` -> resoudre l'UUID).
-3. Aucune authentification requise.
-
----
+`findOne({ where: { username } })`. **Ne filtre pas** les bannis/inactifs. Utilisé par le
+post-service pour résoudre les `@mentions`. **`404 USER_NOT_FOUND`** sinon.
 
 ### GET /users/:id
 
-Recuperer le profil complet d'un utilisateur.
+`findByPk(id)`. Si `req.userId` ≠ `:id`, calcule `followedByMe` (l'appelant suit-il la cible ?).
+**Succès `200`** : `{ ...UserProfile, followedByMe }`. Ne filtre pas les bannis.
 
-**Middleware :** `identity`
+### GET /users/:id/followers · GET /users/:id/following
 
-**Headers requis :** `x-user-id`, `x-user-role`, `x-username`
+Pagination `page` (1) / `limit` (20). `followers` renvoie `{ data, pagination }`.
 
-**Reponses :**
-
-```
-200 OK
-{
-  "id": "uuid",
-  "username": "johndoe",
-  "display_name": "John Doe",
-  "avatar_url": "https://...",
-  "banner_url": "https://...",
-  "bio": "...",
-  "location": "Paris",
-  "followers_count": 42,
-  "following_count": 10,
-  "role": "user",
-  "is_active": true,
-  "is_banned": false,
-  "is_following": true
-}
-```
-
-```
-401 Unauthorized
-{
-  "error": "MISSING_IDENTITY"
-}
-
-404 Not Found
-{
-  "error": "USER_NOT_FOUND"
-}
-```
-
-**Logique metier :**
-1. Recuperer l'utilisateur par son `id`.
-2. Verifier si l'utilisateur authentifie (`x-user-id`) suit cet utilisateur : requete sur la table `Follows`.
-3. Ajouter le champ `is_following` (boolean).
-
----
-
-### GET /users/:id/followers
-
-Liste des abonnes (followers) d'un utilisateur.
-
-**Middleware :** `identity`
-
-**Headers requis :** `x-user-id`, `x-user-role`, `x-username`
-
-**Parametres de requete (query string) :**
-
-| Champ | Type | Requis |
-|---|---|---|
-| `page` | integer | Non (defaut 1) |
-| `limit` | integer | Non (defaut 20) |
-
-**Reponses :**
-
-```
-200 OK
-{
-  "followers": [...],
-  "total": 42,
-  "page": 1,
-  "limit": 20
-}
-```
-
-```
-401 Unauthorized
-{
-  "error": "MISSING_IDENTITY"
-}
-```
-
-**Logique metier :**
-1. Requete `Follow.findAll({ where: { followed_id: id } })` avec `include: UserProfile` (alias follower).
-2. Pagination.
-
----
-
-### GET /users/:id/following
-
-Liste des abonnements (following) d'un utilisateur.
-
-**Middleware :** `identity`
-
-**Headers requis :** `x-user-id`, `x-user-role`, `x-username`
-
-**Parametres de requete (query string) :**
-
-| Champ | Type | Requis |
-|---|---|---|
-| `page` | integer | Non (defaut 1) |
-| `limit` | integer | Non (defaut 20) |
-
-**Reponses :**
-
-```
-200 OK
-{
-  "data": [
-    {
-      "id": "uuid",
-      "username": "janedoe",
-      "display_name": "Jane Doe",
-      "avatar_url": "...",
-      "bio": "..."
-    }
-  ],
-  "ids": ["uuid1", "uuid2", "uuid3"],
-  "total": 10,
-  "page": 1,
-  "limit": 20
-}
-```
-
-```
-401 Unauthorized
-{
-  "error": "MISSING_IDENTITY"
-}
-```
-
-**Logique metier :**
-1. Requete `Follow.findAll({ where: { follower_id: id } })` avec `include: UserProfile` (alias followed).
-2. Retourne DEUX formats dans la meme reponse :
-   - `data` : tableau des profils complets.
-   - `ids` : tableau plat des UUIDs uniquement.
-3. Le format `ids` est utilise par le post-service pour construire le feed.
-
----
+`following` renvoie **`{ data, ids, pagination }`** — `data` contient les objets `UserProfile`
+et `ids` les UUID suivis. C'est le champ `ids` (ou `data`) que le post-service exploite pour le
+feed.
 
 ### POST /users/:id/follow
 
-Suivre un utilisateur.
+`followerId = req.userId`, `followedId = :id`. **Transaction atomique** :
 
-**Middleware :** `identity`
-
-**Headers requis :** `x-user-id`, `x-user-role`, `x-username`
-
-**Reponses :**
-
-```
-200 OK
-{
-  "message": "Followed successfully",
-  "followers_count": 43
-}
+```javascript
+await sequelize.transaction(async (t) => {
+  const [follow, created] = await Follow.findOrCreate({
+    where: { follower_id, followed_id }, transaction: t });
+  if (!created) throw new FollowError('ALREADY_FOLLOWING');
+  await UserProfile.increment('following_count', { where: { id: follower_id }, transaction: t });
+  await UserProfile.increment('followers_count', { where: { id: followed_id }, transaction: t });
+});
 ```
 
-```
-400 Bad Request
-{
-  "error": "CANNOT_FOLLOW_SELF"
-}
+Puis (hors transaction) envoie une notification de follow au profil-service.
+**Succès `200`** : `{ message: "Vous suivez maintenant <username>." }`.
 
-409 Conflict
-{
-  "error": "ALREADY_FOLLOWING"
-}
-
-404 Not Found
-{
-  "error": "USER_NOT_FOUND"
-}
-
-401 Unauthorized
-{
-  "error": "MISSING_IDENTITY"
-}
-```
-
-**Logique metier :**
-1. Verifier que `x-user-id` != `id` (ne pas se follow soi-meme).
-2. Verifier que la cible existe.
-3. Utiliser une **transaction Sequelize** :
-   - Creer l'entree dans `Follows`.
-   - Incrementer `followers_count` de la cible (`UserProfile.increment`).
-   - Incrementer `following_count` de l'utilisateur courant.
-4. Envoyer une notification au profil-service.
-
----
+| Code | Erreur |
+|---|---|
+| 400 | `CANNOT_SELF_FOLLOW` |
+| 404 | `USER_NOT_FOUND` |
+| 409 | `ALREADY_FOLLOWING` |
 
 ### DELETE /users/:id/follow
 
-Ne plus suivre un utilisateur.
-
-**Middleware :** `identity`
-
-**Headers requis :** `x-user-id`, `x-user-role`, `x-username`
-
-**Reponses :**
-
-```
-200 OK
-{
-  "message": "Unfollowed successfully",
-  "followers_count": 42
-}
-```
-
-```
-400 Bad Request
-{
-  "error": "CANNOT_UNFOLLOW_SELF"
-}
-
-400 Bad Request
-{
-  "error": "NOT_FOLLOWING"
-}
-
-401 Unauthorized
-{
-  "error": "MISSING_IDENTITY"
-}
-
-404 Not Found
-{
-  "error": "USER_NOT_FOUND"
-}
-```
-
-**Logique metier :**
-1. Verifier que `x-user-id` != `id`.
-2. Verifier que la cible existe.
-3. Verifier que la relation de follow existe.
-4. Utiliser une **transaction Sequelize** :
-   - Supprimer l'entree de `Follows`.
-   - Decrementer `followers_count` de la cible.
-   - Decrementer `following_count` de l'utilisateur courant.
-
----
+Transaction symétrique : `Follow.destroy` puis `decrement` des deux compteurs. Si 0 ligne
+supprimée → `404 NOT_FOLLOWING`. **Succès `204`** (corps vide). Ne vérifie pas l'existence de la
+cible, ne bloque pas l'auto-unfollow.
 
 ### PUT /users/:id/ban
 
-Bannir un utilisateur.
+`req.userRole` doit être `moderator` ou `admin`, sinon `403 FORBIDDEN`. Met `is_banned = true`
+localement, puis propage vers l'auth-service (non bloquant). **Succès `200`** :
+`{ message: "Utilisateur <username> banni." }`. Pas d'unban. `is_active` et les compteurs sont
+inchangés.
 
-**Middleware :** `identity`
-
-**Headers requis :** `x-user-id`, `x-user-role`, `x-username`
-
-**Corps de la requete (body JSON) :**
-
-| Champ | Type | Requis |
-|---|---|---|
-| `ban` | boolean | **Oui** |
-
-**Reponses :**
-
-```
-200 OK
-{
-  "message": "User banned successfully",
-  "is_banned": true
-}
-
-200 OK
-{
-  "message": "User unbanned successfully",
-  "is_banned": false
-}
-```
-
-```
-401 Unauthorized
-{
-  "error": "MISSING_IDENTITY"
-}
-
-403 Forbidden
-{
-  "error": "INSUFFICIENT_PERMISSIONS"
-}
-
-404 Not Found
-{
-  "error": "USER_NOT_FOUND"
-}
-```
-
-**Logique metier :**
-1. Verifier que l'utilisateur authentifie a le role `moderator` ou `admin`.
-2. Si le role est insuffisant -> `INSUFFICIENT_PERMISSIONS`.
-3. Mettre a jour `is_banned` sur le profil local.
-4. Propager le ban au auth-service via `POST /auth/internal/ban` avec le header `x-internal-secret`.
+!!! warning "Le bannissement ne masque pas partout"
+    Les bannis sont exclus de `/users/search`, mais **restent visibles** via `/users/:id` et
+    `/users/by-username/:username` (ces routes ne filtrent pas `is_banned`).
 
 ---
 
-### GET /health
+## Logique des compteurs followers/following
 
-Healthcheck du service.
-
-**Middleware :** aucun
-
-**Reponses :**
-
-```
-200 OK
-{
-  "status": "ok",
-  "timestamp": "2024-01-01T00:00:00.000Z"
-}
-```
+Les compteurs sont **dénormalisés** et maintenus uniquement par `follow` / `unfollow`, dans une
+transaction Sequelize qui englobe la création/suppression du lien **et** les deux incréments.
+Cette atomicité garantit la cohérence en cas d'échec partiel. Aucun `COUNT(*)` n'est fait à la
+lecture (performance), au prix d'une synchronisation à maintenir.
 
 ---
 
-## Middlewares
+## Appels inter-services
 
-### identity.middleware.js
+| Vers | Endpoint | Body | Headers | Timeout | Quand |
+|---|---|---|---|---|---|
+| profil-service | `POST /api/notifications/internal` | `{ recipient_user_id, type:'follow', from_user_id, from_username, recipient_role }` | `x-internal-secret` | 1000 ms | après un follow réussi |
+| auth-service | `POST /auth/internal/ban` | `{ userId }` | `x-internal-secret` | 3000 ms | après un ban local |
 
-Identique a celui de auth-service : extrait `x-user-id`, `x-user-role`, `x-username` des headers injectes par le gateway.
+Les deux appels sont non bloquants (`console.warn` en cas d'échec). `from_username` provient de
+`x-user-username` — **non injecté** pour le user-service, donc souvent `undefined` dans la
+notification de follow.
 
 ---
 
 ## Variables d'environnement
 
-| Variable | Defaut | Requis | Description |
-|---|---|---|---|
-| `PORT` | `3002` | Non | Port d'ecoute |
-| `DATABASE_URL` | -- | **Oui** | URL de connexion PostgreSQL |
-| `INTERNAL_SECRET` | -- | Non | Secret pour les communications inter-services |
-| `AUTH_SERVICE_URL` | -- | Non | URL du auth-service (pour propagation ban) |
-| `PROFIL_SERVICE_URL` | -- | Non | URL du profil-service (pour notifications follow) |
-| `CORS_ORIGIN` | -- | Non | Origine autorisee pour CORS |
+| Variable | Défaut | Usage |
+|---|---|---|
+| `PORT` | `3002` | Port d'écoute |
+| `DATABASE_URL` | — | Connexion PostgreSQL |
+| `INTERNAL_SECRET` | — | Secret inter-services |
+| `AUTH_SERVICE_URL` | — | Propagation du ban |
+| `PROFIL_SERVICE_URL` | — | Notification de follow |
+| `CORS_ORIGIN` | `http://localhost:3000` | CORS |
 
 ---
 
-## Notes d'implementation
+## Dockerfile
 
-- Les routes `/users/:id/followers` et `/users/:id/following` exposent les donnees sans verifier le statut de la cible (publique).
-- La route `/users/by-username/:username` est la seule route publique (sans middleware `identity`). Elle est utilisee par le post-service pour resoudre les @mentions.
-- Les compteurs `followers_count` et `following_count` sont mis a jour atomiquement via `UserProfile.increment()` a l'interieur de transactions Sequelize, garantissant la coherence meme en cas de requetes concurrentes.
-- Le ban est propage au auth-service via HTTP ; si le auth-service est inaccessible, le user-service ne peut pas completer l'operation de ban.
+`node:20-alpine`, `npm install`, `CMD ["npm","start"]`. Pas d'`EXPOSE`. Le port 3002 est mappé
+via docker-compose / `docker run -p 3002:3002`.

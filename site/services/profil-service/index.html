@@ -236,15 +236,20 @@
     
     
     
+      
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -308,7 +313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/communication-services/" class="md-nav__link">
+      <a href="../../architecture/communication/" class="md-nav__link">
         
   
   
@@ -364,42 +369,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/diagramme-composants/" class="md-nav__link">
+      <a href="../../architecture/deploiement/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Diagramme de composants
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/docker-deploiement/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Docker & Déploiement
+    Déploiement
   
 
     
@@ -432,15 +409,20 @@
     
     
     
+      
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -648,10 +630,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#stack" class="md-nav__link">
+  <a href="#stack-dependances" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stack
+        Stack &amp; dépendances
       
     </span>
   </a>
@@ -659,22 +641,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#modeles-mongoose" class="md-nav__link">
+  <a href="#modeles-de-donnees" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Modeles Mongoose
+        Modèles de données
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Modeles Mongoose">
+    <nav class="md-nav" aria-label="Modèles de données">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#profile" class="md-nav__link">
+  <a href="#profiles" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Profile
+        profiles
       
     </span>
   </a>
@@ -682,10 +664,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#notification" class="md-nav__link">
+  <a href="#notifications" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notification
+        notifications
       
     </span>
   </a>
@@ -698,22 +680,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#routes" class="md-nav__link">
+  <a href="#routes-prefixe-api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Routes
+        Routes (préfixe /api)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Routes">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#endpoints-detailles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endpoints détaillés
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Endpoints détaillés">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#get-profilsuserid" class="md-nav__link">
+  <a href="#get-apiprofilsuserid" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GET /profils/:userId
+        GET /api/profils/:userId
       
     </span>
   </a>
@@ -721,10 +714,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#put-profilsuserid" class="md-nav__link">
+  <a href="#put-apiprofilsuserid" class="md-nav__link">
     <span class="md-ellipsis">
       
-        PUT /profils/:userId
+        PUT /api/profils/:userId
       
     </span>
   </a>
@@ -732,10 +725,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-notifications" class="md-nav__link">
+  <a href="#get-apinotifications" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GET /notifications
+        GET /api/notifications
       
     </span>
   </a>
@@ -743,10 +736,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#put-notificationsread-all" class="md-nav__link">
+  <a href="#put-apinotificationsidread-put-apinotificationsread-all" class="md-nav__link">
     <span class="md-ellipsis">
       
-        PUT /notifications/read-all
+        PUT /api/notifications/:id/read · PUT /api/notifications/read-all
       
     </span>
   </a>
@@ -754,21 +747,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#put-notificationsidread" class="md-nav__link">
+  <a href="#post-apinotificationsinternal-interne" class="md-nav__link">
     <span class="md-ellipsis">
       
-        PUT /notifications/:id/read
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post-notificationsinternal" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        POST /notifications/internal
+        POST /api/notifications/internal (interne)
       
     </span>
   </a>
@@ -781,30 +763,35 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#middlewares" class="md-nav__link">
+  <a href="#systeme-de-notifications-synthese" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Middlewares
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Middlewares">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#identitymiddlewarejs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        identity.middleware.js
+        Système de notifications (synthèse)
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#gestion-du-profil-upsert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestion du profil (upsert)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appels-inter-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appels inter-services
+      
+    </span>
+  </a>
   
 </li>
       
@@ -820,10 +807,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes-dimplementation" class="md-nav__link">
+  <a href="#dockerfile" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notes d'implementation
+        Dockerfile
       
     </span>
   </a>
@@ -884,15 +871,20 @@
     
     
     
+      
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
@@ -928,14 +920,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../donnees/schema-postgresql/" class="md-nav__link">
+      <a href="../../donnees/postgresql/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Schéma PostgreSQL
+    PostgreSQL
   
 
     
@@ -956,14 +948,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../donnees/schema-mongodb/" class="md-nav__link">
+      <a href="../../donnees/mongodb/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Schéma MongoDB
+    MongoDB
   
 
     
@@ -994,22 +986,27 @@
     
     
     
+      
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    Sécurité
+    API
   
 
     
@@ -1025,170 +1022,6 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Sécurité
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../securite/authentification/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Authentification
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Fonctionnalités
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Fonctionnalités
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../fonctionnalites/couverture-fx/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Couverture
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    API
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
     API
   
 
@@ -1202,7 +1035,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/routes-completes/" class="md-nav__link">
+      <a href="../../api/routes/" class="md-nav__link">
         
   
   
@@ -1240,15 +1073,222 @@
     
     
     
+      
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sécurité
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sécurité
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../securite/authentification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../securite/secrets-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Secrets & configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fonctionnalités
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fonctionnalités
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fonctionnalites/couverture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Couverture Fx1→Fx23
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
             
   
   
@@ -1284,7 +1324,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../soutenance/questions-generales/" class="md-nav__link">
+      <a href="../../soutenance/questions/" class="md-nav__link">
         
   
   
@@ -1312,7 +1352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../soutenance/questions-par-membre/" class="md-nav__link">
+      <a href="../../soutenance/par-membre/" class="md-nav__link">
         
   
   
@@ -1340,14 +1380,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../soutenance/limites-evolutions/" class="md-nav__link">
+      <a href="../../soutenance/limites/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Limites et évolutions
+    Limites & évolutions
   
 
     
@@ -1375,7 +1415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CHANGELOG_DOC/" class="md-nav__link">
+      <a href="../../CHANGELOG/" class="md-nav__link">
         
   
   
@@ -1422,10 +1462,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#stack" class="md-nav__link">
+  <a href="#stack-dependances" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stack
+        Stack &amp; dépendances
       
     </span>
   </a>
@@ -1433,22 +1473,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#modeles-mongoose" class="md-nav__link">
+  <a href="#modeles-de-donnees" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Modeles Mongoose
+        Modèles de données
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Modeles Mongoose">
+    <nav class="md-nav" aria-label="Modèles de données">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#profile" class="md-nav__link">
+  <a href="#profiles" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Profile
+        profiles
       
     </span>
   </a>
@@ -1456,10 +1496,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#notification" class="md-nav__link">
+  <a href="#notifications" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notification
+        notifications
       
     </span>
   </a>
@@ -1472,22 +1512,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#routes" class="md-nav__link">
+  <a href="#routes-prefixe-api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Routes
+        Routes (préfixe /api)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Routes">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#endpoints-detailles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endpoints détaillés
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Endpoints détaillés">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#get-profilsuserid" class="md-nav__link">
+  <a href="#get-apiprofilsuserid" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GET /profils/:userId
+        GET /api/profils/:userId
       
     </span>
   </a>
@@ -1495,10 +1546,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#put-profilsuserid" class="md-nav__link">
+  <a href="#put-apiprofilsuserid" class="md-nav__link">
     <span class="md-ellipsis">
       
-        PUT /profils/:userId
+        PUT /api/profils/:userId
       
     </span>
   </a>
@@ -1506,10 +1557,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-notifications" class="md-nav__link">
+  <a href="#get-apinotifications" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GET /notifications
+        GET /api/notifications
       
     </span>
   </a>
@@ -1517,10 +1568,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#put-notificationsread-all" class="md-nav__link">
+  <a href="#put-apinotificationsidread-put-apinotificationsread-all" class="md-nav__link">
     <span class="md-ellipsis">
       
-        PUT /notifications/read-all
+        PUT /api/notifications/:id/read · PUT /api/notifications/read-all
       
     </span>
   </a>
@@ -1528,21 +1579,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#put-notificationsidread" class="md-nav__link">
+  <a href="#post-apinotificationsinternal-interne" class="md-nav__link">
     <span class="md-ellipsis">
       
-        PUT /notifications/:id/read
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#post-notificationsinternal" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        POST /notifications/internal
+        POST /api/notifications/internal (interne)
       
     </span>
   </a>
@@ -1555,30 +1595,35 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#middlewares" class="md-nav__link">
+  <a href="#systeme-de-notifications-synthese" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Middlewares
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Middlewares">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#identitymiddlewarejs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        identity.middleware.js
+        Système de notifications (synthèse)
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#gestion-du-profil-upsert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestion du profil (upsert)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appels-inter-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appels inter-services
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1594,10 +1639,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes-dimplementation" class="md-nav__link">
+  <a href="#dockerfile" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notes d'implementation
+        Dockerfile
       
     </span>
   </a>
@@ -1622,438 +1667,387 @@
 
 
 <h1 id="profil-service">Profil Service</h1>
-<p>Microservice de gestion des profils utilisateur (biographie, avatar, banniere) et des notifications pour Breezy.</p>
+<p>Gère les <strong>profils détaillés</strong> (bio, avatar, bannière, localisation) et le <strong>système de
+notifications</strong>. Stocke ses données dans MongoDB.</p>
+<ul>
+<li><strong>Dépôt</strong> : <code>breezy-profil-service</code></li>
+<li><strong>Port</strong> : <code>3004</code></li>
+<li><strong>Base de données</strong> : MongoDB <code>profils_db</code> (conteneur <code>mongo-profils</code>)</li>
+<li><strong>ODM</strong> : Mongoose 9</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Profil ≠ User</p>
+<p>Le <code>display_name</code>, la <code>bio</code>, l'<code>avatar_url</code> et la <code>banner_url</code> vivent ici. Le <code>username</code> et
+les compteurs de follow vivent dans le <strong>user-service</strong>. Le frontend fusionne les deux via
+<code>getFullProfile</code> (<code>/users/:id</code> + <code>/profils/:id</code>).</p>
+</div>
 <hr />
-<h2 id="stack">Stack</h2>
+<h2 id="stack-dependances">Stack &amp; dépendances</h2>
 <table>
 <thead>
 <tr>
-<th>Technologie</th>
+<th>Paquet</th>
 <th>Version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Node.js</td>
-<td>20 (Alpine)</td>
+<td>express</td>
+<td><code>^5.2.1</code></td>
 </tr>
 <tr>
-<td>Express</td>
-<td>5.2.1</td>
-</tr>
-<tr>
-<td>Mongoose</td>
-<td>9.7.0</td>
-</tr>
-<tr>
-<td>MongoDB</td>
-<td>6</td>
+<td>mongoose</td>
+<td><code>^9.7.0</code></td>
 </tr>
 <tr>
 <td>axios</td>
-<td>1.18.0</td>
+<td><code>^1.18.0</code></td>
 </tr>
 <tr>
 <td>morgan</td>
-<td>1.11.0</td>
+<td><code>^1.11.0</code></td>
+</tr>
+<tr>
+<td>cors</td>
+<td><code>^2.8.6</code></td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="modeles-mongoose">Modeles Mongoose</h2>
-<h3 id="profile">Profile</h3>
+<h2 id="modeles-de-donnees">Modèles de données</h2>
+<h3 id="profiles"><code>profiles</code></h3>
 <table>
 <thead>
 <tr>
 <th>Champ</th>
 <th>Type</th>
-<th>Contraintes</th>
+<th>Contraintes / défaut</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>user_id</code></td>
 <td>String</td>
-<td>Requis, UNIQUE</td>
+<td><code>required</code>, <code>unique</code></td>
 </tr>
 <tr>
 <td><code>display_name</code></td>
 <td>String</td>
-<td><code>maxlength</code> 100, defaut <code>''</code></td>
+<td>max 100, défaut <code>''</code></td>
 </tr>
 <tr>
 <td><code>bio</code></td>
 <td>String</td>
-<td><code>maxlength</code> 160, defaut <code>''</code></td>
+<td>max 160, défaut <code>''</code></td>
 </tr>
 <tr>
 <td><code>avatar_url</code></td>
 <td>String</td>
-<td>Defaut <code>''</code></td>
+<td>défaut <code>''</code></td>
 </tr>
 <tr>
 <td><code>banner_url</code></td>
 <td>String</td>
-<td>Defaut <code>''</code></td>
+<td>défaut <code>''</code></td>
 </tr>
 <tr>
 <td><code>location</code></td>
 <td>String</td>
-<td><code>maxlength</code> 100, defaut <code>''</code></td>
-</tr>
-<tr>
-<td><code>created_at</code></td>
-<td>Date</td>
-<td>Timestamp Mongoose</td>
-</tr>
-<tr>
-<td><code>updated_at</code></td>
-<td>Date</td>
-<td>Timestamp Mongoose</td>
+<td>max 100, défaut <code>''</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="notification">Notification</h3>
+<p>Index : <code>{ user_id: 1 }</code> unique.</p>
+<h3 id="notifications"><code>notifications</code></h3>
 <table>
 <thead>
 <tr>
 <th>Champ</th>
 <th>Type</th>
-<th>Contraintes</th>
+<th>Contraintes / défaut</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>recipient_user_id</code></td>
 <td>String</td>
-<td>Requis</td>
+<td><code>required</code></td>
 </tr>
 <tr>
 <td><code>type</code></td>
 <td>String</td>
-<td>Enum : <code>'like'</code>, <code>'follow'</code>, <code>'mention'</code>, <code>'comment'</code>, <code>'reply'</code></td>
+<td><code>enum: ['like','follow','mention','comment','reply']</code>, <code>required</code></td>
 </tr>
 <tr>
 <td><code>from_user_id</code></td>
 <td>String</td>
-<td>Requis</td>
+<td><code>required</code></td>
 </tr>
 <tr>
 <td><code>from_username</code></td>
 <td>String</td>
-<td>Requis</td>
+<td><code>required</code></td>
 </tr>
 <tr>
 <td><code>post_id</code></td>
 <td>String</td>
-<td>Defaut null</td>
+<td>défaut <code>null</code></td>
 </tr>
 <tr>
 <td><code>is_read</code></td>
 <td>Boolean</td>
-<td>Defaut false</td>
+<td>défaut <code>false</code></td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
 <td>Date</td>
-<td>Timestamp (creation only)</td>
+<td>auto (<code>updatedAt: false</code>)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Index :</strong> <code>{ recipient_user_id: 1, is_read: 1, created_at: -1 }</code></p>
+<p>Index composé : <code>{ recipient_user_id: 1, is_read: 1, created_at: -1 }</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title"><code>runValidators</code> non activé</p>
+<p>Les <code>findOneAndUpdate</code> n'utilisent pas <code>runValidators: true</code> → les <code>maxlength</code> de Mongoose
+(100 pour <code>display_name</code>/<code>location</code>) ne sont pas garantis en base. Seule la <code>bio</code> a une
+validation manuelle explicite (&gt; 160).</p>
+</div>
 <hr />
-<h2 id="routes">Routes</h2>
-<h3 id="get-profilsuserid">GET /profils/:userId</h3>
-<p>Recuperer le profil d'un utilisateur (creation automatique si inexistant).</p>
-<p><strong>Middleware :</strong> aucun</p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;user_id&quot;: &quot;uuid&quot;,
-  &quot;display_name&quot;: &quot;John Doe&quot;,
-  &quot;bio&quot;: &quot;Developpeur fullstack&quot;,
-  &quot;avatar_url&quot;: &quot;https://cdn.breezy.app/avatars/uuid.jpg&quot;,
-  &quot;banner_url&quot;: &quot;https://cdn.breezy.app/banners/uuid.jpg&quot;,
-  &quot;location&quot;: &quot;Paris&quot;,
-  &quot;created_at&quot;: &quot;2024-01-01T00:00:00.000Z&quot;,
-  &quot;updated_at&quot;: &quot;2024-01-01T00:00:00.000Z&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Utiliser <code>findOneAndUpdate</code> avec <code>upsert: true</code> et <code>$setOnInsert: { user_id }</code>.
-2. Si le profil n'existe pas, il est cree automatiquement avec les valeurs par defaut (lazy creation / auto-provisioning).
-3. Retourner le profil existant ou nouvellement cree.</p>
-<hr />
-<h3 id="put-profilsuserid">PUT /profils/:userId</h3>
-<p>Mettre a jour un profil (proprietaire uniquement).</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Corps de la requete (body JSON) :</strong></p>
-<p>Champs autorises (whitelist) :</p>
+<h2 id="routes-prefixe-api">Routes (préfixe <code>/api</code>)</h2>
 <table>
 <thead>
 <tr>
-<th>Champ</th>
-<th>Type</th>
-<th>Requis</th>
-<th>Contraintes</th>
+<th>Méthode</th>
+<th>Path</th>
+<th>Contrôleur</th>
+<th>Auth</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>display_name</code></td>
-<td>string</td>
-<td>Non</td>
-<td><code>maxlength</code> 100</td>
+<td>GET</td>
+<td><code>/api/profils/:userId</code></td>
+<td><code>getProfile</code></td>
+<td>JWT (header)</td>
 </tr>
 <tr>
-<td><code>bio</code></td>
-<td>string</td>
-<td>Non</td>
-<td><code>maxlength</code> 160</td>
+<td>PUT</td>
+<td><code>/api/profils/:userId</code></td>
+<td><code>updateProfile</code></td>
+<td>JWT — <code>x-user-id</code> == <code>:userId</code></td>
 </tr>
 <tr>
-<td><code>avatar_url</code></td>
-<td>string</td>
-<td>Non</td>
-<td>--</td>
+<td>GET</td>
+<td><code>/api/notifications</code></td>
+<td><code>getNotifications</code></td>
+<td>JWT</td>
 </tr>
 <tr>
-<td><code>banner_url</code></td>
-<td>string</td>
-<td>Non</td>
-<td>--</td>
+<td>PUT</td>
+<td><code>/api/notifications/read-all</code></td>
+<td><code>markAllAsRead</code></td>
+<td>JWT</td>
 </tr>
 <tr>
-<td><code>location</code></td>
-<td>string</td>
-<td>Non</td>
-<td><code>maxlength</code> 100</td>
+<td>PUT</td>
+<td><code>/api/notifications/:id/read</code></td>
+<td><code>markAsRead</code></td>
+<td>JWT</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/notifications/internal</code></td>
+<td><code>createNotification</code></td>
+<td>Interne (<code>x-internal-secret</code>)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;message&quot;: &quot;Profile updated&quot;,
-  &quot;profile&quot;: { ... }
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>401 Unauthorized
-{
-  &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
-}
-
-403 Forbidden
-{
-  &quot;error&quot;: &quot;FORBIDDEN&quot;,
-  &quot;message&quot;: &quot;You can only edit your own profile&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Verifier que <code>x-user-id</code> === <code>userId</code> (proprietaire).
-2. Filtrer les champs recus pour n'accepter que ceux de la whitelist (display_name, bio, avatar_url, banner_url, location). Les champs non autorises sont ignores silencieusement.
-3. Mettre a jour le document avec <code>findOneAndUpdate</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Orthographe : <code>/profils</code> (français)</p>
+<p>Le path réel est <code>/api/profils/:userId</code>. Le README et le WIKI du service documentent à tort
+<code>/api/profiles/</code>. <strong>Le code fait foi : <code>profils</code>.</strong> Le frontend appelle bien <code>/profils</code>.</p>
+</div>
+<p><code>/notifications/read-all</code> est déclaré <strong>avant</strong> <code>/notifications/:id/read</code> (sinon <code>read-all</code>
+serait capturé comme un <code>:id</code>).</p>
 <hr />
-<h3 id="get-notifications">GET /notifications</h3>
-<p>Recuperer les notifications de l'utilisateur authentifie.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Parametres de requete (query string) :</strong></p>
+<h2 id="endpoints-detailles">Endpoints détaillés</h2>
+<h3 id="get-apiprofilsuserid">GET /api/profils/:userId</h3>
+<p><code>findOneAndUpdate({ user_id }, { $setOnInsert: { user_id } }, { upsert: true, new: true })</code> :
+<strong>upsert</strong> — crée un profil minimal (valeurs par défaut) au premier accès, donc jamais de 404.
+<strong>Succès <code>200</code></strong> : le profil complet.</p>
+<h3 id="put-apiprofilsuserid">PUT /api/profils/:userId</h3>
+<p><code>x-user-id</code> doit être <strong>strictement égal</strong> à <code>:userId</code>, sinon <code>403 FORBIDDEN</code>. Champs
+whitelistés (tout autre champ ignoré) : <code>display_name</code>, <code>bio</code>, <code>avatar_url</code>, <code>banner_url</code>,
+<code>location</code>. Upsert également (crée si absent). <strong>Succès <code>200</code></strong> : profil mis à jour.
+<strong><code>400 BIO_TOO_LONG</code></strong> si <code>bio.length &gt; 160</code>.</p>
+<h3 id="get-apinotifications">GET /api/notifications</h3>
+<p><code>recipient_user_id = x-user-id</code>. Query <code>page</code> (1), <code>limit</code> (20), <code>unread_only</code> (=<code>'true'</code> →
+filtre <code>is_read:false</code>). Renvoie en parallèle la page, le total et le nombre global de non-lus.</p>
+<ul>
+<li><strong>Succès <code>200</code></strong> :
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="cm">/* notifications */</span><span class="w"> </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;unread_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;pagination&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;page&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;hasNext&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></li>
+</ul>
+<h3 id="put-apinotificationsidread-put-apinotificationsread-all">PUT /api/notifications/:id/read · PUT /api/notifications/read-all</h3>
+<ul>
+<li><code>:id/read</code> : <code>findOneAndUpdate({ _id, recipient_user_id }, { is_read: true })</code>.
+  <code>404 NOT_FOUND</code> si introuvable ou pas la sienne (un <code>:id</code> non-ObjectId → <code>500</code>).</li>
+<li><code>read-all</code> : <code>updateMany({ recipient_user_id, is_read:false }, { is_read:true })</code> →
+  <code>{ updated_count }</code>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Pas de suppression</p>
+<p>Aucun endpoint <code>DELETE</code> n'existe pour les notifications ni les profils.</p>
+</div>
+<h3 id="post-apinotificationsinternal-interne">POST /api/notifications/internal <em>(interne)</em></h3>
+<p>Header <code>x-internal-secret</code> requis (sinon <code>401 UNAUTHORIZED</code>). Body
+<code>{ recipient_user_id, type, from_user_id, from_username, post_id, recipient_role? }</code>.</p>
+<p><strong>Règles métier</strong> :</p>
+<ol>
+<li><strong>Auto-notification ignorée</strong> : si <code>recipient_user_id === from_user_id</code> → <code>204</code> (rien créé).</li>
+<li><strong>Filtrage par rôle pour <code>like</code>/<code>follow</code></strong> : appel
+   <code>GET {AUTH_SERVICE_URL}/auth/internal/users/{recipient_user_id}/role</code> (timeout 2 s). Si le
+   destinataire est <code>moderator</code>/<code>admin</code> → <code>204</code> (ils ne reçoivent pas like/follow).</li>
+<li><strong>Fallback</strong> : si l'auth-service est indisponible, le rôle du body <code>recipient_role</code> est
+   utilisé ; si admin/modérateur → <code>204</code>, sinon création autorisée.</li>
+<li>
+<p><strong><code>mention</code>/<code>comment</code>/<code>reply</code></strong> : pas de filtrage par rôle.</p>
+</li>
+<li>
+<p><strong>Succès <code>201</code></strong> : la notification créée. <strong><code>204</code></strong> si self-notif ou destinataire admin/modo.</p>
+</li>
+</ol>
+<hr />
+<h2 id="systeme-de-notifications-synthese">Système de notifications (synthèse)</h2>
 <table>
 <thead>
 <tr>
-<th>Champ</th>
 <th>Type</th>
-<th>Requis</th>
+<th>Déclencheur réel</th>
+<th><code>post_id</code></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>page</code></td>
-<td>integer</td>
-<td>Non (defaut 1)</td>
+<td><code>like</code></td>
+<td>post-service, quand un post est liké</td>
+<td>✅</td>
 </tr>
 <tr>
-<td><code>limit</code></td>
-<td>integer</td>
-<td>Non (defaut 20)</td>
+<td><code>follow</code></td>
+<td>user-service, lors d'un follow</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><code>mention</code></td>
+<td>post-service, <code>@username</code> dans un post</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><code>comment</code></td>
+<td><strong>type prévu, jamais généré</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>reply</code></td>
+<td><strong>type prévu, jamais généré</strong></td>
+<td>—</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;notifications&quot;: [
-    {
-      &quot;_id&quot;: &quot;objectid&quot;,
-      &quot;recipient_user_id&quot;: &quot;uuid&quot;,
-      &quot;type&quot;: &quot;like&quot;,
-      &quot;from_user_id&quot;: &quot;uuid2&quot;,
-      &quot;from_username&quot;: &quot;janedoe&quot;,
-      &quot;post_id&quot;: &quot;objectid&quot;,
-      &quot;is_read&quot;: false,
-      &quot;created_at&quot;: &quot;2024-01-01T00:00:00.000Z&quot;
-    }
-  ],
-  &quot;unread_count&quot;: 3,
-  &quot;total&quot;: 15,
-  &quot;page&quot;: 1,
-  &quot;limit&quot;: 20
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>401 Unauthorized
-{
-  &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. <code>Notification.find({ recipient_user_id: x-user-id })</code>, trie par <code>created_at: -1</code>.
-2. Compter le nombre de notifications avec <code>is_read: false</code> pour <code>unread_count</code>.
-3. Pagination.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Post as post-service
+    participant Profil as profil-service
+    participant Auth as auth-service
+    Post-&gt;&gt;Profil: POST /api/notifications/internal {type:'like', recipient_role}
+    Note over Profil: recipient == sender ? → 204
+    Profil-&gt;&gt;Auth: GET /auth/internal/users/:id/role
+    Auth--&gt;&gt;Profil: { role }
+    alt role ∈ {admin, moderator}
+        Profil--&gt;&gt;Post: 204 (pas de notif)
+    else
+        Profil-&gt;&gt;Profil: Notification.create(...)
+        Profil--&gt;&gt;Post: 201
+    end</code></pre>
 <hr />
-<h3 id="put-notificationsread-all">PUT /notifications/read-all</h3>
-<p>Marquer toutes les notifications comme lues.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;message&quot;: &quot;All notifications marked as read&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. <code>Notification.updateMany({ recipient_user_id: x-user-id, is_read: false }, { is_read: true })</code>.</p>
+<h2 id="gestion-du-profil-upsert">Gestion du profil (upsert)</h2>
+<p><code>getProfile</code> et <code>updateProfile</code> utilisent tous deux <code>findOneAndUpdate(..., { upsert:true })</code> :
+le profil est <strong>créé à la demande</strong> (au premier GET via <code>$setOnInsert</code>, ou au premier PUT). Il
+n'y a donc <strong>pas de flux de synchronisation</strong> de profil (contrairement au user-service qui est
+synchronisé par l'auth-service). <code>user_id</code> n'est jamais modifiable.</p>
 <hr />
-<h3 id="put-notificationsidread">PUT /notifications/:id/read</h3>
-<p>Marquer une notification specifique comme lue.</p>
-<p><strong>Middleware :</strong> <code>identity</code></p>
-<p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>200 OK
-{
-  &quot;message&quot;: &quot;Notification marked as read&quot;
-}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>404 Not Found
-{
-  &quot;error&quot;: &quot;NOTIFICATION_NOT_FOUND&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Trouver la notification par <code>_id</code>.
-2. Verifier que <code>recipient_user_id</code> === <code>x-user-id</code> (scope a l'utilisateur).
-3. Marquer <code>is_read: true</code>.</p>
-<hr />
-<h3 id="post-notificationsinternal">POST /notifications/internal</h3>
-<p>Creer une notification (appele par les autres services internes).</p>
-<p><strong>Middleware :</strong> aucun (securise par header <code>x-internal-secret</code>)</p>
-<p><strong>Headers requis :</strong> <code>x-internal-secret</code></p>
-<p><strong>Corps de la requete (body JSON) :</strong></p>
+<h2 id="appels-inter-services">Appels inter-services</h2>
 <table>
 <thead>
 <tr>
-<th>Champ</th>
-<th>Type</th>
-<th>Requis</th>
-<th>Description</th>
+<th>Vers</th>
+<th>Endpoint</th>
+<th>Headers</th>
+<th>Timeout</th>
+<th>Quand</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>recipient_user_id</code></td>
-<td>string</td>
-<td><strong>Oui</strong></td>
-<td>UUID du destinataire</td>
-</tr>
-<tr>
-<td><code>type</code></td>
-<td>string</td>
-<td><strong>Oui</strong></td>
-<td>Enum : <code>like</code>, <code>follow</code>, <code>mention</code>, <code>comment</code>, <code>reply</code></td>
-</tr>
-<tr>
-<td><code>from_user_id</code></td>
-<td>string</td>
-<td><strong>Oui</strong></td>
-<td>UUID de l'emetteur</td>
-</tr>
-<tr>
-<td><code>from_username</code></td>
-<td>string</td>
-<td><strong>Oui</strong></td>
-<td>Username de l'emetteur</td>
-</tr>
-<tr>
-<td><code>post_id</code></td>
-<td>string</td>
-<td>Non</td>
-<td>Optionnel, lie a un post specifique</td>
+<td>auth-service</td>
+<td><code>GET /auth/internal/users/{id}/role</code></td>
+<td><code>x-internal-secret</code></td>
+<td>2000 ms</td>
+<td><code>createNotification</code> pour <code>like</code>/<code>follow</code></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Reponses :</strong></p>
-<div class="highlight"><pre><span></span><code>201 Created
-{
-  &quot;message&quot;: &quot;Notification created&quot;,
-  &quot;notification&quot;: { ... }
-}
-
-204 No Content
-{}
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>403 Forbidden
-{
-  &quot;error&quot;: &quot;FORBIDDEN&quot;
-}
-</code></pre></div>
-<p><strong>Logique metier :</strong>
-1. Verifier le header <code>x-internal-secret</code> correspond a <code>INTERNAL_SECRET</code>.
-2. <strong>Self-notification guard</strong> : si <code>recipient_user_id === from_user_id</code> -&gt; retour <code>204 No Content</code> (un utilisateur ne recoit pas de notification pour ses propres actions).
-3. Creer la notification avec <code>Notification.create()</code>.</p>
-<hr />
-<h2 id="middlewares">Middlewares</h2>
-<h3 id="identitymiddlewarejs">identity.middleware.js</h3>
-<p>Identique aux autres services. Extrait <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code> des headers injectes par le gateway.</p>
+<div class="admonition warning">
+<p class="admonition-title"><code>AUTH_SERVICE_URL</code> absent du <code>.env</code></p>
+<p><code>AUTH_SERVICE_URL</code> est présent dans <code>.env.example</code> mais <strong>absent du <code>.env</code></strong> du dépôt. Dans
+docker-compose il est bien fourni (<code>http://auth-service:3001</code>). En local sans Docker, le
+filtrage de rôle tombe systématiquement en mode fallback (<code>recipient_role</code> du body).</p>
+</div>
 <hr />
 <h2 id="variables-denvironnement">Variables d'environnement</h2>
 <table>
 <thead>
 <tr>
 <th>Variable</th>
-<th>Defaut</th>
-<th>Requis</th>
-<th>Description</th>
+<th>Défaut</th>
+<th>Usage</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>PORT</code></td>
 <td><code>3004</code></td>
-<td>Non</td>
-<td>Port d'ecoute</td>
+<td>Port d'écoute</td>
 </tr>
 <tr>
 <td><code>MONGO_URI</code></td>
-<td>--</td>
-<td><strong>Oui</strong></td>
-<td>URI de connexion MongoDB</td>
+<td><code>mongodb://localhost:27017/breezy-profil</code></td>
+<td>Connexion MongoDB</td>
+</tr>
+<tr>
+<td><code>AUTH_SERVICE_URL</code></td>
+<td><code>http://localhost:3001</code></td>
+<td>Filtrage de rôle</td>
 </tr>
 <tr>
 <td><code>INTERNAL_SECRET</code></td>
-<td>--</td>
-<td>Non</td>
-<td>Secret pour les communications inter-services</td>
+<td>—</td>
+<td>Secret inter-services</td>
+</tr>
+<tr>
+<td><code>CORS_ORIGIN</code></td>
+<td><code>http://localhost:3000</code></td>
+<td>CORS</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="notes-dimplementation">Notes d'implementation</h2>
-<ul>
-<li>Le profil est cree de maniere lazy (paresseuse) : il n'existe pas en base tant que la premiere requete <code>GET /profils/:userId</code> n'est pas faite. L'upsert avec <code>$setOnInsert</code> garantit qu'aucun doublon n'est cree.</li>
-<li>La self-notification guard empeche un utilisateur de recevoir des notifications pour ses propres actions (ex: se follow soi-meme declencherait une notification <code>follow</code> sans ce guard).</li>
-<li>Le service utilise <code>mongoose</code> avec <code>timestamps</code> (created_at, updated_at) pour Profile, mais <code>timestamps: { createdAt: 'created_at', updatedAt: false }</code> pour Notification (pas de <code>updated_at</code>).</li>
-</ul>
+<h2 id="dockerfile">Dockerfile</h2>
+<p><code>node:20-alpine</code>, <code>npm install</code>, <code>CMD ["npm","start"]</code>. Pas d'<code>EXPOSE</code>.</p>
 
 
 
@@ -2103,7 +2097,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>

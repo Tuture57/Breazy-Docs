@@ -26,7 +26,7 @@ sequenceDiagram
     Auth->>Auth: Validation express-validator (username 3-50, email, password 8+ avec maj+chiffre)
     Auth->>PGauth: SELECT users WHERE email = ?
     Auth->>PGauth: SELECT users WHERE username = ?
-    Auth->>Auth: bcrypt.hash(password, 12 rounds)
+    Auth->>Auth: bcrypt.hash(password, BCRYPT_ROUNDS)  %% 10 en Docker, 12 par défaut code
     Auth->>PGauth: INSERT users (id, username, email, password_hash, role='user')
 
     Note over Auth: Génération des tokens
@@ -214,6 +214,12 @@ sequenceDiagram
 **En cas de doublon :**
 - MongoDB renvoie une erreur `11000` (index unique `{post_id, user_id}`)
 - Le service retourne `409 ALREADY_LIKED`
+
+!!! note "Filtrage par rôle de la notification"
+    Avant de créer la notification `like`, le profil-service vérifie le rôle du destinataire
+    (`GET /auth/internal/users/:id/role`) : les modérateurs et admins ne reçoivent pas de
+    notification `like`/`follow`. Le post-service récupère aussi le rôle du destinataire via
+    `GET /users/:id` pour transmettre `recipient_role` en fallback.
 
 ---
 

@@ -1,282 +1,191 @@
 # Frontend
 
-Application web Next.js pour Breezy.
+Application **Next.js 14 (App Router)**, mobile-first, qui consomme l'API Breezy via la
+gateway. Pas de Redux/Zustand/React Query : un seul contexte React (`AuthContext`) et des hooks
+custom.
+
+- **Dépôt** : `breezy-frontend` (nom interne `breezy-nextjs`)
+- **Port** : `3000`
+- **Rendu** : App Router avec Route Groups `(app)` (protégé) / `(auth)` (public)
 
 ---
 
-## Stack
+## Stack & dépendances
 
-| Technologie | Version |
-|---|---|
-| Next.js | 14.2.0 |
-| React | 18.2.0 |
-| Tailwind CSS | 3.4.1 |
-| Axios | 1.6.0 |
-| date-fns | 3.3.1 |
-| lucide-react | 1.21.0 |
+| Lib | Version | Rôle |
+|---|---|---|
+| next | `14.2.0` | Framework App Router |
+| react / react-dom | `^18.2.0` | UI |
+| axios | `^1.6.0` | Client HTTP |
+| lucide-react | `^1.21.0` | Icônes |
+| clsx | `^2.1.0` | Composition de classes CSS |
+| tailwindcss | `^3.4.1` | Styles (devDependency) |
+
+!!! note "README partiellement obsolète"
+    Le README mentionne `date-fns`, **absent des dépendances** : le formatage des dates est fait
+    maison dans `src/utils/formatDate.js`. Le README donne aussi un exemple d'`NEXT_PUBLIC_API_URL`
+    (`http://localhost:4000/api`) non aligné avec `.env.local` (`/api`).
+
+---
+
+## Architecture des dossiers
+
+```
+src/
+├── app/
+│   ├── layout.js            # RootLayout : <html lang=fr>, Inter, <AuthProvider>
+│   ├── page.js              # Landing "/" → redirige vers /home si token
+│   ├── (app)/               # Groupe PROTÉGÉ (garde d'auth dans (app)/layout.js)
+│   │   ├── home, compose, reply, search, notifications,
+│   │   ├── messages, messages/[convId],
+│   │   ├── profile, profile/[userId], profile/edit, settings
+│   ├── (auth)/              # Groupe PUBLIC : connect, signin, register
+│   └── legal/               # terms, privacy, cookies, accessibility, ads
+├── components/  (ui, layout, feed, comment, profile, notifications, messages, search)
+├── context/     AuthContext.js
+├── hooks/        useAuth, usePosts, useComments, useFollow, useLike, useMentions
+├── services/     api.js + authService, postService, commentService,
+│                 userService, notificationService, messageService
+├── mocks/        *.mock.js + data.js + utils.js
+└── utils/        formatDate.js, validators.js, toast.js
+```
+
+Alias `@/*` → `./src/*` (`jsconfig.json`).
 
 ---
 
 ## Pages
 
-### Pages publiques
-
-| Route | Composant | Description |
+| Route | Fichier | Rôle |
 |---|---|---|
-| `/` | Landing | Page d'accueil publique |
-| `/connect` | Connect | Page de connexion |
-| `/signin` | SignIn | Page de connexion (alias) |
-| `/register` | Register | Page d'inscription |
-| `/legal/terms` | Terms | Conditions d'utilisation |
-| `/legal/privacy` | Privacy | Politique de confidentialite |
-| `/legal/cookies` | Cookies | Politique des cookies |
-| `/legal/accessibility` | Accessibility | Declaration d'accessibilite |
-| `/legal/ads` | Ads | Politique publicitaire |
-
-### Pages protegees (groupe `app`)
-
-| Route | Composant | Description |
-|---|---|---|
-| `/home` | HomePage | Fil d'actualite principal |
-| `/compose` | ComposePage | Creation d'un nouveau post |
-| `/reply` | ReplyPage | Reponse a un post (`?postId=` en query) |
-| `/search` | SearchPage | Recherche de posts et d'utilisateurs |
-| `/notifications` | NotificationsPage | Liste des notifications |
-| `/profile` | MyProfilePage | Profil de l'utilisateur connecte |
-| `/profile/[userId]` | UserProfilePage | Profil d'un autre utilisateur |
-| `/profile/edit` | EditProfilePage | Edition du profil |
-| `/messages` | MessagesPage | Messagerie (placeholder) |
-| `/messages/[convId]` | ConversationPage | Conversation (placeholder) |
-| `/settings` | SettingsPage | Parametres du compte |
+| `/` | `app/page.js` | Landing → `/home` si token, sinon logo + CTA + liens légaux |
+| `/connect` | `(auth)/connect` | Landing alternatif (cible de redirection si non authentifié) |
+| `/signin` | `(auth)/signin` | Connexion. Gère 429, `ACCOUNT_BANNED`, identifiants incorrects |
+| `/register` | `(auth)/register` | Inscription (validation locale `validateRegisterForm`) |
+| `/home` | `(app)/home` | Feed (`usePosts`) + `PostForm` desktop. Détection `@breezy_ai` (re-fetch +5 s) |
+| `/compose` | `(app)/compose` | Composer un post (mobile plein écran), upload, compteur, @mentions |
+| `/reply` | `(app)/reply` | Répondre à un post (`?postId=`) |
+| `/search` | `(app)/search` | Recherche posts + comptes (debounce 400 ms, `Promise.allSettled`) |
+| `/notifications` | `(app)/notifications` | Onglets Toutes / Mentions, marque tout lu au montage |
+| `/messages` | `(app)/messages` | **Placeholder** « messagerie à venir » |
+| `/messages/[convId]` | `(app)/messages/[convId]` | Redirige vers `/messages` (non implémenté) |
+| `/profile` | `(app)/profile` | Profil de l'utilisateur connecté (onglets Posts/Replies/Media/Likes) |
+| `/profile/[userId]` | `(app)/profile/[userId]` | Profil d'un autre (redirige vers `/profile` si soi-même) |
+| `/profile/edit` | `(app)/profile/edit` | Édition (username → nouveau JWT, bio, localisation, avatar/bannière base64) |
+| `/settings` | `(app)/settings` | Changement de mot de passe + section admin (création de compte) + déconnexion |
+| `/legal/*` | `app/legal/*` | Pages statiques placeholder (terms, privacy, cookies, accessibility, ads) |
 
 ---
 
-## Gestion des tokens JWT
+## Composants principaux
 
-### Stockage
+| Composant | Rôle |
+|---|---|
+| `AppShell` | Layout global : sidebar desktop + colonne centrale (max 600 px) + bottom nav mobile |
+| `TopBar` / `BottomNav` / `DesktopSidebar` | Navigation (badges `unreadCount` / `unreadMsgCount`) |
+| `RightSidebar` | Colonne droite — **non montée** (commentée dans `AppShell`) |
+| `PostCard` | Affiche un post : mentions cliquables, édition inline, image, actions, commentaires |
+| `PostList` | Liste paginée (« Voir plus »), états loading/erreur/vide |
+| `PostForm` / `ComposeFab` | Création de post (desktop) / bouton flottant mobile |
+| `PostActions` | Commenter, repost (`toggleRepost`), like (`useLike`), menu Modifier/Supprimer |
+| `CommentThread` | Bottom-sheet commentaires/réponses (`useComments`) |
+| `ProfileHeader` / `FollowersModal` | En-tête profil (`useFollow`) / modal abonnés-abonnements |
+| `NotificationItem` | Item de notification (like/follow/mention) |
+| `NotificationList` | **Non monté** (la page utilise `NotificationItem` directement) |
+| `SearchBar` | Recherche + recherches récentes en `localStorage` (max 5) |
+| `ConversationList`, `MessageThread`, `MessageInput` | Messagerie — **non connectés** (placeholder) |
+| `Avatar`, `Button`, `Input`, `Spinner` | Primitives UI (`Button` : 7 variants + état `loading`) |
 
-- Le token JWT est stocke dans `localStorage` sous la cle `breezy_token`.
-- La cle est configurable via la variable d'environnement `NEXT_PUBLIC_TOKEN_KEY`.
-
-### Injection automatique
-
-- Un intercepteur Axios (`request`) ajoute le header `Authorization: Bearer <token>` sur chaque requete sortante lorsque le token est present dans localStorage.
-
-### Rafraichissement automatique
-
-- Un intercepteur Axios (`response`) intercepte les erreurs `401`.
-- Sur un `401`, le frontend tente un rafraichissement en appelant `POST /auth/refresh` avec le `refresh_token` stocke.
-- Pendant le rafraichissement, les requetes suivantes sont mises en file d'attente (queue).
-- Une fois le rafraichissement reussi :
-  - Le nouveau token est stocke.
-  - Les requetes mises en file sont rejouees.
-- Si le rafraichissement echoue (refresh token expire ou invalide) :
-  - Les tokens sont effaces du localStorage.
-  - L'utilisateur est redirige vers `/signin`.
-
-### Contexte d'authentification
-
-- `AuthProvider` (React Context) enveloppe toute l'application.
-- Au montage, le provider lit le token depuis localStorage et appelle `GET /auth/me` pour charger l'utilisateur.
-- Expose via le hook `useAuth()` : `{ user, loading, login, register, logout, updateUser, changePassword }`.
+**Hooks** : `usePosts` (feed + pagination + event `postCreated`), `useComments`, `useFollow` /
+`useLike` (mises à jour optimistes avec rollback), `useMentions` (autocomplétion @, debounce
+250 ms via `GET /users/search`).
 
 ---
 
-## API Endpoints appeles par le frontend
+## Configuration API
 
-### Auth
+`src/services/api.js` — instance Axios unique :
 
-| Fonction | Methode | Route backend |
-|---|---|---|
-| `login` | POST | `/auth/login` |
-| `register` | POST | `/auth/register` |
-| `logout` | POST | `/auth/logout` |
-| `getMe` | GET | `/auth/me` |
-| `changePassword` | POST | `/auth/change-password` |
-| `refresh` | POST | `/auth/refresh` |
-
-### Posts
-
-| Fonction | Methode | Route backend |
-|---|---|---|
-| `getFeed` | GET | `/api/posts/feed` |
-| `getUserPosts` | GET | `/api/posts/user/:userId` |
-| `getUserReplies` | GET | `/api/posts/user/:userId/replies` |
-| `getUserMedia` | GET | `/api/posts/user/:userId/media` |
-| `getUserLikes` | GET | `/api/posts/user/:userId/likes` |
-| `getUserReposts` | GET | `/api/posts/user/:userId/reposts` |
-| `createPost` | POST | `/api/posts` |
-| `updatePost` | PUT | `/api/posts/:id` |
-| `deletePost` | DELETE | `/api/posts/:id` |
-| `likePost` | POST | `/api/posts/:id/like` |
-| `unlikePost` | DELETE | `/api/posts/:id/like` |
-| `toggleRepost` | POST | `/api/posts/:id/repost` |
-| `searchPosts` | GET | `/api/posts/search` |
-
-### Comments
-
-| Fonction | Methode | Route backend |
-|---|---|---|
-| `getComments` | GET | `/api/posts/:id/comments` |
-| `createComment` | POST | `/api/posts/:id/comments` |
-| `updateComment` | PUT | `/api/posts/:id/comments/:commentId` |
-| `deleteComment` | DELETE | `/api/posts/:id/comments/:commentId` |
-| `replyToComment` | POST | `/api/posts/:id/comments/:commentId/replies` |
-
-### Users
-
-| Fonction | Methode | Route backend |
-|---|---|---|
-| `getUserById` | GET | `/users/:id` |
-| `searchUsers` | GET | `/users/search` |
-| `followUser` | POST | `/users/:id/follow` |
-| `unfollowUser` | DELETE | `/users/:id/follow` |
-| `getFollowing` | GET | `/users/:id/following` |
-| `getFollowers` | GET | `/users/:id/followers` |
-
-### Profiles
-
-| Fonction | Methode | Route backend |
-|---|---|---|
-| `getProfile` | GET | `/profils/:userId` |
-| `updateProfile` | PUT | `/profils/:userId` |
-
-### Notifications
-
-| Fonction | Methode | Route backend |
-|---|---|---|
-| `getNotifications` | GET | `/notifications` |
-| `markAllAsRead` | PUT | `/notifications/read-all` |
-
-### Upload
-
-| Fonction | Methode | Route backend |
-|---|---|---|
-| `uploadMedia` | POST | `/api/upload` |
+- **Base URL** : `process.env.NEXT_PUBLIC_API_URL || '/api'` (défaut `/api`).
+- **Timeout** : 10 000 ms.
+- **Rewrite Next** (`next.config.js`) : si `NEXT_PUBLIC_API_URL` commence par `http`, proxifie
+  `/api/:path*` → `${apiUrl}/:path*`. Sinon (`/api`), requêtes relatives au même host.
+- **Mode mock** : chaque service choisit `mock.*` ou `real.*` selon `isMockEnabled()` (vrai si
+  `window` défini **et** `NEXT_PUBLIC_USE_MOCKS === 'true'`). Désactivé par défaut.
 
 ---
 
-## Composants
+## Gestion du JWT
 
-### Layout
-
-| Composant | Description |
-|---|---|
-| `AppShell` | Structure principale de l'application (sidebar + topbar + contenu) |
-| `TopBar` | Barre de navigation superieure (titre de page, bouton retour) |
-| `BottomNav` | Navigation inferieure mobile (accueil, recherche, notifications, messages, profil) |
-| `DesktopSidebar` | Barre laterale desktop (logo, navigation, bouton poster) |
-| `RightSidebar` | Barre laterale droite (commente / desactivee) |
-
-### Feed
-
-| Composant | Description |
-|---|---|
-| `PostList` | Liste paginee de posts (infinite scroll) |
-| `PostCard` | Carte individuelle d'un post (avatar, nom, contenu, actions) |
-| `PostActions` | Barre d'actions sur un post (like, comment, repost, share) |
-| `PostForm` | Formulaire de creation de post (textarea, bouton poster) |
-| `ComposeFab` | Bouton flottant "composer" (FAB) pour mobile |
-
-### UI
-
-| Composant | Description |
-|---|---|
-| `Button` | Bouton avec 7 variantes : `primary`, `secondary`, `danger`, `ghost`, `outline`, `link`, `icon` |
-| `Input` | Champ de texte stylise |
-| `Avatar` | Avatar utilisateur avec 5 tailles : `xs`, `sm`, `md`, `lg`, `xl` |
-| `Spinner` | Indicateur de chargement |
-
-### Comments
-
-| Composant | Description |
-|---|---|
-| `CommentThread` | Fil de commentaires (affiche les commentaires et les reponses imbriquees sur 1 niveau) |
-
-### Profile
-
-| Composant | Description |
-|---|---|
-| `ProfileHeader` | En-tete de profil (banniere, avatar, display name, bio, compteurs) |
-| `FollowersModal` | Modale listant les abonnes/abonnements |
-
-### Notifications
-
-| Composant | Description |
-|---|---|
-| `NotificationList` | Liste paginee des notifications |
-| `NotificationItem` | Element individuel de notification (icone selon le type, message) |
-
-### Search
-
-| Composant | Description |
-|---|---|
-| `SearchBar` | Barre de recherche avec debounce (recherche posts + utilisateurs) |
-
-### Messages
-
-| Composant | Description |
-|---|---|
-| `ConversationList` | Liste des conversations (placeholder) |
-| `MessageThread` | Fil de messages d'une conversation (placeholder) |
-| `MessageInput` | Champ de saisie de message (placeholder) |
-
----
-
-## Hooks
-
-| Hook | Description |
-|---|---|
-| `useAuth` | Authentification (connexion, deconnexion, utilisateur courant, changement de mot de passe) |
-| `usePosts` | Gestion des posts (CRUD, feed, pagination) |
-| `useLike` | Like/unlike d'un post (avec etat local optimiste) |
-| `useFollow` | Follow/unfollow d'un utilisateur (avec mise a jour du compteur local) |
-| `useComments` | Gestion des commentaires (CRUD, pagination, replies) |
-| `useMentions` | Detection et resolution des @mentions dans le texte |
-
----
-
-## Système de mocks
-
-Le frontend integre un systeme de mocks active via la variable d'environnement :
-
-```
-NEXT_PUBLIC_USE_MOCKS=true
+```mermaid
+flowchart TD
+    A[localStorage breezy_token] -->|intercepteur requête| B[Authorization: Bearer]
+    B --> C{Réponse 401 ?}
+    C -->|non| D[OK]
+    C -->|oui| E[POST /auth/refresh sans corps]
+    E -->|succès| F[nouveau token → rejoue requête]
+    E -->|échec| G[supprime token → redirige /signin]
 ```
 
-| Service mock | Stockage |
-|---|---|
-| auth mock | sessionStorage |
-| posts mock | sessionStorage |
-| users mock | sessionStorage |
-| profiles mock | sessionStorage |
-| notifications mock | sessionStorage |
+- **Stockage** : `localStorage`, clé `NEXT_PUBLIC_TOKEN_KEY || 'breezy_token'`. Lecture
+  synchrone à l'init pour éviter le flash de déconnexion.
+- **Envoi** : intercepteur de requête → `Authorization: Bearer <token>`.
+- **Refresh automatique** : intercepteur de réponse sur `401`. File d'attente (`failedQueue`)
+  pour éviter les refresh concurrents : pendant un refresh en cours, les autres requêtes
+  attendent puis sont rejouées. `POST /auth/refresh` est appelé **sans corps** → repose sur le
+  cookie HttpOnly de refresh géré côté backend.
 
-En mode mock, toutes les donnees sont stockees en local dans `sessionStorage` et aucune requete reelle n'est envoyee aux services backend.
+!!! warning "Le refresh token n'est jamais manipulé côté front"
+    Le front ne stocke qu'un **access token** (`localStorage`). Le refresh token reste dans un
+    cookie HttpOnly géré par l'auth-service.
+
+!!! warning "Protection des routes 100 % côté client"
+    `(app)/layout.js` redirige vers `/connect` si aucun token. Un cookie `breezy_auth=1`
+    (non-HttpOnly) est posé « pour un middleware serveur », mais **aucun `middleware.js`
+    n'existe** dans le projet → ce cookie n'est exploité nulle part.
 
 ---
 
-## Problèmes connus
+## Gestion des erreurs API côté UI
 
-### Validation de mot de passe asymetrique
+1. **Toasts** (`src/utils/toast.js`) : `<div>` injecté dans `document.body` (pas de lib), vert
+   (succès) / rouge (erreur), disparaît après 3,5 s. Utilisé pour les échecs de publication,
+   d'édition, de suppression.
+2. **Messages inline** : `<p>` rouge sur `bg-red-50` (signin, register, compose, reply,
+   settings, profile/edit…).
 
-| Cote | Regle |
-|---|---|
-| Frontend | Minimum 6 caracteres |
-| Backend (auth-service) | Minimum 8 caracteres, 1 majuscule, 1 chiffre |
+Convention d'extraction omniprésente : `err?.response?.data?.error?.message` (+ `.code` /
+`.details`). Codes gérés explicitement : `429` (rate limit), `409` (conflit), `400` +
+`details[]` (validation), `413` (image trop lourde), `ACCOUNT_BANNED`, `USERNAME_TAKEN`.
 
-Un mot de passe valide selon le frontend (6-7 caracteres, sans majuscule/chiffre) sera rejete par le backend avec une erreur `VALIDATION_ERROR`.
+---
 
-### Changement de mot de passe
+## Contexte / state management
 
-La fonctionnalite `POST /auth/change-password` est implementee **cote frontend ET cote backend** (contrairement a une version anterieure de la documentation qui indiquait le contraire). L'appel API est correct et les deux cotes fonctionnent.
+`AuthContext` (monté dans `app/layout.js`) expose : `user`, `token`, `saveToken`, `logout`,
+`loading`, `unreadCount`, `unreadMsgCount`, `refreshUnreadCount`. Au montage, si un token
+existe, `getMe()` hydrate `user` (n'efface pas le token en cas d'erreur).
 
-### Endpoint de mise a jour de profil
+Communication inter-composants : `CustomEvent('postCreated')` sur `window` (émis par compose,
+écouté par `usePosts`) et re-fetch sur l'événement `focus` (pages profil).
 
-Le frontend appelle correctement `PUT /profils/:userId` (profil-service) pour la mise a jour du profil, et non `PUT /users/:id` (user-service). Ce comportement est correct.
+!!! note "Messagerie & compteur de messages factices"
+    `messageService.getUnreadMessagesCount()` renvoie **toujours `0`** (pas d'appel API). Donc
+    `unreadMsgCount` est toujours nul, et toute la messagerie (`messages/*`) est du code mort.
 
-### Page Messages
+---
 
-La page `/messages` et `/messages/[convId]` sont des placeholders. Le message suivant est affiché :
+## Variables d'environnement (`NEXT_PUBLIC_*`)
 
-> "La messagerie sera disponible dans une prochaine version"
+| Variable | Valeur projet | Rôle |
+|---|---|---|
+| `NEXT_PUBLIC_API_URL` | `/api` | Base URL Axios + cible du rewrite Next |
+| `NEXT_PUBLIC_TOKEN_KEY` | `breezy_token` | Clé `localStorage` du JWT |
+| `NEXT_PUBLIC_USE_MOCKS` | `false` | Active les mocks `src/mocks/` |
+
+---
+
+## Dockerfile
+
+`node:20-alpine`, `npm install`, `npm run build`, `ENV HOSTNAME=0.0.0.0 PORT=3000`, `EXPOSE 3000`,
+`CMD ["npm","start"]`. Build Next standard (pas de mode `standalone`, pas de multi-stage).

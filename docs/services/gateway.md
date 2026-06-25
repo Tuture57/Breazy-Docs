@@ -1,199 +1,170 @@
 # API Gateway
 
-## Stack technique
+Point d'entrée unique de toute l'API Breezy. La gateway est un **reverse proxy applicatif**
+Express : elle vérifie le JWT une seule fois, injecte l'identité de l'utilisateur dans des
+headers, applique le rate limiting, puis transmet la requête au microservice cible.
 
-| Technologie | Version |
-|---|---|
-| Node.js | 20 (Alpine) |
-| Express | 4.19.2 |
-| http-proxy-middleware | 3.x |
-| jsonwebtoken | 9.x |
-| express-rate-limit | 7.2.0 |
-| dotenv | 16.4.5 |
-| cors | 2.8.5 |
-| nodemon (dev) | 3.1.0 |
+- **Dépôt / dossier** : `breezy-infra/gateway/`
+- **Port interne** : `3000` (jamais publié — accessible via Nginx uniquement)
+- **Stack** : Express `4.19`, `http-proxy-middleware` v3, `jsonwebtoken` v9, `express-rate-limit` v7.2
 
-- **Port interne** : 3000
-- **Dossier** : `breezy-infra/gateway/`
+!!! info "La gateway ne signe aucun token"
+    Elle ne fait que **vérifier** les JWT émis par l'auth-service. Elle ne possède pas de base
+    de données et n'appelle pas les services en interne — elle se contente de proxifier.
 
 ---
 
-## Rôle
+## Rôle dans l'architecture
 
-L'API Gateway est le point d'entrée unique pour toutes les requêtes API. Elle assure :
-
-1. **Vérification des tokens JWT** (middleware `auth.js`)
-2. **Injection des headers d'identité** dans les requêtes proxyfiées
-3. **Rate limiting** global et spécifique à l'auth
-4. **Proxy** vers les 4 services backend
-5. **Health check** pour la supervision
-
----
-
-## Routes proxy
-
-| Chemin client | JWT requis | Cible | Headers injectés |
-|---|---|---|---|
-| `/api/auth/me` | Oui | `AUTH_SERVICE_URL` | `x-user-id`, `x-user-role`, `x-user-username` |
-| `/api/auth/change-password` | Oui | `AUTH_SERVICE_URL` | `x-user-id`, `x-user-role`, `x-user-username` |
-| `/api/auth/*` (login, register, refresh, logout) | Non | `AUTH_SERVICE_URL` | Aucun |
-| `/api/users/*` | Oui | `USER_SERVICE_URL` | `x-user-id`, `x-user-role` |
-| `/api/posts/*` | Oui | `POST_SERVICE_URL` | `x-user-id`, `x-user-role`, `x-user-username` |
-| `/api/upload` | Oui | `POST_SERVICE_URL` | `x-user-id`, `x-user-role`, `x-user-username` |
-| `/api/uploads/*` (fichiers statiques) | Non | `POST_SERVICE_URL` | Aucun |
-| `/api/profils/*` | Oui | `PROFIL_SERVICE_URL` | `x-user-id`, `x-user-role`, `x-user-username` |
-| `/api/notifications/*` | Oui | `PROFIL_SERVICE_URL` | `x-user-id`, `x-user-role`, `x-user-username` |
-| `/api/health` | Non | Local (Gateway) | Aucun |
-
-### Détail des headers injectés
-
-La Gateway injecte les headers suivants après vérification du JWT :
-
-```javascript
-proxyReq.setHeader('x-user-id', req.user.sub);
-proxyReq.setHeader('x-user-role', req.user.role);
-proxyReq.setHeader('x-user-username', req.user.username);  // Sauf pour /api/users
+```mermaid
+flowchart LR
+    Client[Navigateur] -->|HTTP :80| Nginx
+    Nginx -->|/api/*| GW[API Gateway :3000]
+    GW -->|x-user-*| Auth[auth-service :3001]
+    GW -->|x-user-*| User[user-service :3002]
+    GW -->|x-user-*| Post[post-service :3003]
+    GW -->|x-user-*| Profil[profil-service :3004]
 ```
 
-**IMPORTANT** : Les routes `/api/users/*` ne reçoivent **pas** le header `x-user-username`. Elles reçoivent uniquement `x-user-id` et `x-user-role`.
-
-Les routes auth publiques (login, register, refresh, logout) ne reçoivent **aucun** header d'identité.
+1. Reçoit toutes les requêtes `/api/*` depuis Nginx.
+2. Pour les routes protégées : vérifie le header `Authorization: Bearer <JWT>`.
+3. Décode le payload `{ sub, username, role }` et l'injecte dans des headers `x-user-*`.
+4. Proxifie vers le service cible (résolu via les variables `*_SERVICE_URL`).
+5. Renvoie un **502** si le service backend est injoignable.
 
 ---
 
-## Middleware JWT
+## Table de routage
 
-Fichier : `gateway/src/middleware/auth.js`
+Ordre = ordre réel d'enregistrement dans `gateway/src/index.js` (premier match gagnant).
+
+| # | Path entrant | Service cible | Réécriture `^/` → | Auth | Headers injectés |
+|---|---|---|---|---|---|
+| 1 | `/api/auth/me` | AUTH | `/auth/me` | **JWT** | `x-user-id`, `x-user-role`, `x-user-username` |
+| 2 | `/api/auth/change-password` | AUTH | `/auth/change-password` | **JWT** | id, role, username |
+| 3 | `/api/auth/username` | AUTH | `/auth/username` | **JWT** | id, role, username |
+| 4 | `/api/auth/admin` | AUTH | `/auth/admin/` | **JWT** | id, role, username |
+| 5 | `/api/auth` (catch-all) | AUTH | `/auth/` | **Public** | aucun |
+| 6 | `/api/users` | USER | `/users/` | **JWT** | `x-user-id`, `x-user-role` **(pas username)** |
+| 7 | `/api/upload` | POST | `/api/upload` | **JWT** | id, role, username |
+| 8 | `/api/uploads` | POST | `/api/uploads/` | **Public** | aucun (fichiers statiques) |
+| 9 | `/api/posts` | POST | `/api/posts/` | **JWT** | id, role, username |
+| 10 | `/api/profils` | PROFIL | `/api/profils/` | **JWT** | id, role, username |
+| 11 | `/api/notifications` | PROFIL | `/api/notifications/` | **JWT** | id, role, username |
+| 12 | `GET /api/health` | gateway | — | **Public** | renvoie `{ status: 'UP', service: 'api-gateway' }` |
+
+!!! warning "L'ordre des routes `/api/auth` est critique"
+    Les sous-routes protégées (`/me`, `/change-password`, `/username`, `/admin`) sont déclarées
+    **avant** le catch-all public `/api/auth`. Si on inversait l'ordre, le catch-all
+    intercepterait ces routes sensibles **sans authentification**. Le code contient des
+    commentaires explicites à ce sujet.
+
+!!! warning "Le user-service ne reçoit pas `x-user-username`"
+    Les routes `/api/users/*` n'injectent **que** `x-user-id` et `x-user-role`. Conséquence : le
+    contrôleur `follow` du user-service lit `req.username` (issu de `x-user-username`) qui vaut
+    `undefined`, donc la notification de follow part avec `from_username: undefined`.
+
+---
+
+## Routes publiques vs protégées
+
+| Public (sans JWT) | Protégé (JWT requis) |
+|---|---|
+| `/api/auth/*` hors me/change-password/username/admin (login, register, refresh, logout) | `/api/auth/me`, `/api/auth/change-password`, `/api/auth/username`, `/api/auth/admin/*` |
+| `/api/uploads/*` (fichiers statiques) | `/api/users/*`, `/api/posts/*`, `/api/upload`, `/api/profils/*`, `/api/notifications/*` |
+| `GET /api/health` | — |
+
+---
+
+## Middlewares (ordre exact d'application)
+
+1. `express.json({ limit: '5mb' })` — parsing du body, limite 5 Mo.
+2. `globalLimiter` — **500 requêtes / 15 min / IP** (sauf `NODE_ENV=test`).
+3. `authLimiter` — **20 requêtes / 15 min / IP** sur `/api/auth/login` et `/api/auth/register`.
+4. Par route protégée : `authMiddleware` **puis** `createProxyMiddleware`.
+5. `errorHandler` — handler d'erreurs Express enregistré en dernier.
 
 ```javascript
-const { verifyToken } = require("../utils/jwt.utils.js");
-
+// gateway/src/middleware/auth.js
 function authenticate(req, res, next) {
     const authHeader = req.headers['authorization'];
-
-    if (!authHeader) {
-        return res.status(401).json({ message: "No token provided" });
-    }
-
+    if (!authHeader) return res.status(401).json({ message: "No token provided" });
     const token = authHeader.split(' ')[1];
-    const decoded = verifyToken(token);
-
-    if (!decoded) {
-        return res.status(401).json({ message: "Invalid or expired token" });
-    }
-
-    req.user = decoded;
+    const decoded = verifyToken(token);            // jwt.verify(token, JWT_SECRET)
+    if (!decoded) return res.status(401).json({ message: "Invalid or expired token" });
+    req.user = decoded;                            // { sub, username, role, iat, exp }
     next();
 }
 ```
 
-- Extrait le token du header `Authorization: Bearer <token>`
-- Appelle `jwt.verify(token, JWT_SECRET)` 
-- Retourne `401` si le token est manquant ou invalide
-- Stocke le payload décodé dans `req.user` (contient `sub`, `username`, `role`)
+!!! danger "Fallback de secret dangereux"
+    `gateway/src/utils/jwt.utils.js` définit `JWT_SECRET = process.env.JWT_SECRET || "defaultSecret"`.
+    Si la variable d'environnement manquait, la gateway accepterait des tokens signés avec
+    `"defaultSecret"`. En l'état, docker-compose fournit bien `JWT_SECRET`, mais le fallback
+    reste une faille latente.
 
 ---
 
-## Rate Limiting
+## Rate limiting
 
-```javascript
-const isTest = process.env.NODE_ENV === 'test';
-
-// Global : 500 requêtes / 15 minutes par IP
-const globalLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: isTest ? 999999 : 500,
-    message: { error: 'Trop de requêtes, réessaie dans 15 minutes' },
-});
-
-// Auth : 20 tentatives / 15 minutes sur login et register
-const authLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: isTest ? 999999 : 20,
-    message: { error: 'Trop de tentatives de connexion, réessaie dans 15 minutes' },
-});
-
-if (!isTest) app.use(globalLimiter);
-if (!isTest) {
-    app.use('/api/auth/login', authLimiter);
-    app.use('/api/auth/register', authLimiter);
-}
-```
-
-| Limiteur | Fenêtre | Maximum | Route |
+| Limiteur | Fenêtre | Limite | Champ d'application |
 |---|---|---|---|
-| Global | 15 min | 500 req | Toutes les routes |
-| Auth | 15 min | 20 req | `/api/auth/login`, `/api/auth/register` |
+| Global | 15 min | 500 req / IP | Toutes les routes API |
+| Auth | 15 min | 20 req / IP | `/api/auth/login`, `/api/auth/register` |
 
-Les deux limiteurs sont **désactivés** lorsque `NODE_ENV=test` (valeur par défaut dans docker-compose).
-
----
-
-## Configuration
-
-Variables d'environnement utilisées par la Gateway :
-
-| Variable | Défaut | Description |
-|---|---|---|
-| `PORT` | 3000 | Port d'écoute |
-| `JWT_SECRET` | `defaultSecret` | Clé de signature JWT |
-| `AUTH_SERVICE_URL` | - | URL du Auth Service |
-| `USER_SERVICE_URL` | - | URL du User Service |
-| `POST_SERVICE_URL` | - | URL du Post Service |
-| `PROFIL_SERVICE_URL` | - | URL du Profil Service |
-| `NODE_ENV` | - | `test` désactive le rate limiting |
+!!! note "Le rate limiting est ACTIF dans Docker"
+    Le rate limiting est désactivé uniquement si `NODE_ENV === 'test'`. Or **docker-compose
+    fixe `NODE_ENV=production`** pour la gateway → les deux limiteurs sont **bien actifs**.
+    (Ce point était documenté à tort comme « désactivé » dans l'ancienne doc.)
 
 ---
-
-## Health Check
-
-```javascript
-app.get('/api/health', (req, res) => {
-    res.status(200).json({ status: 'UP', service: 'api-gateway' });
-});
-```
 
 ## Gestion des erreurs
 
-```javascript
-app.use(errorHandler);
+- **Backend injoignable** : chaque proxy possède un handler `error` qui renvoie un **502** avec
+  un message français spécifique (« Auth/User/Post/Profil/Notification service indisponible »).
+- **Erreur générique** : `errorHandler.js` log `[Gateway Error]` et renvoie `err.status || 500`
+  avec `{ error: err.message || 'Erreur interne du serveur' }`.
 
-// errorHandler.js
-module.exports = (err, req, res, next) => {
-  console.error(`[Gateway Error] ${err.message}`);
-  res.status(err.status || 500).json({
-    error: err.message || 'Erreur interne du serveur'
-  });
-};
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant G as Gateway
+    participant S as Service backend
+    C->>G: GET /api/posts/feed (Bearer JWT)
+    G->>G: jwt.verify → req.user
+    G->>S: GET /api/posts/feed + x-user-id/role/username
+    alt Service OK
+        S-->>G: 200 données
+        G-->>C: 200 données
+    else Service down
+        G-->>C: 502 « Post service indisponible »
+    end
 ```
-
-Chaque proxy route gère également les erreurs de connexion au service cible :
-
-```javascript
-on: {
-    error: (err, req, res) => {
-        res.status(502).json({ error: 'Auth service indisponible' });
-    }
-}
-```
-
-- **502 Bad Gateway** : retourné si le service backend est inaccessible
-- **500** : erreur interne non gérée
-- Codes d'erreur des services backend : proxyfiés tels quels
 
 ---
 
-## Rewriting de chemins
+## Détails d'implémentation notables
 
-Les chemins d'URL sont réécrits avant d'être envoyés aux services backend :
+- `app.set('trust proxy', 1)` : la gateway est derrière Nginx, l'IP réelle est lue dans
+  `X-Forwarded-For`.
+- `fixRequestBody` est rappelé dans chaque `proxyReq` pour ré-émettre le body JSON déjà parsé
+  par `express.json` (nécessaire avec `http-proxy-middleware` v3).
+- La gateway **ne reçoit pas `INTERNAL_SECRET`** (ni dans docker-compose, ni dans son code) :
+  le secret inter-services ne concerne que les 4 microservices.
+- `cors` est listé en dépendance mais **jamais importé** : le CORS est géré par chaque
+  microservice via `CORS_ORIGIN`.
 
-| Chemin entrant | Chemin sortant | Cible |
+---
+
+## Variables d'environnement
+
+| Variable | Valeur (docker-compose) | Usage |
 |---|---|---|
-| `/api/auth/me` | `/auth/me` | Auth Service |
-| `/api/auth/*` | `/auth/*` | Auth Service |
-| `/api/users/*` | `/users/*` | User Service |
-| `/api/posts/*` | `/api/posts/*` | Post Service |
-| `/api/upload` | `/api/upload` | Post Service |
-| `/api/uploads/*` | `/api/uploads/*` | Post Service |
-| `/api/profils/*` | `/api/profils/*` | Profil Service |
-| `/api/notifications/*` | `/api/notifications/*` | Profil Service |
+| `NODE_ENV` | `production` | Active le rate limiting |
+| `PORT` | `3000` | Port d'écoute |
+| `JWT_SECRET` | `CACACACACACACACA` | Vérification de la signature JWT |
+| `AUTH_SERVICE_URL` | `http://auth-service:3001` | Cible proxy auth |
+| `USER_SERVICE_URL` | `http://user-service:3002` | Cible proxy user |
+| `POST_SERVICE_URL` | `http://post-service:3003` | Cible proxy post |
+| `PROFIL_SERVICE_URL` | `http://profil-service:3004` | Cible proxy profil |

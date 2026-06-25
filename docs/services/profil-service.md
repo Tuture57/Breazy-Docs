@@ -1,305 +1,209 @@
 # Profil Service
 
-Microservice de gestion des profils utilisateur (biographie, avatar, banniere) et des notifications pour Breezy.
+Gère les **profils détaillés** (bio, avatar, bannière, localisation) et le **système de
+notifications**. Stocke ses données dans MongoDB.
+
+- **Dépôt** : `breezy-profil-service`
+- **Port** : `3004`
+- **Base de données** : MongoDB `profils_db` (conteneur `mongo-profils`)
+- **ODM** : Mongoose 9
+
+!!! info "Profil ≠ User"
+    Le `display_name`, la `bio`, l'`avatar_url` et la `banner_url` vivent ici. Le `username` et
+    les compteurs de follow vivent dans le **user-service**. Le frontend fusionne les deux via
+    `getFullProfile` (`/users/:id` + `/profils/:id`).
 
 ---
 
-## Stack
+## Stack & dépendances
 
-| Technologie | Version |
+| Paquet | Version |
 |---|---|
-| Node.js | 20 (Alpine) |
-| Express | 5.2.1 |
-| Mongoose | 9.7.0 |
-| MongoDB | 6 |
-| axios | 1.18.0 |
-| morgan | 1.11.0 |
+| express | `^5.2.1` |
+| mongoose | `^9.7.0` |
+| axios | `^1.18.0` |
+| morgan | `^1.11.0` |
+| cors | `^2.8.6` |
 
 ---
 
-## Modeles Mongoose
+## Modèles de données
 
-### Profile
+### `profiles`
 
-| Champ | Type | Contraintes |
+| Champ | Type | Contraintes / défaut |
 |---|---|---|
-| `user_id` | String | Requis, UNIQUE |
-| `display_name` | String | `maxlength` 100, defaut `''` |
-| `bio` | String | `maxlength` 160, defaut `''` |
-| `avatar_url` | String | Defaut `''` |
-| `banner_url` | String | Defaut `''` |
-| `location` | String | `maxlength` 100, defaut `''` |
-| `created_at` | Date | Timestamp Mongoose |
-| `updated_at` | Date | Timestamp Mongoose |
+| `user_id` | String | `required`, `unique` |
+| `display_name` | String | max 100, défaut `''` |
+| `bio` | String | max 160, défaut `''` |
+| `avatar_url` | String | défaut `''` |
+| `banner_url` | String | défaut `''` |
+| `location` | String | max 100, défaut `''` |
 
-### Notification
+Index : `{ user_id: 1 }` unique.
 
-| Champ | Type | Contraintes |
+### `notifications`
+
+| Champ | Type | Contraintes / défaut |
 |---|---|---|
-| `recipient_user_id` | String | Requis |
-| `type` | String | Enum : `'like'`, `'follow'`, `'mention'`, `'comment'`, `'reply'` |
-| `from_user_id` | String | Requis |
-| `from_username` | String | Requis |
-| `post_id` | String | Defaut null |
-| `is_read` | Boolean | Defaut false |
-| `created_at` | Date | Timestamp (creation only) |
+| `recipient_user_id` | String | `required` |
+| `type` | String | `enum: ['like','follow','mention','comment','reply']`, `required` |
+| `from_user_id` | String | `required` |
+| `from_username` | String | `required` |
+| `post_id` | String | défaut `null` |
+| `is_read` | Boolean | défaut `false` |
+| `created_at` | Date | auto (`updatedAt: false`) |
 
-**Index :** `{ recipient_user_id: 1, is_read: 1, created_at: -1 }`
+Index composé : `{ recipient_user_id: 1, is_read: 1, created_at: -1 }`.
 
----
-
-## Routes
-
-### GET /profils/:userId
-
-Recuperer le profil d'un utilisateur (creation automatique si inexistant).
-
-**Middleware :** aucun
-
-**Reponses :**
-
-```
-200 OK
-{
-  "user_id": "uuid",
-  "display_name": "John Doe",
-  "bio": "Developpeur fullstack",
-  "avatar_url": "https://cdn.breezy.app/avatars/uuid.jpg",
-  "banner_url": "https://cdn.breezy.app/banners/uuid.jpg",
-  "location": "Paris",
-  "created_at": "2024-01-01T00:00:00.000Z",
-  "updated_at": "2024-01-01T00:00:00.000Z"
-}
-```
-
-**Logique metier :**
-1. Utiliser `findOneAndUpdate` avec `upsert: true` et `$setOnInsert: { user_id }`.
-2. Si le profil n'existe pas, il est cree automatiquement avec les valeurs par defaut (lazy creation / auto-provisioning).
-3. Retourner le profil existant ou nouvellement cree.
+!!! warning "`runValidators` non activé"
+    Les `findOneAndUpdate` n'utilisent pas `runValidators: true` → les `maxlength` de Mongoose
+    (100 pour `display_name`/`location`) ne sont pas garantis en base. Seule la `bio` a une
+    validation manuelle explicite (> 160).
 
 ---
 
-### PUT /profils/:userId
+## Routes (préfixe `/api`)
 
-Mettre a jour un profil (proprietaire uniquement).
-
-**Middleware :** `identity`
-
-**Headers requis :** `x-user-id`, `x-user-role`, `x-username`
-
-**Corps de la requete (body JSON) :**
-
-Champs autorises (whitelist) :
-
-| Champ | Type | Requis | Contraintes |
+| Méthode | Path | Contrôleur | Auth |
 |---|---|---|---|
-| `display_name` | string | Non | `maxlength` 100 |
-| `bio` | string | Non | `maxlength` 160 |
-| `avatar_url` | string | Non | -- |
-| `banner_url` | string | Non | -- |
-| `location` | string | Non | `maxlength` 100 |
+| GET | `/api/profils/:userId` | `getProfile` | JWT (header) |
+| PUT | `/api/profils/:userId` | `updateProfile` | JWT — `x-user-id` == `:userId` |
+| GET | `/api/notifications` | `getNotifications` | JWT |
+| PUT | `/api/notifications/read-all` | `markAllAsRead` | JWT |
+| PUT | `/api/notifications/:id/read` | `markAsRead` | JWT |
+| POST | `/api/notifications/internal` | `createNotification` | Interne (`x-internal-secret`) |
 
-**Reponses :**
+!!! warning "Orthographe : `/profils` (français)"
+    Le path réel est `/api/profils/:userId`. Le README et le WIKI du service documentent à tort
+    `/api/profiles/`. **Le code fait foi : `profils`.** Le frontend appelle bien `/profils`.
 
-```
-200 OK
-{
-  "message": "Profile updated",
-  "profile": { ... }
-}
-```
-
-```
-401 Unauthorized
-{
-  "error": "MISSING_IDENTITY"
-}
-
-403 Forbidden
-{
-  "error": "FORBIDDEN",
-  "message": "You can only edit your own profile"
-}
-```
-
-**Logique metier :**
-1. Verifier que `x-user-id` === `userId` (proprietaire).
-2. Filtrer les champs recus pour n'accepter que ceux de la whitelist (display_name, bio, avatar_url, banner_url, location). Les champs non autorises sont ignores silencieusement.
-3. Mettre a jour le document avec `findOneAndUpdate`.
+`/notifications/read-all` est déclaré **avant** `/notifications/:id/read` (sinon `read-all`
+serait capturé comme un `:id`).
 
 ---
 
-### GET /notifications
+## Endpoints détaillés
 
-Recuperer les notifications de l'utilisateur authentifie.
+### GET /api/profils/:userId
 
-**Middleware :** `identity`
+`findOneAndUpdate({ user_id }, { $setOnInsert: { user_id } }, { upsert: true, new: true })` :
+**upsert** — crée un profil minimal (valeurs par défaut) au premier accès, donc jamais de 404.
+**Succès `200`** : le profil complet.
 
-**Headers requis :** `x-user-id`, `x-user-role`, `x-username`
+### PUT /api/profils/:userId
 
-**Parametres de requete (query string) :**
+`x-user-id` doit être **strictement égal** à `:userId`, sinon `403 FORBIDDEN`. Champs
+whitelistés (tout autre champ ignoré) : `display_name`, `bio`, `avatar_url`, `banner_url`,
+`location`. Upsert également (crée si absent). **Succès `200`** : profil mis à jour.
+**`400 BIO_TOO_LONG`** si `bio.length > 160`.
 
-| Champ | Type | Requis |
-|---|---|---|
-| `page` | integer | Non (defaut 1) |
-| `limit` | integer | Non (defaut 20) |
+### GET /api/notifications
 
-**Reponses :**
+`recipient_user_id = x-user-id`. Query `page` (1), `limit` (20), `unread_only` (=`'true'` →
+filtre `is_read:false`). Renvoie en parallèle la page, le total et le nombre global de non-lus.
 
-```
-200 OK
+- **Succès `200`** :
+```json
 {
-  "notifications": [
-    {
-      "_id": "objectid",
-      "recipient_user_id": "uuid",
-      "type": "like",
-      "from_user_id": "uuid2",
-      "from_username": "janedoe",
-      "post_id": "objectid",
-      "is_read": false,
-      "created_at": "2024-01-01T00:00:00.000Z"
-    }
-  ],
+  "data": [ /* notifications */ ],
   "unread_count": 3,
-  "total": 15,
-  "page": 1,
-  "limit": 20
+  "pagination": { "page": 1, "limit": 20, "total": 42, "hasNext": true }
 }
 ```
 
-```
-401 Unauthorized
-{
-  "error": "MISSING_IDENTITY"
-}
-```
+### PUT /api/notifications/:id/read · PUT /api/notifications/read-all
 
-**Logique metier :**
-1. `Notification.find({ recipient_user_id: x-user-id })`, trie par `created_at: -1`.
-2. Compter le nombre de notifications avec `is_read: false` pour `unread_count`.
-3. Pagination.
+- `:id/read` : `findOneAndUpdate({ _id, recipient_user_id }, { is_read: true })`.
+  `404 NOT_FOUND` si introuvable ou pas la sienne (un `:id` non-ObjectId → `500`).
+- `read-all` : `updateMany({ recipient_user_id, is_read:false }, { is_read:true })` →
+  `{ updated_count }`.
+
+!!! note "Pas de suppression"
+    Aucun endpoint `DELETE` n'existe pour les notifications ni les profils.
+
+### POST /api/notifications/internal *(interne)*
+
+Header `x-internal-secret` requis (sinon `401 UNAUTHORIZED`). Body
+`{ recipient_user_id, type, from_user_id, from_username, post_id, recipient_role? }`.
+
+**Règles métier** :
+
+1. **Auto-notification ignorée** : si `recipient_user_id === from_user_id` → `204` (rien créé).
+2. **Filtrage par rôle pour `like`/`follow`** : appel
+   `GET {AUTH_SERVICE_URL}/auth/internal/users/{recipient_user_id}/role` (timeout 2 s). Si le
+   destinataire est `moderator`/`admin` → `204` (ils ne reçoivent pas like/follow).
+3. **Fallback** : si l'auth-service est indisponible, le rôle du body `recipient_role` est
+   utilisé ; si admin/modérateur → `204`, sinon création autorisée.
+4. **`mention`/`comment`/`reply`** : pas de filtrage par rôle.
+
+- **Succès `201`** : la notification créée. **`204`** si self-notif ou destinataire admin/modo.
 
 ---
 
-### PUT /notifications/read-all
+## Système de notifications (synthèse)
 
-Marquer toutes les notifications comme lues.
+| Type | Déclencheur réel | `post_id` |
+|---|---|---|
+| `like` | post-service, quand un post est liké | ✅ |
+| `follow` | user-service, lors d'un follow | ❌ |
+| `mention` | post-service, `@username` dans un post | ✅ |
+| `comment` | **type prévu, jamais généré** | — |
+| `reply` | **type prévu, jamais généré** | — |
 
-**Middleware :** `identity`
-
-**Headers requis :** `x-user-id`, `x-user-role`, `x-username`
-
-**Reponses :**
-
+```mermaid
+sequenceDiagram
+    participant Post as post-service
+    participant Profil as profil-service
+    participant Auth as auth-service
+    Post->>Profil: POST /api/notifications/internal {type:'like', recipient_role}
+    Note over Profil: recipient == sender ? → 204
+    Profil->>Auth: GET /auth/internal/users/:id/role
+    Auth-->>Profil: { role }
+    alt role ∈ {admin, moderator}
+        Profil-->>Post: 204 (pas de notif)
+    else
+        Profil->>Profil: Notification.create(...)
+        Profil-->>Post: 201
+    end
 ```
-200 OK
-{
-  "message": "All notifications marked as read"
-}
-```
-
-**Logique metier :**
-1. `Notification.updateMany({ recipient_user_id: x-user-id, is_read: false }, { is_read: true })`.
 
 ---
 
-### PUT /notifications/:id/read
+## Gestion du profil (upsert)
 
-Marquer une notification specifique comme lue.
-
-**Middleware :** `identity`
-
-**Headers requis :** `x-user-id`, `x-user-role`, `x-username`
-
-**Reponses :**
-
-```
-200 OK
-{
-  "message": "Notification marked as read"
-}
-```
-
-```
-404 Not Found
-{
-  "error": "NOTIFICATION_NOT_FOUND"
-}
-```
-
-**Logique metier :**
-1. Trouver la notification par `_id`.
-2. Verifier que `recipient_user_id` === `x-user-id` (scope a l'utilisateur).
-3. Marquer `is_read: true`.
+`getProfile` et `updateProfile` utilisent tous deux `findOneAndUpdate(..., { upsert:true })` :
+le profil est **créé à la demande** (au premier GET via `$setOnInsert`, ou au premier PUT). Il
+n'y a donc **pas de flux de synchronisation** de profil (contrairement au user-service qui est
+synchronisé par l'auth-service). `user_id` n'est jamais modifiable.
 
 ---
 
-### POST /notifications/internal
+## Appels inter-services
 
-Creer une notification (appele par les autres services internes).
+| Vers | Endpoint | Headers | Timeout | Quand |
+|---|---|---|---|---|
+| auth-service | `GET /auth/internal/users/{id}/role` | `x-internal-secret` | 2000 ms | `createNotification` pour `like`/`follow` |
 
-**Middleware :** aucun (securise par header `x-internal-secret`)
-
-**Headers requis :** `x-internal-secret`
-
-**Corps de la requete (body JSON) :**
-
-| Champ | Type | Requis | Description |
-|---|---|---|---|
-| `recipient_user_id` | string | **Oui** | UUID du destinataire |
-| `type` | string | **Oui** | Enum : `like`, `follow`, `mention`, `comment`, `reply` |
-| `from_user_id` | string | **Oui** | UUID de l'emetteur |
-| `from_username` | string | **Oui** | Username de l'emetteur |
-| `post_id` | string | Non | Optionnel, lie a un post specifique |
-
-**Reponses :**
-
-```
-201 Created
-{
-  "message": "Notification created",
-  "notification": { ... }
-}
-
-204 No Content
-{}
-```
-
-```
-403 Forbidden
-{
-  "error": "FORBIDDEN"
-}
-```
-
-**Logique metier :**
-1. Verifier le header `x-internal-secret` correspond a `INTERNAL_SECRET`.
-2. **Self-notification guard** : si `recipient_user_id === from_user_id` -> retour `204 No Content` (un utilisateur ne recoit pas de notification pour ses propres actions).
-3. Creer la notification avec `Notification.create()`.
-
----
-
-## Middlewares
-
-### identity.middleware.js
-
-Identique aux autres services. Extrait `x-user-id`, `x-user-role`, `x-username` des headers injectes par le gateway.
+!!! warning "`AUTH_SERVICE_URL` absent du `.env`"
+    `AUTH_SERVICE_URL` est présent dans `.env.example` mais **absent du `.env`** du dépôt. Dans
+    docker-compose il est bien fourni (`http://auth-service:3001`). En local sans Docker, le
+    filtrage de rôle tombe systématiquement en mode fallback (`recipient_role` du body).
 
 ---
 
 ## Variables d'environnement
 
-| Variable | Defaut | Requis | Description |
-|---|---|---|---|
-| `PORT` | `3004` | Non | Port d'ecoute |
-| `MONGO_URI` | -- | **Oui** | URI de connexion MongoDB |
-| `INTERNAL_SECRET` | -- | Non | Secret pour les communications inter-services |
+| Variable | Défaut | Usage |
+|---|---|---|
+| `PORT` | `3004` | Port d'écoute |
+| `MONGO_URI` | `mongodb://localhost:27017/breezy-profil` | Connexion MongoDB |
+| `AUTH_SERVICE_URL` | `http://localhost:3001` | Filtrage de rôle |
+| `INTERNAL_SECRET` | — | Secret inter-services |
+| `CORS_ORIGIN` | `http://localhost:3000` | CORS |
 
 ---
 
-## Notes d'implementation
+## Dockerfile
 
-- Le profil est cree de maniere lazy (paresseuse) : il n'existe pas en base tant que la premiere requete `GET /profils/:userId` n'est pas faite. L'upsert avec `$setOnInsert` garantit qu'aucun doublon n'est cree.
-- La self-notification guard empeche un utilisateur de recevoir des notifications pour ses propres actions (ex: se follow soi-meme declencherait une notification `follow` sans ce guard).
-- Le service utilise `mongoose` avec `timestamps` (created_at, updated_at) pour Profile, mais `timestamps: { createdAt: 'created_at', updatedAt: false }` pour Notification (pas de `updated_at`).
+`node:20-alpine`, `npm install`, `CMD ["npm","start"]`. Pas d'`EXPOSE`.
