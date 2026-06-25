@@ -364,6 +364,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../architecture/diagramme-composants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagramme de composants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../architecture/docker-deploiement/" class="md-nav__link">
         
   
@@ -1534,18 +1562,18 @@
 <h2 id="database-breezy_auth">Database : <code>breezy_auth</code></h2>
 <h3 id="table-users">Table : <code>users</code></h3>
 <p>Creee par le modele <code>User</code> (<code>auth-service/src/models/user.model.js</code>).</p>
-<pre><code class="language-sql">CREATE TABLE users (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    email VARCHAR(255) NOT NULL UNIQUE,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    password_hash VARCHAR(255) NOT NULL,
-    role VARCHAR(20) DEFAULT 'user' CHECK (role IN ('user', 'moderator', 'admin')),
-    is_active BOOLEAN DEFAULT true,
-    is_banned BOOLEAN DEFAULT false,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">gen_random_uuid</span><span class="p">(),</span>
+<span class="w">    </span><span class="n">email</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">UNIQUE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">username</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">UNIQUE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">password_hash</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="k">role</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;user&#39;</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="k">role</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;moderator&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">)),</span>
+<span class="w">    </span><span class="n">is_active</span><span class="w"> </span><span class="nb">BOOLEAN</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
+<span class="w">    </span><span class="n">is_banned</span><span class="w"> </span><span class="nb">BOOLEAN</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">false</span><span class="p">,</span>
+<span class="w">    </span><span class="n">created_at</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">TIME</span><span class="w"> </span><span class="k">ZONE</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">NOW</span><span class="p">(),</span>
+<span class="w">    </span><span class="n">updated_at</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">TIME</span><span class="w"> </span><span class="k">ZONE</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">NOW</span><span class="p">()</span>
+<span class="p">);</span>
+</code></pre></div>
 <p><strong>Index :</strong>
 - <code>users_pkey</code> PRIMARY KEY (id)
 - <code>users_email_key</code> UNIQUE (email) -- cree par <code>unique: true</code> dans le modele
@@ -1557,15 +1585,15 @@
 <hr />
 <h3 id="table-refresh_tokens">Table : <code>refresh_tokens</code></h3>
 <p>Creee par le modele <code>RefreshToken</code> (<code>auth-service/src/models/refreshToken.model.js</code>).</p>
-<pre><code class="language-sql">CREATE TABLE refresh_tokens (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-    token_hash VARCHAR(512) NOT NULL UNIQUE,
-    expires_at TIMESTAMP WITH TIME ZONE NOT NULL,
-    is_revoked BOOLEAN DEFAULT false,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">refresh_tokens</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">gen_random_uuid</span><span class="p">(),</span>
+<span class="w">    </span><span class="n">user_id</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">users</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">CASCADE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">token_hash</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">UNIQUE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">expires_at</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">TIME</span><span class="w"> </span><span class="k">ZONE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">is_revoked</span><span class="w"> </span><span class="nb">BOOLEAN</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">false</span><span class="p">,</span>
+<span class="w">    </span><span class="n">created_at</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">TIME</span><span class="w"> </span><span class="k">ZONE</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">NOW</span><span class="p">()</span>
+<span class="p">);</span>
+</code></pre></div>
 <p><strong>Index :</strong>
 - <code>refresh_tokens_pkey</code> PRIMARY KEY (id)
 - <code>refresh_tokens_token_hash_key</code> UNIQUE (token_hash)
@@ -1579,18 +1607,18 @@
 <h2 id="database-breezy_users">Database : <code>breezy_users</code></h2>
 <h3 id="table-user_profiles">Table : <code>user_profiles</code></h3>
 <p>Creee par le modele <code>UserProfile</code> (<code>user-service/src/models/userProfile.model.js</code>).</p>
-<pre><code class="language-sql">CREATE TABLE user_profiles (
-    id UUID PRIMARY KEY,
-    username VARCHAR(50) NOT NULL,
-    role VARCHAR(20) DEFAULT 'user' CHECK (role IN ('user', 'moderator', 'admin')),
-    is_active BOOLEAN DEFAULT true,
-    is_banned BOOLEAN DEFAULT false,
-    followers_count INTEGER DEFAULT 0,
-    following_count INTEGER DEFAULT 0,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">user_profiles</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">username</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="k">role</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;user&#39;</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="k">role</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;moderator&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">)),</span>
+<span class="w">    </span><span class="n">is_active</span><span class="w"> </span><span class="nb">BOOLEAN</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
+<span class="w">    </span><span class="n">is_banned</span><span class="w"> </span><span class="nb">BOOLEAN</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">false</span><span class="p">,</span>
+<span class="w">    </span><span class="n">followers_count</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">following_count</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">created_at</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">TIME</span><span class="w"> </span><span class="k">ZONE</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">NOW</span><span class="p">(),</span>
+<span class="w">    </span><span class="n">updated_at</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">TIME</span><span class="w"> </span><span class="k">ZONE</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">NOW</span><span class="p">()</span>
+<span class="p">);</span>
+</code></pre></div>
 <p><strong>Index :</strong>
 - <code>user_profiles_pkey</code> PRIMARY KEY (id)</p>
 <p><strong>Particularites :</strong>
@@ -1600,14 +1628,14 @@
 <hr />
 <h3 id="table-follows">Table : <code>follows</code></h3>
 <p>Creee par le modele <code>Follow</code> (<code>user-service/src/models/follow.model.js</code>).</p>
-<pre><code class="language-sql">CREATE TABLE follows (
-    id SERIAL PRIMARY KEY,
-    follower_id UUID NOT NULL,
-    followed_id UUID NOT NULL,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    UNIQUE(follower_id, followed_id)
-);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">follows</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">follower_id</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">followed_id</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">created_at</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">TIME</span><span class="w"> </span><span class="k">ZONE</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">NOW</span><span class="p">(),</span>
+<span class="w">    </span><span class="k">UNIQUE</span><span class="p">(</span><span class="n">follower_id</span><span class="p">,</span><span class="w"> </span><span class="n">followed_id</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div>
 <p><strong>Index :</strong>
 - <code>follows_pkey</code> PRIMARY KEY (id)
 - <code>follows_follower_id_followed_id_key</code> UNIQUE (follower_id, followed_id)</p>
@@ -1619,21 +1647,21 @@
 <hr />
 <h2 id="synchronisation-des-donnees">Synchronisation des donnees</h2>
 <h3 id="flux-de-creation-de-compte">Flux de creation de compte</h3>
-<pre><code>1. auth-service : POST /auth/register
+<div class="highlight"><pre><span></span><code>1. auth-service : POST /auth/register
    → Cree un enregistrement dans users (breezy_auth)
    → POST /users/sync → user-service
 
 2. user-service : POST /users/sync (interne, x-internal-secret)
    → UserProfile.upsert({ id, username, role })
-   → Cree/met a jour l'enregistrement dans user_profiles (breezy_users)
-</code></pre>
+   → Cree/met a jour l&#39;enregistrement dans user_profiles (breezy_users)
+</code></pre></div>
 <p>Le meme ID UUID est utilise dans les deux bases. La synchronisation est <strong>non bloquante</strong> : si le user-service est indisponible, l'inscription reste valide.</p>
 <h3 id="gestion-des-compteurs-de-follow">Gestion des compteurs de follow</h3>
 <p>Les compteurs <code>followers_count</code> et <code>following_count</code> ne sont pas calcules a la volee mais stockes et mis a jour atomiquement :</p>
-<pre><code class="language-javascript">// Dans une transaction Sequelize
-await UserProfile.increment('following_count', { where: { id: followerId } });
-await UserProfile.increment('followers_count', { where: { id: followedId } });
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// Dans une transaction Sequelize</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">UserProfile</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="s1">&#39;following_count&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">followerId</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">UserProfile</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="s1">&#39;followers_count&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">followedId</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
 <p>Cette approche evite les <code>COUNT(*)</code> a chaque requete, au prix d'une synchronisation a maintenir.</p>
 <hr />
 <h2 id="notes-techniques">Notes techniques</h2>

@@ -364,6 +364,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../architecture/diagramme-composants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagramme de composants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../architecture/docker-deploiement/" class="md-nav__link">
         
   
@@ -1578,21 +1606,21 @@
 <h2 id="database-breezy_posts-post-service">Database : <code>breezy_posts</code> (post-service)</h2>
 <h3 id="collection-posts">Collection : <code>posts</code></h3>
 <p>Modele : <code>Post</code> (<code>post-service/src/models/post.model.js</code>)</p>
-<pre><code class="language-javascript">{
-  _id: ObjectId,
-  user_id: String,          // UUID de l'utilisateur (source: auth-service)
-  username: String,          // Denormalise pour eviter les JOINs
-  content: String,           // Texte du post, max 280 caracteres
-  tags: [String],            // Tags, chaque tag max 30 caracteres
-  media_urls: [String],      // URLs des medias uploades (images)
-  likes_count: Number,       // Compteur atomique, default 0, min 0
-  comments_count: Number,    // Compteur atomique, default 0, min 0
-  reposts_count: Number,     // Compteur atomique, default 0, min 0
-  is_reported: Boolean,      // Flag de signalement, default false
-  created_at: Date,          // Cree automatiquement par timestamps: true
-  updated_at: Date           // Cree automatiquement par timestamps: true
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">user_id</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">          </span><span class="c1">// UUID de l&#39;utilisateur (source: auth-service)</span>
+<span class="w">  </span><span class="nx">username</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">          </span><span class="c1">// Denormalise pour eviter les JOINs</span>
+<span class="w">  </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">           </span><span class="c1">// Texte du post, max 280 caracteres</span>
+<span class="w">  </span><span class="nx">tags</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nb">String</span><span class="p">],</span><span class="w">            </span><span class="c1">// Tags, chaque tag max 30 caracteres</span>
+<span class="w">  </span><span class="nx">media_urls</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nb">String</span><span class="p">],</span><span class="w">      </span><span class="c1">// URLs des medias uploades (images)</span>
+<span class="w">  </span><span class="nx">likes_count</span><span class="o">:</span><span class="w"> </span><span class="nb">Number</span><span class="p">,</span><span class="w">       </span><span class="c1">// Compteur atomique, default 0, min 0</span>
+<span class="w">  </span><span class="nx">comments_count</span><span class="o">:</span><span class="w"> </span><span class="nb">Number</span><span class="p">,</span><span class="w">    </span><span class="c1">// Compteur atomique, default 0, min 0</span>
+<span class="w">  </span><span class="nx">reposts_count</span><span class="o">:</span><span class="w"> </span><span class="nb">Number</span><span class="p">,</span><span class="w">     </span><span class="c1">// Compteur atomique, default 0, min 0</span>
+<span class="w">  </span><span class="nx">is_reported</span><span class="o">:</span><span class="w"> </span><span class="nb">Boolean</span><span class="p">,</span><span class="w">      </span><span class="c1">// Flag de signalement, default false</span>
+<span class="w">  </span><span class="nx">created_at</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">,</span><span class="w">          </span><span class="c1">// Cree automatiquement par timestamps: true</span>
+<span class="w">  </span><span class="nx">updated_at</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="w">           </span><span class="c1">// Cree automatiquement par timestamps: true</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><strong>Index :</strong>
 - <code>{ user_id: 1, created_at: -1 }</code> -- Optimise les requetes de timeline utilisateur (afficher les posts d'un utilisateur tries par date)
 - <code>{ tags: 1 }</code> -- Optimise la recherche de posts par tag
@@ -1605,13 +1633,13 @@
 <hr />
 <h3 id="collection-likes">Collection : <code>likes</code></h3>
 <p>Modele : <code>Like</code> (<code>post-service/src/models/like.model.js</code>)</p>
-<pre><code class="language-javascript">{
-  _id: ObjectId,
-  post_id: ObjectId,      // Reference au Post (ref: 'Post')
-  user_id: String,         // UUID de l'utilisateur
-  created_at: Date         // Cree automatiquement, pas de updated_at
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">post_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">,</span><span class="w">      </span><span class="c1">// Reference au Post (ref: &#39;Post&#39;)</span>
+<span class="w">  </span><span class="nx">user_id</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">         </span><span class="c1">// UUID de l&#39;utilisateur</span>
+<span class="w">  </span><span class="nx">created_at</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="w">         </span><span class="c1">// Cree automatiquement, pas de updated_at</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><strong>Index :</strong>
 - <code>{ post_id: 1, user_id: 1 }</code> -- <strong>UNIQUE</strong> (contrainte : un like par utilisateur par post)</p>
 <p><strong>Particularites :</strong>
@@ -1621,17 +1649,17 @@
 <hr />
 <h3 id="collection-comments">Collection : <code>comments</code></h3>
 <p>Modele : <code>Comment</code> (<code>post-service/src/models/comment.model.js</code>)</p>
-<pre><code class="language-javascript">{
-  _id: ObjectId,
-  post_id: ObjectId,            // Reference au Post (ref: 'Post')
-  user_id: String,               // UUID de l'utilisateur
-  username: String,              // Denormalise
-  content: String,               // Texte du commentaire, max 280 caracteres
-  parent_comment_id: ObjectId,   // Reference au Comment parent, null pour les commentaires racines
-  created_at: Date,              // Cree automatiquement
-  updated_at: Date               // Cree automatiquement
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">post_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">,</span><span class="w">            </span><span class="c1">// Reference au Post (ref: &#39;Post&#39;)</span>
+<span class="w">  </span><span class="nx">user_id</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">               </span><span class="c1">// UUID de l&#39;utilisateur</span>
+<span class="w">  </span><span class="nx">username</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">              </span><span class="c1">// Denormalise</span>
+<span class="w">  </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">               </span><span class="c1">// Texte du commentaire, max 280 caracteres</span>
+<span class="w">  </span><span class="nx">parent_comment_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">,</span><span class="w">   </span><span class="c1">// Reference au Comment parent, null pour les commentaires racines</span>
+<span class="w">  </span><span class="nx">created_at</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">,</span><span class="w">              </span><span class="c1">// Cree automatiquement</span>
+<span class="w">  </span><span class="nx">updated_at</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="w">               </span><span class="c1">// Cree automatiquement</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><strong>Index :</strong>
 - <code>{ post_id: 1, created_at: 1 }</code> -- Optimise le chargement des commentaires d'un post tries par date
 - <code>{ parent_comment_id: 1 }</code> -- Optimise la recherche des reponses a un commentaire</p>
@@ -1646,13 +1674,13 @@
 <hr />
 <h3 id="collection-reposts">Collection : <code>reposts</code></h3>
 <p>Modele : <code>Repost</code> (<code>post-service/src/models/repost.model.js</code>)</p>
-<pre><code class="language-javascript">{
-  _id: ObjectId,
-  post_id: ObjectId,      // Reference au Post (ref: 'Post')
-  user_id: String,         // UUID de l'utilisateur
-  created_at: Date         // Cree automatiquement, pas de updated_at
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">post_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">,</span><span class="w">      </span><span class="c1">// Reference au Post (ref: &#39;Post&#39;)</span>
+<span class="w">  </span><span class="nx">user_id</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">         </span><span class="c1">// UUID de l&#39;utilisateur</span>
+<span class="w">  </span><span class="nx">created_at</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="w">         </span><span class="c1">// Cree automatiquement, pas de updated_at</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><strong>Index :</strong>
 - <code>{ post_id: 1, user_id: 1 }</code> -- <strong>UNIQUE</strong> (contrainte : un repost par utilisateur par post)</p>
 <p><strong>Particularites :</strong>
@@ -1664,18 +1692,18 @@
 <h2 id="database-breezy_profils-profil-service">Database : <code>breezy_profils</code> (profil-service)</h2>
 <h3 id="collection-profiles">Collection : <code>profiles</code></h3>
 <p>Modele : <code>Profile</code> (<code>profil-service/src/models/profile.model.js</code>)</p>
-<pre><code class="language-javascript">{
-  _id: ObjectId,
-  user_id: String,         // UUID, unique, indexe
-  display_name: String,    // Nom affiche, max 100 caracteres, default ''
-  bio: String,             // Biographie, max 160 caracteres, default ''
-  avatar_url: String,      // URL de l'avatar, default ''
-  banner_url: String,      // URL de la banniere, default ''
-  location: String,        // Localisation, max 100 caracteres, default ''
-  created_at: Date,        // Cree automatiquement
-  updated_at: Date         // Cree automatiquement
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">user_id</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">         </span><span class="c1">// UUID, unique, indexe</span>
+<span class="w">  </span><span class="nx">display_name</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">    </span><span class="c1">// Nom affiche, max 100 caracteres, default &#39;&#39;</span>
+<span class="w">  </span><span class="nx">bio</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">             </span><span class="c1">// Biographie, max 160 caracteres, default &#39;&#39;</span>
+<span class="w">  </span><span class="nx">avatar_url</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">      </span><span class="c1">// URL de l&#39;avatar, default &#39;&#39;</span>
+<span class="w">  </span><span class="nx">banner_url</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">      </span><span class="c1">// URL de la banniere, default &#39;&#39;</span>
+<span class="w">  </span><span class="nx">location</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">        </span><span class="c1">// Localisation, max 100 caracteres, default &#39;&#39;</span>
+<span class="w">  </span><span class="nx">created_at</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">,</span><span class="w">        </span><span class="c1">// Cree automatiquement</span>
+<span class="w">  </span><span class="nx">updated_at</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="w">         </span><span class="c1">// Cree automatiquement</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><strong>Index :</strong>
 - <code>{ user_id: 1 }</code> -- <strong>UNIQUE</strong> (un seul profil par utilisateur)</p>
 <p><strong>Particularites :</strong>
@@ -1686,17 +1714,17 @@
 <hr />
 <h3 id="collection-notifications">Collection : <code>notifications</code></h3>
 <p>Modele : <code>Notification</code> (<code>profil-service/src/models/notification.model.js</code>)</p>
-<pre><code class="language-javascript">{
-  _id: ObjectId,
-  recipient_user_id: String,  // UUID du destinataire
-  type: String,               // Enum: 'like', 'follow', 'mention', 'comment', 'reply'
-  from_user_id: String,       // UUID de l'emetteur
-  from_username: String,      // Username de l'emetteur (denormalise)
-  post_id: String,            // Optionnel, UUID du post concerne, default null
-  is_read: Boolean,           // Flag de lecture, default false
-  created_at: Date            // Cree automatiquement, pas de updated_at
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">recipient_user_id</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">  </span><span class="c1">// UUID du destinataire</span>
+<span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">               </span><span class="c1">// Enum: &#39;like&#39;, &#39;follow&#39;, &#39;mention&#39;, &#39;comment&#39;, &#39;reply&#39;</span>
+<span class="w">  </span><span class="nx">from_user_id</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">       </span><span class="c1">// UUID de l&#39;emetteur</span>
+<span class="w">  </span><span class="nx">from_username</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">      </span><span class="c1">// Username de l&#39;emetteur (denormalise)</span>
+<span class="w">  </span><span class="nx">post_id</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">            </span><span class="c1">// Optionnel, UUID du post concerne, default null</span>
+<span class="w">  </span><span class="nx">is_read</span><span class="o">:</span><span class="w"> </span><span class="nb">Boolean</span><span class="p">,</span><span class="w">           </span><span class="c1">// Flag de lecture, default false</span>
+<span class="w">  </span><span class="nx">created_at</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="w">            </span><span class="c1">// Cree automatiquement, pas de updated_at</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><strong>Index :</strong>
 - <code>{ recipient_user_id: 1, is_read: 1, created_at: -1 }</code> -- Optimise l'affichage des notifications non lues d'un utilisateur, triees par date</p>
 <p><strong>Types de notifications :</strong>

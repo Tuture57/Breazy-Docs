@@ -364,6 +364,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../architecture/diagramme-composants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagramme de composants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../architecture/docker-deploiement/" class="md-nav__link">
         
   
@@ -2213,12 +2241,12 @@
 </ul>
 <h3 id="5-node_envtest-dans-docker-desactive-le-rate-limiting">5. NODE_ENV=test dans Docker desactive le rate limiting</h3>
 <p>Le docker-compose definit <code>NODE_ENV=test</code> pour la Gateway, ce qui desactive tous les limiteurs de taux.</p>
-<pre><code class="language-javascript">const isTest = process.env.NODE_ENV === 'test';
-const globalLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: isTest ? 999999 : 500,  // 999999 en test
-});
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">isTest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;test&#39;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">globalLimiter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rateLimit</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">windowMs</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="nx">isTest</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">999999</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">500</span><span class="p">,</span><span class="w">  </span><span class="c1">// 999999 en test</span>
+<span class="p">});</span>
+</code></pre></div>
 <ul>
 <li><strong>Code</strong> : <code>C:\Users\barto\Desktop\breezy projet\breezy-infra\gateway\src\index.js</code>, lignes 16-43</li>
 <li><strong>docker-compose.yml</strong> : <code>C:\Users\barto\Desktop\breezy projet\breezy-infra\docker-compose.yml</code>, ligne 37 (<code>NODE_ENV=test</code>)</li>
@@ -2227,12 +2255,12 @@ const globalLimiter = rateLimit({
 </ul>
 <h3 id="6-sequelizesync-alter-true-est-dangereux-en-production">6. sequelize.sync({ alter: true }) est dangereux en production</h3>
 <p>Les services auth et user utilisent <code>sequelize.sync({ alter: true })</code> au demarrage, ce qui modifie automatiquement le schema de la base pour correspondre aux modeles.</p>
-<pre><code class="language-javascript">const connectDB = async () =&gt; {
-    await sequelize.authenticate();
-    console.log('[Auth DB] Connexion PostgreSQL OK');
-    await sequelize.sync({ alter: true });  // DANGEREUX en production
-};
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">connectDB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">sequelize</span><span class="p">.</span><span class="nx">authenticate</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;[Auth DB] Connexion PostgreSQL OK&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">sequelize</span><span class="p">.</span><span class="nx">sync</span><span class="p">({</span><span class="w"> </span><span class="nx">alter</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span><span class="w">  </span><span class="c1">// DANGEREUX en production</span>
+<span class="p">};</span>
+</code></pre></div>
 <ul>
 <li><strong>Auth</strong> : <code>C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\config\database.js</code>, ligne 12</li>
 <li><strong>User</strong> : <code>C:\Users\barto\Desktop\breezy projet\breezy-user-service\src\config\database.js</code>, ligne 12</li>
@@ -2272,9 +2300,9 @@ const globalLimiter = rateLimit({
 <h2 id="bugs-connus-du-code">Bugs connus (du code)</h2>
 <h3 id="1-likes_count-peut-theoriquement-devenir-negatif">1. likes_count peut theoriquement devenir negatif</h3>
 <p>Si deux requetes <code>unlike</code> sont envoyees simultanement pour le meme post par le meme utilisateur, la deuxieme pourrait faire passer <code>likes_count</code> en dessous de zero. Le <code>Math.max(0, ...)</code> corrige en lecture mais pas en ecriture.</p>
-<pre><code class="language-javascript">const updated = await Post.findByIdAndUpdate(postId, { $inc: { likes_count: -1 } }, { new: true });
-return res.json({ likes_count: Math.max(0, updated.likes_count) });
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">updated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Post</span><span class="p">.</span><span class="nx">findByIdAndUpdate</span><span class="p">(</span><span class="nx">postId</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">$inc</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">likes_count</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="ow">new</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span>
+<span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">likes_count</span><span class="o">:</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">updated</span><span class="p">.</span><span class="nx">likes_count</span><span class="p">)</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
 <ul>
 <li><strong>Code</strong> : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\like.controller.js</code>, lignes 55-60</li>
 <li><strong>Risque</strong> : le compteur en base peut devenir negatif, seul l'affichage est corrige</li>

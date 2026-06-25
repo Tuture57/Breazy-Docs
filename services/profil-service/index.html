@@ -364,6 +364,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../architecture/diagramme-composants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagramme de composants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../architecture/docker-deploiement/" class="md-nav__link">
         
   
@@ -1739,7 +1767,7 @@
 <p>Recuperer le profil d'un utilisateur (creation automatique si inexistant).</p>
 <p><strong>Middleware :</strong> aucun</p>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;user_id&quot;: &quot;uuid&quot;,
   &quot;display_name&quot;: &quot;John Doe&quot;,
@@ -1750,7 +1778,7 @@
   &quot;created_at&quot;: &quot;2024-01-01T00:00:00.000Z&quot;,
   &quot;updated_at&quot;: &quot;2024-01-01T00:00:00.000Z&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Utiliser <code>findOneAndUpdate</code> avec <code>upsert: true</code> et <code>$setOnInsert: { user_id }</code>.
 2. Si le profil n'existe pas, il est cree automatiquement avec les valeurs par defaut (lazy creation / auto-provisioning).
@@ -1805,13 +1833,13 @@
 </tbody>
 </table>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;message&quot;: &quot;Profile updated&quot;,
   &quot;profile&quot;: { ... }
 }
-</code></pre>
-<pre><code>401 Unauthorized
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>401 Unauthorized
 {
   &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
 }
@@ -1821,7 +1849,7 @@
   &quot;error&quot;: &quot;FORBIDDEN&quot;,
   &quot;message&quot;: &quot;You can only edit your own profile&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Verifier que <code>x-user-id</code> === <code>userId</code> (proprietaire).
 2. Filtrer les champs recus pour n'accepter que ceux de la whitelist (display_name, bio, avatar_url, banner_url, location). Les champs non autorises sont ignores silencieusement.
@@ -1854,7 +1882,7 @@
 </tbody>
 </table>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;notifications&quot;: [
     {
@@ -1873,12 +1901,12 @@
   &quot;page&quot;: 1,
   &quot;limit&quot;: 20
 }
-</code></pre>
-<pre><code>401 Unauthorized
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>401 Unauthorized
 {
   &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. <code>Notification.find({ recipient_user_id: x-user-id })</code>, trie par <code>created_at: -1</code>.
 2. Compter le nombre de notifications avec <code>is_read: false</code> pour <code>unread_count</code>.
@@ -1889,11 +1917,11 @@
 <p><strong>Middleware :</strong> <code>identity</code></p>
 <p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;message&quot;: &quot;All notifications marked as read&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. <code>Notification.updateMany({ recipient_user_id: x-user-id, is_read: false }, { is_read: true })</code>.</p>
 <hr />
@@ -1902,16 +1930,16 @@
 <p><strong>Middleware :</strong> <code>identity</code></p>
 <p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;message&quot;: &quot;Notification marked as read&quot;
 }
-</code></pre>
-<pre><code>404 Not Found
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>404 Not Found
 {
   &quot;error&quot;: &quot;NOTIFICATION_NOT_FOUND&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Trouver la notification par <code>_id</code>.
 2. Verifier que <code>recipient_user_id</code> === <code>x-user-id</code> (scope a l'utilisateur).
@@ -1965,7 +1993,7 @@
 </tbody>
 </table>
 <p><strong>Reponses :</strong></p>
-<pre><code>201 Created
+<div class="highlight"><pre><span></span><code>201 Created
 {
   &quot;message&quot;: &quot;Notification created&quot;,
   &quot;notification&quot;: { ... }
@@ -1973,12 +2001,12 @@
 
 204 No Content
 {}
-</code></pre>
-<pre><code>403 Forbidden
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>403 Forbidden
 {
   &quot;error&quot;: &quot;FORBIDDEN&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Verifier le header <code>x-internal-secret</code> correspond a <code>INTERNAL_SECRET</code>.
 2. <strong>Self-notification guard</strong> : si <code>recipient_user_id === from_user_id</code> -&gt; retour <code>204 No Content</code> (un utilisateur ne recoit pas de notification pour ses propres actions).

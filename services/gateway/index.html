@@ -364,6 +364,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../architecture/diagramme-composants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagramme de composants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../architecture/docker-deploiement/" class="md-nav__link">
         
   
@@ -1593,35 +1621,35 @@
 </table>
 <h3 id="detail-des-headers-injectes">Détail des headers injectés</h3>
 <p>La Gateway injecte les headers suivants après vérification du JWT :</p>
-<pre><code class="language-javascript">proxyReq.setHeader('x-user-id', req.user.sub);
-proxyReq.setHeader('x-user-role', req.user.role);
-proxyReq.setHeader('x-user-username', req.user.username);  // Sauf pour /api/users
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">proxyReq</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;x-user-id&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">sub</span><span class="p">);</span>
+<span class="nx">proxyReq</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;x-user-role&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">role</span><span class="p">);</span>
+<span class="nx">proxyReq</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;x-user-username&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">username</span><span class="p">);</span><span class="w">  </span><span class="c1">// Sauf pour /api/users</span>
+</code></pre></div>
 <p><strong>IMPORTANT</strong> : Les routes <code>/api/users/*</code> ne reçoivent <strong>pas</strong> le header <code>x-user-username</code>. Elles reçoivent uniquement <code>x-user-id</code> et <code>x-user-role</code>.</p>
 <p>Les routes auth publiques (login, register, refresh, logout) ne reçoivent <strong>aucun</strong> header d'identité.</p>
 <hr />
 <h2 id="middleware-jwt">Middleware JWT</h2>
 <p>Fichier : <code>gateway/src/middleware/auth.js</code></p>
-<pre><code class="language-javascript">const { verifyToken } = require(&quot;../utils/jwt.utils.js&quot;);
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">verifyToken</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;../utils/jwt.utils.js&quot;</span><span class="p">);</span>
 
-function authenticate(req, res, next) {
-    const authHeader = req.headers['authorization'];
+<span class="kd">function</span><span class="w"> </span><span class="nx">authenticate</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">authHeader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;authorization&#39;</span><span class="p">];</span>
 
-    if (!authHeader) {
-        return res.status(401).json({ message: &quot;No token provided&quot; });
-    }
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">authHeader</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;No token provided&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
 
-    const token = authHeader.split(' ')[1];
-    const decoded = verifyToken(token);
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">authHeader</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mf">1</span><span class="p">];</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">decoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">verifyToken</span><span class="p">(</span><span class="nx">token</span><span class="p">);</span>
 
-    if (!decoded) {
-        return res.status(401).json({ message: &quot;Invalid or expired token&quot; });
-    }
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">decoded</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Invalid or expired token&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
 
-    req.user = decoded;
-    next();
-}
-</code></pre>
+<span class="w">    </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">decoded</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">next</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
 <ul>
 <li>Extrait le token du header <code>Authorization: Bearer &lt;token&gt;</code></li>
 <li>Appelle <code>jwt.verify(token, JWT_SECRET)</code> </li>
@@ -1630,28 +1658,28 @@ function authenticate(req, res, next) {
 </ul>
 <hr />
 <h2 id="rate-limiting">Rate Limiting</h2>
-<pre><code class="language-javascript">const isTest = process.env.NODE_ENV === 'test';
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">isTest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;test&#39;</span><span class="p">;</span>
 
-// Global : 500 requêtes / 15 minutes par IP
-const globalLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: isTest ? 999999 : 500,
-    message: { error: 'Trop de requêtes, réessaie dans 15 minutes' },
-});
+<span class="c1">// Global : 500 requêtes / 15 minutes par IP</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">globalLimiter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rateLimit</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">windowMs</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="nx">isTest</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">999999</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">500</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Trop de requêtes, réessaie dans 15 minutes&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="p">});</span>
 
-// Auth : 20 tentatives / 15 minutes sur login et register
-const authLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: isTest ? 999999 : 20,
-    message: { error: 'Trop de tentatives de connexion, réessaie dans 15 minutes' },
-});
+<span class="c1">// Auth : 20 tentatives / 15 minutes sur login et register</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">authLimiter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rateLimit</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">windowMs</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="nx">isTest</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">999999</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Trop de tentatives de connexion, réessaie dans 15 minutes&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="p">});</span>
 
-if (!isTest) app.use(globalLimiter);
-if (!isTest) {
-    app.use('/api/auth/login', authLimiter);
-    app.use('/api/auth/register', authLimiter);
-}
-</code></pre>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">isTest</span><span class="p">)</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">globalLimiter</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">isTest</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/api/auth/login&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">authLimiter</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/api/auth/register&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">authLimiter</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1728,28 +1756,28 @@ if (!isTest) {
 </table>
 <hr />
 <h2 id="health-check">Health Check</h2>
-<pre><code class="language-javascript">app.get('/api/health', (req, res) =&gt; {
-    res.status(200).json({ status: 'UP', service: 'api-gateway' });
-});
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/api/health&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;UP&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;api-gateway&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
 <h2 id="gestion-des-erreurs">Gestion des erreurs</h2>
-<pre><code class="language-javascript">app.use(errorHandler);
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">errorHandler</span><span class="p">);</span>
 
-// errorHandler.js
-module.exports = (err, req, res, next) =&gt; {
-  console.error(`[Gateway Error] ${err.message}`);
-  res.status(err.status || 500).json({
-    error: err.message || 'Erreur interne du serveur'
-  });
-};
-</code></pre>
+<span class="c1">// errorHandler.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`[Gateway Error] </span><span class="si">${</span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">500</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;Erreur interne du serveur&#39;</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div>
 <p>Chaque proxy route gère également les erreurs de connexion au service cible :</p>
-<pre><code class="language-javascript">on: {
-    error: (err, req, res) =&gt; {
-        res.status(502).json({ error: 'Auth service indisponible' });
-    }
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nx">on</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">502</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Auth service indisponible&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <ul>
 <li><strong>502 Bad Gateway</strong> : retourné si le service backend est inaccessible</li>
 <li><strong>500</strong> : erreur interne non gérée</li>

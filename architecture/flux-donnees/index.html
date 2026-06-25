@@ -14,7 +14,7 @@
         <link rel="prev" href="../communication-services/">
       
       
-        <link rel="next" href="../docker-deploiement/">
+        <link rel="next" href="../diagramme-composants/">
       
       
         
@@ -489,6 +489,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagramme-composants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagramme de composants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1407,7 +1435,7 @@
 <p>Cette page détaille les principaux flux de données dans Breezy, du navigateur jusqu'aux bases de données.</p>
 <hr />
 <h2 id="1-inscription-complete">1. Inscription complète</h2>
-<pre><code class="language-mermaid">sequenceDiagram
+<pre class="mermaid"><code>sequenceDiagram
     participant Client as Navigateur
     participant Nginx as Nginx (:80)
     participant Gateway as API Gateway (:3000)
@@ -1443,8 +1471,7 @@
 
     Auth--&gt;&gt;Gateway: 201 {user: {id, username, email, role}, token}
     Gateway--&gt;&gt;Nginx: Réponse + Set-Cookie: refreshToken (httpOnly)
-    Nginx--&gt;&gt;Client: 201 + JWT + refreshToken cookie
-</code></pre>
+    Nginx--&gt;&gt;Client: 201 + JWT + refreshToken cookie</code></pre>
 <p><strong>Points clés :</strong>
 - Validation stricte : username 3-50 caractères (lettres, chiffres, underscores), email valide, password 8+ avec majuscule et chiffre
 - UUID v4 généré automatiquement par Sequelize pour l'ID utilisateur
@@ -1452,7 +1479,7 @@
 - L'appel au User Service est non bloquant : si le service est down, l'inscription réussit quand même</p>
 <hr />
 <h2 id="2-connexion">2. Connexion</h2>
-<pre><code class="language-mermaid">sequenceDiagram
+<pre class="mermaid"><code>sequenceDiagram
     participant Client as Navigateur
     participant Nginx as Nginx (:80)
     participant Gateway as API Gateway (:3000)
@@ -1481,11 +1508,10 @@
         Auth-&gt;&gt;PGauth: INSERT refresh_tokens (token_hash, user_id, expires_at)
         Auth--&gt;&gt;Gateway: 200 {user, token} + Set-Cookie: refreshToken
         Gateway--&gt;&gt;Client: 200 + JWT + refreshToken cookie
-    end
-</code></pre>
+    end</code></pre>
 <hr />
 <h2 id="3-requete-authentifiee-typique">3. Requête authentifiée typique</h2>
-<pre><code class="language-mermaid">sequenceDiagram
+<pre class="mermaid"><code>sequenceDiagram
     participant Client as Navigateur
     participant Nginx as Nginx (:80)
     participant Gateway as API Gateway (:3000)
@@ -1501,7 +1527,7 @@
     Gateway-&gt;&gt;Gateway: Extrait payload: {sub, username, role}
 
     alt Token invalide ou expiré
-        Gateway--&gt;&gt;Client: 401 &quot;Invalid or expired token&quot;
+        Gateway--&gt;&gt;Client: 401 "Invalid or expired token"
     else Token valide
         Gateway-&gt;&gt;Gateway: Injecte x-user-id, x-user-role, x-user-username
         Gateway-&gt;&gt;Svc: Requête proxyfiée avec headers d'identité
@@ -1511,8 +1537,7 @@
         DB--&gt;&gt;Svc: Résultat
         Svc--&gt;&gt;Gateway: Réponse JSON
         Gateway--&gt;&gt;Client: Réponse JSON
-    end
-</code></pre>
+    end</code></pre>
 <p><strong>Détail des headers injectés par route :</strong></p>
 <table>
 <thead>
@@ -1554,7 +1579,7 @@
 </table>
 <hr />
 <h2 id="4-creation-de-post-avec-mention">4. Création de post avec mention @</h2>
-<pre><code class="language-mermaid">sequenceDiagram
+<pre class="mermaid"><code>sequenceDiagram
     participant Client as Navigateur
     participant Gateway as API Gateway
     participant Post as Post Service (:3003)
@@ -1563,7 +1588,7 @@
     participant MongoP as MongoDB (posts)
     participant MongoPr as MongoDB (profils)
 
-    Client-&gt;&gt;Gateway: POST /api/posts {content: &quot;Salut @arthur !&quot;}
+    Client-&gt;&gt;Gateway: POST /api/posts {content: "Salut @arthur !"}
     Note over Client: Authorization: Bearer &lt;JWT&gt;
 
     Gateway-&gt;&gt;Gateway: Vérifie JWT, injecte headers
@@ -1571,11 +1596,11 @@
 
     Post-&gt;&gt;Post: Validation (content max 280, tags max 5)
     Post-&gt;&gt;MongoP: INSERT post (user_id, username, content, tags, media_urls)
-    Post-&gt;&gt;Post: Détecte &quot;@arthur&quot; dans le contenu
+    Post-&gt;&gt;Post: Détecte "@arthur" dans le contenu
 
     Note over Post: Logique mentions (non bloquante)
     Post-&gt;&gt;UserSvc: GET /users/by-username/arthur [x-user-id]
-    UserSvc-&gt;&gt;Post: 200 {id: &quot;uuid-d-arthur&quot;}
+    UserSvc-&gt;&gt;Post: 200 {id: "uuid-d-arthur"}
 
     Post-&gt;&gt;Profil: POST /api/notifications/internal [x-internal-secret]
     Note over Profil: Vérifie x-internal-secret
@@ -1583,8 +1608,7 @@
     Profil--&gt;&gt;Post: 201
 
     Post--&gt;&gt;Gateway: 201 {post object}
-    Gateway--&gt;&gt;Client: 201
-</code></pre>
+    Gateway--&gt;&gt;Client: 201</code></pre>
 <p><strong>Caractéristiques :</strong>
 - La détection des mentions se fait par regex <code>@([a-zA-Z0-9_]+)</code> sur le contenu
 - Chaque mention résout le username via User Service
@@ -1593,7 +1617,7 @@
 - Les auto-mentions sont ignorées (on ne se notifie pas soi-même)</p>
 <hr />
 <h2 id="5-like-avec-notification">5. Like avec notification</h2>
-<pre><code class="language-mermaid">sequenceDiagram
+<pre class="mermaid"><code>sequenceDiagram
     participant Client as Navigateur
     participant Gateway as API Gateway
     participant Post as Post Service (:3003)
@@ -1617,14 +1641,13 @@
     Profil--&gt;&gt;Post: 201
 
     Post--&gt;&gt;Gateway: 200 {likes_count: N}
-    Gateway--&gt;&gt;Client: 200
-</code></pre>
+    Gateway--&gt;&gt;Client: 200</code></pre>
 <p><strong>En cas de doublon :</strong>
 - MongoDB renvoie une erreur <code>11000</code> (index unique <code>{post_id, user_id}</code>)
 - Le service retourne <code>409 ALREADY_LIKED</code></p>
 <hr />
 <h2 id="6-follow-avec-notification">6. Follow avec notification</h2>
-<pre><code class="language-mermaid">sequenceDiagram
+<pre class="mermaid"><code>sequenceDiagram
     participant Client as Navigateur
     participant Gateway as API Gateway
     participant UserSvc as User Service (:3002)
@@ -1651,9 +1674,8 @@
     Profil-&gt;&gt;MongoPr: INSERT notification (type: 'follow', recipient: followed, from: follower)
     Profil--&gt;&gt;UserSvc: 201
 
-    UserSvc--&gt;&gt;Gateway: 200 {message: &quot;Vous suivez maintenant @username.&quot;}
-    Gateway--&gt;&gt;Client: 200
-</code></pre>
+    UserSvc--&gt;&gt;Gateway: 200 {message: "Vous suivez maintenant @username."}
+    Gateway--&gt;&gt;Client: 200</code></pre>
 <p><strong>Cas particuliers :</strong>
 - Auto-follow : <code>400 CANNOT_SELF_FOLLOW</code>
 - Double follow : <code>409 ALREADY_FOLLOWING</code> (vérifié par la transaction + findOrCreate)
@@ -1661,7 +1683,7 @@
 - Unfollow : <code>DELETE /users/:id/follow</code> → <code>204</code> (succès) ou <code>404 NOT_FOLLOWING</code></p>
 <hr />
 <h2 id="7-rafraichissement-de-token-refresh">7. Rafraîchissement de token (refresh)</h2>
-<pre><code class="language-mermaid">sequenceDiagram
+<pre class="mermaid"><code>sequenceDiagram
     participant Client as Navigateur
     participant Gateway as API Gateway
     participant Auth as Auth Service
@@ -1695,11 +1717,10 @@
         Note over Auth: Nouvel access token généré
         Auth-&gt;&gt;Auth: jwt.sign({sub, username, role}, JWT_SECRET, {expiresIn: '15m'})
         Auth--&gt;&gt;Client: 200 {token: nouveau_JWT} + Set-Cookie: nouveau_refreshToken
-    end
-</code></pre>
+    end</code></pre>
 <hr />
 <h2 id="8-refresh-token-cote-frontend">8. Refresh token côté frontend</h2>
-<pre><code class="language-mermaid">sequenceDiagram
+<pre class="mermaid"><code>sequenceDiagram
     participant Client as Application React
     participant API as Axios Instance
 
@@ -1721,8 +1742,7 @@
         else Refresh échoué
             API-&gt;&gt;API: Clear token + redirige /signin
         end
-    end
-</code></pre>
+    end</code></pre>
 <p>Le mécanisme implémente un <code>failedQueue</code> : si plusieurs requêtes échouent simultanément avec 401, une seule tentative de refresh est effectuée, et les autres requêtes sont mises en attente puis rejouées avec le nouveau token.</p>
 
 

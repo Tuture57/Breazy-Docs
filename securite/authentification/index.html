@@ -364,6 +364,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../architecture/diagramme-composants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagramme de composants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../architecture/docker-deploiement/" class="md-nav__link">
         
   
@@ -1918,7 +1946,7 @@
 <h1 id="authentification-et-securite">Authentification et Securite</h1>
 <h2 id="architecture-globale">Architecture globale</h2>
 <p>L'authentification repose sur un <strong>double token system</strong> (JWT + Refresh Token) avec une <strong>gateway centralisee</strong> qui verifie les JWT et injecte les headers d'identite dans les services backend.</p>
-<pre><code>Client  →  NGINX  →  Gateway  →  auth-service (login, register, refresh)
+<div class="highlight"><pre><span></span><code>Client  →  NGINX  →  Gateway  →  auth-service (login, register, refresh)
                ↓
           (verifie JWT)
                ↓
@@ -1927,19 +1955,19 @@
      ┌──────┬──────┬────────┬──────────┐
      ↓      ↓      ↓        ↓          ↓
    auth   user   post   profil   upload
-</code></pre>
+</code></pre></div>
 <p>Les services backend <strong>ne verifient jamais le JWT eux-memes</strong> : ils font confiance aux headers injectes par la gateway.</p>
 <hr />
 <h2 id="jwt-access-token">JWT (Access Token)</h2>
 <h3 id="structure-du-payload">Structure du payload</h3>
-<pre><code class="language-json">{
-  &quot;sub&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
-  &quot;username&quot;: &quot;johndoe&quot;,
-  &quot;role&quot;: &quot;user&quot;,
-  &quot;iat&quot;: 1718000000,
-  &quot;exp&quot;: 1718000900
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;550e8400-e29b-41d4-a716-446655440000&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;johndoe&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718000000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718000900</span>
+<span class="p">}</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1977,14 +2005,14 @@
 </tbody>
 </table>
 <h3 id="generation">Generation</h3>
-<pre><code class="language-javascript">// auth-service/src/utils/jwt.utils.js
-const generateAccessToken = (user) =&gt;
-  jwt.sign(
-    { sub: user.id, username: user.username, role: user.role },
-    process.env.JWT_SECRET,
-    { expiresIn: process.env.JWT_EXPIRES_IN || '15m' }
-  );
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// auth-service/src/utils/jwt.utils.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">generateAccessToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span>
+<span class="w">  </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">sub</span><span class="o">:</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">username</span><span class="o">:</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">role</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">,</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">expiresIn</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_EXPIRES_IN</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;15m&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">);</span>
+</code></pre></div>
 <ul>
 <li><strong>Algorithme</strong> : HS256 (HMAC avec SHA-256)</li>
 <li><strong>Duree de vie</strong> : <code>JWT_EXPIRES_IN</code> (defaut : <code>15m</code> = 15 minutes)</li>
@@ -1992,15 +2020,15 @@ const generateAccessToken = (user) =&gt;
 <li><strong>Bibliotheque</strong> : <code>jsonwebtoken</code></li>
 </ul>
 <h3 id="verification-gateway">Verification (Gateway)</h3>
-<pre><code class="language-javascript">// gateway/src/middleware/auth.js
-function authenticate(req, res, next) {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader.split(' ')[1];
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded; // { sub, username, role, iat, exp }
-    next();
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// gateway/src/middleware/auth.js</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">authenticate</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">authHeader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;authorization&#39;</span><span class="p">];</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">authHeader</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mf">1</span><span class="p">];</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">decoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">verify</span><span class="p">(</span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">decoded</span><span class="p">;</span><span class="w"> </span><span class="c1">// { sub, username, role, iat, exp }</span>
+<span class="w">    </span><span class="nx">next</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="injection-des-headers">Injection des headers</h3>
 <p>Apres verification du JWT, la gateway injecte les headers suivants dans la requete vers le service backend :</p>
 <table>
@@ -2033,30 +2061,30 @@ function authenticate(req, res, next) {
 <hr />
 <h2 id="refresh-token">Refresh Token</h2>
 <h3 id="generation_1">Generation</h3>
-<pre><code class="language-javascript">const generateRefreshToken = () =&gt;
-  crypto.randomBytes(64).toString('hex');
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">generateRefreshToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span>
+<span class="w">  </span><span class="nx">crypto</span><span class="p">.</span><span class="nx">randomBytes</span><span class="p">(</span><span class="mf">64</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">);</span>
+</code></pre></div>
 <ul>
 <li><strong>Entropie</strong> : 512 bits (64 octets aleatoires)</li>
 <li><strong>Format</strong> : chaine hexadecimale (128 caracteres)</li>
 <li><strong>Stockage</strong> : jamais en clair, hash SHA-256 uniquement</li>
 </ul>
 <h3 id="stockage-en-base">Stockage en base</h3>
-<pre><code class="language-sql">-- Table refresh_tokens
-token_hash VARCHAR(512) NOT NULL UNIQUE  -- SHA-256(token)
-expires_at TIMESTAMP NOT NULL
-is_revoked BOOLEAN DEFAULT false
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Table refresh_tokens</span>
+<span class="n">token_hash</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w">  </span><span class="c1">-- SHA-256(token)</span>
+<span class="n">expires_at</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
+<span class="n">is_revoked</span><span class="w"> </span><span class="nb">BOOLEAN</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">false</span>
+</code></pre></div>
 <h3 id="livraison-au-client">Livraison au client</h3>
 <p>Le refresh token est envoye dans un cookie HTTP-only :</p>
-<pre><code class="language-javascript">const cookieOptions = {
-  httpOnly: true,                           // Inaccessible depuis JavaScript
-  secure: process.env.NODE_ENV === 'production',  // HTTPS seulement en prod
-  sameSite: 'Strict',                       // Protege contre les CSRF
-  maxAge: REFRESH_TOKEN_DAYS * 24 * 60 * 60 * 1000,  // Duree de vie
-};
-res.cookie('refreshToken', refreshToken, cookieOptions);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">cookieOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">httpOnly</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">                           </span><span class="c1">// Inaccessible depuis JavaScript</span>
+<span class="w">  </span><span class="nx">secure</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;production&#39;</span><span class="p">,</span><span class="w">  </span><span class="c1">// HTTPS seulement en prod</span>
+<span class="w">  </span><span class="nx">sameSite</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Strict&#39;</span><span class="p">,</span><span class="w">                       </span><span class="c1">// Protege contre les CSRF</span>
+<span class="w">  </span><span class="nx">maxAge</span><span class="o">:</span><span class="w"> </span><span class="nx">REFRESH_TOKEN_DAYS</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span><span class="w">  </span><span class="c1">// Duree de vie</span>
+<span class="p">};</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">cookie</span><span class="p">(</span><span class="s1">&#39;refreshToken&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">refreshToken</span><span class="p">,</span><span class="w"> </span><span class="nx">cookieOptions</span><span class="p">);</span>
+</code></pre></div>
 <p><strong>Duree de vie</strong> : <code>REFRESH_TOKEN_DAYS</code> (defaut 7 jours).</p>
 <h3 id="rotation-et-detection-de-vol">Rotation et detection de vol</h3>
 <p>Le refresh token implemente un mecanisme de <strong>rotation avec detection de rejeu</strong> :</p>
@@ -2067,19 +2095,19 @@ res.cookie('refreshToken', refreshToken, cookieOptions);
 <li>Token expire ou deja reveque -&gt; <code>401 INVALID_REFRESH_TOKEN</code></li>
 </ol>
 <p><strong>Detection de vol</strong> : si un token deja reveque est presente (vol de session), <strong>tous les tokens</strong> de l'utilisateur sont reveques :</p>
-<pre><code class="language-javascript">if (stored.is_revoked) {
-  await RefreshToken.update(
-    { is_revoked: true },
-    { where: { user_id: stored.user_id } }
-  );
-  // L'attaquant ET l'utilisateur legitime sont deconnectes
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">stored</span><span class="p">.</span><span class="nx">is_revoked</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">RefreshToken</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">is_revoked</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">user_id</span><span class="o">:</span><span class="w"> </span><span class="nx">stored</span><span class="p">.</span><span class="nx">user_id</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// L&#39;attaquant ET l&#39;utilisateur legitime sont deconnectes</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h2 id="hachage-des-mots-de-passe">Hachage des mots de passe</h2>
-<pre><code class="language-javascript">const bcrypt = require('bcryptjs');
-const password_hash = await bcrypt.hash(password, BCRYPT_ROUNDS);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">bcrypt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;bcryptjs&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">password_hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">bcrypt</span><span class="p">.</span><span class="nx">hash</span><span class="p">(</span><span class="nx">password</span><span class="p">,</span><span class="w"> </span><span class="nx">BCRYPT_ROUNDS</span><span class="p">);</span>
+</code></pre></div>
 <ul>
 <li><strong>Bibliotheque</strong> : <code>bcryptjs</code></li>
 <li><strong>Rounds de salage</strong> : <code>BCRYPT_ROUNDS</code> (defaut : 12)</li>
@@ -2090,9 +2118,9 @@ const password_hash = await bcrypt.hash(password, BCRYPT_ROUNDS);
 <h2 id="rate-limiting-double-couche">Rate Limiting (double couche)</h2>
 <h3 id="couche-1-nginx">Couche 1 : Nginx</h3>
 <p>Configure dans <code>infra/nginx/nginx.conf</code> :</p>
-<pre><code>limit_req_zone $binary_remote_addr zone=global:10m rate=30r/m;
+<div class="highlight"><pre><span></span><code>limit_req_zone $binary_remote_addr zone=global:10m rate=30r/m;
 limit_req_zone $binary_remote_addr zone=auth:10m rate=5r/m;
-</code></pre>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2116,23 +2144,23 @@ limit_req_zone $binary_remote_addr zone=auth:10m rate=5r/m;
 </table>
 <h3 id="couche-2-gateway-express-rate-limit">Couche 2 : Gateway (express-rate-limit)</h3>
 <p>Configure dans <code>infra/gateway/src/index.js</code> :</p>
-<pre><code class="language-javascript">const globalLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000,  // 15 minutes
-    max: 500,                    // 500 requetes
-});
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">globalLimiter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rateLimit</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">windowMs</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span><span class="w">  </span><span class="c1">// 15 minutes</span>
+<span class="w">    </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">500</span><span class="p">,</span><span class="w">                    </span><span class="c1">// 500 requetes</span>
+<span class="p">});</span>
 
-const authLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000,  // 15 minutes
-    max: 20,                     // 20 tentatives
-});
-app.use('/api/auth/login', authLimiter);
-app.use('/api/auth/register', authLimiter);
-</code></pre>
+<span class="kd">const</span><span class="w"> </span><span class="nx">authLimiter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rateLimit</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">windowMs</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span><span class="w">  </span><span class="c1">// 15 minutes</span>
+<span class="w">    </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w">                     </span><span class="c1">// 20 tentatives</span>
+<span class="p">});</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/api/auth/login&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">authLimiter</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/api/auth/register&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">authLimiter</span><span class="p">);</span>
+</code></pre></div>
 <p><strong>ATTENTION</strong> : Docker Compose definit <code>NODE_ENV=test</code> pour la gateway, ce qui <strong>desactive</strong> le rate limiting (<code>max: 999999</code>). En production, cette valeur doit etre supprimee du docker-compose.yml.</p>
 <hr />
 <h2 id="flux-dauthentification-complet">Flux d'authentification complet</h2>
 <h3 id="1-connexion">1. Connexion</h3>
-<pre><code>Client                    Gateway                  auth-service
+<div class="highlight"><pre><span></span><code>Client                    Gateway                  auth-service
   │                         │                         │
   │── POST /api/auth/login ─┤                         │
   │    {email, password}     │── POST /auth/login ─────┤
@@ -2145,9 +2173,9 @@ app.use('/api/auth/register', authLimiter);
   │                         │    + Set-Cookie: refreshToken
   │◄── {token, user} ──────┤                         │
   │    + refreshToken cookie                         │
-</code></pre>
+</code></pre></div>
 <h3 id="2-requetes-authentifiees">2. Requetes authentifiees</h3>
-<pre><code>Client                    Gateway                    Service
+<div class="highlight"><pre><span></span><code>Client                    Gateway                    Service
   │                         │                         │
   │── GET /api/posts/feed ──┤                         │
   │    Authorization:       │── jwt.verify(token) ────│
@@ -2158,28 +2186,28 @@ app.use('/api/auth/register', authLimiter);
   │                         │                         │
   │                         │◄── response ────────────┤
   │◄── response ───────────┤                         │
-</code></pre>
+</code></pre></div>
 <h3 id="3-refresh-automatique-interceptor-axios">3. Refresh automatique (interceptor Axios)</h3>
-<pre><code class="language-javascript">// Frontend: api.js interceptor
-api.interceptors.response.use(
-  (res) =&gt; res,
-  async (err) =&gt; {
-    if (err.response?.status === 401 &amp;&amp; !originalRequest._retry) {
-      const { data } = await api.post('/auth/refresh');
-      localStorage.setItem('breezy_token', data.token);
-      originalRequest.headers.Authorization = `Bearer ${data.token}`;
-      return api(originalRequest);
-    }
-    if (err.response?.status === 401 &amp;&amp; is refresing) {
-      // File d'attente : les requetes echouent jusqu'au refresh
-    }
-  }
-);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// Frontend: api.js interceptor</span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">interceptors</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span>
+<span class="w">  </span><span class="p">(</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">response</span><span class="o">?</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">401</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="nx">originalRequest</span><span class="p">.</span><span class="nx">_retry</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">api</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/auth/refresh&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">&#39;breezy_token&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">token</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">originalRequest</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">Authorization</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Bearer </span><span class="si">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">token</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">api</span><span class="p">(</span><span class="nx">originalRequest</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">response</span><span class="o">?</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">401</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="nx">refresing</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// File d&#39;attente : les requetes echouent jusqu&#39;au refresh</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">);</span>
+</code></pre></div>
 <p>Si le refresh echoue : le token est supprime du localStorage, l'utilisateur est redirige vers <code>/signin</code>.</p>
 <hr />
 <h2 id="flux-de-bannissement">Flux de bannissement</h2>
-<pre><code>Moderateur                 user-service              auth-service
+<div class="highlight"><pre><span></span><code>Moderateur                 user-service              auth-service
   │                         │                         │
   │── PUT /users/:id/ban ──┤                         │
   │    (JWT, role=moderator)│── Verif role ───────────│
@@ -2190,7 +2218,7 @@ api.interceptors.response.use(
   │                         │    secret)              │── Update is_banned=true
   │                         │                         │
   │◄── 200 OK ─────────────┤                         │
-</code></pre>
+</code></pre></div>
 <p><strong>Comportement apres bannissement :</strong>
 - Nouveaux login : <code>403 ACCOUNT_BANNED</code>
 - Sessions existantes : le JWT reste valide jusqu'a expiration (max 15 min)
@@ -2200,11 +2228,11 @@ api.interceptors.response.use(
 <h2 id="securite-inter-services">Securite inter-services</h2>
 <h3 id="header-x-internal-secret">Header <code>x-internal-secret</code></h3>
 <p>Les communications entre services backend utilisent un secret partage :</p>
-<pre><code class="language-javascript">// Verification cote recepteur
-if (req.headers['x-internal-secret'] !== process.env.INTERNAL_SECRET) {
-  return res.status(401).json({ error: { code: 'UNAUTHORIZED' } });
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// Verification cote recepteur</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;x-internal-secret&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">INTERNAL_SECRET</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">code</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;UNAUTHORIZED&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><strong>Routes concernees :</strong>
 - <code>POST /auth/internal/ban</code> (auth-service)
 - <code>POST /users/sync</code> (user-service)

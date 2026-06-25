@@ -696,6 +696,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../diagramme-composants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagramme de composants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../docker-deploiement/" class="md-nav__link">
         
   
@@ -1803,7 +1831,7 @@
 <hr />
 <h2 id="1-authentification-jwt">1. Authentification JWT</h2>
 <h3 id="flow-general">Flow général</h3>
-<pre><code class="language-mermaid">sequenceDiagram
+<pre class="mermaid"><code>sequenceDiagram
     participant Client as Navigateur
     participant Gateway as API Gateway
     participant Auth as Auth Service
@@ -1824,39 +1852,38 @@
     Gateway-&gt;&gt;Post: GET /api/posts/feed (avec headers)
     Post-&gt;&gt;Post: Lit l'identité depuis les headers
     Post--&gt;&gt;Gateway: Réponse
-    Gateway--&gt;&gt;Client: Réponse
-</code></pre>
+    Gateway--&gt;&gt;Client: Réponse</code></pre>
 <h3 id="generation-du-jwt-auth-service">Génération du JWT (Auth Service)</h3>
-<pre><code class="language-javascript">// auth-service/src/utils/jwt.utils.js
-const generateAccessToken = (user) =&gt;
-  jwt.sign(
-    { sub: user.id, username: user.username, role: user.role },
-    process.env.JWT_SECRET,
-    { expiresIn: process.env.JWT_EXPIRES_IN || '15m' }
-  );
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// auth-service/src/utils/jwt.utils.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">generateAccessToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span>
+<span class="w">  </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">sub</span><span class="o">:</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">username</span><span class="o">:</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">username</span><span class="p">,</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">role</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_SECRET</span><span class="p">,</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">expiresIn</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">JWT_EXPIRES_IN</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;15m&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">);</span>
+</code></pre></div>
 <p>Le payload du JWT contient :
 - <code>sub</code> : UUID de l'utilisateur
 - <code>username</code> : Nom d'utilisateur
 - <code>role</code> : <code>user</code>, <code>moderator</code> ou <code>admin</code></p>
 <h3 id="verification-du-jwt-gateway">Vérification du JWT (Gateway)</h3>
-<pre><code class="language-javascript">// gateway/src/middleware/auth.js
-const { verifyToken } = require(&quot;../utils/jwt.utils.js&quot;);
+<div class="highlight"><pre><span></span><code><span class="c1">// gateway/src/middleware/auth.js</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">verifyToken</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;../utils/jwt.utils.js&quot;</span><span class="p">);</span>
 
-function authenticate(req, res, next) {
-    const authHeader = req.headers['authorization'];
-    if (!authHeader) {
-        return res.status(401).json({ message: &quot;No token provided&quot; });
-    }
-    const token = authHeader.split(' ')[1];
-    const decoded = verifyToken(token);
-    if (!decoded) {
-        return res.status(401).json({ message: &quot;Invalid or expired token&quot; });
-    }
-    req.user = decoded;
-    next();
-}
-</code></pre>
+<span class="kd">function</span><span class="w"> </span><span class="nx">authenticate</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">authHeader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;authorization&#39;</span><span class="p">];</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">authHeader</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;No token provided&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">authHeader</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mf">1</span><span class="p">];</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">decoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">verifyToken</span><span class="p">(</span><span class="nx">token</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">decoded</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Invalid or expired token&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">decoded</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">next</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>Le middleware <code>auth.js</code> de la Gateway :
 1. Extrait le token du header <code>Authorization: Bearer &lt;token&gt;</code>
 2. Appelle <code>jwt.verify(token, JWT_SECRET)</code>
@@ -1893,28 +1920,28 @@ function authenticate(req, res, next) {
 </table>
 <p><strong>IMPORTANT</strong> : Les routes du User Service (<code>/api/users</code>) ne reçoivent <strong>pas</strong> <code>x-user-username</code> — seulement <code>x-user-id</code> et <code>x-user-role</code>.</p>
 <p>Les services backend ne vérifient <strong>jamais</strong> le JWT eux-mêmes. Ils lisent l'identité depuis les headers injectés par la Gateway via le middleware <code>identity.middleware.js</code> :</p>
-<pre><code class="language-javascript">// auth-service/src/middleware/identity.middleware.js
-module.exports = (req, res, next) =&gt; {
-  const userId = req.headers['x-user-id'];
-  const userRole = req.headers['x-user-role'];
-  const username = req.headers['x-user-username'];
+<div class="highlight"><pre><span></span><code><span class="c1">// auth-service/src/middleware/identity.middleware.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">userId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;x-user-id&#39;</span><span class="p">];</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">userRole</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;x-user-role&#39;</span><span class="p">];</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;x-user-username&#39;</span><span class="p">];</span>
 
-  if (!userId) {
-    return res.status(401).json({
-      error: { code: 'MISSING_IDENTITY', message: 'Identité manquante.' }
-    });
-  }
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">userId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">code</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;MISSING_IDENTITY&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Identité manquante.&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
 
-  req.userId = userId;
-  req.userRole = userRole;
-  req.username = username;
-  next();
-};
-</code></pre>
+<span class="w">  </span><span class="nx">req</span><span class="p">.</span><span class="nx">userId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">userId</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">req</span><span class="p">.</span><span class="nx">userRole</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">userRole</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">req</span><span class="p">.</span><span class="nx">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">username</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">next</span><span class="p">();</span>
+<span class="p">};</span>
+</code></pre></div>
 <hr />
 <h2 id="2-refresh-tokens">2. Refresh tokens</h2>
 <h3 id="cycle-de-vie">Cycle de vie</h3>
-<pre><code class="language-mermaid">sequenceDiagram
+<pre class="mermaid"><code>sequenceDiagram
     participant Client
     participant Gateway
     participant Auth as Auth Service
@@ -1939,8 +1966,7 @@ module.exports = (req, res, next) =&gt; {
     else Token déjà révoqué (vol détecté)
         Auth-&gt;&gt;DB: UPDATE refresh_tokens SET is_revoked=true WHERE user_id = ? (TOUS les tokens)
         Auth--&gt;&gt;Client: 401 + Clear-Cookie
-    end
-</code></pre>
+    end</code></pre>
 <h3 id="caracteristiques">Caractéristiques</h3>
 <ul>
 <li><strong>Génération</strong> : <code>crypto.randomBytes(64).toString('hex')</code> (128 caractères hex)</li>
@@ -1959,58 +1985,57 @@ module.exports = (req, res, next) =&gt; {
 <li><strong>En HTTP direct</strong> via les noms de conteneur Docker (ex: <code>http://auth-service:3001</code>)</li>
 </ul>
 <h3 id="liste-des-appels-internes">Liste des appels internes</h3>
-<pre><code class="language-mermaid">graph LR
-    subgraph &quot;Appels Internes&quot;
+<pre class="mermaid"><code>graph LR
+    subgraph "Appels Internes"
         A[Auth Service] --&gt;|POST /users/sync| U[User Service]
         U --&gt;|POST /auth/internal/ban| A
         P[Post Service] --&gt;|GET /users/:id/following| U
         P --&gt;|GET /users/by-username/:username| U
         P --&gt;|POST /notifications/internal| PR[Profil Service]
         U --&gt;|POST /notifications/internal| PR
-    end
-</code></pre>
+    end</code></pre>
 <h4 id="1-synchronisation-dinscription-auth-user">1. Synchronisation d'inscription (Auth → User)</h4>
 <p>Lors de l'inscription, l'Auth Service notifie le User Service pour créer le profil associé :</p>
-<pre><code>POST /users/sync
+<div class="highlight"><pre><span></span><code>POST /users/sync
 Headers: x-internal-secret: &lt;INTERNAL_SECRET&gt;
 Body: {
   &quot;id&quot;: &quot;uuid-de-l-utilisateur&quot;,
   &quot;username&quot;: &quot;john_doe&quot;,
   &quot;role&quot;: &quot;user&quot;
 }
-</code></pre>
+</code></pre></div>
 <ul>
 <li>Timeout : 3 secondes</li>
 <li>Échec non bloquant : l'inscription reste valide même si le User Service est indisponible</li>
 </ul>
 <h4 id="2-propagation-de-bannissement-user-auth">2. Propagation de bannissement (User → Auth)</h4>
 <p>Lorsqu'un modérateur ou admin bannit un utilisateur via le User Service, le bannissement est propagé vers l'Auth Service :</p>
-<pre><code>POST /auth/internal/ban
+<div class="highlight"><pre><span></span><code>POST /auth/internal/ban
 Headers: x-internal-secret: &lt;INTERNAL_SECRET&gt;
 Body: {
   &quot;userId&quot;: &quot;uuid-de-l-utilisateur&quot;
 }
-</code></pre>
+</code></pre></div>
 <ul>
 <li>Timeout : 3 secondes</li>
 <li>Le bannissement local reste appliqué même si l'appel échoue</li>
 </ul>
 <h4 id="3-recuperation-des-abonnements-pour-le-feed-post-user">3. Récupération des abonnements pour le feed (Post → User)</h4>
 <p>Pour construire le fil d'actualité, le Post Service récupère la liste des utilisateurs suivis :</p>
-<pre><code>GET /users/:id/following
+<div class="highlight"><pre><span></span><code>GET /users/:id/following
 Headers: x-user-id: &lt;uuid&gt;
-</code></pre>
+</code></pre></div>
 <ul>
 <li>Timeout : 3 secondes</li>
 <li>Si le User Service est indisponible, le feed affiche uniquement les posts de l'utilisateur lui-même</li>
 </ul>
 <h4 id="4-resolution-username-id-pour-les-mentions-post-user">4. Résolution username → ID pour les mentions (Post → User)</h4>
 <p>Pour les mentions <code>@username</code>, le Post Service résout le nom d'utilisateur en ID :</p>
-<pre><code>GET /users/by-username/:username
+<div class="highlight"><pre><span></span><code>GET /users/by-username/:username
 Headers: x-user-id: &lt;uuid&gt;
-</code></pre>
+</code></pre></div>
 <h4 id="5-notification-de-like-post-profil">5. Notification de like (Post → Profil)</h4>
-<pre><code>POST /api/notifications/internal
+<div class="highlight"><pre><span></span><code>POST /api/notifications/internal
 Headers: x-internal-secret: &lt;INTERNAL_SECRET&gt;
 Body: {
   &quot;recipient_user_id&quot;: &quot;uuid-du-proprietaire-du-post&quot;,
@@ -2019,7 +2044,7 @@ Body: {
   &quot;from_username&quot;: &quot;john_doe&quot;,
   &quot;post_id&quot;: &quot;id-du-post&quot;
 }
-</code></pre>
+</code></pre></div>
 <ul>
 <li>Timeout : 1 seconde</li>
 <li>Échec silencieux : catch vide</li>
@@ -2027,7 +2052,7 @@ Body: {
 <h4 id="6-notification-de-mention-post-profil">6. Notification de mention (Post → Profil)</h4>
 <p>Même endpoint que le like, avec <code>type: "mention"</code> et les mêmes contraintes.</p>
 <h4 id="7-notification-de-follow-user-profil">7. Notification de follow (User → Profil)</h4>
-<pre><code>POST /api/notifications/internal
+<div class="highlight"><pre><span></span><code>POST /api/notifications/internal
 Headers: x-internal-secret: &lt;INTERNAL_SECRET&gt;
 Body: {
   &quot;recipient_user_id&quot;: &quot;uuid-de-la-personne-suvie&quot;,
@@ -2035,7 +2060,7 @@ Body: {
   &quot;from_user_id&quot;: &quot;uuid-du-follower&quot;,
   &quot;from_username&quot;: &quot;john_doe&quot;
 }
-</code></pre>
+</code></pre></div>
 <ul>
 <li>Timeout : 1 seconde</li>
 <li>Notification non critique : l'échec n'empêche pas le follow</li>

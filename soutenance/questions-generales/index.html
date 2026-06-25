@@ -364,6 +364,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../architecture/diagramme-composants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagramme de composants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../architecture/docker-deploiement/" class="md-nav__link">
         
   
@@ -1625,10 +1653,10 @@
 3. Expiration JWT : le frontend recoit un 401, l'intercepteur Axios appelle <code>POST /auth/refresh</code> automatiquement.
 4. Refresh : l'ancien refresh token est revoque (rotation), un nouveau est emis.</p>
 <p><strong>Detection de vol :</strong>
-Si un refresh token deja revoque est presente (<code>stored.is_revoked === true</code>), le systeme reactive TOUS les refresh tokens de l'utilisateur :</p>
-<pre><code class="language-javascript">await RefreshToken.update({ is_revoked: true }, { where: { user_id: stored.user_id } });
-</code></pre>
-<p>Ceci est une mesure de securite : si un attaquant a vole un token et l'a utilise en premier, le refresh legitime de la victime declenchera cette detection. Les deux sessions sont alors invalidees et l'utilisateur doit se reconnecter.</p>
+Si un refresh token deja revoque est presente (<code>stored.is_revoked === true</code>), le systeme reactive TOUS les refresh tokens de l'utilisateur :
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">RefreshToken</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span><span class="w"> </span><span class="nx">is_revoked</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">user_id</span><span class="o">:</span><span class="w"> </span><span class="nx">stored</span><span class="p">.</span><span class="nx">user_id</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+Ceci est une mesure de securite : si un attaquant a vole un token et l'a utilise en premier, le refresh legitime de la victime declenchera cette detection. Les deux sessions sont alors invalidees et l'utilisateur doit se reconnecter.</p>
 <p><strong>Sources :</strong>
 - Auth controller refresh function : <code>C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\controllers\auth.controller.js</code>, lignes 115-166
 - Detection de vol : ligne 133-138 (reutilisation d'un token deja revoque =&gt; revocation massive)
@@ -1715,9 +1743,9 @@ Si un refresh token deja revoque est presente (<code>stored.is_revoked === true<
 <h2 id="9-comment-les-compteurs-sont-ils-maintenus-coherents">9. Comment les compteurs sont-ils maintenus coherents ?</h2>
 <p><strong>Reponse :</strong> Deux strategies differentes selon la base de donnees :</p>
 <p><strong>MongoDB (posts)</strong> : utilisation de <code>$inc</code> atomique pour les likes, commentaires et reposts. L'unicite est garantie par des indexes composees uniques (<code>{ post_id, user_id }</code>) sur les collections Like et Repost. Les duplicatas sont interceptes par le code erreur 11000.</p>
-<pre><code class="language-javascript">// like controller
-await Post.findByIdAndUpdate(postId, { $inc: { likes_count: 1 } }, { new: true });
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// like controller</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">Post</span><span class="p">.</span><span class="nx">findByIdAndUpdate</span><span class="p">(</span><span class="nx">postId</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">$inc</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">likes_count</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="ow">new</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
 <p><strong>PostgreSQL (user)</strong> : utilisation de <code>sequelize.transaction()</code> pour les operations de follow/unfollow. La creation/suppression du lien de follow ET l'incrementation/decrementation des compteurs sont dans la meme transaction.</p>
 <p><strong>Sources :</strong>
 - $inc likes : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\like.controller.js</code>, lignes 15-20
@@ -1734,11 +1762,11 @@ await Post.findByIdAndUpdate(postId, { $inc: { likes_count: 1 } }, { new: true }
 <li><strong>Implementation</strong> : la logique de rendu est simple (une boucle sur les commentaires, chaque commentaire a un tableau <code>replies</code>)</li>
 <li><strong>Cas d'usage</strong> : pour un reseau social comme Breezy, 1 niveau est suffisant pour les conversations</li>
 </ol>
-<p>La limite est enforcee dans <code>createReply</code> :</p>
-<pre><code class="language-javascript">if (parentComment.parent_comment_id) {
-    return res.status(400).json({ error: { code: 'MAX_DEPTH', message: 'Reponse a une reponse non autorisee.' } });
-}
-</code></pre>
+<p>La limite est enforcee dans <code>createReply</code> :
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">parentComment</span><span class="p">.</span><span class="nx">parent_comment_id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">code</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;MAX_DEPTH&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Reponse a une reponse non autorisee.&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></p>
 <p><strong>Sources :</strong>
 - Controller createReply : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\comment.controller.js</code>, lignes 107-139
 - Verification MAX_DEPTH : lignes 120-122
@@ -1797,9 +1825,9 @@ await Post.findByIdAndUpdate(postId, { $inc: { likes_count: 1 } }, { new: true }
 <li><strong>Donnees</strong> : 5 utilisateurs fictifs, 8 posts, 3 jeux de commentaires, 6 notifications, 5 conversations</li>
 <li><strong>Persistence</strong> : les posts et commentaires crees en mode mock sont stockes dans <code>sessionStorage</code> (survivent au re-render mais pas au rechargement)</li>
 </ol>
-<pre><code class="language-javascript">// Pattern d'aiguillage
-export const login = (...a) =&gt; isMockEnabled() ? mock.login(...a) : real.login(...a)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// Pattern d&#39;aiguillage</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(...</span><span class="nx">a</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">isMockEnabled</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">mock</span><span class="p">.</span><span class="nx">login</span><span class="p">(...</span><span class="nx">a</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">real</span><span class="p">.</span><span class="nx">login</span><span class="p">(...</span><span class="nx">a</span><span class="p">)</span>
+</code></pre></div>
 <p><strong>Sources :</strong>
 - Utils mock : <code>C:\Users\barto\Desktop\breezy projet\breezy-frontend\src\mocks\utils.js</code>, lignes 1-8
 - Donnees mock : <code>C:\Users\barto\Desktop\breezy projet\breezy-frontend\src\mocks\data.js</code>, lignes 1-260

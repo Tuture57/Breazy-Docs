@@ -364,6 +364,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../architecture/diagramme-composants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagramme de composants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../architecture/docker-deploiement/" class="md-nav__link">
         
   
@@ -1732,37 +1760,37 @@
 <h3 id="fx22-messagerie-absent">Fx22 - Messagerie (ABSENT)</h3>
 <p><strong>Backend</strong> : Aucun service de messagerie n'existe. Aucune collection, route ou controller dedie.</p>
 <p><strong>Frontend</strong> : Deux composants existent (<code>ConversationList</code>, <code>MessageThread</code>) mais ne sont pas relies a une API. La page <code>/messages</code> affiche un message placeholder :</p>
-<pre><code>&quot;La messagerie directe sera disponible dans une prochaine version de Breezy.&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>&quot;La messagerie directe sera disponible dans une prochaine version de Breezy.&quot;
+</code></pre></div>
 <p><strong>Probleme detecte</strong> : Le <code>AuthContext</code> appelle <code>getUnreadMessagesCount()</code> depuis <code>messageService.js</code>, mais cette fonction est un stub qui retourne toujours <code>0</code> :</p>
-<pre><code class="language-javascript">// frontend/src/services/messageService.js
-export const getUnreadMessagesCount = async () =&gt; 0
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// frontend/src/services/messageService.js</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">getUnreadMessagesCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mf">0</span>
+</code></pre></div>
 <p>Cette fonction est importee et appelee dans <code>AuthContext.js</code> ligne 5 et 40, mais la route backend correspondante n'existe pas.</p>
 <hr />
 <h3 id="fx23-mot-de-passe-oublie-absent">Fx23 - Mot de passe oublie (ABSENT)</h3>
 <p><strong>Backend</strong> : Aucune route de reinitialisation de mot de passe n'existe. Pas de token de reset, pas d'envoi d'email, pas de logique de validation.</p>
 <p><strong>Frontend</strong> : Le bouton "Oublie?" sur la page <code>/signin</code> affiche un message d'indisponibilite :</p>
-<pre><code class="language-javascript">function handleForgotPassword() {
-    setInfoMessage(
-        'La reinitialisation de mot de passe n\'est pas encore disponible. ' +
-        'Contactez un administrateur.'
-    );
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">handleForgotPassword</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">setInfoMessage</span><span class="p">(</span>
+<span class="w">        </span><span class="s1">&#39;La reinitialisation de mot de passe n\&#39;est pas encore disponible. &#39;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">        </span><span class="s1">&#39;Contactez un administrateur.&#39;</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><strong>Impact</strong> : Si un utilisateur oublie son mot de passe, la seule solution est de contacter un administrateur pour une reinitialisation manuelle en base de donnees.</p>
 <hr />
 <h2 id="divergences-et-problemes-identifies">Divergences et problemes identifies</h2>
 <h3 id="1-divergence-de-validation-des-mots-de-passe">1. Divergence de validation des mots de passe</h3>
 <p>Le fichier <code>frontend/src/utils/validators.js</code> contient deux fonctions avec des regles differentes :</p>
-<pre><code class="language-javascript">// Fonction generique -- PLUS PERMISSIVE
-export const isValidPassword = (p) =&gt; typeof p === 'string' &amp;&amp; p.length &gt;= 6;
+<div class="highlight"><pre><span></span><code><span class="c1">// Fonction generique -- PLUS PERMISSIVE</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">isValidPassword</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">p</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">p</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;string&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">6</span><span class="p">;</span>
 
-// Validation du formulaire d'inscription -- COHERENTE avec le backend
-else if (form.password.length &lt; 8) { ... }
-else if (!/[A-Z]/.test(form.password)) { ... }
-else if (!/[0-9]/.test(form.password)) { ... }
-</code></pre>
+<span class="c1">// Validation du formulaire d&#39;inscription -- COHERENTE avec le backend</span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">form</span><span class="p">.</span><span class="nx">password</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">8</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="sr">/[A-Z]/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">form</span><span class="p">.</span><span class="nx">password</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="sr">/[0-9]/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">form</span><span class="p">.</span><span class="nx">password</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
 <ul>
 <li><code>isValidPassword</code> : &gt;= 6 caracteres, aucune complexite requise</li>
 <li><code>validateRegisterForm</code> : &gt;= 8 caracteres, &gt;= 1 majuscule, &gt;= 1 chiffre (coherent avec le backend)</li>
@@ -1774,44 +1802,44 @@ else if (!/[0-9]/.test(form.password)) { ... }
 <li><strong>Frontend</strong> (<code>isValidUsername</code>) : &gt;= 2 caracteres</li>
 <li><strong>Backend</strong> (express-validator) : 3-50 caracteres, alphanumerique + underscores</li>
 </ul>
-<pre><code class="language-javascript">// Backend auth-service/src/routes/auth.routes.js
-body('username')
-  .isLength({ min: 3, max: 50 })
-  .matches(/^[a-zA-Z0-9_]+$/)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// Backend auth-service/src/routes/auth.routes.js</span>
+<span class="nx">body</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">isLength</span><span class="p">({</span><span class="w"> </span><span class="nx">min</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">matches</span><span class="p">(</span><span class="sr">/^[a-zA-Z0-9_]+$/</span><span class="p">)</span>
+</code></pre></div>
 <p>Le backend rejette les noms de 2 caracteres qui pourraient etre acceptes par le frontend.</p>
 <h3 id="3-absence-du-header-x-user-username-pour-le-user-service">3. Absence du header x-user-username pour le user-service</h3>
 <p>La gateway n'injecte pas le header <code>x-user-username</code> pour les routes <code>/api/users/*</code> :</p>
-<pre><code class="language-javascript">// gateway/src/index.js — routes /api/users
-proxyReq.setHeader('x-user-id', req.user.sub);
-proxyReq.setHeader('x-user-role', req.user.role);
-// x-user-username MANQUANT
-fixRequestBody(proxyReq, req, res);
-</code></pre>
-<p>Les autres services recoivent bien ce header :</p>
-<pre><code class="language-javascript">// gateway/src/index.js — routes /api/posts, /api/profils, etc.
-proxyReq.setHeader('x-user-username', req.user.username);
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// gateway/src/index.js — routes /api/users</span>
+<span class="nx">proxyReq</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;x-user-id&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">sub</span><span class="p">);</span>
+<span class="nx">proxyReq</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;x-user-role&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">role</span><span class="p">);</span>
+<span class="c1">// x-user-username MANQUANT</span>
+<span class="nx">fixRequestBody</span><span class="p">(</span><span class="nx">proxyReq</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">);</span>
+</code></pre></div>
+<p>Les autres services recoivent bien ce header :
+<div class="highlight"><pre><span></span><code><span class="c1">// gateway/src/index.js — routes /api/posts, /api/profils, etc.</span>
+<span class="nx">proxyReq</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;x-user-username&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">username</span><span class="p">);</span>
+</code></pre></div></p>
 <p><strong>Impact</strong> : Dans le user-service, le controller <code>follow</code> utilise <code>req.username</code> pour envoyer une notification de follow. Comme <code>x-user-username</code> n'est pas injecte, <code>req.username</code> est <code>undefined</code> et la notification de follow contiendra <code>from_username: undefined</code>.</p>
 <h3 id="4-route-de-profil-divergence-dappel">4. Route de profil : divergence d'appel</h3>
 <p>Le frontend a ete verifie : il utilise bien <code>PUT /profils/:userId</code> (profil-service) via <code>userService.updateProfile()</code> :</p>
-<pre><code class="language-javascript">// frontend/src/services/userService.js
-updateProfile: (id, d) =&gt; api.put(`/profils/${id}`, d).then(r =&gt; r.data),
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// frontend/src/services/userService.js</span>
+<span class="nx">updateProfile</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">d</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">api</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="sb">`/profils/</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="nx">d</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">data</span><span class="p">),</span>
+</code></pre></div>
 <p>Le controleur de profile utilise bien <code>PUT /api/profils/:userId</code>. Les appels sont corrects.</p>
 <h3 id="5-rate-limiting-desactive-en-docker">5. Rate limiting desactive en Docker</h3>
 <p>Le docker-compose.yml definit <code>NODE_ENV=test</code> pour la gateway :</p>
-<pre><code class="language-yaml">gateway:
-  environment:
-    - NODE_ENV=test  # Desactive le rate limiting
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">gateway</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NODE_ENV=test</span><span class="w">  </span><span class="c1"># Desactive le rate limiting</span>
+</code></pre></div>
 <p>Le code de la gateway desactive effectivement les limiteurs en mode test :</p>
-<pre><code class="language-javascript">const isTest = process.env.NODE_ENV === 'test';
-const globalLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: isTest ? 999999 : 500,  // 999999 en test
-});
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">isTest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;test&#39;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">globalLimiter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rateLimit</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">windowMs</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="nx">isTest</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">999999</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">500</span><span class="p">,</span><span class="w">  </span><span class="c1">// 999999 en test</span>
+<span class="p">});</span>
+</code></pre></div>
 <p>En production, <code>NODE_ENV</code> ne doit pas etre <code>test</code>.</p>
 <h3 id="6-pas-de-route-de-filtrage-des-posts-signales">6. Pas de route de filtrage des posts signales</h3>
 <p>Bien que la route <code>POST /api/posts/:id/report</code> existe et marque <code>is_reported: true</code>, il n'y a aucune route pour :

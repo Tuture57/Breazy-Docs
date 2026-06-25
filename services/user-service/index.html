@@ -364,6 +364,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../architecture/diagramme-composants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagramme de composants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../architecture/docker-deploiement/" class="md-nav__link">
         
   
@@ -1826,7 +1854,7 @@
 </tbody>
 </table>
 <p><strong>Reponses :</strong></p>
-<pre><code>201 Created
+<div class="highlight"><pre><span></span><code>201 Created
 {
   &quot;message&quot;: &quot;User profile created&quot;,
   &quot;profile&quot;: {
@@ -1845,14 +1873,14 @@
   &quot;message&quot;: &quot;User profile synced&quot;,
   &quot;profile&quot;: { ... }
 }
-</code></pre>
-<pre><code>403 Forbidden
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>403 Forbidden
 {
   &quot;error&quot;: &quot;FORBIDDEN&quot;
 }
 
 500 Internal Server Error (si email est absent a la creation)
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Verifier le header <code>x-internal-secret</code>.
 2. Avec <code>findOrCreate</code> sur <code>UserProfile</code>, cle <code>id</code> : si trouve -&gt; mettre a jour <code>username</code> ; si cree -&gt; utiliser le flag <code>email</code> (present uniquement a la creation).
@@ -1890,7 +1918,7 @@
 </tbody>
 </table>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;users&quot;: [
     {
@@ -1906,12 +1934,12 @@
   &quot;page&quot;: 1,
   &quot;limit&quot;: 20
 }
-</code></pre>
-<pre><code>401 Unauthorized
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>401 Unauthorized
 {
   &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Utiliser <code>Op.iLike</code> sur <code>username</code> pour une recherche partielle et insensible a la casse.
 2. Exclure les utilisateurs <code>is_banned = true</code> ou <code>is_active = false</code>.
@@ -1922,7 +1950,7 @@
 <p>Recuperer un profil public par son username.</p>
 <p><strong>Middleware :</strong> aucun (ROUTE PUBLIQUE)</p>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;id&quot;: &quot;uuid&quot;,
   &quot;username&quot;: &quot;johndoe&quot;,
@@ -1932,12 +1960,12 @@
   &quot;followers_count&quot;: 42,
   &quot;following_count&quot;: 10
 }
-</code></pre>
-<pre><code>404 Not Found
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>404 Not Found
 {
   &quot;error&quot;: &quot;USER_NOT_FOUND&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Chercher par <code>username</code> avec <code>UserProfile.findOne</code>.
 2. Utilisee par le post-service pour la resolution des @mentions (ex: <code>@johndoe</code> -&gt; resoudre l'UUID).
@@ -1948,7 +1976,7 @@
 <p><strong>Middleware :</strong> <code>identity</code></p>
 <p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;id&quot;: &quot;uuid&quot;,
   &quot;username&quot;: &quot;johndoe&quot;,
@@ -1964,8 +1992,8 @@
   &quot;is_banned&quot;: false,
   &quot;is_following&quot;: true
 }
-</code></pre>
-<pre><code>401 Unauthorized
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>401 Unauthorized
 {
   &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
 }
@@ -1974,7 +2002,7 @@
 {
   &quot;error&quot;: &quot;USER_NOT_FOUND&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Recuperer l'utilisateur par son <code>id</code>.
 2. Verifier si l'utilisateur authentifie (<code>x-user-id</code>) suit cet utilisateur : requete sur la table <code>Follows</code>.
@@ -2007,19 +2035,19 @@
 </tbody>
 </table>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;followers&quot;: [...],
   &quot;total&quot;: 42,
   &quot;page&quot;: 1,
   &quot;limit&quot;: 20
 }
-</code></pre>
-<pre><code>401 Unauthorized
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>401 Unauthorized
 {
   &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Requete <code>Follow.findAll({ where: { followed_id: id } })</code> avec <code>include: UserProfile</code> (alias follower).
 2. Pagination.</p>
@@ -2051,7 +2079,7 @@
 </tbody>
 </table>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;data&quot;: [
     {
@@ -2067,12 +2095,12 @@
   &quot;page&quot;: 1,
   &quot;limit&quot;: 20
 }
-</code></pre>
-<pre><code>401 Unauthorized
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>401 Unauthorized
 {
   &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Requete <code>Follow.findAll({ where: { follower_id: id } })</code> avec <code>include: UserProfile</code> (alias followed).
 2. Retourne DEUX formats dans la meme reponse :
@@ -2085,13 +2113,13 @@
 <p><strong>Middleware :</strong> <code>identity</code></p>
 <p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;message&quot;: &quot;Followed successfully&quot;,
   &quot;followers_count&quot;: 43
 }
-</code></pre>
-<pre><code>400 Bad Request
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>400 Bad Request
 {
   &quot;error&quot;: &quot;CANNOT_FOLLOW_SELF&quot;
 }
@@ -2110,7 +2138,7 @@
 {
   &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Verifier que <code>x-user-id</code> != <code>id</code> (ne pas se follow soi-meme).
 2. Verifier que la cible existe.
@@ -2125,13 +2153,13 @@
 <p><strong>Middleware :</strong> <code>identity</code></p>
 <p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;message&quot;: &quot;Unfollowed successfully&quot;,
   &quot;followers_count&quot;: 42
 }
-</code></pre>
-<pre><code>400 Bad Request
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>400 Bad Request
 {
   &quot;error&quot;: &quot;CANNOT_UNFOLLOW_SELF&quot;
 }
@@ -2150,7 +2178,7 @@
 {
   &quot;error&quot;: &quot;USER_NOT_FOUND&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Verifier que <code>x-user-id</code> != <code>id</code>.
 2. Verifier que la cible existe.
@@ -2182,7 +2210,7 @@
 </tbody>
 </table>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;message&quot;: &quot;User banned successfully&quot;,
   &quot;is_banned&quot;: true
@@ -2193,8 +2221,8 @@
   &quot;message&quot;: &quot;User unbanned successfully&quot;,
   &quot;is_banned&quot;: false
 }
-</code></pre>
-<pre><code>401 Unauthorized
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>401 Unauthorized
 {
   &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
 }
@@ -2208,7 +2236,7 @@
 {
   &quot;error&quot;: &quot;USER_NOT_FOUND&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Verifier que l'utilisateur authentifie a le role <code>moderator</code> ou <code>admin</code>.
 2. Si le role est insuffisant -&gt; <code>INSUFFICIENT_PERMISSIONS</code>.
@@ -2219,12 +2247,12 @@
 <p>Healthcheck du service.</p>
 <p><strong>Middleware :</strong> aucun</p>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;status&quot;: &quot;ok&quot;,
   &quot;timestamp&quot;: &quot;2024-01-01T00:00:00.000Z&quot;
 }
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="middlewares">Middlewares</h2>
 <h3 id="identitymiddlewarejs">identity.middleware.js</h3>

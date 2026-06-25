@@ -364,6 +364,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../architecture/diagramme-composants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagramme de composants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../architecture/docker-deploiement/" class="md-nav__link">
         
   
@@ -2249,7 +2277,7 @@
 </tbody>
 </table>
 <p><strong>Reponses :</strong></p>
-<pre><code>201 Created
+<div class="highlight"><pre><span></span><code>201 Created
 {
   &quot;message&quot;: &quot;Post created&quot;,
   &quot;post&quot;: {
@@ -2267,8 +2295,8 @@
     &quot;updated_at&quot;: &quot;2024-01-01T00:00:00.000Z&quot;
   }
 }
-</code></pre>
-<pre><code>400 Bad Request
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>400 Bad Request
 {
   &quot;error&quot;: &quot;Content is required&quot;
 }
@@ -2277,7 +2305,7 @@
 {
   &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Extraire l'identite depuis les headers.
 2. Valider le contenu.
@@ -2313,14 +2341,14 @@
 </tbody>
 </table>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;posts&quot;: [...],
   &quot;total&quot;: 100,
   &quot;page&quot;: 1,
   &quot;limit&quot;: 20
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Recuperer la liste des <code>followingIds</code> depuis <code>GET USER_SERVICE_URL/users/:id/following</code> (utilise le champ <code>ids</code>).
 2. Construire la liste des auteurs : <code>[userId, ...followingIds]</code>.
@@ -2362,14 +2390,14 @@
 </tbody>
 </table>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;posts&quot;: [...],
   &quot;total&quot;: 5,
   &quot;page&quot;: 1,
   &quot;limit&quot;: 20
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Utiliser <code>$or</code> sur trois champs :
    - <code>content</code> : <code>{ $regex: q, $options: 'i' }</code> (recherche insensible a la casse).
@@ -2385,14 +2413,14 @@
 - <code>userId</code> (parametre URL) : UUID de l'utilisateur.</p>
 <p><strong>Parametres optionnels (query) :</strong> <code>page</code>, <code>limit</code></p>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;posts&quot;: [...],
   &quot;total&quot;: 15,
   &quot;page&quot;: 1,
   &quot;limit&quot;: 20
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. <code>Post.find({ user_id: userId })</code>, trie par <code>created_at: -1</code>.
 2. Enrichir avec <code>likedByMe</code> et <code>repostedByMe</code>.</p>
@@ -2403,14 +2431,14 @@
 <p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
 <p><strong>Parametres :</strong> <code>userId</code>, optionnels <code>page</code>, <code>limit</code></p>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;posts&quot;: [...],
   &quot;total&quot;: 3,
   &quot;page&quot;: 1,
   &quot;limit&quot;: 20
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. <code>Post.find({ user_id: userId, media_urls: { $exists: true, $not: { $size: 0 } } })</code>.</p>
 <hr />
@@ -2420,14 +2448,14 @@
 <p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code></p>
 <p><strong>Parametres :</strong> <code>userId</code>, optionnels <code>page</code>, <code>limit</code></p>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;posts&quot;: [...],
   &quot;total&quot;: 7,
   &quot;page&quot;: 1,
   &quot;limit&quot;: 20
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Trouver tous les <code>Like</code> de l'utilisateur.
 2. Resoudre les <code>post_id</code> correspondants.
@@ -2438,14 +2466,14 @@
 <p><strong>Middleware :</strong> <code>identity</code></p>
 <p><strong>Parametres :</strong> <code>userId</code>, optionnels <code>page</code>, <code>limit</code></p>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;comments&quot;: [...],
   &quot;total&quot;: 5,
   &quot;page&quot;: 1,
   &quot;limit&quot;: 20
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. <code>Comment.find({ user_id: userId })</code>, trie par <code>created_at: -1</code>.</p>
 <hr />
@@ -2454,14 +2482,14 @@
 <p><strong>Middleware :</strong> <code>identity</code></p>
 <p><strong>Parametres :</strong> <code>userId</code>, optionnels <code>page</code>, <code>limit</code></p>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;posts&quot;: [...],
   &quot;total&quot;: 2,
   &quot;page&quot;: 1,
   &quot;limit&quot;: 20
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Trouver tous les <code>Repost</code> de l'utilisateur.
 2. Resoudre les <code>post_id</code> correspondants.</p>
@@ -2470,16 +2498,16 @@
 <p>Recuperer un post par son ID.</p>
 <p><strong>Middleware :</strong> <code>identity</code></p>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;post&quot;: { ... }
 }
-</code></pre>
-<pre><code>404 Not Found
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>404 Not Found
 {
   &quot;error&quot;: &quot;Post not found&quot;
 }
-</code></pre>
+</code></pre></div>
 <hr />
 <h3 id="put-apipostsid">PUT /api/posts/:id</h3>
 <p>Modifier un post (proprietaire uniquement).</p>
@@ -2503,13 +2531,13 @@
 </tbody>
 </table>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;message&quot;: &quot;Post updated&quot;,
   &quot;post&quot;: { ... }
 }
-</code></pre>
-<pre><code>403 Forbidden
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>403 Forbidden
 {
   &quot;error&quot;: &quot;FORBIDDEN&quot;
 }
@@ -2518,7 +2546,7 @@
 {
   &quot;error&quot;: &quot;Post not found&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Trouver le post.
 2. Verifier que <code>user_id === x-user-id</code>.
@@ -2528,11 +2556,11 @@
 <p>Supprimer un post (proprietaire uniquement).</p>
 <p><strong>Middleware :</strong> <code>identity</code></p>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;message&quot;: &quot;Post deleted&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Verifier le proprietaire.
 2. Supprimer le post avec <code>Post.findByIdAndDelete</code>.
@@ -2542,11 +2570,11 @@
 <p>Signaler un post.</p>
 <p><strong>Middleware :</strong> <code>identity</code></p>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;message&quot;: &quot;Post reported&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Marquer <code>is_reported = true</code> sur le post.</p>
 <hr />
@@ -2554,7 +2582,7 @@
 <p>Reposter (ou annuler un repost) un post.</p>
 <p><strong>Middleware :</strong> <code>identity</code></p>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;message&quot;: &quot;Post reposted&quot;,
   &quot;reposted&quot;: true,
@@ -2567,7 +2595,7 @@
   &quot;reposted&quot;: false,
   &quot;reposts_count&quot;: 2
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. <strong>Upsert pattern</strong> : tenter de trouver un <code>Repost</code> existant avec <code>findOne({ post_id, user_id })</code>.
 2. Si existe -&gt; supprimer le repost et <code>$inc: { reposts_count: -1 }</code>.
@@ -2577,17 +2605,17 @@
 <p>Liker un post.</p>
 <p><strong>Middleware :</strong> <code>identity</code></p>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;message&quot;: &quot;Post liked&quot;,
   &quot;likes_count&quot;: 5
 }
-</code></pre>
-<pre><code>409 Conflict
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>409 Conflict
 {
   &quot;error&quot;: &quot;ALREADY_LIKED&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Tentative de creation d'un <code>Like</code> avec <code>create({ post_id, user_id })</code>.
 2. Si l'index unique <code>{ post_id, user_id }</code> est viole -&gt; MongoDB renvoie une erreur 11000 -&gt; capture et retour <code>409 ALREADY_LIKED</code>.
@@ -2598,17 +2626,17 @@
 <p>Retirer un like.</p>
 <p><strong>Middleware :</strong> <code>identity</code></p>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;message&quot;: &quot;Like removed&quot;,
   &quot;likes_count&quot;: 4
 }
-</code></pre>
-<pre><code>400 Bad Request
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>400 Bad Request
 {
   &quot;error&quot;: &quot;NOT_LIKED&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Trouver et supprimer le <code>Like</code>.
 2. Si introuvable -&gt; <code>NOT_LIKED</code>.
@@ -2619,14 +2647,14 @@
 <p><strong>Middleware :</strong> <code>identity</code></p>
 <p><strong>Parametres optionnels (query) :</strong> <code>page</code>, <code>limit</code></p>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;comments&quot;: [...],
   &quot;total&quot;: 10,
   &quot;page&quot;: 1,
   &quot;limit&quot;: 20
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. <code>Comment.find({ post_id }).sort({ created_at: 1 })</code>.
 2. Pagination.</p>
@@ -2652,7 +2680,7 @@
 </tbody>
 </table>
 <p><strong>Reponses :</strong></p>
-<pre><code>201 Created
+<div class="highlight"><pre><span></span><code>201 Created
 {
   &quot;message&quot;: &quot;Comment added&quot;,
   &quot;comment&quot;: {
@@ -2667,7 +2695,7 @@
   },
   &quot;comments_count&quot;: 6
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Creer le commentaire.
 2. Incrementer <code>comments_count</code> du post.
@@ -2698,12 +2726,12 @@
 <p>Supprimer un commentaire (proprietaire uniquement).</p>
 <p><strong>Middleware :</strong> <code>identity</code></p>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;message&quot;: &quot;Comment deleted&quot;,
   &quot;comments_count&quot;: 5
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Verifier le proprietaire.
 2. Supprimer le commentaire.
@@ -2730,19 +2758,19 @@
 </tbody>
 </table>
 <p><strong>Reponses :</strong></p>
-<pre><code>201 Created
+<div class="highlight"><pre><span></span><code>201 Created
 {
   &quot;message&quot;: &quot;Reply added&quot;,
   &quot;comment&quot;: { ... },
   &quot;comments_count&quot;: 6
 }
-</code></pre>
-<pre><code>400 Bad Request
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>400 Bad Request
 {
   &quot;error&quot;: &quot;MAX_DEPTH&quot;,
   &quot;message&quot;: &quot;Cannot reply to a reply&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Verifier que <code>parent_comment_id</code> du commentaire cible est <code>null</code> (max 1 niveau de profondeur).
 2. Si le commentaire cible est deja une reponse (<code>parent_comment_id !== null</code>) -&gt; erreur <code>MAX_DEPTH</code>.
@@ -2757,13 +2785,13 @@
 <p><strong>Taille max :</strong> 5 Mo</p>
 <p><strong>Types acceptes :</strong> images uniquement</p>
 <p><strong>Reponses :</strong></p>
-<pre><code>201 Created
+<div class="highlight"><pre><span></span><code>201 Created
 {
   &quot;message&quot;: &quot;File uploaded&quot;,
   &quot;urls&quot;: [&quot;https://cdn.breezy.app/uploads/filename.jpg&quot;]
 }
-</code></pre>
-<pre><code>400 Bad Request
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>400 Bad Request
 {
   &quot;error&quot;: &quot;File too large&quot;,
   &quot;maxSize&quot;: &quot;5MB&quot;
@@ -2773,7 +2801,7 @@
 {
   &quot;error&quot;: &quot;Only image files are allowed&quot;
 }
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="middlewares">Middlewares</h2>
 <h3 id="identitymiddlewarejs">identity.middleware.js</h3>

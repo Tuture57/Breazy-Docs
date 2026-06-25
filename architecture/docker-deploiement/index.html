@@ -11,7 +11,7 @@
       
       
       
-        <link rel="prev" href="../flux-donnees/">
+        <link rel="prev" href="../diagramme-composants/">
       
       
         <link rel="next" href="../../services/gateway/">
@@ -346,6 +346,34 @@
     
   
     Flux de données
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagramme-composants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagramme de composants
   
 
     
@@ -1820,7 +1848,7 @@
 <p>L'infrastructure Breezy est orchestrée via <strong>docker-compose</strong> avec <strong>12 services</strong> interconnectés sur un réseau bridge <code>breezy-network</code>.</p>
 <h3 id="fichier-de-composition">Fichier de composition</h3>
 <p>Le fichier principal se trouve à la racine du dépôt <code>breezy-infra</code> :</p>
-<pre><code>breezy-infra/
+<div class="highlight"><pre><span></span><code>breezy-infra/
 ├── docker-compose.yml
 ├── .env
 ├── .env.example
@@ -1837,22 +1865,22 @@
     ├── Dockerfile
     ├── package.json
     └── seed.js
-</code></pre>
+</code></pre></div>
 <h3 id="les-12-services">Les 12 services</h3>
-<pre><code class="language-yaml">services:
-  nginx:          # Reverse proxy → port 80
-  frontend:       # Next.js → port 3000
-  gateway:        # API Gateway → port 3000 (interne)
-  auth-service:   # Auth Service → port 3001
-  user-service:   # User Service → port 3002
-  post-service:   # Post Service → port 3003
-  profil-service: # Profil Service → port 3004
-  seed:           # Script de seeding (one-shot)
-  pg-auth:        # PostgreSQL Auth → port 5432
-  pg-users:       # PostgreSQL Users → port 5432
-  mongo-posts:    # MongoDB Posts → port 27017
-  mongo-profils:  # MongoDB Profils → port 27017
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">nginx</span><span class="p">:</span><span class="w">          </span><span class="c1"># Reverse proxy → port 80</span>
+<span class="w">  </span><span class="nt">frontend</span><span class="p">:</span><span class="w">       </span><span class="c1"># Next.js → port 3000</span>
+<span class="w">  </span><span class="nt">gateway</span><span class="p">:</span><span class="w">        </span><span class="c1"># API Gateway → port 3000 (interne)</span>
+<span class="w">  </span><span class="nt">auth-service</span><span class="p">:</span><span class="w">   </span><span class="c1"># Auth Service → port 3001</span>
+<span class="w">  </span><span class="nt">user-service</span><span class="p">:</span><span class="w">   </span><span class="c1"># User Service → port 3002</span>
+<span class="w">  </span><span class="nt">post-service</span><span class="p">:</span><span class="w">   </span><span class="c1"># Post Service → port 3003</span>
+<span class="w">  </span><span class="nt">profil-service</span><span class="p">:</span><span class="w"> </span><span class="c1"># Profil Service → port 3004</span>
+<span class="w">  </span><span class="nt">seed</span><span class="p">:</span><span class="w">           </span><span class="c1"># Script de seeding (one-shot)</span>
+<span class="w">  </span><span class="nt">pg-auth</span><span class="p">:</span><span class="w">        </span><span class="c1"># PostgreSQL Auth → port 5432</span>
+<span class="w">  </span><span class="nt">pg-users</span><span class="p">:</span><span class="w">       </span><span class="c1"># PostgreSQL Users → port 5432</span>
+<span class="w">  </span><span class="nt">mongo-posts</span><span class="p">:</span><span class="w">    </span><span class="c1"># MongoDB Posts → port 27017</span>
+<span class="w">  </span><span class="nt">mongo-profils</span><span class="p">:</span><span class="w">  </span><span class="c1"># MongoDB Profils → port 27017</span>
+</code></pre></div>
 <hr />
 <h2 id="volumes-persistants">Volumes persistants</h2>
 <p>5 volumes Docker sont définis pour la persistance des données :</p>
@@ -1893,17 +1921,17 @@
 </tbody>
 </table>
 <p>Les volumes sont déclarés en bas du fichier docker-compose :</p>
-<pre><code class="language-yaml">volumes:
-  pg_auth_data:
-  pg_users_data:
-  mongo_posts_data:
-  mongo_profils_data:
-  uploads_data:
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">pg_auth_data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">pg_users_data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mongo_posts_data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mongo_profils_data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">uploads_data</span><span class="p">:</span>
+</code></pre></div>
 <hr />
 <h2 id="variables-denvironnement">Variables d'environnement</h2>
 <h3 id="fichier-env-principal-breezy-infraenv">Fichier <code>.env</code> principal (breezy-infra/.env)</h3>
-<pre><code># Sécurité Globale
+<div class="highlight"><pre><span></span><code># Sécurité Globale
 JWT_SECRET=CACACACACACACACA
 INTERNAL_SECRET=PIPIPIIPIPI
 
@@ -1911,7 +1939,7 @@ INTERNAL_SECRET=PIPIPIIPIPI
 GATEWAY_PORT=3000
 FRONTEND_PORT=3000
 
-# URLs d'aiguillage pour la Gateway
+# URLs d&#39;aiguillage pour la Gateway
 AUTH_SERVICE_URL=http://auth-service:3001
 USER_SERVICE_URL=http://user-service:3002
 POST_SERVICE_URL=http://post-service:3003
@@ -1942,166 +1970,166 @@ POST_DB_URL=mongodb://admin:breezy-mongo-2024@mongo-posts:27017/posts_db?authSou
 # Configuration Profil Service &amp; sa DB
 PROFIL_PORT=3004
 PROFIL_DB_URL=mongodb://admin:breezy-mongo-2024@mongo-profils:27017/profils_db?authSource=admin
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p><strong>Note importante</strong> : Le fichier <code>.env.example</code> ne contient pas les credentials MongoDB (<code>MONGO_USER</code> et <code>MONGO_PASSWORD</code>). Ces variables sont présentes uniquement dans le <code>.env</code> réel. En production, il faut les ajouter manuellement au fichier <code>.env</code>.</p>
 </blockquote>
 <h3 id="gateway-en-mode-test">Gateway en mode test</h3>
 <p>La Gateway est configurée avec <code>NODE_ENV=test</code> dans docker-compose :</p>
-<pre><code class="language-yaml">gateway:
-  environment:
-    - NODE_ENV=test
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">gateway</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NODE_ENV=test</span>
+</code></pre></div>
 <p>Ceci désactive le rate limiting (global 500 req/15min et auth 20 req/15min) pour que les tests et le seed puissent fonctionner sans restriction.</p>
 <hr />
 <h2 id="healthchecks">Healthchecks</h2>
 <p>Chaque base de données dispose d'un healthcheck pour garantir que les services backend ne démarrent qu'après que la base soit prête.</p>
 <h3 id="postgresql">PostgreSQL</h3>
-<pre><code class="language-yaml">healthcheck:
-  test: [&quot;CMD-SHELL&quot;, &quot;pg_isready -U ${AUTH_DB_USER} -d ${AUTH_DB_NAME}&quot;]
-  interval: 5s
-  timeout: 5s
-  retries: 10
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">healthcheck</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;CMD-SHELL&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;pg_isready</span><span class="nv"> </span><span class="s">-U</span><span class="nv"> </span><span class="s">${AUTH_DB_USER}</span><span class="nv"> </span><span class="s">-d</span><span class="nv"> </span><span class="s">${AUTH_DB_NAME}&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
+<span class="w">  </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
+<span class="w">  </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+</code></pre></div>
 <h3 id="mongodb">MongoDB</h3>
-<pre><code class="language-yaml">healthcheck:
-  test: [&quot;CMD&quot;, &quot;mongosh&quot;, &quot;-u&quot;, &quot;${MONGO_USER}&quot;, &quot;-p&quot;, &quot;${MONGO_PASSWORD}&quot;, 
-         &quot;--authenticationDatabase&quot;, &quot;admin&quot;, &quot;--eval&quot;, &quot;db.adminCommand('ping')&quot;]
-  interval: 5s
-  timeout: 5s
-  retries: 10
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">healthcheck</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;CMD&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;mongosh&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-u&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;${MONGO_USER}&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-p&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;${MONGO_PASSWORD}&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span>
+<span class="w">         </span><span class="s">&quot;--authenticationDatabase&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;admin&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;--eval&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;db.adminCommand(&#39;ping&#39;)&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
+<span class="w">  </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
+<span class="w">  </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+</code></pre></div>
 <p>Les services backend utilisent <code>condition: service_healthy</code> pour leurs dépendances :</p>
-<pre><code class="language-yaml">auth-service:
-  depends_on:
-    pg-auth:
-      condition: service_healthy
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">auth-service</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">pg-auth</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service_healthy</span>
+</code></pre></div>
 <hr />
 <h2 id="dockerfiles">Dockerfiles</h2>
 <h3 id="services-backend-auth-user-post-profil">Services backend (auth, user, post, profil)</h3>
 <p>Les 4 services backend utilisent le même Dockerfile standard :</p>
-<pre><code class="language-dockerfile">FROM node:20-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-CMD [&quot;npm&quot;, &quot;start&quot;]
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:20-alpine</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+<span class="k">COPY</span><span class="w"> </span>package*.json<span class="w"> </span>./
+<span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>install
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;npm&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;start&quot;</span><span class="p">]</span>
+</code></pre></div>
 <h3 id="gateway">Gateway</h3>
-<pre><code class="language-dockerfile">FROM node:20-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-ENV PORT=3000
-EXPOSE 3000
-CMD [&quot;npm&quot;, &quot;start&quot;]
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:20-alpine</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+<span class="k">COPY</span><span class="w"> </span>package*.json<span class="w"> </span>./
+<span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>install
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+<span class="k">ENV</span><span class="w"> </span><span class="nv">PORT</span><span class="o">=</span><span class="m">3000</span>
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">3000</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;npm&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;start&quot;</span><span class="p">]</span>
+</code></pre></div>
 <h3 id="frontend">Frontend</h3>
 <p>Le frontend Next.js inclut une étape de build :</p>
-<pre><code class="language-dockerfile">FROM node:20-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build          # Étape supplémentaire
-ENV HOSTNAME=&quot;0.0.0.0&quot;
-ENV PORT=3000
-EXPOSE 3000
-CMD [&quot;npm&quot;, &quot;start&quot;]
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:20-alpine</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+<span class="k">COPY</span><span class="w"> </span>package*.json<span class="w"> </span>./
+<span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>install
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+<span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>build<span class="w">          </span>#<span class="w"> </span>Étape<span class="w"> </span>supplémentaire
+<span class="k">ENV</span><span class="w"> </span><span class="nv">HOSTNAME</span><span class="o">=</span><span class="s2">&quot;0.0.0.0&quot;</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">PORT</span><span class="o">=</span><span class="m">3000</span>
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">3000</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;npm&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;start&quot;</span><span class="p">]</span>
+</code></pre></div>
 <h3 id="nginx">Nginx</h3>
-<pre><code class="language-dockerfile">FROM nginx:alpine
-RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx.conf /etc/nginx/nginx.conf
-EXPOSE 80
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">nginx:alpine</span>
+<span class="k">RUN</span><span class="w"> </span>rm<span class="w"> </span>/etc/nginx/conf.d/default.conf
+<span class="k">COPY</span><span class="w"> </span>nginx.conf<span class="w"> </span>/etc/nginx/nginx.conf
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">80</span>
+</code></pre></div>
 <h3 id="seed">Seed</h3>
-<pre><code class="language-dockerfile">FROM node:20-alpine
-WORKDIR /app
-RUN apk add --no-cache postgresql-client  # Pour promotion des rôles
-COPY package.json .
-RUN npm install
-COPY seed.js .
-CMD node seed.js
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:20-alpine</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+<span class="k">RUN</span><span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>--no-cache<span class="w"> </span>postgresql-client<span class="w">  </span>#<span class="w"> </span>Pour<span class="w"> </span>promotion<span class="w"> </span>des<span class="w"> </span>rôles
+<span class="k">COPY</span><span class="w"> </span>package.json<span class="w"> </span>.
+<span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>install
+<span class="k">COPY</span><span class="w"> </span>seed.js<span class="w"> </span>.
+<span class="k">CMD</span><span class="w"> </span>node<span class="w"> </span>seed.js
+</code></pre></div>
 <hr />
 <h2 id="commandes-utiles">Commandes utiles</h2>
 <h3 id="demarrage">Démarrage</h3>
-<pre><code class="language-bash"># Lancer tous les services
-cd breezy-infra
-docker-compose up --build
+<div class="highlight"><pre><span></span><code><span class="c1"># Lancer tous les services</span>
+<span class="nb">cd</span><span class="w"> </span>breezy-infra
+docker-compose<span class="w"> </span>up<span class="w"> </span>--build
 
-# Lancer en arrière-plan
-docker-compose up --build -d
+<span class="c1"># Lancer en arrière-plan</span>
+docker-compose<span class="w"> </span>up<span class="w"> </span>--build<span class="w"> </span>-d
 
-# Lancer avec un fichier .env alternatif
-docker-compose --env-file .env.prod up --build -d
-</code></pre>
+<span class="c1"># Lancer avec un fichier .env alternatif</span>
+docker-compose<span class="w"> </span>--env-file<span class="w"> </span>.env.prod<span class="w"> </span>up<span class="w"> </span>--build<span class="w"> </span>-d
+</code></pre></div>
 <h3 id="arret">Arrêt</h3>
-<pre><code class="language-bash"># Arrêter les conteneurs
-docker-compose down
+<div class="highlight"><pre><span></span><code><span class="c1"># Arrêter les conteneurs</span>
+docker-compose<span class="w"> </span>down
 
-# Arrêter et supprimer les volumes (remet les BDD à zéro)
-docker-compose down -v
-</code></pre>
+<span class="c1"># Arrêter et supprimer les volumes (remet les BDD à zéro)</span>
+docker-compose<span class="w"> </span>down<span class="w"> </span>-v
+</code></pre></div>
 <h3 id="logs">Logs</h3>
-<pre><code class="language-bash"># Logs de tous les services
-docker-compose logs -f
+<div class="highlight"><pre><span></span><code><span class="c1"># Logs de tous les services</span>
+docker-compose<span class="w"> </span>logs<span class="w"> </span>-f
 
-# Logs d'un service spécifique
-docker-compose logs -f auth-service
-docker-compose logs -f gateway
-docker-compose logs -f nginx
-</code></pre>
+<span class="c1"># Logs d&#39;un service spécifique</span>
+docker-compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>auth-service
+docker-compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>gateway
+docker-compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>nginx
+</code></pre></div>
 <h3 id="execution-de-commandes">Exécution de commandes</h3>
-<pre><code class="language-bash"># Accéder à un conteneur en cours d'exécution
-docker exec -it breezy-auth sh
+<div class="highlight"><pre><span></span><code><span class="c1"># Accéder à un conteneur en cours d&#39;exécution</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>breezy-auth<span class="w"> </span>sh
 
-# Se connecter à PostgreSQL
-docker exec -it breezy-db-pg-auth psql -U user -d auth_db
+<span class="c1"># Se connecter à PostgreSQL</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>breezy-db-pg-auth<span class="w"> </span>psql<span class="w"> </span>-U<span class="w"> </span>user<span class="w"> </span>-d<span class="w"> </span>auth_db
 
-# Se connecter à MongoDB
-docker exec -it breezy-db-mongo-posts mongosh -u admin -p breezy-mongo-2024
-</code></pre>
+<span class="c1"># Se connecter à MongoDB</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>breezy-db-mongo-posts<span class="w"> </span>mongosh<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-p<span class="w"> </span>breezy-mongo-2024
+</code></pre></div>
 <h3 id="seed_1">Seed</h3>
 <p>Le conteneur <code>breezy-seed</code> s'exécute automatiquement une fois après le démarrage de la stack. Pour le relancer manuellement :</p>
-<pre><code class="language-bash">docker-compose run --rm seed
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>seed
+</code></pre></div>
 <hr />
 <h2 id="configuration-nginx">Configuration Nginx</h2>
 <p>Le reverse proxy Nginx est défini dans <code>breezy-infra/nginx/nginx.conf</code> :</p>
-<pre><code class="language-nginx">worker_processes auto;
+<div class="highlight"><pre><span></span><code><span class="k">worker_processes</span><span class="w"> </span><span class="s">auto</span><span class="p">;</span>
 
-events {
-    worker_connections 1024;
-}
+<span class="k">events</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">worker_connections</span><span class="w"> </span><span class="mi">1024</span><span class="p">;</span>
+<span class="p">}</span>
 
-http {
-    # Rate limiting
-    limit_req_zone $binary_remote_addr zone=global:10m rate=30r/m;
-    limit_req_zone $binary_remote_addr zone=auth:10m rate=5r/m;
+<span class="k">http</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1"># Rate limiting</span>
+<span class="w">    </span><span class="kn">limit_req_zone</span><span class="w"> </span><span class="nv">$binary_remote_addr</span><span class="w"> </span><span class="s">zone=global:10m</span><span class="w"> </span><span class="s">rate=30r/m</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">limit_req_zone</span><span class="w"> </span><span class="nv">$binary_remote_addr</span><span class="w"> </span><span class="s">zone=auth:10m</span><span class="w"> </span><span class="s">rate=5r/m</span><span class="p">;</span>
 
-    client_max_body_size 5m;
+<span class="w">    </span><span class="kn">client_max_body_size</span><span class="w"> </span><span class="mi">5m</span><span class="p">;</span>
 
-    server {
-        listen 80;
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
 
-        location /api/ {
-            proxy_pass http://gateway:3000;
-            proxy_connect_timeout 30s;
-            proxy_read_timeout 30s;
-        }
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/api/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://gateway:3000</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_connect_timeout</span><span class="w"> </span><span class="s">30s</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_read_timeout</span><span class="w"> </span><span class="s">30s</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
 
-        location / {
-            proxy_pass http://frontend:3000;
-            proxy_intercept_errors on;
-            error_page 404 = /index.html;  # SPA fallback
-        }
-    }
-}
-</code></pre>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://frontend:3000</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_intercept_errors</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">error_page</span><span class="w"> </span><span class="mi">404</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">/index.html</span><span class="p">;</span><span class="w">  </span><span class="c1"># SPA fallback</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>Caractéristiques :
 - <strong>Rate limiting</strong> : 30 req/min global, 5 req/min sur l'auth (protège contre le brute force)
 - <strong>Taille max des requêtes</strong> : 5 Mo
@@ -2117,36 +2145,36 @@ http {
 <li>Exécute les tests Jest</li>
 </ol>
 <p>Exemple pour auth-service (<code>.github/workflows/ci.yml</code>) :</p>
-<pre><code class="language-yaml">name: CI -- Tests breezy-auth-service
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CI -- Tests breezy-auth-service</span>
 
-on:
-  push:
-    branches: [main, dev]
-  pull_request:
-    branches: [main, dev]
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">main</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">dev</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">main</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">dev</span><span class="p p-Indicator">]</span>
 
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:15-alpine
-        env:
-          POSTGRES_USER: auth_user
-          POSTGRES_PASSWORD: devpassword
-          POSTGRES_DB: breezy_auth_test
-        ports:
-          - 5432:5432
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - run: npm ci
-      - run: npm test
-        env:
-          DATABASE_URL_TEST: postgresql://auth_user:devpassword@localhost:5432/breezy_auth_test
-</code></pre>
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">services</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">postgres</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres:15-alpine</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">POSTGRES_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auth_user</span>
+<span class="w">          </span><span class="nt">POSTGRES_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">devpassword</span>
+<span class="w">          </span><span class="nt">POSTGRES_DB</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">breezy_auth_test</span>
+<span class="w">        </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5432:5432</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-node@v4</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">node-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;20&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm ci</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm test</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">DATABASE_URL_TEST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgresql://auth_user:devpassword@localhost:5432/breezy_auth_test</span>
+</code></pre></div>
 <p>Le dépôt <code>breezy-infra</code> inclut également un workflow CI qui teste la stack complète : clone tous les dépôts frères, lance <code>docker compose up --build -d</code>, attend 30s, puis vérifie que tous les conteneurs sont en état <code>running</code>.</p>
 
 

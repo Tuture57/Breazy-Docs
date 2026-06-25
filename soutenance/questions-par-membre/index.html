@@ -364,6 +364,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../architecture/diagramme-composants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagramme de composants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../architecture/docker-deploiement/" class="md-nav__link">
         
   
@@ -1815,9 +1843,9 @@
 4. Un nouveau token est genere et stocke (hash)
 5. Un nouveau JWT est renvoye</p>
 <p><strong>Detection de vol :</strong>
-Si un refresh token deja revoque est presente (<code>stored.is_revoked === true</code>), c'est le signe qu'un attaquant a peut-etre vole le token et l'a utilise en premier. Dans ce cas, TOUS les refresh tokens de l'utilisateur sont revoques massivement :</p>
-<pre><code class="language-javascript">await RefreshToken.update({ is_revoked: true }, { where: { user_id: stored.user_id } });
-</code></pre>
+Si un refresh token deja revoque est presente (<code>stored.is_revoked === true</code>), c'est le signe qu'un attaquant a peut-etre vole le token et l'a utilise en premier. Dans ce cas, TOUS les refresh tokens de l'utilisateur sont revoques massivement :
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">RefreshToken</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span><span class="w"> </span><span class="nx">is_revoked</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">user_id</span><span class="o">:</span><span class="w"> </span><span class="nx">stored</span><span class="p">.</span><span class="nx">user_id</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div></p>
 <p>Ceci force l'utilisateur a se reconnecter -- l'attaquant et la victime sont tous deux deconnectes.</p>
 <p><strong>Sources :</strong>
 - <code>C:\Users\barto\Desktop\breezy projet\breezy-auth-service\src\controllers\auth.controller.js</code>, lignes 115-166
@@ -1848,16 +1876,16 @@ Si un refresh token deja revoque est presente (<code>stored.is_revoked === true<
 <hr />
 <h3 id="q3-comment-garantis-tu-latomicite-des-compteurs-followersfollowing">Q3 : Comment garantis-tu l'atomicite des compteurs followers/following ?</h3>
 <p>J'utilise <code>sequelize.transaction()</code> pour encapsuler les operations de follow et unfollow. Les deux operations (creation/suppression du lien + increments/decrements des compteurs) sont dans la meme transaction. Si une etape echoue, les deux sont rollback.</p>
-<p><strong>Follow :</strong></p>
-<pre><code class="language-javascript">await sequelize.transaction(async (t) =&gt; {
-  const [follow, created] = await Follow.findOrCreate(
-    { where: { follower_id, followed_id }, transaction: t }
-  );
-  if (!created) throw new FollowError('ALREADY_FOLLOWING');
-  await UserProfile.increment('following_count', { by: 1, where: { id: follower_id }, transaction: t });
-  await UserProfile.increment('followers_count', { by: 1, where: { id: followed_id }, transaction: t });
-});
-</code></pre>
+<p><strong>Follow :</strong>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">sequelize</span><span class="p">.</span><span class="nx">transaction</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">t</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">follow</span><span class="p">,</span><span class="w"> </span><span class="nx">created</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Follow</span><span class="p">.</span><span class="nx">findOrCreate</span><span class="p">(</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">follower_id</span><span class="p">,</span><span class="w"> </span><span class="nx">followed_id</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">transaction</span><span class="o">:</span><span class="w"> </span><span class="nx">t</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">created</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">FollowError</span><span class="p">(</span><span class="s1">&#39;ALREADY_FOLLOWING&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">UserProfile</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="s1">&#39;following_count&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">by</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">follower_id</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">transaction</span><span class="o">:</span><span class="w"> </span><span class="nx">t</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">UserProfile</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="s1">&#39;followers_count&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">by</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">followed_id</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">transaction</span><span class="o">:</span><span class="w"> </span><span class="nx">t</span><span class="w"> </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></p>
 <p>L'index unique composite <code>[follower_id, followed_id]</code> sur la table <code>follows</code> empeche les doublons au niveau base de donnees.</p>
 <p><strong>Sources :</strong>
 - <code>C:\Users\barto\Desktop\breezy projet\breezy-user-service\src\controllers\user.controller.js</code>, lignes 89-102 (follow transaction)
@@ -1903,12 +1931,12 @@ Si un refresh token deja revoque est presente (<code>stored.is_revoked === true<
 <p>L'algorithme dans <code>getFeed</code> suit 4 etapes :</p>
 <p><strong>Etape 1 - Recuperation des abonnements :</strong>
 Le post-service appelle <code>GET /users/:userId/following</code> sur le user-service avec un timeout de 3 secondes. Si le user-service est indisponible, la liste est vide (fallback).</p>
-<pre><code class="language-javascript">const response = await axios.get(
-    `${process.env.USER_SERVICE_URL}/users/${userId}/following`,
-    { headers: { 'x-user-id': userId }, timeout: 3000 }
-);
-followingIds = response.data.ids || response.data.data || [];
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span>
+<span class="w">    </span><span class="sb">`</span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">USER_SERVICE_URL</span><span class="si">}</span><span class="sb">/users/</span><span class="si">${</span><span class="nx">userId</span><span class="si">}</span><span class="sb">/following`</span><span class="p">,</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s1">&#39;x-user-id&#39;</span><span class="o">:</span><span class="w"> </span><span class="nx">userId</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">timeout</span><span class="o">:</span><span class="w"> </span><span class="mf">3000</span><span class="w"> </span><span class="p">}</span>
+<span class="p">);</span>
+<span class="nx">followingIds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">ids</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[];</span>
+</code></pre></div>
 <p><strong>Etape 2 - Fusion :</strong> on combine l'ID de l'utilisateur courant avec les IDs des abonnements.</p>
 <p><strong>Etape 3 - Requete MongoDB :</strong> posts tries par <code>created_at: -1</code> avec pagination offset-based.</p>
 <p><strong>Etape 4 - Enrichissement :</strong> deux requetes paralleles (<code>Promise.all</code>) sur Like et Repost pour determiner <code>likedByMe</code> et <code>repostedByMe</code> pour chaque post.</p>
@@ -1933,12 +1961,12 @@ followingIds = response.data.ids || response.data.data || [];
 <hr />
 <h3 id="q3-comment-geres-tu-la-coherence-des-compteurs-likes_count-comments_count">Q3 : Comment geres-tu la coherence des compteurs (likes_count, comments_count) ?</h3>
 <p>Les compteurs sont geres avec <code>$inc</code> atomique de MongoDB, ce qui garantit qu'il n'y a pas de race condition entre increments simultanes.</p>
-<p><strong>Like :</strong></p>
-<pre><code class="language-javascript">// Creation du like
-await Like.create({ post_id: postId, user_id: userId });
-// Incrementation atomique
-const updated = await Post.findByIdAndUpdate(postId, { $inc: { likes_count: 1 } }, { new: true });
-</code></pre>
+<p><strong>Like :</strong>
+<div class="highlight"><pre><span></span><code><span class="c1">// Creation du like</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">Like</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"> </span><span class="nx">post_id</span><span class="o">:</span><span class="w"> </span><span class="nx">postId</span><span class="p">,</span><span class="w"> </span><span class="nx">user_id</span><span class="o">:</span><span class="w"> </span><span class="nx">userId</span><span class="w"> </span><span class="p">});</span>
+<span class="c1">// Incrementation atomique</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">updated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Post</span><span class="p">.</span><span class="nx">findByIdAndUpdate</span><span class="p">(</span><span class="nx">postId</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">$inc</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">likes_count</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="ow">new</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div></p>
 <p><strong>Protection contre les doublons :</strong>
 Les collections Like et Repost ont un index unique compose <code>{ post_id: 1, user_id: 1 }</code>. Si un utilisateur tente de liker deux fois le meme post, MongoDB renvoie une erreur 11000 qui est interceptee et transformee en 409 ALREADY_LIKED.</p>
 <p><strong>Protection contre les negatifs :</strong>
@@ -1952,11 +1980,11 @@ Lors d'un unlike, on utilise <code>Math.max(0, updated.likes_count)</code> pour 
 <hr />
 <h3 id="q4-explique-le-systeme-de-notifications-comment-sont-elles-creees-et-consommrees">Q4 : Explique le systeme de notifications : comment sont-elles creees et consommrees ?</h3>
 <p>Les notifications sont gerees par le profil-service.</p>
-<p><strong>Creation (endpoint interne) :</strong></p>
-<pre><code class="language-javascript">POST /api/notifications/internal
-Body: { recipient_user_id, type, from_user_id, from_username, post_id }
-Header: x-internal-secret
-</code></pre>
+<p><strong>Creation (endpoint interne) :</strong>
+<div class="highlight"><pre><span></span><code><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">notifications</span><span class="o">/</span><span class="nx">internal</span>
+<span class="nx">Body</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">recipient_user_id</span><span class="p">,</span><span class="w"> </span><span class="nx">type</span><span class="p">,</span><span class="w"> </span><span class="nx">from_user_id</span><span class="p">,</span><span class="w"> </span><span class="nx">from_username</span><span class="p">,</span><span class="w"> </span><span class="nx">post_id</span><span class="w"> </span><span class="p">}</span>
+<span class="nx">Header</span><span class="o">:</span><span class="w"> </span><span class="nx">x</span><span class="o">-</span><span class="nx">internal</span><span class="o">-</span><span class="nx">secret</span>
+</code></pre></div></p>
 <p>Les notifications sont creees depuis :
 - <strong>Like</strong> : quand un utilisateur like un post
 - <strong>Follow</strong> : quand un utilisateur en suit un autre
@@ -1966,11 +1994,11 @@ Header: x-internal-secret
 - Auto-notification ignoree : <code>recipient_user_id === from_user_id</code> =&gt; 204 No Content
 - Secret interne : <code>x-internal-secret</code> requis
 - Timeout court : 1 seconde (non-bloquant)</p>
-<p><strong>Consommation (frontend) :</strong></p>
-<pre><code class="language-javascript">GET /api/notifications?page=1&amp;unread_only=true
-PUT /api/notifications/read-all  (tout marquer comme lu)
-PUT /api/notifications/:id/read (marquer une comme lue)
-</code></pre>
+<p><strong>Consommation (frontend) :</strong>
+<div class="highlight"><pre><span></span><code><span class="nx">GET</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">notifications</span><span class="o">?</span><span class="nx">page</span><span class="o">=</span><span class="mf">1</span><span class="o">&amp;</span><span class="nx">unread_only</span><span class="o">=</span><span class="kc">true</span>
+<span class="nx">PUT</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">notifications</span><span class="o">/</span><span class="nx">read</span><span class="o">-</span><span class="nx">all</span><span class="w">  </span><span class="p">(</span><span class="nx">tout</span><span class="w"> </span><span class="nx">marquer</span><span class="w"> </span><span class="nx">comme</span><span class="w"> </span><span class="nx">lu</span><span class="p">)</span>
+<span class="nx">PUT</span><span class="w"> </span><span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">notifications</span><span class="o">/:</span><span class="nx">id</span><span class="o">/</span><span class="nx">read</span><span class="w"> </span><span class="p">(</span><span class="nx">marquer</span><span class="w"> </span><span class="nx">une</span><span class="w"> </span><span class="nx">comme</span><span class="w"> </span><span class="nx">lue</span><span class="p">)</span>
+</code></pre></div></p>
 <p><strong>Sources :</strong>
 - Notification model : <code>C:\Users\barto\Desktop\breezy projet\breezy-profil-service\src\models\notification.model.js</code>, lignes 1-19
 - createNotification : <code>C:\Users\barto\Desktop\breezy projet\breezy-profil-service\src\controllers\notification.controller.js</code>, lignes 60-75
@@ -1986,13 +2014,13 @@ PUT /api/notifications/:id/read (marquer une comme lue)
 <li><strong>Implementation simple</strong> : chaque commentaire peut avoir un tableau <code>replies</code> charge en une seule requete supplementaire</li>
 <li><strong>Cas d'usage</strong> : pour un micro-blogging, les conversations profondes sont rares</li>
 </ol>
-<p>La limite est enforcee dans le controller :</p>
-<pre><code class="language-javascript">if (parentComment.parent_comment_id) {
-    return res.status(400).json({
-        error: { code: 'MAX_DEPTH', message: 'Reponse a une reponse non autorisee.' }
-    });
-}
-</code></pre>
+<p>La limite est enforcee dans le controller :
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">parentComment</span><span class="p">.</span><span class="nx">parent_comment_id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">code</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;MAX_DEPTH&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Reponse a une reponse non autorisee.&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></p>
 <p><strong>Sources :</strong>
 - <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\comment.controller.js</code>, lignes 120-122
 - getComments avec replies : lignes 10-21</p>
@@ -2002,13 +2030,13 @@ PUT /api/notifications/:id/read (marquer une comme lue)
 <p>Le JWT est stocke dans <code>localStorage</code> sous une cle configurable via <code>NEXT_PUBLIC_TOKEN_KEY</code> (par defaut <code>'breezy_token'</code>).</p>
 <p><strong>AuthContext :</strong>
 - Lecture synchrone dans <code>useState</code> pour eviter les deconnexions flash :
-  <code>javascript
-  const [token, setToken] = useState(() =&gt; {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem(TOKEN_KEY) || null
-    }
-    return null
-  })</code>
+  <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">setToken</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nb">window</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">&#39;undefined&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="nx">TOKEN_KEY</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span>
+<span class="p">})</span>
+</code></pre></div>
 - <code>saveToken(t)</code> ecrit a la fois dans le state React et dans <code>localStorage</code>
 - Au montage, si un token existe, <code>getMe()</code> est appele pour recuperer les infos utilisateur
 - <code>logout()</code> appelle l'API de deconnexion, vide le state et <code>localStorage</code>
@@ -2043,14 +2071,14 @@ Chaque requete est interceptee pour ajouter le header <code>Authorization: Beare
 <h3 id="q3-explique-le-systeme-de-mocks-et-son-utilite">Q3 : Explique le systeme de mocks et son utilite</h3>
 <p>Le systeme de mocks permet de developper et tester le frontend independamment du backend.</p>
 <p><strong>Activation :</strong> <code>NEXT_PUBLIC_USE_MOCKS=true</code> dans <code>.env.local</code></p>
-<p><strong>Detection :</strong></p>
-<pre><code class="language-javascript">export const isMockEnabled = () =&gt;
-  typeof window !== 'undefined' &amp;&amp;
-  process.env.NEXT_PUBLIC_USE_MOCKS === 'true'
-</code></pre>
-<p><strong>Aiguillage :</strong> chaque service (authService, postService, etc.) exporte des fonctions qui appellent soit l'implementation reelle (Axios), soit l'implementation mockee :</p>
-<pre><code class="language-javascript">export const login = (...a) =&gt; isMockEnabled() ? mock.login(...a) : real.login(...a)
-</code></pre>
+<p><strong>Detection :</strong>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">isMockEnabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span>
+<span class="w">  </span><span class="ow">typeof</span><span class="w"> </span><span class="nb">window</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">&#39;undefined&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">  </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NEXT_PUBLIC_USE_MOCKS</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;true&#39;</span>
+</code></pre></div></p>
+<p><strong>Aiguillage :</strong> chaque service (authService, postService, etc.) exporte des fonctions qui appellent soit l'implementation reelle (Axios), soit l'implementation mockee :
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(...</span><span class="nx">a</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">isMockEnabled</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">mock</span><span class="p">.</span><span class="nx">login</span><span class="p">(...</span><span class="nx">a</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">real</span><span class="p">.</span><span class="nx">login</span><span class="p">(...</span><span class="nx">a</span><span class="p">)</span>
+</code></pre></div></p>
 <p><strong>Donnees de test :</strong> 5 utilisateurs fictifs, 8 posts realistes, 3 jeux de commentaires, 6 notifications, 5 conversations avec un token JWT factice.</p>
 <p><strong>Persistence :</strong> les posts et commentaires crees en mode mock sont stockes dans <code>sessionStorage</code> sous les cles <code>breezy_mock_posts</code> et <code>breezy_mock_comments</code>, ce qui permet de conserver les donnees entre les navigations mais pas entre les sessions.</p>
 <p><strong>Utilite :</strong>
@@ -2066,29 +2094,29 @@ Chaque requete est interceptee pour ajouter le header <code>Authorization: Beare
 <hr />
 <h3 id="q4-comment-sont-gerees-les-mises-a-jour-optimistes-likes-follows">Q4 : Comment sont gerees les mises a jour optimistes (likes, follows) ?</h3>
 <p>Les hooks <code>useLike</code> et <code>useFollow</code> implementent un pattern de mise a jour optimiste.</p>
-<p><strong>useLike :</strong></p>
-<pre><code class="language-javascript">async function handleLike() {
-  if (loading) return
-  const was = liked; const prev = count
-  setLiked(!was); setCount(was ? prev-1 : prev+1)  // UI update immediate
-  setLoad(true)
-  try {
-    const d = was ? await unlikePost(post._id) : await likePost(post._id)
-    setLiked(!was); setCount(d.likes_count)
-    onUpdate?.({ ...post, likedByMe: !was, likes_count: d.likes_count })
-  } catch { setLiked(was); setCount(prev) }  // Rollback sur erreur
-  finally { setLoad(false) }
-}
-</code></pre>
-<p><strong>useFollow :</strong></p>
-<pre><code class="language-javascript">async function toggle() {
-  if (loading) return
-  const was = following; setF(!was); setL(true)  // UI update immediate
-  try { was ? await unfollowUser(userId) : await followUser(userId) }
-  catch { setF(was) }  // Rollback sur erreur
-  finally { setL(false) }
-}
-</code></pre>
+<p><strong>useLike :</strong>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">handleLike</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">loading</span><span class="p">)</span><span class="w"> </span><span class="k">return</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">was</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">liked</span><span class="p">;</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">count</span>
+<span class="w">  </span><span class="nx">setLiked</span><span class="p">(</span><span class="o">!</span><span class="nx">was</span><span class="p">);</span><span class="w"> </span><span class="nx">setCount</span><span class="p">(</span><span class="nx">was</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">prev</span><span class="o">-</span><span class="mf">1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">prev</span><span class="o">+</span><span class="mf">1</span><span class="p">)</span><span class="w">  </span><span class="c1">// UI update immediate</span>
+<span class="w">  </span><span class="nx">setLoad</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">was</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">unlikePost</span><span class="p">(</span><span class="nx">post</span><span class="p">.</span><span class="nx">_id</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">likePost</span><span class="p">(</span><span class="nx">post</span><span class="p">.</span><span class="nx">_id</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">setLiked</span><span class="p">(</span><span class="o">!</span><span class="nx">was</span><span class="p">);</span><span class="w"> </span><span class="nx">setCount</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">likes_count</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">onUpdate</span><span class="o">?</span><span class="p">.({</span><span class="w"> </span><span class="p">...</span><span class="nx">post</span><span class="p">,</span><span class="w"> </span><span class="nx">likedByMe</span><span class="o">:</span><span class="w"> </span><span class="o">!</span><span class="nx">was</span><span class="p">,</span><span class="w"> </span><span class="nx">likes_count</span><span class="o">:</span><span class="w"> </span><span class="nx">d</span><span class="p">.</span><span class="nx">likes_count</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">setLiked</span><span class="p">(</span><span class="nx">was</span><span class="p">);</span><span class="w"> </span><span class="nx">setCount</span><span class="p">(</span><span class="nx">prev</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// Rollback sur erreur</span>
+<span class="w">  </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">setLoad</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>useFollow :</strong>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">toggle</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">loading</span><span class="p">)</span><span class="w"> </span><span class="k">return</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">was</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">following</span><span class="p">;</span><span class="w"> </span><span class="nx">setF</span><span class="p">(</span><span class="o">!</span><span class="nx">was</span><span class="p">);</span><span class="w"> </span><span class="nx">setL</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w">  </span><span class="c1">// UI update immediate</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">was</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">unfollowUser</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">followUser</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="k">catch</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">setF</span><span class="p">(</span><span class="nx">was</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// Rollback sur erreur</span>
+<span class="w">  </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">setL</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
 <p><strong>Points communs :</strong>
 1. L'interface utilisateur est mise a jour immediatement (UX reactive)
 2. L'etat precedent est sauvegarde avant la mutation
@@ -2107,16 +2135,16 @@ Chaque requete est interceptee pour ajouter le header <code>Authorization: Beare
 - <code>ghost</code> : texte seul (action tertiaire)
 - <code>follow</code> / <code>unfollow</code> : etats specifiques pour le bouton de follow
 - <code>primary_pill</code> / <code>secondary_pill</code> : variantes arrondies pleine largeur</p>
-<pre><code class="language-javascript">const VARIANTS = {
-  primary:   'bg-breezy-dark text-white hover:bg-black',
-  secondary: 'bg-white text-breezy-dark border border-breezy-border hover:bg-gray-50',
-  ghost:     'text-breezy-dark hover:bg-breezy-hover',
-  follow:    'bg-breezy-dark text-white ... rounded-full hover:bg-black',
-  unfollow:  'bg-white text-breezy-dark ... rounded-full border ... hover:text-red-600',
-  primary_pill: 'bg-breezy-dark text-white ... rounded-full w-full',
-  secondary_pill: 'bg-white ... rounded-full border w-full',
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">VARIANTS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">primary</span><span class="o">:</span><span class="w">   </span><span class="s1">&#39;bg-breezy-dark text-white hover:bg-black&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">secondary</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bg-white text-breezy-dark border border-breezy-border hover:bg-gray-50&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">ghost</span><span class="o">:</span><span class="w">     </span><span class="s1">&#39;text-breezy-dark hover:bg-breezy-hover&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">follow</span><span class="o">:</span><span class="w">    </span><span class="s1">&#39;bg-breezy-dark text-white ... rounded-full hover:bg-black&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">unfollow</span><span class="o">:</span><span class="w">  </span><span class="s1">&#39;bg-white text-breezy-dark ... rounded-full border ... hover:text-red-600&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">primary_pill</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bg-breezy-dark text-white ... rounded-full w-full&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">secondary_pill</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bg-white ... rounded-full border w-full&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><strong>Avatar</strong> (5 tailles) : <code>xs</code> (28px), <code>sm</code> (36px), <code>md</code> (44px), <code>lg</code> (64px), <code>xl</code> (96px). Affiche l'image ou la premiere lettre du username.</p>
 <p><strong>Input</strong> : supporte <code>label</code>, <code>error</code>, <code>icon</code> (gauche), <code>rightIcon</code>, etat focus/error.</p>
 <p><strong>Spinner</strong> : 3 tailles (16px, 24px, 32px) avec animation CSS <code>animate-spin</code>.</p>
@@ -2128,23 +2156,23 @@ Chaque requete est interceptee pour ajouter le header <code>Authorization: Beare
 <hr />
 <h2 id="esteban-infra-gateway">Esteban -- Infra &amp; Gateway</h2>
 <h3 id="q1-comment-la-gateway-verifie-t-elle-les-jwt-et-injecte-t-elle-les-headers">Q1 : Comment la Gateway verifie-t-elle les JWT et injecte-t-elle les headers ?</h3>
-<p><strong>Verification JWT (middleware <code>auth.js</code>) :</strong></p>
-<pre><code class="language-javascript">function authenticate(req, res, next) {
-    const authHeader = req.headers['authorization'];
-    if (!authHeader) return res.status(401).json({ message: &quot;No token provided&quot; });
-    const token = authHeader.split(' ')[1];
-    const decoded = verifyToken(token);
-    if (!decoded) return res.status(401).json({ message: &quot;Invalid or expired token&quot; });
-    req.user = decoded;
-    next();
-}
-</code></pre>
+<p><strong>Verification JWT (middleware <code>auth.js</code>) :</strong>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">authenticate</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">authHeader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;authorization&#39;</span><span class="p">];</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">authHeader</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;No token provided&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">authHeader</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mf">1</span><span class="p">];</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">decoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">verifyToken</span><span class="p">(</span><span class="nx">token</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">decoded</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">401</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Invalid or expired token&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">decoded</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">next</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></p>
 <p><strong>Injection des headers :</strong>
-Apres verification, chaque proxy route injecte les headers <code>x-user-*</code> dans la requete transferee au service backend :</p>
-<pre><code class="language-javascript">proxyReq.setHeader('x-user-id', req.user.sub);
-proxyReq.setHeader('x-user-role', req.user.role);
-proxyReq.setHeader('x-user-username', req.user.username);
-</code></pre>
+Apres verification, chaque proxy route injecte les headers <code>x-user-*</code> dans la requete transferee au service backend :
+<div class="highlight"><pre><span></span><code><span class="nx">proxyReq</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;x-user-id&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">sub</span><span class="p">);</span>
+<span class="nx">proxyReq</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;x-user-role&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">role</span><span class="p">);</span>
+<span class="nx">proxyReq</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;x-user-username&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">username</span><span class="p">);</span>
+</code></pre></div></p>
 <p>Le JWT est decode avec <code>jwt.verify(token, JWT_SECRET)</code> qui retourne le payload <code>{ sub, username, role, iat, exp }</code>. Le <code>sub</code> (subject) correspond a l'UUID de l'utilisateur.</p>
 <p><strong>Sources :</strong>
 - <code>C:\Users\barto\Desktop\breezy projet\breezy-infra\gateway\src\middleware\auth.js</code>, lignes 1-21
@@ -2174,17 +2202,17 @@ proxyReq.setHeader('x-user-username', req.user.username);
 <hr />
 <h3 id="q3-comment-les-services-communiquent-ils-entre-eux-dans-docker">Q3 : Comment les services communiquent-ils entre eux dans Docker ?</h3>
 <p>Les services communiquent via le reseau bridge <code>breezy-network</code> defini dans <code>docker-compose.yml</code>. Chaque service peut acceder aux autres par leur nom de conteneur (hostname DNS interne).</p>
-<p><strong>Configuration reseau :</strong></p>
-<pre><code class="language-yaml">networks:
-  breezy-network:
-    driver: bridge
-</code></pre>
-<p><strong>Variables d'environnement pour les URLs internes (fichier <code>.env</code> de breezy-infra) :</strong></p>
-<pre><code>AUTH_SERVICE_URL=http://auth-service:3001
+<p><strong>Configuration reseau :</strong>
+<div class="highlight"><pre><span></span><code><span class="nt">networks</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">breezy-network</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bridge</span>
+</code></pre></div></p>
+<p><strong>Variables d'environnement pour les URLs internes (fichier <code>.env</code> de breezy-infra) :</strong>
+<div class="highlight"><pre><span></span><code>AUTH_SERVICE_URL=http://auth-service:3001
 USER_SERVICE_URL=http://user-service:3002
 POST_SERVICE_URL=http://post-service:3003
 PROFIL_SERVICE_URL=http://profil-service:3004
-</code></pre>
+</code></pre></div></p>
 <p>Seul Nginx expose un port public (80:80). Tous les services backend utilisent <code>expose</code> (accessible uniquement depuis le reseau interne).</p>
 <p><strong>Sources :</strong>
 - <code>C:\Users\barto\Desktop\breezy projet\breezy-infra\docker-compose.yml</code>, lignes 244-247 (reseau)
@@ -2198,14 +2226,14 @@ PROFIL_SERVICE_URL=http://profil-service:3004
 3. Le post-service recoit la requete, multer traite le fichier
 4. Validation : image uniquement, maximum 5MB
 5. Stockage : disque local dans <code>uploads/</code> avec nom unique (<code>timestamp-randomNumber.ext</code>)</p>
-<p><strong>Stockage :</strong> un volume Docker nomme <code>uploads_data</code> est monte sur le conteneur du post-service :</p>
-<pre><code class="language-yaml">volumes:
-  - uploads_data:/app/uploads
-</code></pre>
-<p><strong>Servi statiquement :</strong></p>
-<pre><code class="language-javascript">app.use('/api/uploads', express.static(path.join(__dirname, '..', 'uploads')));
-</code></pre>
-<p>Les fichiers sont accessibles publiquement via <code>GET /api/uploads/&lt;filename&gt;</code> (proxy Gateway sans authentification).</p>
+<p><strong>Stockage :</strong> un volume Docker nomme <code>uploads_data</code> est monte sur le conteneur du post-service :
+<div class="highlight"><pre><span></span><code><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uploads_data:/app/uploads</span>
+</code></pre></div></p>
+<p><strong>Servi statiquement :</strong>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/api/uploads&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">express</span><span class="p">.</span><span class="k">static</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;..&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;uploads&#39;</span><span class="p">)));</span>
+</code></pre></div>
+Les fichiers sont accessibles publiquement via <code>GET /api/uploads/&lt;filename&gt;</code> (proxy Gateway sans authentification).</p>
 <p><strong>Sources :</strong>
 - Multer config : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\middleware\upload.middleware.js</code>, lignes 1-35
 - uploadMedia controller : <code>C:\Users\barto\Desktop\breezy projet\breezy-post-service\src\controllers\post.controller.js</code>, lignes 334-350

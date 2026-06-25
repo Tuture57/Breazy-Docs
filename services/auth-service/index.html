@@ -364,6 +364,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../architecture/diagramme-composants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagramme de composants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../architecture/docker-deploiement/" class="md-nav__link">
         
   
@@ -1858,7 +1886,7 @@
 </tbody>
 </table>
 <p><strong>Reponses :</strong></p>
-<pre><code>201 Created
+<div class="highlight"><pre><span></span><code>201 Created
 {
   &quot;message&quot;: &quot;User registered successfully&quot;,
   &quot;user&quot;: {
@@ -1872,8 +1900,8 @@
     &quot;updatedAt&quot;: &quot;2024-01-01T00:00:00.000Z&quot;
   }
 }
-</code></pre>
-<pre><code>400 Bad Request
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>400 Bad Request
 {
   &quot;error&quot;: &quot;VALIDATION_ERROR&quot;,
   &quot;details&quot;: [
@@ -1891,7 +1919,7 @@
 {
   &quot;error&quot;: &quot;USERNAME_ALREADY_EXISTS&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Valider les champs avec express-validator.
 2. Verifier qu'aucun utilisateur n'existe deja avec cet email ou ce username (requetes Sequelize separees).
@@ -1925,7 +1953,7 @@
 </tbody>
 </table>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;message&quot;: &quot;Login successful&quot;,
   &quot;access_token&quot;: &quot;eyJhbGciOiJIUzI1NiIs...&quot;,
@@ -1939,8 +1967,8 @@
     &quot;is_banned&quot;: false
   }
 }
-</code></pre>
-<pre><code>400 Bad Request
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>400 Bad Request
 {
   &quot;error&quot;: &quot;VALIDATION_ERROR&quot;,
   &quot;details&quot;: [...]
@@ -1960,7 +1988,7 @@
 {
   &quot;error&quot;: &quot;ACCOUNT_INACTIVE&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Trouver l'utilisateur par email avec <code>User.findOne({ where: { email } })</code>.
 2. Si introuvable -&gt; <code>INVALID_CREDENTIALS</code>.
@@ -1994,14 +2022,14 @@
 </tbody>
 </table>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;message&quot;: &quot;Token refreshed successfully&quot;,
   &quot;access_token&quot;: &quot;eyJhbGciOiJIUzI1NiIs...&quot;,
   &quot;refresh_token&quot;: &quot;newRefreshtoken456...&quot;
 }
-</code></pre>
-<pre><code>401 Unauthorized
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>401 Unauthorized
 {
   &quot;error&quot;: &quot;INVALID_REFRESH_TOKEN&quot;
 }
@@ -2015,7 +2043,7 @@
 {
   &quot;error&quot;: &quot;REFRESH_TOKEN_REVOKED&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Hasher le refresh_token recu (SHA-256).
 2. Chercher le token dans la table <code>refresh_tokens</code> par <code>token_hash</code>.
@@ -2049,11 +2077,11 @@
 </tbody>
 </table>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;message&quot;: &quot;Logged out successfully&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Hasher le refresh_token recu.
 2. Trouver le token par <code>token_hash</code>.
@@ -2065,7 +2093,7 @@
 <p><strong>Middleware :</strong> <code>identity</code></p>
 <p><strong>Headers requis :</strong> <code>x-user-id</code>, <code>x-user-role</code>, <code>x-username</code> (injectes par le gateway)</p>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;id&quot;: &quot;uuid&quot;,
   &quot;email&quot;: &quot;user@example.com&quot;,
@@ -2076,12 +2104,12 @@
   &quot;createdAt&quot;: &quot;2024-01-01T00:00:00.000Z&quot;,
   &quot;updatedAt&quot;: &quot;2024-01-01T00:00:00.000Z&quot;
 }
-</code></pre>
-<pre><code>401 Unauthorized
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>401 Unauthorized
 {
   &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Extraire <code>x-user-id</code> des headers.
 2. Requete <code>User.findByPk(id)</code>.
@@ -2117,12 +2145,12 @@
 </tbody>
 </table>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;message&quot;: &quot;Password changed successfully&quot;
 }
-</code></pre>
-<pre><code>400 Bad Request
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>400 Bad Request
 {
   &quot;error&quot;: &quot;VALIDATION_ERROR&quot;,
   &quot;details&quot;: [...]
@@ -2137,7 +2165,7 @@
 {
   &quot;error&quot;: &quot;MISSING_IDENTITY&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Verifier l'identite via le middleware.
 2. Recuperer l'utilisateur avec <code>User.findByPk</code>.
@@ -2168,12 +2196,12 @@
 </tbody>
 </table>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;message&quot;: &quot;User banned successfully&quot;
 }
-</code></pre>
-<pre><code>403 Forbidden
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>403 Forbidden
 {
   &quot;error&quot;: &quot;FORBIDDEN&quot;
 }
@@ -2182,7 +2210,7 @@
 {
   &quot;error&quot;: &quot;USER_NOT_FOUND&quot;
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Logique metier :</strong>
 1. Verifier le header <code>x-internal-secret</code> correspond a <code>INTERNAL_SECRET</code>.
 2. Trouver l'utilisateur par <code>user_id</code>.
@@ -2193,12 +2221,12 @@
 <p>Healthcheck du service.</p>
 <p><strong>Middleware :</strong> aucun</p>
 <p><strong>Reponses :</strong></p>
-<pre><code>200 OK
+<div class="highlight"><pre><span></span><code>200 OK
 {
   &quot;status&quot;: &quot;ok&quot;,
   &quot;timestamp&quot;: &quot;2024-01-01T00:00:00.000Z&quot;
 }
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="middlewares">Middlewares</h2>
 <h3 id="identitymiddlewarejs">identity.middleware.js</h3>
@@ -2310,14 +2338,14 @@
 </table>
 <hr />
 <h2 id="docker">Docker</h2>
-<pre><code class="language-dockerfile">FROM node:20-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-EXPOSE 3001
-CMD [&quot;npm&quot;, &quot;start&quot;]
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:20-alpine</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+<span class="k">COPY</span><span class="w"> </span>package*.json<span class="w"> </span>./
+<span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>install
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">3001</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;npm&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;start&quot;</span><span class="p">]</span>
+</code></pre></div>
 <hr />
 <h2 id="notes-dimplementation">Notes d'implementation</h2>
 <ul>
