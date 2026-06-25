@@ -437,10 +437,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#legende" class="md-nav__link">
+  <a href="#vue-simplifiee-soutenance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Légende
+        Vue simplifiée (soutenance)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#legende-notation-uml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Légende (notation UML)
       
     </span>
   </a>
@@ -1322,10 +1333,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#legende" class="md-nav__link">
+  <a href="#vue-simplifiee-soutenance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Légende
+        Vue simplifiée (soutenance)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#legende-notation-uml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Légende (notation UML)
       
     </span>
   </a>
@@ -1407,119 +1429,58 @@ représentée est prouvée par une référence <code>fichier:ligne</code>
 <p>Les noms des composants correspondent exactement aux noms des <strong>containers</strong>
 définis dans <code>breezy-infra/docker-compose.yml</code>.</p>
 <h2 id="vue-complete">Vue complète</h2>
-<p>Le diagramme ci-dessous montre l'ensemble des composants (frontend,
-infrastructure, microservices, bases de données), leurs interfaces principales
-et toutes les dépendances réelles entre eux.</p>
-<pre class="mermaid"><code>graph TD
-    client([" Client&lt;br/&gt;navigateur"])
-    openrouter["OpenRouter&lt;br/&gt;IA externe"]
-
-    subgraph FE["Frontend"]
-        frontend["breezy-frontend&lt;br/&gt;Next.js :3000"]
-    end
-
-    subgraph INFRA["Infrastructure"]
-        nginx["breezy-nginx&lt;br/&gt;reverse proxy :80"]
-        gateway["breezy-gateway&lt;br/&gt;API Gateway :3000&lt;br/&gt;JWT + routage"]
-    end
-
-    subgraph BACK["Backend Services"]
-        auth["breezy-auth&lt;br/&gt;auth-service :3001"]
-        user["breezy-user&lt;br/&gt;user-service :3002"]
-        post["breezy-post&lt;br/&gt;post-service :3003"]
-        profil["breezy-profil&lt;br/&gt;profil-service :3004"]
-    end
-
-    subgraph DB["Bases de données"]
-        pgauth[("breezy-db-pg-auth&lt;br/&gt;PostgreSQL · auth_db")]
-        pgusers[("breezy-db-pg-users&lt;br/&gt;PostgreSQL · users_db")]
-        mongoposts[("breezy-db-mongo-posts&lt;br/&gt;MongoDB · posts_db")]
-        mongoprofils[("breezy-db-mongo-profils&lt;br/&gt;MongoDB · profils_db")]
-    end
-
-    seed["breezy-seed&lt;br/&gt;seeding (one-shot)"]
-
-    client --&gt;|"HTTP :80"| nginx
-    nginx --&gt;|"/ → frontend:3000"| frontend
-    nginx --&gt;|"/api/ → gateway:3000"| gateway
-    frontend -. "API /api/* · Bearer JWT" .-&gt; gateway
-
-    gateway --&gt;|"/api/auth/*"| auth
-    gateway --&gt;|"/api/users · x-user-id"| user
-    gateway --&gt;|"/api/posts · /api/upload"| post
-    gateway --&gt;|"/api/profils · /api/notifications"| profil
-
-    auth --&gt;|"POST /users/sync"| user
-    user --&gt;|"POST /auth/internal/ban"| auth
-    user --&gt;|"POST /api/notifications/internal&lt;br/&gt;(follow)"| profil
-    post --&gt;|"GET /users/:id/following (feed)&lt;br/&gt;GET /users/:id · /users/by-username/:u"| user
-    post --&gt;|"POST /api/notifications/internal&lt;br/&gt;(like / mention)"| profil
-    profil --&gt;|"GET /auth/internal/users/:id/role"| auth
-    post --&gt;|"POST /chat/completions&lt;br/&gt;(@breezy_ai)"| openrouter
-
-    auth --&gt;|"Sequelize"| pgauth
-    user --&gt;|"Sequelize"| pgusers
-    post --&gt;|"Mongoose"| mongoposts
-    profil --&gt;|"Mongoose"| mongoprofils
-
-    seed -. "HTTP peuplement" .-&gt; gateway
-    seed -. "psql rôles" .-&gt; pgauth
-
-    classDef infraCls fill:#F3E5F5,stroke:#9C27B0,stroke-width:2px,color:#000;
-    classDef backCls fill:#E8F4FD,stroke:#2196F3,stroke-width:2px,color:#000;
-    classDef dbCls fill:#FFF3E0,stroke:#FF9800,stroke-width:2px,color:#000;
-    classDef feCls fill:#E8F5E9,stroke:#4CAF50,stroke-width:2px,color:#000;
-    classDef extCls fill:#ECEFF1,stroke:#607D8B,stroke-width:2px,color:#000,stroke-dasharray: 4 3;
-
-    class nginx,gateway infraCls;
-    class auth,user,post,profil backCls;
-    class pgauth,pgusers,mongoposts,mongoprofils dbCls;
-    class frontend,client feCls;
-    class openrouter,seed extCls;</code></pre>
+<p>Diagramme de composants en <strong>notation UML 2.5</strong> : chaque composant expose ses
+<strong>interfaces fournies</strong> (sucette / <em>ball</em> <code>──○</code>) et consomme les interfaces des
+autres via des <strong>dépendances «use»</strong> (douille / <em>socket</em>, trait pointillé). La
+jonction d'une interface fournie et d'une interface requise sur un même contrat
+forme un <strong>connecteur d'assemblage</strong>.</p>
+<p><img alt="Diagramme de composants UML de Breezy" src="../diagramme-composants.svg" /></p>
 <blockquote>
-<p>Une version PlantUML équivalente (<code>diagrams/composants.puml</code>) et une version
-simplifiée pour la soutenance (<code>diagrams/composants-simplifie.mmd</code>) sont
-disponibles à la racine du dépôt.</p>
+<p>Source PlantUML : <code>diagrams/composants.puml</code> — rendu vectoriel reproductible
+via <code>java -jar plantuml.jar -tsvg composants.puml</code>.</p>
 </blockquote>
-<h2 id="legende">Légende</h2>
+<h2 id="vue-simplifiee-soutenance">Vue simplifiée (soutenance)</h2>
+<p><img alt="Diagramme de composants simplifié" src="../diagramme-composants-simplifie.svg" /></p>
+<h2 id="legende-notation-uml">Légende (notation UML)</h2>
 <table>
 <thead>
 <tr>
-<th>Couleur / Style</th>
-<th>Zone</th>
+<th>Élément</th>
+<th>Signification</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>🟪 Violet</td>
-<td>Infrastructure (<code>breezy-nginx</code>, <code>breezy-gateway</code>)</td>
+<td><code>──○</code> interface fournie (<em>ball / lollipop</em>)</td>
+<td>Contrat <strong>exposé</strong> par le composant (réalisation, trait plein)</td>
 </tr>
 <tr>
-<td>🟦 Bleu</td>
-<td>Microservices backend (<code>auth</code>, <code>user</code>, <code>post</code>, <code>profil</code>)</td>
+<td><code>··&gt;</code> «use» vers une interface (<em>socket</em>)</td>
+<td>Contrat <strong>requis</strong> par le composant (dépendance, trait pointillé)</td>
 </tr>
 <tr>
-<td>🟧 Orange (cylindre)</td>
-<td>Bases de données (PostgreSQL / MongoDB)</td>
+<td><em>ball</em> + <em>socket</em> sur la même interface</td>
+<td><strong>Connecteur d'assemblage</strong> entre fournisseur et consommateur</td>
 </tr>
 <tr>
-<td>🟩 Vert</td>
-<td>Frontend &amp; Client</td>
+<td>«service» / «API gateway» / «reverse proxy»</td>
+<td>Stéréotypes des composants</td>
 </tr>
 <tr>
-<td>⬜ Gris pointillé</td>
-<td>Composants externes / one-shot (OpenRouter, seed)</td>
+<td>«internal»</td>
+<td>Interface inter-service protégée par <code>INTERNAL_SECRET</code> (hors gateway)</td>
 </tr>
 <tr>
-<td>Flèche pleine <code>→</code></td>
-<td>Appel HTTP synchrone / persistance</td>
-</tr>
-<tr>
-<td>Flèche pointillée <code>-.-&gt;</code></td>
-<td>Flux indirect (via proxy) ou tâche ponctuelle</td>
+<td>«datastore»</td>
+<td>Accès à une base de données (une base par service)</td>
 </tr>
 </tbody>
 </table>
+<p><strong>Interfaces du diagramme</strong> — <code>IApi</code> (/api du gateway), <code>IAuthApi</code>, <code>IUserApi</code>,
+<code>IPostApi</code>, <code>IProfilApi</code> (façades publiques des services), <code>IUserSync</code>, <code>IBan</code>,
+<code>IRole</code>, <code>INotify</code> (interfaces internes <code>«internal»</code>), <code>ISqlAuth</code> / <code>ISqlUsers</code> /
+<code>IDocPosts</code> / <code>IDocProfils</code> (interfaces <code>«datastore»</code>), <code>IChatCompletions</code>
+(OpenRouter, externe).</p>
 <h2 id="relations-inter-services">Relations inter-services</h2>
 <p>Toutes ces relations sont des appels HTTP <strong>non bloquants</strong>
 (<code>try/catch</code> + timeout) : une cible indisponible n'échoue jamais la requête
