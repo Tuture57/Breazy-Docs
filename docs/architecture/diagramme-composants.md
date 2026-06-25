@@ -10,94 +10,37 @@ définis dans `breezy-infra/docker-compose.yml`.
 
 ## Vue complète
 
-Le diagramme ci-dessous montre l'ensemble des composants (frontend,
-infrastructure, microservices, bases de données), leurs interfaces principales
-et toutes les dépendances réelles entre eux.
+Diagramme de composants en **notation UML 2.5** : chaque composant expose ses
+**interfaces fournies** (sucette / *ball* `──○`) et consomme les interfaces des
+autres via des **dépendances «use»** (douille / *socket*, trait pointillé). La
+jonction d'une interface fournie et d'une interface requise sur un même contrat
+forme un **connecteur d'assemblage**.
 
-```mermaid
-graph TD
-    client([" Client<br/>navigateur"])
-    openrouter["OpenRouter<br/>IA externe"]
+![Diagramme de composants UML de Breezy](diagramme-composants.svg)
 
-    subgraph FE["Frontend"]
-        frontend["breezy-frontend<br/>Next.js :3000"]
-    end
+> Source PlantUML : `diagrams/composants.puml` — rendu vectoriel reproductible
+> via `java -jar plantuml.jar -tsvg composants.puml`.
 
-    subgraph INFRA["Infrastructure"]
-        nginx["breezy-nginx<br/>reverse proxy :80"]
-        gateway["breezy-gateway<br/>API Gateway :3000<br/>JWT + routage"]
-    end
+## Vue simplifiée (soutenance)
 
-    subgraph BACK["Backend Services"]
-        auth["breezy-auth<br/>auth-service :3001"]
-        user["breezy-user<br/>user-service :3002"]
-        post["breezy-post<br/>post-service :3003"]
-        profil["breezy-profil<br/>profil-service :3004"]
-    end
+![Diagramme de composants simplifié](diagramme-composants-simplifie.svg)
 
-    subgraph DB["Bases de données"]
-        pgauth[("breezy-db-pg-auth<br/>PostgreSQL · auth_db")]
-        pgusers[("breezy-db-pg-users<br/>PostgreSQL · users_db")]
-        mongoposts[("breezy-db-mongo-posts<br/>MongoDB · posts_db")]
-        mongoprofils[("breezy-db-mongo-profils<br/>MongoDB · profils_db")]
-    end
+## Légende (notation UML)
 
-    seed["breezy-seed<br/>seeding (one-shot)"]
+| Élément | Signification |
+|---------|---------------|
+| `──○` interface fournie (*ball / lollipop*) | Contrat **exposé** par le composant (réalisation, trait plein) |
+| `··>` «use» vers une interface (*socket*) | Contrat **requis** par le composant (dépendance, trait pointillé) |
+| *ball* + *socket* sur la même interface | **Connecteur d'assemblage** entre fournisseur et consommateur |
+| «service» / «API gateway» / «reverse proxy» | Stéréotypes des composants |
+| «internal» | Interface inter-service protégée par `INTERNAL_SECRET` (hors gateway) |
+| «datastore» | Accès à une base de données (une base par service) |
 
-    client -->|"HTTP :80"| nginx
-    nginx -->|"/ → frontend:3000"| frontend
-    nginx -->|"/api/ → gateway:3000"| gateway
-    frontend -. "API /api/* · Bearer JWT" .-> gateway
-
-    gateway -->|"/api/auth/*"| auth
-    gateway -->|"/api/users · x-user-id"| user
-    gateway -->|"/api/posts · /api/upload"| post
-    gateway -->|"/api/profils · /api/notifications"| profil
-
-    auth -->|"POST /users/sync"| user
-    user -->|"POST /auth/internal/ban"| auth
-    user -->|"POST /api/notifications/internal<br/>(follow)"| profil
-    post -->|"GET /users/:id/following (feed)<br/>GET /users/:id · /users/by-username/:u"| user
-    post -->|"POST /api/notifications/internal<br/>(like / mention)"| profil
-    profil -->|"GET /auth/internal/users/:id/role"| auth
-    post -->|"POST /chat/completions<br/>(@breezy_ai)"| openrouter
-
-    auth -->|"Sequelize"| pgauth
-    user -->|"Sequelize"| pgusers
-    post -->|"Mongoose"| mongoposts
-    profil -->|"Mongoose"| mongoprofils
-
-    seed -. "HTTP peuplement" .-> gateway
-    seed -. "psql rôles" .-> pgauth
-
-    classDef infraCls fill:#F3E5F5,stroke:#9C27B0,stroke-width:2px,color:#000;
-    classDef backCls fill:#E8F4FD,stroke:#2196F3,stroke-width:2px,color:#000;
-    classDef dbCls fill:#FFF3E0,stroke:#FF9800,stroke-width:2px,color:#000;
-    classDef feCls fill:#E8F5E9,stroke:#4CAF50,stroke-width:2px,color:#000;
-    classDef extCls fill:#ECEFF1,stroke:#607D8B,stroke-width:2px,color:#000,stroke-dasharray: 4 3;
-
-    class nginx,gateway infraCls;
-    class auth,user,post,profil backCls;
-    class pgauth,pgusers,mongoposts,mongoprofils dbCls;
-    class frontend,client feCls;
-    class openrouter,seed extCls;
-```
-
-> Une version PlantUML équivalente (`diagrams/composants.puml`) et une version
-> simplifiée pour la soutenance (`diagrams/composants-simplifie.mmd`) sont
-> disponibles à la racine du dépôt.
-
-## Légende
-
-| Couleur / Style | Zone |
-|-----------------|------|
-| 🟪 Violet | Infrastructure (`breezy-nginx`, `breezy-gateway`) |
-| 🟦 Bleu | Microservices backend (`auth`, `user`, `post`, `profil`) |
-| 🟧 Orange (cylindre) | Bases de données (PostgreSQL / MongoDB) |
-| 🟩 Vert | Frontend & Client |
-| ⬜ Gris pointillé | Composants externes / one-shot (OpenRouter, seed) |
-| Flèche pleine `→` | Appel HTTP synchrone / persistance |
-| Flèche pointillée `-.->` | Flux indirect (via proxy) ou tâche ponctuelle |
+**Interfaces du diagramme** — `IApi` (/api du gateway), `IAuthApi`, `IUserApi`,
+`IPostApi`, `IProfilApi` (façades publiques des services), `IUserSync`, `IBan`,
+`IRole`, `INotify` (interfaces internes `«internal»`), `ISqlAuth` / `ISqlUsers` /
+`IDocPosts` / `IDocProfils` (interfaces `«datastore»`), `IChatCompletions`
+(OpenRouter, externe).
 
 ## Relations inter-services
 
